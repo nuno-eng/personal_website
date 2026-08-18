@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail" data-bg-color="#faf8f6">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#faf8f6"/>
+    <rect x="200" y="560" width="60" height="60" fill="#2d2520"/>
+    <text x="200" y="330" font-family="Georgia, serif" font-weight="700" font-size="150" fill="#2d2520">NF</text>
+  </svg>
+</template>
+
+<helmet>
+<link rel="stylesheet" href="../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/styles.css">
+<script src="../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/_ds_bundle.js"></script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+:root {--color-bg:#f3f2f2;--color-text:#201e1d;--color-accent:#1E3A8A;--color-divider:#ddd}
+body {margin:0;text-wrap:pretty}
+.nfc-menu-btn {display:none}
+@media (max-width:640px) {.nfc-navlinks {display:none}.nfc-menu-btn {display:flex !important}.nfc-cta-desktop {display:none !important}}
+@media (max-width:880px) {.nfc-split {grid-template-columns:1fr !important}.nfc-paths {grid-template-columns:1fr !important}.nfc-contact {grid-template-columns:1fr !important}}
+</style>
+</helmet>
+
+<nav style="padding:20px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--color-divider)">
+  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:12px;font-family:Georgia, serif;font-weight:700;font-size:20px;color:var(--color-text)">
+    <div style="width:32px;height:32px;background:var(--color-accent);border-radius:0px"></div>
+    <span>Nuno Fontoura</span>
+  </a>
+  <div class="nfc-navlinks" style="display:flex;gap:36px;align-items:center;font-size:14px">
+    <a href="/business-advisory/" style="color:var(--color-text);text-decoration:none;font-weight:500">Business Advisory</a>
+    <a href="/resilience/" style="color:var(--color-text);text-decoration:none;font-weight:500">Resilience</a>
+    <a href="#proof" style="color:var(--color-text);text-decoration:none;font-weight:500">Proof</a>
+    <a href="/pt/" style="color:var(--color-text);text-decoration:none;font-weight:600">PT</a>
+    <a href="#book-a-call" style="padding:11px 22px;background:var(--color-accent);color:white;text-decoration:none;border-radius:0px;font-size:13px;font-weight:700;border:none;cursor:pointer;display:inline-block">Book</a>
+  </div>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;cursor:pointer">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+</nav>
+
+<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:20px;display:flex;flex-direction:column;overflow-y:auto">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
+      <button type="button" onClick="{{ closeMenu }}" style="background:none;border:none;cursor:pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <a href="/business-advisory/" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:16px;font-weight:500">Business Advisory</a>
+    <a href="/resilience/" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:16px;font-weight:500">Resilience</a>
+    <a href="#proof" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:16px;font-weight:500">Proof</a>
+    <a href="/pt/" onClick="{{ closeMenu }}" style="padding:16px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:16px;font-weight:500">PT</a>
+    <a href="#book-a-call" onClick="{{ closeMenu }}" style="margin-top:24px;display:block;padding:14px 0;background:var(--color-accent);color:white;text-decoration:none;border-radius:0px;font-weight:700;text-align:center;font-size:14px">Book</a>
+  </div>
+</sc-if>
+
+<main id="main-content" style="max-width:1400px;margin:0 auto">
+  <section style="padding:100px clamp(20px,5vw,72px) 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center">
+    <div>
+      <h1 style="font-family:Georgia, serif;font-size:clamp(48px,6vw,72px);line-height:1.15;margin:0 0 24px;color:var(--color-text);font-weight:700;letter-spacing:-0.01em">Build the systems that survive pressure.</h1>
+      <p style="font-size:18px;line-height:30px;margin:0 0 12px;max-width:55ch;color:color-mix(in srgb, var(--color-text) 80%, transparent);font-weight:500">Executive coaching for founders and leadership teams who want measurable results, not motivation.</p>
+      <p style="font-size:16px;line-height:28px;margin:0 0 32px;max-width:55ch;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Operational clarity. Executable decisions. Accountability that sticks. Everything else is noise.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="#book-a-call" style="padding:14px 32px;background:var(--color-accent);color:white;text-decoration:none;border-radius:0px;font-weight:700;font-size:14px">Book discovery call</a>
+        <a href="/business-advisory/" style="padding:14px 32px;border:2px solid var(--color-accent);color:var(--color-accent);text-decoration:none;border-radius:0px;font-weight:700;font-size:14px">Learn more</a>
+      </div>
+    </div>
+    <figure style="margin:0;aspect-ratio:3/4;background:linear-gradient(135deg, #e8dcc8 0%, #d4c4b0 100%);border-radius:0px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.15)">
+      <img src="../assets/images/Headshot_website.png" alt="Nuno Fontoura" style="width:100%;height:100%;object-fit:cover;object-position:top">
+    </figure>
+  </section>
+
+  <section style="padding:60px clamp(20px,5vw,72px);background:color-mix(in srgb, var(--color-accent) 4%, var(--color-bg));border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px;text-align:center">
+      <div>
+        <p style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 8px;color:var(--color-accent)">6</p>
+        <p style="font-size:12px;margin:0;color:color-mix(in srgb, var(--color-text) 60%, transparent);text-transform:uppercase;letter-spacing:0.1em;font-weight:600">Years Military</p>
+      </div>
+      <div>
+        <p style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 8px;color:var(--color-accent)">7.5</p>
+        <p style="font-size:12px;margin:0;color:color-mix(in srgb, var(--color-text) 60%, transparent);text-transform:uppercase;letter-spacing:0.1em;font-weight:600">Years Amazon</p>
+      </div>
+      <div>
+        <p style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 8px;color:var(--color-accent)">100+</p>
+        <p style="font-size:12px;margin:0;color:color-mix(in srgb, var(--color-text) 60%, transparent);text-transform:uppercase;letter-spacing:0.1em;font-weight:600">Leaders Coached</p>
+      </div>
+      <div>
+        <p style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 8px;color:var(--color-accent)">55+</p>
+        <p style="font-size:12px;margin:0;color:color-mix(in srgb, var(--color-text) 60%, transparent);text-transform:uppercase;letter-spacing:0.1em;font-weight:600">Countries</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof" style="padding:80px clamp(20px,5vw,72px);background:var(--color-text);color:var(--color-bg)">
+    <h2 style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 16px;text-align:center">What clients say</h2>
+    <p style="text-align:center;margin:0 0 56px;color:color-mix(in srgb, var(--color-bg) 70%, transparent);max-width:60ch;margin-left:auto;margin-right:auto;font-size:16px">Real outcomes from real leadership work.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;margin-bottom:64px">
+      <blockquote style="margin:0;padding:36px;border-left:3px solid var(--color-accent);background:color-mix(in srgb, var(--color-bg) 6%, var(--color-text))">
+        <p style="font-family:Georgia, serif;font-size:17px;font-weight:600;line-height:28px;margin:0 0 16px;color:var(--color-bg)">He gave me immense clarity on how to structure my business plan. I went from uncertain to having absolute direction.</p>
+        <footer style="font-size:12px;color:color-mix(in srgb, var(--color-bg) 60%, transparent);margin:0;font-weight:500">Clinical Psychologist, Clinic Owner</footer>
+      </blockquote>
+      <blockquote style="margin:0;padding:36px;border-left:3px solid var(--color-accent);background:color-mix(in srgb, var(--color-bg) 6%, var(--color-text))">
+        <p style="font-family:Georgia, serif;font-size:17px;font-weight:600;line-height:28px;margin:0 0 16px;color:var(--color-bg)">A clear, measurable plan rather than vague encouragement. I could see the change week to week.</p>
+        <footer style="font-size:12px;color:color-mix(in srgb, var(--color-bg) 60%, transparent);margin:0;font-weight:500">Resilience Programme Client</footer>
+      </blockquote>
+    </div>
+    <div style="text-align:center;padding-top:48px;border-top:2px solid color-mix(in srgb, var(--color-bg) 15%, var(--color-text))">
+      <a href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:20px 28px;border:2px solid color-mix(in srgb, var(--color-bg) 20%, var(--color-text));text-decoration:none;color:var(--color-bg);font-weight:600;font-size:13px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 L17 7M17 7H7M17 7V17"></path></svg>
+        <span>Named in MSN's Top 10 Most Inspiring Men, 2026</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="book-a-call" class="booking-section">
+    <h2 style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0;color:var(--color-text)">Book a 30-Minute Strategy Call</h2>
+    <p style="text-align:center;margin:20px 0 40px;color:color-mix(in srgb, var(--color-text) 70%, transparent);max-width:50ch;margin-left:auto;margin-right:auto">We'll map out where you are, what's not working, and what success looks like on the other side.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="min-width:320px;height:700px"></div>
+  </section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  toggleMenu = () => this.setState(s => ({ mobileOpen: !s.mobileOpen }));
+  closeMenu = () => this.setState({ mobileOpen: false });
+  renderVals() {
+    return {
+      mobileOpen: this.state.mobileOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu
+    };
+  }
+}
+
+</script>
+</body>
+</html>
