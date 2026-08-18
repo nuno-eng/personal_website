@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessoria de Neg&oacute;cio 1:1: Nuno Fontoura</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="../../support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f3f2f2"/>
+    <rect x="200" y="560" width="60" height="60" fill="#ec3013"/>
+    <text x="200" y="330" font-family="Arial, sans-serif" font-weight="800" font-size="150" fill="#201e1d">NF</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
 
+<helmet>
+<link rel="stylesheet" href="../../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/styles.css">
+<script src="../../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/_ds_bundle.js"></script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+:root{
+  --color-accent:#ec3013;
+  --color-accent-100:#fff2ef;
+  --color-accent-200:#ffe0d9;
+  --color-accent-300:#ffc4b8;
+  --color-accent-400:#ff9783;
+  --color-accent-500:#ff563c;
+  --color-accent-600:#dd2b0f;
+  --color-accent-700:#ae1800;
+  --color-accent-800:#7c1405;
+  --color-accent-900:#4d170e;
+  --color-accent-2-100:#fff2ef;
+  --color-accent-2-200:#ffe0d9;
+  --color-accent-2-300:#ffc4b8;
+  --color-accent-2-400:#ff9783;
+  --color-accent-2-500:#ff563c;
+  --color-accent-2-600:#dd2b0f;
+  --color-accent-2-700:#ae1800;
+  --color-accent-2-800:#7c1405;
+  --color-accent-2-900:#4d170e;
+}
+body{margin:0;text-wrap:pretty}
+.nfc-menu-btn{display:none}
+@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
+@media (max-width:880px){.nfc-diffgrid{grid-template-columns:1fr !important}.nfc-contact{grid-template-columns:1fr !important}}
+</style>
+</helmet>
+
+<a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
+
+<nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+  <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../../assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+  <div class="nfc-navlinks" style="display:flex;gap:24px">
+    <a href="/pt/resilience/">Programa de Resili&ecirc;ncia</a>
+    <a href="/pt/#about">Sobre</a>
+    <a href="/pt/#contact">Testemunhos</a>
+    <a href="/business-advisory/">EN</a>
+  </div>
+  <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg)">Marcar uma chamada</a>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
+    <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </sc-if>
+    <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </sc-if>
+  </button>
+</nav>
+
+<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
+      <button type="button" onClick="{{ closeMenu }}" aria-label="Fechar menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <a href="/pt/resilience/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Programa de Resili&ecirc;ncia</a>
+    <a href="/pt/#about" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Sobre</a>
+    <a href="/pt/#contact" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Testemunhos</a>
+    <a href="/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">EN</a>
+    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary" onClick="{{ closeMenu }}" style="margin-top:28px;justify-content:center;color:var(--color-bg)">Marcar uma chamada</a>
+  </div>
+</sc-if>
+
+<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+  <section style="padding:112px 0 70px">
+    <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Assessoria de Neg&oacute;cio 1:1</span>
+    <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,72px);line-height:clamp(41px,5.9vw,76px);letter-spacing:-0.02em;margin:0 0 0 -0.05em">
+      <span style="display:block">Transformar opera&ccedil;&otilde;es sob press&atilde;o</span>
+      <span style="display:block">em sistemas escal&aacute;veis.</span>
+    </h1>
+    <p style="font-size:18px;line-height:29px;max-width:56ch;margin:28px 0 0">Para PMEs lideradas pelo fundador, onde o propriet&aacute;rio carrega demasiado e tem dificuldade em delegar. Feito atrav&eacute;s do Vessel, a minha pr&oacute;pria ferramenta de modelo operacional, para construir a cad&ecirc;ncia de lideran&ccedil;a que permite crescer sem ser puxado para cada decis&atilde;o.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+      <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary">Marcar uma chamada explorat&oacute;ria</a>
+      <a href="/pt/resilience/" class="btn btn-ghost">Precisa de apoio de resili&ecirc;ncia?</a>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section style="padding:70px 0 84px">
+    <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Como funciona</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:42px;letter-spacing:-0.015em;margin:0 0 14px">Constru&iacute;do com uma ferramenta, n&atilde;o com conversa</h2>
+    <p style="font-size:15.5px;line-height:28px;margin:0 0 42px;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:64ch">O aconselhamento tradicional termina quando a chamada acaba. O meu n&atilde;o: cada cliente &eacute; acompanhado entre sess&otilde;es no Vessel, para que o progresso seja um n&uacute;mero que pode verificar, e n&atilde;o uma sensa&ccedil;&atilde;o em que tem de confiar.</p>
+    <div style="border-top:2px solid var(--color-divider);padding-top:24px;max-width:560px">
+      <span class="tag tag-accent">Neg&oacute;cio</span>
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;line-height:28px;margin:14px 0 10px">The Vessel: Modelo Operacional</h3>
+      <p style="font-size:15.5px;line-height:26px;margin:0 0 16px;color:color-mix(in srgb, var(--color-text) 78%, transparent)">A minha pr&oacute;pria ferramenta para gerir um neg&oacute;cio como um operador: cinco alavancas, uma matriz de desempenho e um plano de a&ccedil;&atilde;o revisto todas as semanas, e n&atilde;o arquivado depois da chamada.</p>
+      <a href="https://vesseloperatingmodel.netlify.app/" target="_blank" rel="noopener" class="btn btn-ghost">Ver a ferramenta</a>
+    </div>
+  </section>
+
+  <section style="position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;padding:56px clamp(24px,5vw,56px);background:var(--color-text);color:var(--color-bg)">
+  <div style="max-width:calc(1200px - 2 * clamp(20px,5vw,72px) + 2 * clamp(24px,5vw,56px));margin:0 auto">
+    <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-300);margin:0 0 14px">Porque &eacute; diferente</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:42px;letter-spacing:-0.015em;margin:0 0 28px;color:var(--color-bg)">Em que &eacute; que isto difere do habitual</h2>
+    <div class="nfc-diffgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,72px)">
+      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-bg) 55%, transparent);margin:0 0 14px;padding-bottom:14px;border-bottom:2px solid color-mix(in srgb, var(--color-bg) 25%, transparent)">A abordagem habitual</p>
+      <p style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-300);margin:0 0 14px;padding-bottom:14px;border-bottom:2px solid color-mix(in srgb, var(--color-bg) 25%, transparent)">Como trabalho</p>
+
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;color:color-mix(in srgb, var(--color-bg) 60%, transparent);border-bottom:1px solid color-mix(in srgb, var(--color-bg) 18%, transparent)">Conselhos dados a cada quinze dias, depois esquecidos</p>
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;font-weight:600;color:var(--color-bg);border-bottom:1px solid color-mix(in srgb, var(--color-bg) 18%, transparent)">Um plano de a&ccedil;&atilde;o semanal, acompanhado e monitorizado</p>
+
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;color:color-mix(in srgb, var(--color-bg) 60%, transparent);border-bottom:1px solid color-mix(in srgb, var(--color-bg) 18%, transparent)">Progresso avaliado pela sensa&ccedil;&atilde;o da conversa</p>
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;font-weight:600;color:var(--color-bg);border-bottom:1px solid color-mix(in srgb, var(--color-bg) 18%, transparent)">Progresso medido num painel que pode consultar por si mesmo</p>
+
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;color:color-mix(in srgb, var(--color-bg) 60%, transparent)">Modelos retirados de um manual</p>
+      <p style="font-size:15.5px;line-height:28px;margin:0;padding:20px 0;font-weight:600;color:var(--color-bg)">M&eacute;todos constru&iacute;dos a partir de 7,5 anos dentro da Amazon e a gerir o meu pr&oacute;prio neg&oacute;cio</p>
+    </div>
+  </div>
+</section>
+
+  <section style="padding:0 0 84px;padding-top:70px" aria-label="Credenciais">
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <span class="tag tag-outline">7,5 anos, opera&ccedil;&otilde;es na Amazon</span>
+      <span class="tag tag-outline">Criador do modelo operacional The Vessel</span>
+    </div>
+  </section>
+
+</main>
+
+<section id="contact" style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px)">
+    <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:clamp(36px,4.45vw,59.4px);letter-spacing:-0.015em;margin:0 0 0 -0.058em">
+      <span style="display:block">Pronto para deixar de carregar</span>
+      <span style="display:block">cada decis&atilde;o sozinho?</span>
+    </h3>
+    <div class="nfc-contact" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:42px;align-items:start">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="min-width:280px;height:480px;background:var(--color-bg)"></div>
+      <div style="padding-top:8px">
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-bg) 75%, transparent);margin:0 0 18px">O que dizem os clientes</span>
+        <blockquote style="font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,2vw,26px);line-height:32px;letter-spacing:-0.015em;margin:0;text-indent:-0.42em">&#8220;Como psic&oacute;loga e propriet&aacute;ria de uma cl&iacute;nica, o meu foco est&aacute; naturalmente nos meus clientes, e nem sempre no lado empresarial. Trabalhar com o Nuno mudou isso por completo. Deu-me uma clareza enorme sobre como estruturar o meu plano de neg&oacute;cio e desenhar o futuro da minha cl&iacute;nica.&#8221;</blockquote>
+        <figcaption style="font-size:14px;line-height:24px;color:color-mix(in srgb, var(--color-bg) 75%, transparent);margin:24px 0 0">Psic&oacute;loga Cl&iacute;nica, Propriet&aacute;ria de Cl&iacute;nica</figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <footer style="position:relative;padding:56px 0;font-size:13px;line-height:28px;color:color-mix(in srgb, var(--color-text) 70%, transparent);display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;gap:24px">
+    <span>&copy; 2026 Nuno Fontoura. Assessor de Resili&ecirc;ncia e Neg&oacute;cio.</span>
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;gap:16px;align-items:center">
+      <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" aria-label="Instagram" style="color:color-mix(in srgb, var(--color-text) 70%, transparent);display:inline-flex" style-hover="color:var(--color-accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+      <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:color-mix(in srgb, var(--color-text) 70%, transparent);display:inline-flex" style-hover="color:var(--color-accent)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  renderVals() {
+    const { mobileOpen } = this.state;
+    return {
+      mobileOpen,
+      menuClosed: !mobileOpen,
+      toggleMenu: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
+      closeMenu: () => this.setState({ mobileOpen: false })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
