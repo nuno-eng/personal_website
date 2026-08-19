@@ -281,6 +281,16 @@ body{margin:0;text-wrap:pretty}
 .nfc-menu-btn{display:none}
 @media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
 @media (max-width:880px){.nfc-split{grid-template-columns:1fr !important}.nfc-contact{grid-template-columns:1fr !important}}
+
+@media (max-width:640px){
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:minmax(64px,140px)"]{grid-template-columns:1fr !important}
+  main p[style*="font-size:15px"],main p[style*="font-size:15.5px"]{font-size:16px !important;line-height:1.6 !important}
+  section[style*="padding:112px 0"]{padding:72px 0 48px !important}
+  section[style*="padding:84px 0"]{padding:56px 0 !important}
+  .nfc-menu-btn{padding:12px !important}
+  a[href*="msn.com"]{flex-direction:column !important;text-align:center !important}
+}
 </style>
 </helmet>
 
