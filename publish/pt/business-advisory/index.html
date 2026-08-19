@@ -287,19 +287,18 @@ body{margin:0;text-wrap:pretty}
 
 <a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
 
-<nav class="nav" style="padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
-  <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../../assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
-    <a href="/pt/">Home</a>
-    <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
-    <a href="/pt/resilience/">Resili&ecirc;ncia</a>
-    <a href="/pt/#proof">Prova</a>
-    <a href="/business-advisory/">EN</a>
-    <a href="#book-a-call" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg);margin:0">Marcar chamada</a>
+<nav class="nav" style="border-bottom:2px solid var(--color-divider)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
+    <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../../assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
+      <a href="/pt/">Home</a>
+      <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
+      <a href="/business-advisory/">EN</a>
+    </div>
+    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
   </div>
-  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  </button>
 </nav>
 
 <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
@@ -309,10 +308,7 @@ body{margin:0;text-wrap:pretty}
     </div>
     <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
     <a href="/pt/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Assessoria de Neg&oacute;cio</a>
-    <a href="/pt/resilience/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Resili&ecirc;ncia</a>
-    <a href="/pt/#proof" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Prova</a>
     <a href="/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
-    <a href="#book-a-call" onClick="{{ closeMenu }}" class="btn btn-primary" style="margin-top:28px;justify-content:center;color:var(--color-bg)">Marcar chamada</a>
   </div>
 </sc-if>
 

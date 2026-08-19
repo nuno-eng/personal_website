@@ -284,19 +284,18 @@ body{margin:0;text-wrap:pretty}
 </style>
 </helmet>
 
-<nav class="nav" style="padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
-  <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../assets/images/logo.png" alt="Nuno" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-  <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500">
-    <a href="/">Home</a>
-    <a href="/business-advisory/">Business Advisory</a>
-    <a href="/resilience/">Resilience</a>
-    <a href="/#proof">Proof</a>
-    <a href="/pt/">PT</a>
-    <a href="#book-a-call" class="btn btn-primary nfc-cta-desktop" style="color:white;margin:0">Book call</a>
+<nav class="nav" style="border-bottom:2px solid var(--color-divider)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
+    <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../assets/images/logo.png" alt="Nuno" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500">
+      <a href="/">Home</a>
+      <a href="/business-advisory/">Business Advisory</a>
+      <a href="/pt/">PT</a>
+    </div>
+    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
   </div>
-  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  </button>
 </nav>
 
 <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
@@ -306,10 +305,7 @@ body{margin:0;text-wrap:pretty}
     </div>
     <a href="/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
     <a href="/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Business Advisory</a>
-    <a href="/resilience/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Resilience</a>
-    <a href="/#proof" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Proof</a>
     <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">PT</a>
-    <a href="#book-a-call" onClick="{{ closeMenu }}" class="btn btn-primary" style="margin-top:28px;justify-content:center;color:white">Book call</a>
   </div>
 </sc-if>
 
