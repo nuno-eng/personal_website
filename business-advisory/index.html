@@ -30,14 +30,14 @@ body{margin:0;text-wrap:pretty}
 </style>
 </helmet>
 
-<nav class="nav" style="padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
+<nav class="nav" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
   <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="/assets/images/logo.png" alt="Nuno" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-  <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500">
+  <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500;justify-self:center">
     <a href="/">Home</a>
     <a href="/business-advisory/">Business Advisory</a>
     <a href="/pt/">PT</a>
-    <a href="#book-a-call" class="btn btn-primary nfc-cta-desktop" style="color:white;margin:0">Book call</a>
   </div>
+  <a href="#book-a-call" class="btn btn-primary nfc-cta-desktop" style="justify-self:end;color:white;margin:0">Book call</a>
   <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
@@ -150,7 +150,7 @@ body{margin:0;text-wrap:pretty}
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
         <a href="/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Home</a>
         <a href="/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Business Advisory</a>
-        <a href="/resilience/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Resilience</a>
+        <a href="/micro-consulting/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Micro Consulting</a>
         <a href="#book-a-call" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Book a call</a>
       </div>
     </div>

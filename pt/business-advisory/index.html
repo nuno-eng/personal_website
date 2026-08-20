@@ -54,22 +54,16 @@ body{margin:0;text-wrap:pretty}
 
 <a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
 
-<nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+<nav class="nav" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-inline:clamp(20px,5vw,72px)">
   <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="/assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-  <div class="nfc-navlinks" style="display:flex;gap:24px">
-    <a href="/pt/resilience/">Programa de Resili&ecirc;ncia</a>
-    <a href="/pt/#about">Sobre</a>
-    <a href="/pt/#contact">Testemunhos</a>
+  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center;justify-self:center">
+    <a href="/pt/">Home</a>
+    <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
     <a href="/business-advisory/">EN</a>
   </div>
-  <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg)">Marcar uma chamada</a>
-  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
-    <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-    </sc-if>
-    <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </sc-if>
+  <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="justify-self:end;color:var(--color-bg);margin:0">Marcar uma chamada</a>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="justify-self:end;background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
   </button>
 </nav>
 
@@ -78,9 +72,8 @@ body{margin:0;text-wrap:pretty}
     <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
       <button type="button" onClick="{{ closeMenu }}" aria-label="Fechar menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
-    <a href="/pt/resilience/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Programa de Resili&ecirc;ncia</a>
-    <a href="/pt/#about" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Sobre</a>
-    <a href="/pt/#contact" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Testemunhos</a>
+    <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Home</a>
+    <a href="/pt/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Assessoria de Neg&oacute;cio</a>
     <a href="/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">EN</a>
     <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary" onClick="{{ closeMenu }}" style="margin-top:28px;justify-content:center;color:var(--color-bg)">Marcar uma chamada</a>
   </div>
