@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Micro-Consultoria: Nuno Fontoura</title>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f3f2f2"/>
+    <rect x="200" y="560" width="60" height="60" fill="#1E3A8A"/>
+    <text x="200" y="330" font-family="Arial, sans-serif" font-weight="800" font-size="150" fill="#201e1d">NF</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+/* Modernist — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #1E3A8A;
+  --color-accent-2: #2952B8;
+  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #e8f0ff;
+  --color-accent-200: #d0e0ff;
+  --color-accent-300: #a8c8ff;
+  --color-accent-400: #5fa1ff;
+  --color-accent-500: #2952b8;
+  --color-accent-600: #1e3a8a;
+  --color-accent-700: #16266e;
+  --color-accent-800: #0f1853;
+  --color-accent-900: #0a0f38;
+
+  --color-accent-2-100: #e8f0ff;
+  --color-accent-2-200: #d0e0ff;
+  --color-accent-2-300: #a8c8ff;
+  --color-accent-2-400: #5fa1ff;
+  --color-accent-2-500: #2952b8;
+  --color-accent-2-600: #1e3a8a;
+  --color-accent-2-700: #16266e;
+  --color-accent-2-800: #0f1853;
+  --color-accent-2-900: #0a0f38;
+
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-heading-weight: 800;
+  --font-body: "Archivo", system-ui, sans-serif;
+
+  --space-1: 4.0px;
+  --space-2: 8.0px;
+  --space-3: 12.0px;
+  --space-4: 16.0px;
+  --space-6: 24.0px;
+  --space-8: 32.0px;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.grayscale{filter:grayscale(1) contrast(1.08)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 2px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; text-align: left; }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--color-divider);
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 2px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+
+</style>
+<script src="/ds/_ds_bundle.js"></script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<style>
+body{margin:0;text-wrap:pretty}
+.nfc-menu-btn{display:none}
+@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
+@media (max-width:880px){.nfc-diffgrid{grid-template-columns:1fr !important}.nfc-contact{grid-template-columns:1fr !important}}
+
+@media (max-width:640px){
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:minmax(64px,140px)"]{grid-template-columns:1fr !important}
+  main p[style*="font-size:15px"],main p[style*="font-size:15.5px"]{font-size:16px !important;line-height:1.6 !important}
+  section[style*="padding:112px 0"]{padding:72px 0 48px !important}
+  section[style*="padding:84px 0"]{padding:56px 0 !important}
+  .nfc-menu-btn{padding:12px !important}
+  a[href*="msn.com"]{flex-direction:column !important;text-align:center !important}
+}
+</style>
+</helmet>
+
+<a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
+
+<nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+  <span class="nav-brand" style="display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></span>
+  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
+    <a href="/pt/">Home</a>
+    <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
+    <a href="/pt/micro-consulting/">Micro-Consultoria</a>
+    <a href="/micro-consulting/">EN</a>
+    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg)">Marcar uma chamada</a>
+  </div>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
+    <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </sc-if>
+
+<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <section style="padding:112px 0 70px">
+    <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(48px,6vw,72px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 28px">Correc&ccedil;&otilde;es operacionais, n&atilde;o workshops.</h1>
+    <p style="font-size:17px;line-height:28px;margin:0 0 32px;max-width:65ch;color:color-mix(in srgb, var(--color-text) 82%, transparent);font-weight:500">Micro-consultoria para fundadores e equipas de lideran&ccedil;a que precisam de resolver um problema espec&iacute;fico agora, n&atilde;o de um compromisso a longo prazo. Diagn&oacute;sticos, normaliza&ccedil;&atilde;o de fluxos de trabalho e sistemas escal&aacute;veis, entregues com a disciplina de um operador, n&atilde;o a vagueza de um consultor.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#book-a-call" style="padding:14px 28px;background:var(--color-accent);color:var(--color-bg);text-decoration:none;border-radius:0px;font-weight:700;font-size:14px">Marcar chamada explorat&oacute;ria</a>
+      <a href="/pt/business-advisory/" style="padding:14px 28px;border:2px solid var(--color-accent);color:var(--color-accent);text-decoration:none;border-radius:0px;font-weight:700;font-size:14px">Comparar com Assessoria de Neg&oacute;cio</a>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="what-it-is" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">O Que &Eacute; a Micro-Consultoria</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(42px,6vw,56px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 40px">Um compromisso preciso e delimitado</h2>
+    <div style="background:color-mix(in srgb, var(--color-accent) 2%, var(--color-bg));border:2px solid var(--color-divider);padding:48px;margin-bottom:24px">
+      <p style="font-size:17px;line-height:28px;margin:0 0 24px;max-width:75ch;color:var(--color-text);font-weight:600">Para neg&oacute;cios que precisam de correc&ccedil;&otilde;es operacionais pr&aacute;ticas agora, n&atilde;o de um programa de doze semanas.</p>
+      <p style="font-size:15px;line-height:28px;margin:0;max-width:75ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">A micro-consultoria &eacute; um compromisso curto e focado, constru&iacute;do &agrave; volta de um problema operacional: um processo que continua a falhar, um fluxo de trabalho que ningu&eacute;m consegue explicar, um estrangulamento que passa por si e apenas por si. Diagnosticamos, corrigimos, e entregamos-lhe um sistema que pode gerir sem si na sala.</p>
+    </div>
+    <p style="font-size:15.5px;line-height:28px;margin:0 0 48px;max-width:75ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">A maioria das pequenas e m&eacute;dias empresas n&atilde;o precisa de uma revis&atilde;o de estrat&eacute;gia. Precisa que a opera&ccedil;&atilde;o do dia a dia deixe de depender da mem&oacute;ria do fundador. &Eacute; isso que isto foi constru&iacute;do para corrigir.</p>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="how-it-helps" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,56px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 56px">Como Ajuda as PME</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,64px)">
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:3px solid var(--color-accent);padding-left:20px">Menos depend&ecirc;ncia do fundador</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Se o neg&oacute;cio p&aacute;ra quando est&aacute; de f&eacute;rias, isso n&atilde;o &eacute; resili&ecirc;ncia, &eacute; um ponto &uacute;nico de falha. Documentamos e normalizamos os fluxos de trabalho que actualmente s&oacute; existem na sua cabe&ccedil;a.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:3px solid var(--color-accent);padding-left:20px">Execu&ccedil;&atilde;o mais r&aacute;pida e limpa</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Um processo normalizado &eacute; um processo mais r&aacute;pido. Eliminamos o retrabalho, o esfor&ccedil;o duplicado, e as decis&otilde;es que s&atilde;o tomadas de tr&ecirc;s formas diferentes por tr&ecirc;s pessoas diferentes.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:3px solid var(--color-accent);padding-left:20px">Sistemas que escalam</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">O que funciona com cinco pessoas quebra com quinze. Constru&iacute;mos a estrutura operacional para que o crescimento traga receita, n&atilde;o caos.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:3px solid var(--color-accent);padding-left:20px">Um diagn&oacute;stico claro, n&atilde;o um palpite</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Antes de corrigir seja o que for, medimos. Vai saber exactamente qual &eacute; o problema e o que lhe est&aacute; a custar, em termos claros.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="how-it-works" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0 0 36px;color:var(--color-text)">Como funciona o compromisso:</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,64px);margin-bottom:0">
+      <div style="display:flex;gap:20px">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:20px;color:var(--color-accent);flex-shrink:0;line-height:1">01</div>
+        <div>
+          <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 12px">Diagn&oacute;stico</h4>
+          <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Isolamos o problema operacional espec&iacute;fico e mapeamos exactamente onde lhe est&aacute; a custar tempo, dinheiro ou controlo.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:20px;color:var(--color-accent);flex-shrink:0;line-height:1">02</div>
+        <div>
+          <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 12px">Reformula&ccedil;&atilde;o</h4>
+          <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">O fluxo de trabalho &eacute; reconstru&iacute;do, normalizado e escrito, para n&atilde;o depender da mem&oacute;ria de uma s&oacute; pessoa.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:20px;color:var(--color-accent);flex-shrink:0;line-height:1">03</div>
+        <div>
+          <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 12px">Entrega</h4>
+          <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">A sua equipa passa a gerir o novo sistema com um procedimento operacional padr&atilde;o claro, n&atilde;o um conjunto de sugest&otilde;es vagas.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:20px;color:var(--color-accent);flex-shrink:0;line-height:1">04</div>
+        <div>
+          <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 12px">Verifica&ccedil;&atilde;o</h4>
+          <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Um curto acompanhamento para confirmar que a correc&ccedil;&atilde;o se mant&eacute;m em condi&ccedil;&otilde;es reais de opera&ccedil;&atilde;o, e ajust&aacute;-la se n&atilde;o se mantiver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="fit" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,64px)">
+      <div>
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">Ajuste certo</span>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:0 0 16px">Um problema claro, uma correc&ccedil;&atilde;o clara</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Sabe exactamente o que est&aacute; mal: integra&ccedil;&atilde;o de novos elementos, transi&ccedil;&otilde;es entre equipas, relat&oacute;rios, um processo que s&oacute; funciona quando est&aacute; pessoalmente envolvido. Quer que seja corrigido a s&eacute;rio, n&atilde;o discutido.</p>
+      </div>
+      <div>
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">N&atilde;o &eacute; o ajuste certo</span>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:22px;margin:0 0 16px">Uma reconstru&ccedil;&atilde;o completa do sistema operacional</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Se o neg&oacute;cio precisa de uma revis&atilde;o estruturada, entre pilares, da estrat&eacute;gia, do momentum e do valor a longo prazo, isso &eacute; o programa de Assessoria de Neg&oacute;cio, constru&iacute;do sobre o Modelo Operacional Vessel.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="book-a-call" class="booking-section">
+    <h2 style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 16px">Marcar uma Chamada Explorat&oacute;ria</h2>
+    <p style="margin:0 0 40px;color:color-mix(in srgb, var(--color-text) 70%, transparent);max-width:50ch;margin-left:auto;margin-right:auto;font-size:15px">Diga-me o que est&aacute; mal. Eu digo-lhe com honestidade se a micro-consultoria &eacute; a correc&ccedil;&atilde;o certa, ou se precisa de algo maior.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="min-width:320px;height:700px"></div>
+  </section>
+</main>
+
+<footer style="border-top:2px solid var(--color-divider);background:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,72px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contacto</h4>
+      <a href="{{ emailHref }}" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">{{ emailText }}</a>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Redes</h4>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+        <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>LinkedIn</span></a>
+        <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="0"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></a>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">P&aacute;ginas</h4>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+        <a href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Home</a>
+        <a href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Assessoria de Neg&oacute;cio</a>
+        <a href="/pt/micro-consulting/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Micro-Consultoria</a>
+        <a href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Marcar chamada</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+    <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">
+      <span>&copy; 2026 Nuno Fontoura. Assessoria de Neg&oacute;cio.</span>
+      <a href="/" style="color:color-mix(in srgb, var(--color-text) 60%, transparent);text-decoration:none;font-weight:700" style-hover="color:var(--color-accent)">English</a>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  toggleMenu = () => this.setState(s => ({ mobileOpen: !s.mobileOpen }));
+  closeMenu = () => this.setState({ mobileOpen: false });
+  renderVals() {
+    return {
+      mobileOpen: this.state.mobileOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu
+    };
+  }
+}
+
+</script>
+</body>
+</html>

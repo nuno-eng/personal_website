@@ -54,30 +54,19 @@ body{margin:0;text-wrap:pretty}
 
 <a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
 
-<nav class="nav" style="display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding-inline:clamp(20px,5vw,72px)">
-  <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="/assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center;justify-self:center">
+<nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+  <span class="nav-brand" style="display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></span>
+  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
     <a href="/pt/">Home</a>
     <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
+    <a href="/pt/micro-consulting/">Micro-Consultoria</a>
     <a href="/business-advisory/">EN</a>
+    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg)">Marcar uma chamada</a>
   </div>
-  <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="justify-self:end;color:var(--color-bg);margin:0">Marcar uma chamada</a>
-  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="justify-self:end;background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-  </button>
-</nav>
-
-<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
-      <button type="button" onClick="{{ closeMenu }}" aria-label="Fechar menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-    </div>
-    <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Home</a>
-    <a href="/pt/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Assessoria de Neg&oacute;cio</a>
-    <a href="/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">EN</a>
-    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary" onClick="{{ closeMenu }}" style="margin-top:28px;justify-content:center;color:var(--color-bg)">Marcar uma chamada</a>
-  </div>
-</sc-if>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
+    <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </sc-if>
 
 <main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
 
@@ -90,7 +79,7 @@ body{margin:0;text-wrap:pretty}
     <p style="font-size:18px;line-height:29px;max-width:56ch;margin:28px 0 0">Para PMEs lideradas pelo fundador, onde o propriet&aacute;rio carrega demasiado e tem dificuldade em delegar. Feito atrav&eacute;s do Vessel, a minha pr&oacute;pria ferramenta de modelo operacional, para construir a cad&ecirc;ncia de lideran&ccedil;a que permite crescer sem ser puxado para cada decis&atilde;o.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
       <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary">Marcar uma chamada explorat&oacute;ria</a>
-      <a href="/pt/resilience/" class="btn btn-ghost">Precisa de apoio de resili&ecirc;ncia?</a>
+      <a href="/pt/micro-consulting/" class="btn btn-ghost">Precisa de uma correc&ccedil;&atilde;o pontual?</a>
     </div>
   </section>
 
@@ -175,14 +164,14 @@ body{margin:0;text-wrap:pretty}
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
         <a href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Home</a>
         <a href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Assessoria de Neg&oacute;cio</a>
-        <a href="/pt/resilience/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Programa de Resili&ecirc;ncia</a>
+        <a href="/pt/micro-consulting/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Micro-Consultoria</a>
         <a href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Marcar chamada</a>
       </div>
     </div>
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
     <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">
-      <span>&copy; 2026 Nuno Fontoura. Assessor de Resili&ecirc;ncia e Neg&oacute;cio.</span>
+      <span>&copy; 2026 Nuno Fontoura. Assessoria de Neg&oacute;cio.</span>
       <a href="/" style="color:color-mix(in srgb, var(--color-text) 60%, transparent);text-decoration:none;font-weight:700" style-hover="color:var(--color-accent)">English</a>
     </div>
   </div>
