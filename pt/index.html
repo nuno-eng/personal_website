@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuno Fontoura: Assessoria de Resili&ecirc;ncia e Neg&oacute;cio</title>
+<meta name="description" content="Assessoria de resili&ecirc;ncia e neg&oacute;cio num &uacute;nico m&eacute;todo operacional: formado nos Fuzileiros portugueses, afinado na Amazon, com ferramentas e pain&eacute;is reais. Marque uma chamada explorat&oacute;ria.">
+<meta property="og:title" content="Nuno Fontoura: Assessoria de Resili&ecirc;ncia e Neg&oacute;cio">
+<meta property="og:description" content="Assessoria de resili&ecirc;ncia e neg&oacute;cio num &uacute;nico m&eacute;todo operacional: formado nos Fuzileiros portugueses, afinado na Amazon, com ferramentas e pain&eacute;is reais.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="../../support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f3f2f2"/>
+    <rect x="200" y="560" width="60" height="60" fill="#1E3A8A"/>
+    <text x="200" y="330" font-family="Arial, sans-serif" font-weight="800" font-size="150" fill="#201e1d">NF</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="stylesheet" href="../../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/styles.css">
+<script src="../../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/_ds_bundle.js"></script>
+<script src="../../image-slot.js"></script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  if (window.Calendly) {
+    Calendly.initBadgeWidget({ url: 'https://calendly.com/nuno-nabiaedge/30min', text: 'Marcar uma chamada', color: '#1E3A8A', textColor: '#f3f2f2', branding: true });
+  }
+});
+</script>
+<style>
+:root{
+  --color-accent:#1E3A8A;
+  --color-accent-100:#eff6ff;
+  --color-accent-700:#1e40af;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;text-wrap:pretty}
+.nfc-menu-btn{display:none}
+@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
+@media (max-width:880px){.nfc-split{grid-template-columns:1fr !important}.nfc-contact{grid-template-columns:1fr !important}.nfc-paths{grid-template-columns:1fr !important}}
+</style>
+</helmet>
+
+<a href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:var(--color-bg);padding:12px 20px;font-family:var(--font-heading);font-weight:800;font-size:14px;z-index:100;text-decoration:none" style-focus="left:12px;top:12px">Saltar para o conte&uacute;do</a>
+
+<nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+  <span class="nav-brand" style="display:flex;align-items:center;gap:10px"><img src="../../assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></span>
+  <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
+    <a href="/pt/">Home</a>
+    <a href="/pt/#services">Serviços</a>
+    <a href="#about">Sobre</a>
+    <a href="#proof">Testemunhos</a>
+    <a href="/">EN</a>
+    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary nfc-cta-desktop" style="color:var(--color-bg)">Marcar uma chamada</a>
+  </div>
+  <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" aria-label="Alternar menu" aria-expanded="{{ mobileOpen }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);align-items:center;justify-content:center">
+    <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </sc-if>
+    <sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </sc-if>
+  </button>
+</nav>
+
+<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
+      <button type="button" onClick="{{ closeMenu }}" aria-label="Fechar menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Home</a>
+    <a href="/pt/#services" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Serviços</a>
+    <a href="#about" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Sobre</a>
+    <a href="#proof" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Testemunhos</a>
+    <a href="/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">EN</a>
+    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary" onClick="{{ closeMenu }}" style="margin-top:28px;justify-content:center;color:var(--color-bg)">Marcar uma chamada</a>
+  </div>
+</sc-if>
+
+<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+  <section style="position:relative;padding:112px 0 84px;overflow:hidden">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.6;pointer-events:none" viewBox="0 0 1200 560" preserveAspectRatio="none">
+      <line x1="0" y1="560" x2="1200" y2="0" stroke="var(--color-accent-100)" stroke-width="2"></line>
+      <line x1="180" y1="560" x2="1200" y2="90" stroke="var(--color-accent-100)" stroke-width="2"></line>
+      <line x1="360" y1="560" x2="1200" y2="180" stroke="var(--color-accent-100)" stroke-width="2"></line>
+      <line x1="0" y1="0" x2="0" y2="560" stroke="var(--color-accent-300)" stroke-width="2"></line>
+    </svg>
+    <div style="position:relative">
+      <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);font-feature-settings:'tnum' 1;margin:0 0 14px">Seis anos como Fuzileiro. Sete anos e meio na Amazon.</span>
+      <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(42px,6.2vw,84px);line-height:clamp(44.5px,6.57vw,89px);letter-spacing:-0.02em;margin:0 0 0 -0.058em">
+        <span style="display:block">Enfrentei press&atilde;o</span>
+        <span style="display:block">em tr&ecirc;s mundos diferentes.</span>
+      </h1>
+      <p style="font-size:18px;line-height:29px;max-width:52ch;margin:32px 0 0">Militar, empresarial e como fundador. Agora ajudo indiv&iacute;duos a construir resili&ecirc;ncia e fundadores a construir sistemas, a partir dessa experi&ecirc;ncia, n&atilde;o de um manual.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
+        <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary">Marcar uma chamada explorat&oacute;ria</a>
+        <a href="#about" class="btn btn-ghost">Ler a minha hist&oacute;ria</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section style="padding:56px 0" aria-label="Escolha o seu caminho">
+    <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Para quem &eacute; isto</span>
+    <div class="nfc-paths" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,32px)">
+      <a href="/pt/business-advisory/" style="display:block;padding:28px;border:2px solid var(--color-divider);text-decoration:none;color:var(--color-text)" style-hover="border-color:var(--color-accent)">
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 12px">Fundadores com tra&ccedil;&atilde;o real</span>
+        <h2 style="font-family:var(--font-heading);font-weight:800;font-size:22px;line-height:28px;margin:0 0 10px">A carregar demasiado, preso em cada decis&atilde;o</h2>
+        <p style="font-size:14.5px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Comece com a Assessoria de Neg&oacute;cio 1:1 &rarr;</p>
+      </a>
+      <a href="/pt/resilience/" style="display:block;padding:28px;border:2px solid var(--color-divider);text-decoration:none;color:var(--color-text)" style-hover="border-color:var(--color-accent)">
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 12px">Indiv&iacute;duos</span>
+        <h2 style="font-family:var(--font-heading);font-weight:800;font-size:22px;line-height:28px;margin:0 0 10px">A carregar press&atilde;o, precisa de apoio de resili&ecirc;ncia</h2>
+        <p style="font-size:14.5px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 78%, transparent)">Comece com o Programa de Resili&ecirc;ncia &rarr;</p>
+      </a>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="about" class="nfc-split" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px clamp(24px,5vw,96px);align-items:center;padding:56px 0 56px">
+    <figure class="grayscale" style="margin:0">
+      <img src="../../assets/images/Headshot_website.png" alt="Fotografia de Nuno Fontoura" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block">
+    </figure>
+    <div>
+      <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">Sobre o Nuno</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:42px;letter-spacing:-0.015em;margin:0 0 20px">Preparado para a press&atilde;o, n&atilde;o a evit&aacute;-la</h2>
+      <p style="font-size:15.5px;line-height:28px;margin:0 0 20px;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:48ch">Seis anos como oficial Fuzileiro portugu&ecirc;s. Sete anos e meio dentro da Amazon, onde o rigor operacional &eacute; toda a cultura. Nos &uacute;ltimos ano e meio, fundador da minha pr&oacute;pria consultoria, e praticante certificado em resili&ecirc;ncia.</p>
+      <p style="font-size:15.5px;line-height:28px;margin:0 0 28px;color:color-mix(in srgb, var(--color-text) 78%, transparent);max-width:48ch">J&aacute; lidei com press&atilde;o operacional em tr&ecirc;s ambientes muito diferentes: militar, empresarial e como fundador. Trabalho a partir dessa experi&ecirc;ncia, n&atilde;o de um manual.</p>
+      <div style="display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;padding-top:24px;border-top:2px solid var(--color-divider)">
+        <div><p style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:38px;color:var(--color-accent);margin:0 0 0 -0.045em">6</p><p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:8px 0 0">Anos como oficial dos Fuzileiros</p></div>
+        <div><p style="font-family:var(--font-heading);font-weight:800;font-size:32px;line-height:38px;color:var(--color-accent);margin:0 0 0 -0.045em">7.5</p><p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 70%, transparent);margin:8px 0 0">Anos dentro da Amazon</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 0 70px" aria-label="Credenciais">
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <span class="tag tag-outline">Praticante certificado pelo Resilience Institute</span>
+      <span class="tag tag-outline">6 anos, Fuzileiros portugueses</span>
+      <span class="tag tag-outline">7.5 anos, opera&ccedil;&otilde;es na Amazon</span>
+      <span class="tag tag-outline">Criador do modelo operacional The Vessel</span>
+    </div>
+  </section>
+
+  <section id="services" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:800">Como trabalhamos</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,56px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 56px">Execução & Responsabilidade</h2>
+    <p style="font-size:16px;line-height:28px;margin:0 0 56px;max-width:70ch;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Para fundadores e equipas de liderança que já tiveram o suficiente de conselhos vagos e motivação de segunda-feira. Este é o coaching baseado em padrões operacionais, ferramentas práticas e responsabilidade, não em palestras motivacionais.</p>
+    <p style="font-size:16px;line-height:28px;margin:0 0 40px;max-width:70ch;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Trabalhamos a um ritmo fixo. Cada sessão termina com um padrão a atingir antes da próxima. O progresso é medido, não sentido.</p>
+    
+    <h3 style="font-family:var(--font-heading);font-weight:800;font-size:20px;margin:0 0 32px;color:var(--color-text)">O que está incluído:</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px)">
+      <div>
+        <div style="display:flex;gap:16px;margin-bottom:32px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-accent);flex-shrink:0">01</div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 8px">Um ritmo operacional estruturado</h4>
+            <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Prioridades, padrões e a disciplina para os manter sob pressão.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-accent);flex-shrink:0">02</div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 8px">Ferramentas práticas de liderança</h4>
+            <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Tomada de decisão, delegação e desempenho construídos a partir da operação, não da teoria.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;gap:16px;margin-bottom:32px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-accent);flex-shrink:0">03</div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 8px">Um sistema de responsabilidade</h4>
+            <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Rastreia o que foi comprometido e o que realmente aconteceu.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px">
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-accent);flex-shrink:0">04</div>
+          <div>
+            <h4 style="font-family:var(--font-heading);font-weight:800;font-size:16px;margin:0 0 8px">Feedback direto e honesto</h4>
+            <p style="font-size:15px;line-height:26px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Se algo não está a funcionar, vai ouvir antes de lhe custar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="why-different" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,56px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 56px">Por que é diferente</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px)">
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:2px solid var(--color-accent);padding-left:20px">A maioria dos assessores falam de visão e estratégia.</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Nós trabalhamos no motor. Como as decisões realmente são tomadas. Como o trabalho realmente flui. Como você enfrenta a pressão sem quebrar.</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-text);margin:0 0 24px;border-left:2px solid var(--color-accent);padding-left:20px">O trabalho é operacional e disciplinado.</h3>
+        <p style="font-size:15.5px;line-height:28px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Avaliar o que é real. Estruturar o que precisa de corrigir. Corrigir isso. Repetir quando as coisas mudam. Sem filosofia. Sem workshops infinitos. Resultados.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="proof" style="padding:84px 0;border-top:2px solid var(--color-divider)">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,56px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 56px">Testemunhos</h2>
+    <p style="font-size:15.5px;line-height:28px;margin:0 0 56px;max-width:70ch;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Os resultados falam por si. Aqui está o que muda quando fundadores e equipas trabalham sistematicamente no seu modelo operacional.</p>
+  </section>
+
+  <section id="contact" style="padding:0 0 84px" aria-label="Testemunhos de clientes">
+    <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">O que os clientes dizem</span>
+    <div style="min-height:210px">
+      <sc-if value="{{ isQuote }}" hint-placeholder-val="{{ true }}">
+        <blockquote style="font-family:var(--font-heading);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:38px;letter-spacing:-0.015em;margin:0;max-width:64ch;text-indent:-0.42em">{{ quote }}</blockquote>
+        <figcaption style="font-size:14px;line-height:24px;color:color-mix(in srgb, var(--color-text) 65%, transparent);margin:20px 0 0">{{ name }}</figcaption>
+      </sc-if>
+      <sc-if value="{{ isPress }}" hint-placeholder-val="{{ false }}">
+        <a href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:20px;padding:20px;border:2px solid var(--color-divider);text-decoration:none;color:var(--color-text);max-width:640px" style-hover="border-color:var(--color-accent)">
+          <div class="grayscale" style="width:72px;height:72px;flex:none;overflow:hidden">
+            <img src="../../assets/images/press-solo.jpg" alt="Nuno Fontoura, nomeado um dos Top 10 Homens Mais Inspiradores da MSN, 2026" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div>
+            <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 6px">Imprensa</span>
+            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:16px;line-height:22px">Nomeado um dos Top 10 Homens Mais Inspiradores da MSN, 2026 &#8599;</span>
+          </div>
+        </a>
+      </sc-if>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:28px">
+      <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="2">
+        <button type="button" style="{{ dot.style }}" onClick="{{ dot.onClick }}" aria-label="Mostrar item"></button>
+      </sc-for>
+    </div>
+  </section>
+
+</main>
+
+<section style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px);text-align:center">
+    <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:clamp(36px,4.45vw,59.4px);letter-spacing:-0.015em;margin:0 auto">
+      <span style="display:block">Pronto para construir uma</span>
+      <span style="display:block">resili&ecirc;ncia que pode medir?</span>
+    </h3>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="max-width:560px;margin:42px auto 0;text-align:left;min-width:280px;height:480px;background:var(--color-bg)"></div>
+  </div>
+</section>
+
+
+
+
+<footer style="border-top:2px solid var(--color-divider);background:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,72px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contacto</h4>
+      <a href="{{ emailHref }}" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">{{ emailText }}</a>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Redes</h4>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+        <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>LinkedIn</span></a>
+        <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="0"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></a>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">P&aacute;ginas</h4>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
+        <a href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Home</a>
+        <a href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Assessoria de Neg&oacute;cio</a>
+        <a href="/pt/resilience/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Programa de Resili&ecirc;ncia</a>
+        <a href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Marcar chamada</a>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+    <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">
+      <span>&copy; 2026 Nuno Fontoura. Assessor de Resili&ecirc;ncia e Neg&oacute;cio.</span>
+      <a href="/" style="color:color-mix(in srgb, var(--color-text) 60%, transparent);text-decoration:none;font-weight:700" style-hover="color:var(--color-accent)">English</a>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    index: 0,
+    mobileOpen: false,
+    proofItems: [
+      { type: 'quote', quote: "\u201cComo psic\u00f3loga e propriet\u00e1ria de uma cl\u00ednica, o meu foco est\u00e1 naturalmente nos meus clientes, e nem sempre no lado empresarial. Trabalhar com o Nuno mudou isso por completo. Deu-me uma clareza enorme sobre como estruturar o meu plano de neg\u00f3cio e desenhar o futuro da minha cl\u00ednica. Passei de uma estrat\u00e9gia incerta para uma dire\u00e7\u00e3o absoluta.\u201d", name: "Psic\u00f3loga Cl\u00ednica, Propriet\u00e1ria de Cl\u00ednica" },
+      { type: 'press' }
+    ]
+  };
+  renderVals() {
+    const { proofItems, index, mobileOpen } = this.state;
+    const active = proofItems[index];
+    const quoteItem = proofItems.find(p => p.type === 'quote') || {};
+    return {
+      emailHref: 'mailto:' + ['nuno', 'nabiaedge.com'].join(String.fromCharCode(64)),
+      emailText: ['nuno', 'nabiaedge.com'].join(String.fromCharCode(64)),
+      isQuote: active.type === 'quote',
+      isPress: active.type === 'press',
+      quote: quoteItem.quote,
+      name: quoteItem.name,
+      dots: proofItems.map((_, i) => ({
+        key: i,
+        style: `width:8px;height:8px;background:${i === index ? 'var(--color-accent)' : 'var(--color-divider)'};border:none;padding:0;cursor:pointer`,
+        onClick: () => this.setState({ index: i })
+      })),
+      mobileOpen,
+      menuClosed: !mobileOpen,
+      toggleMenu: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
+      closeMenu: () => this.setState({ mobileOpen: false })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
