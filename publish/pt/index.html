@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuno Fontoura &ndash; Consultor Operacional &amp; Assessor de Neg&oacute;cio</title>
+<meta name="description" content="Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio: mais capacidade, custos mais baixos, menos depend&ecirc;ncia do fundador. Marque uma chamada explorat&oacute;ria.">
+<meta property="og:title" content="Nuno Fontoura &ndash; Consultor Operacional &amp; Assessor de Neg&oacute;cio">
+<meta property="og:description" content="Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio: mais capacidade, custos mais baixos, menos depend&ecirc;ncia do fundador.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f3f2f2"/>
+    <rect x="200" y="560" width="60" height="60" fill="#1E3A8A"/>
+    <text x="200" y="330" font-family="Arial, sans-serif" font-weight="800" font-size="150" fill="#201e1d">NF</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+/* Modernist — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #1E3A8A;
+  --color-accent-2: #2952B8;
+  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #e8f0ff;
+  --color-accent-200: #d0e0ff;
+  --color-accent-300: #a8c8ff;
+  --color-accent-400: #5fa1ff;
+  --color-accent-500: #2952b8;
+  --color-accent-600: #1e3a8a;
+  --color-accent-700: #16266e;
+  --color-accent-800: #0f1853;
+  --color-accent-900: #0a0f38;
+
+  --color-accent-2-100: #e8f0ff;
+  --color-accent-2-200: #d0e0ff;
+  --color-accent-2-300: #a8c8ff;
+  --color-accent-2-400: #5fa1ff;
+  --color-accent-2-500: #2952b8;
+  --color-accent-2-600: #1e3a8a;
+  --color-accent-2-700: #16266e;
+  --color-accent-2-800: #0f1853;
+  --color-accent-2-900: #0a0f38;
+
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-heading-weight: 800;
+  --font-body: "Archivo", system-ui, sans-serif;
+
+  --space-1: 4.0px;
+  --space-2: 8.0px;
+  --space-3: 12.0px;
+  --space-4: 16.0px;
+  --space-6: 24.0px;
+  --space-8: 32.0px;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.grayscale{filter:grayscale(1) contrast(1.08)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 2px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { background: var(--color-accent); color: var(--color-bg); }
+.btn-primary:hover { background: var(--color-accent-600); }
+.btn-primary:active { background: var(--color-accent-700); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; text-align: left; }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 2px solid var(--color-divider);
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 2px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+
+</style>
+<script src="../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/_ds_bundle.js"></script>
+<style>
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;text-wrap:pretty}
+.nfc-menu-btn{display:none}
+@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
+@media (max-width:880px){.nfc-cards3{grid-template-columns:1fr !important}.nfc-cards2{grid-template-columns:1fr !important}}
+
+@media (max-width:640px){
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+  main p[style*="font-size:15px"],main p[style*="font-size:15.5px"],main p[style*="font-size:14.5px"]{font-size:16px !important;line-height:1.6 !important}
+  section[style*="padding:112px 0"]{padding:72px 0 48px !important}
+  section[style*="padding:70px 0"]{padding:48px 0 !important}
+  .nfc-menu-btn{padding:12px !important}
+  a[href*="msn.com"]{flex-direction:column !important;text-align:center !important}
+}
+</style>
+</helmet>
+
+<nav class="nav" style="border-bottom:2px solid var(--color-divider)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
+    <a href="/pt/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../assets/images/logo.png" alt="Logotipo de Nuno Fontoura" style="width:22px;height:22px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <div class="nfc-navlinks" style="display:flex;gap:24px;align-items:center">
+      <a href="/pt/">Home</a>
+      <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
+      <a href="/pt/micro-consulting/">Micro-Consultoria</a>
+      <a href="/">EN</a>
+    </div>
+    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+  </div>
+</nav>
+
+<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
+      <button type="button" onClick="{{ closeMenu }}" style="background:none;border:none;padding:8px;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+    </div>
+    <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
+    <a href="/pt/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Assessoria de Neg&oacute;cio</a>
+    <a href="/pt/micro-consulting/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Micro-Consultoria</a>
+    <a href="/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
+  </div>
+</sc-if>
+
+<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+  <section style="padding:96px 0 70px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center">
+      <div>
+        <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,5vw,52px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 24px">Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio.</h1>
+        <p style="font-size:18px;line-height:29px;color:var(--color-text);margin:0 0 20px">Mais capacidade. Custos mais baixos. Menos depend&ecirc;ncia do fundador.</p>
+        <p style="font-size:14.5px;line-height:26px;color:color-mix(in srgb, var(--color-text) 75%, transparent);margin:0 0 32px">Seis anos como oficial dos Fuzileiros portugueses. Sete anos na Amazon em Opera&ccedil;&otilde;es, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Agora a aplicar essa disciplina operacional a neg&oacute;cios liderados por fundadores atrav&eacute;s da NabiaEdge.</p>
+        <a href="#contact" class="btn btn-primary" style="color:var(--color-bg)">Marcar Chamada Estrat&eacute;gica</a>
+      </div>
+      <img src="../assets/images/Headshot_website.png" alt="Nuno Fontoura" style="width:100%;height:400px;object-fit:cover;object-position:top;border:1px solid var(--color-divider)">
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section style="padding:70px 0" aria-label="O problema">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">O problema</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 24px">O fundador que cresceu mais do que o seu neg&oacute;cio</h2>
+    <p style="font-size:16px;line-height:28px;margin:0;max-width:70ch;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Construiu algo real. A receita est&aacute; a crescer. A equipa est&aacute; a expandir, Mas continua envolvido em todas as decis&otilde;es. A funcionar por instinto e a "apagar fogos" em vez de seguir um plano. Sem um processo consistente para como o trabalho se faz, quem &eacute; respons&aacute;vel, para onde caminha. As suas opera&ccedil;&otilde;es n&atilde;o acompanharam o crescimento do neg&oacute;cio. Isso n&atilde;o &eacute; uma falha pessoal, &eacute; um problema de estrutura. E tem solu&ccedil;&atilde;o.</p>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section style="padding:70px 0" aria-label="O meu percurso">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">O meu percurso</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 40px">De onde vem esta disciplina</h2>
+    <div class="nfc-cards3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">Fuzileiros portugueses</h3>
+        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Seis anos de disciplina direta, ao n&iacute;vel dos Fuzileiros. Resili&ecirc;ncia sob press&atilde;o. Mestria no detalhe.</p>
+      </div>
+      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">Amazon</h3>
+        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Sete anos em Opera&ccedil;&otilde;es, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Disciplina de execu&ccedil;&atilde;o &agrave; escala.</p>
+      </div>
+      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">NabiaEdge</h3>
+        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Fundei a NabiaEdge para aplicar essa disciplina operacional diretamente a neg&oacute;cios liderados por fundadores e &agrave;s suas equipas.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="services" style="padding:70px 0" aria-label="Como ajudo">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">Como ajudo</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 40px">Servi&ccedil;os</h2>
+    <div class="nfc-cards2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin:0 0 14px">Micro-consultoria / Excel&ecirc;ncia Operacional</h3>
+        <p style="font-size:14.5px;line-height:25px;margin:0 0 20px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Diagn&oacute;stico operacional, normaliza&ccedil;&atilde;o de fluxos de trabalho, sistemas escal&aacute;veis. Para neg&oacute;cios que precisam de corre&ccedil;&otilde;es operacionais pr&aacute;ticas, j&aacute;.</p>
+        <a href="/pt/micro-consulting/" style="font-size:13px;font-weight:700;color:var(--color-accent);text-decoration:none">Saber mais &rarr;</a>
+      </div>
+      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
+        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin:0 0 14px">Assessoria de Neg&oacute;cio</h3>
+        <p style="font-size:14.5px;line-height:25px;margin:0 0 20px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Estrutura, responsabiliza&ccedil;&atilde;o e um sistema para gerir o neg&oacute;cio, constru&iacute;do para fundadores que querem resultados, n&atilde;o uma palestra motivacional.</p>
+        <a href="/pt/business-advisory/" style="font-size:13px;font-weight:700;color:var(--color-accent);text-decoration:none">Explorar este programa &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="proof" style="padding:70px 0" aria-label="Prova">
+    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">Prova</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 32px">O que dizem, e onde j&aacute; sa&iacute;mos</h2>
+
+    <a href="https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG?ocid=finance-verthp-feeds" target="_blank" rel="noopener" class="card" style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--color-divider);text-decoration:none;color:var(--color-text);margin-bottom:32px;max-width:640px">
+      <img src="../assets/images/msn-feature.jpg" alt="Destaque na MSN: Nuno Fontoura entre os Top 10 Homens Mais Inspiradores de 2026" style="width:140px;height:140px;object-fit:cover;border-radius:4px;flex-shrink:0">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:var(--font-heading);font-weight:800;font-size:16px">Destaque na MSN</span>
+        <span style="font-size:13px;color:var(--color-accent);font-weight:700">Ler o artigo &rarr;</span>
+      </div>
+    </a>
+
+    <div class="nfc-cards2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px">
+      <div class="card" style="padding:28px;border:1px solid var(--color-divider)">
+        <p style="font-size:14.5px;line-height:26px;font-style:italic;margin:0 0 16px">&ldquo;Como psic&oacute;loga e propriet&aacute;ria de uma cl&iacute;nica, o meu foco est&aacute; naturalmente nos meus clientes, e nem sempre no lado empresarial. Trabalhar com o Nuno mudou isso por completo. Deu-me uma clareza enorme sobre como estruturar o meu plano de neg&oacute;cio e desenhar o futuro da minha cl&iacute;nica. Passei de uma estrat&eacute;gia incerta para uma dire&ccedil;&atilde;o absoluta.&rdquo;</p>
+        <p style="font-size:13px;font-weight:700;margin:0 0 2px">Psic&oacute;loga Cl&iacute;nica</p>
+        <p style="font-size:12px;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin:0">Propriet&aacute;ria de Cl&iacute;nica</p>
+      </div>
+    </div>
+
+    <div class="card" style="padding:28px;border:1px solid var(--color-divider)">
+      <p style="font-size:13px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)"><strong>Casos dispon&iacute;veis:</strong> um servi&ccedil;o de motoristas escalado em seis mercados. Um fundador de um est&uacute;dio de produ&ccedil;&atilde;o que passou de bloqueio a lideran&ccedil;a delegada. Detalhes a pedido.</p>
+    </div>
+  </section>
+
+</main>
+
+<section id="contact" style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px);text-align:center">
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(32px,4.2vw,48px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 20px">Pronto para construir um modelo operacional melhor?</h2>
+    <p style="font-size:16px;line-height:27px;margin:0 auto 40px;max-width:56ch">Marque uma chamada estrat&eacute;gica. Vamos discutir onde est&aacute;, o que est&aacute; a falhar, e como corrigir.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="max-width:560px;margin:0 auto;text-align:left;min-width:280px;height:480px;background:var(--color-bg)"></div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <footer style="padding:56px 0;font-size:13px;line-height:26px;color:color-mix(in srgb, var(--color-text) 70%, transparent);display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+    <div>
+      <p style="font-weight:700;margin:0 0 8px;color:var(--color-text)">Contacto</p>
+      <a href="mailto:info@nabiaedge.com" style="color:inherit;text-decoration:none">info@nabiaedge.com</a>
+    </div>
+    <div>
+      <p style="font-weight:700;margin:0 0 8px;color:var(--color-text)">Redes</p>
+      <div style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">LinkedIn</a>
+        <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Instagram</a>
+      </div>
+    </div>
+    <div>
+      <p style="font-weight:700;margin:0 0 8px;color:var(--color-text)">P&aacute;ginas</p>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="/pt/" style="color:inherit;text-decoration:none">Home</a>
+        <a href="/pt/business-advisory/" style="color:inherit;text-decoration:none">Assessoria de Neg&oacute;cio</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mobileOpen: false };
+  toggleMenu = () => this.setState(s => ({ mobileOpen: !s.mobileOpen }));
+  closeMenu = () => this.setState({ mobileOpen: false });
+  renderVals() {
+    return {
+      mobileOpen: this.state.mobileOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu
+    };
+  }
+}
+
+</script>
+
+<script>
+  window.addEventListener('load', function() {
+    Calendly.initBadgeWidget({ url: 'https://calendly.com/nuno-nabiaedge/30min', text: 'Marcar chamada', color: '#1e3a8a', textColor: '#ffffff', branding: true });
+  });
+</script>
+
+</body>
+</html>
