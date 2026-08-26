@@ -279,7 +279,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 <style>
 body{margin:0;text-wrap:pretty}
 .nfc-menu-btn{display:none}
-@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}.nfc-cta-desktop{display:none !important}}
+@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}}
 @media (max-width:880px){.nfc-split{grid-template-columns:1fr !important}.nfc-contact{grid-template-columns:1fr !important}}
 
 @media (max-width:640px){
@@ -296,14 +296,14 @@ body{margin:0;text-wrap:pretty}
 
 <nav class="nav" style="border-bottom:2px solid var(--color-divider)">
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
-    <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:10px" class="nav-brand"><img src="../assets/images/logo.png" alt="Nuno" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-    <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500">
+    <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="Nuno Fontoura" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500;margin-left:auto">
       <a href="/">Home</a>
       <a href="/business-advisory/">Business Advisory</a>
       <a href="/micro-consulting/">Micro Consulting</a>
       <a href="/pt/">PT</a>
     </div>
-    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)">
+    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);margin-left:auto">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
   </div>
