@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary">
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="/support.js"></script>
+<script src="./support.js"></script>
 <template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
     <rect width="1200" height="800" fill="#f3f2f2"/>
@@ -279,7 +279,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 
 
 </style>
-<script src="/image-slot.js"></script>
+<script src="./image-slot.js"></script>
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script type="text/javascript">
@@ -308,7 +308,7 @@ body{margin:0;text-wrap:pretty}
 
 <nav class="nav" style="border-bottom:2px solid var(--color-divider)">
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
-    <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="Nuno Fontoura" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="./assets/images/logo.png" alt="Nuno Fontoura" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
     <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500;margin-left:auto">
       <a href="/">Home</a>
       <a href="/business-advisory/">Business Advisory</a>
@@ -379,7 +379,7 @@ body{margin:0;text-wrap:pretty}
 
   <section id="about" class="nfc-split" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px clamp(24px,5vw,96px);align-items:center;padding:56px 0 56px">
     <figure class="grayscale" style="margin:0">
-      <img src="/assets/images/Headshot_website.png" alt="Nuno Fontoura" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block">
+      <img src="./assets/images/Headshot_website.png" alt="Nuno Fontoura" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block">
     </figure>
     <div>
       <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">About Nuno</span>
@@ -465,6 +465,17 @@ body{margin:0;text-wrap:pretty}
   <section id="proof" style="padding:84px 0;border-top:2px solid var(--color-divider)">
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.6vw,56px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 56px">Testimonials</h2>
     <p style="font-size:15.5px;line-height:28px;margin:0 0 56px;max-width:70ch;color:color-mix(in srgb, var(--color-text) 75%, transparent)">The results speak for themselves. Here is what changes when founders and teams work systematically on their operating model.</p>
+    <a href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:24px;padding:24px;border:2px solid var(--color-divider);text-decoration:none;color:var(--color-text);max-width:720px;margin:0 0 56px" style-hover="border-color:var(--color-accent)">
+      <div class="grayscale" style="width:120px;height:120px;flex:none;overflow:hidden">
+        <img src="./assets/images/msn-feature.jpg" alt="Nuno Fontoura, named one of MSN's Top 10 Most Inspiring Men, 2026" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div>
+        <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 8px">As featured in MSN</span>
+        <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:20px;line-height:27px;margin:0 0 8px">Named one of MSN's Top 10 Most Inspiring Men, 2026</span>
+        <span style="display:block;font-size:13px;font-weight:700;color:var(--color-accent-700)">Read the article &rarr;</span>
+      </div>
+    </a>
+
   </section>
 
   <section id="contact" style="padding:0 0 84px" aria-label="Client testimonials">
@@ -474,19 +485,8 @@ body{margin:0;text-wrap:pretty}
         <blockquote style="font-family:var(--font-heading);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:38px;letter-spacing:-0.015em;margin:0;max-width:64ch;text-indent:-0.42em">{{ quote }}</blockquote>
         <figcaption style="font-size:14px;line-height:24px;color:color-mix(in srgb, var(--color-text) 65%, transparent);margin:20px 0 0">{{ name }}</figcaption>
       </sc-if>
-      <sc-if value="{{ isPress }}" hint-placeholder-val="{{ false }}">
-        <a href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:20px;padding:20px;border:2px solid var(--color-divider);text-decoration:none;color:var(--color-text);max-width:640px" style-hover="border-color:var(--color-accent)">
-          <div class="grayscale" style="width:72px;height:72px;flex:none;overflow:hidden">
-            <img src="/assets/images/press-solo.jpg" alt="Nuno Fontoura, named one of MSN's Top 10 Most Inspiring Men, 2026" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
-          <div>
-            <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 6px">Press</span>
-            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:16px;line-height:22px">Named one of MSN's Top 10 Most Inspiring Men, 2026 &#8599;</span>
-          </div>
-        </a>
-      </sc-if>
-    </div>
-    <div style="display:flex;gap:8px;margin-top:28px">
+    <div style="display:none">
       <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="2">
         <button type="button" style="{{ dot.style }}" onClick="{{ dot.onClick }}" aria-label="Show item"></button>
       </sc-for>
@@ -512,7 +512,7 @@ body{margin:0;text-wrap:pretty}
   <div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,72px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
     <div>
       <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contact</h4>
-      <a href="{{ emailHref }}" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">{{ emailText }}</a>
+        <a href="mailto:nuno@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">nuno@nabiaedge.com</a>
     </div>
     <div>
       <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Follow</h4>
@@ -545,8 +545,7 @@ class Component extends DCLogic {
     index: 0,
     mobileOpen: false,
     proofItems: [
-      { type: 'quote', quote: "\u201cAs a psychologist and clinic owner, my focus is naturally on my clients, and not always on the business side. Working with Nuno changed that completely. He gave me immense clarity on how to structure my business plan and design the future of my clinic. I went from an uncertain strategy to absolute direction.\u201d", name: "Clinical Psychologist, Clinic Owner" },
-      { type: 'press' }
+      { type: 'quote', quote: "\u201cAs a psychologist and clinic owner, my focus is naturally on my clients, and not always on the business side. Working with Nuno changed that completely. He gave me immense clarity on how to structure my business plan and design the future of my clinic. I went from an uncertain strategy to absolute direction.\u201d", name: "Clinical Psychologist, Clinic Owner" }
     ]
   };
   renderVals() {
