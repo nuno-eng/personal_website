@@ -257,6 +257,6 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm .booking-section .booker { text-align: left; }
 
 /* About page: Marines photo */
-.pm .about-marines { margin: 8px 0 36px; }
+.pm .about-marines { margin: 8px 0 36px; max-width: 720px; }
 .pm .about-marines img { width: 100%; height: auto; border-radius: var(--pm-radius); }
 .pm .about-marines figcaption { margin-top: 10px; font-size: 14px; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
