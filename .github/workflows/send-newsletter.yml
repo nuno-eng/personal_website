@@ -1,0 +1,39 @@
+name: Send Newsletter
+
+# Manual trigger only. Edit newsletter-sender/emails/newsletter.tsx, push,
+# then Actions > "Send Newsletter" > Run workflow:
+#   test       sends the issue to TEST_EMAIL only
+#   broadcast  sends it to every subscriber (needs READY = true in the template)
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'test sends to TEST_EMAIL only; broadcast sends to every subscriber'
+        type: choice
+        options: [test, broadcast]
+        default: test
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: newsletter-sender
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: newsletter-sender/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run ${{ inputs.mode == 'broadcast' && 'send' || 'send:test' }}
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+          RESEND_REPLY_TO: ${{ secrets.RESEND_REPLY_TO }}
+          TEST_EMAIL: ${{ secrets.TEST_EMAIL }}

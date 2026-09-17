@@ -1,0 +1,27 @@
+{
+  "name": "newsletter-sender",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "preview": "email dev --dir emails --port 3001",
+    "send:test": "tsx scripts/send-newsletter.tsx --test",
+    "send": "tsx scripts/send-newsletter.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-email/components": "^1.0.12",
+    "dotenv": "^17.2.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "resend": "^6.28.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react-email": "^6.9.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
