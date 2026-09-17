@@ -271,3 +271,6 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm .res-feature h2 { color: var(--pm-white); font-size: clamp(28px, 3vw, 40px); line-height: 1.1; margin: 0 0 12px; }
 .pm .res-feature p { margin: 0; font-size: 17px; line-height: 1.6; color: var(--pm-on-dark); }
 .pm .res-feature .btn { flex: none; }
+
+/* case study cards use the full content width, like the other boxes */
+.pm .cs-card { max-width: none; }
