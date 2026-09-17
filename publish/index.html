@@ -32,7 +32,6 @@
 <script src="/booking.js" defer></script>
 <link rel="stylesheet" href="/case-study.css">
 <link rel="stylesheet" href="/newsletter.css">
-<link rel="stylesheet" href="/premium.css">
 <script src="/newsletter.js" defer></script>
 
 <style>
@@ -41,9 +40,10 @@ html{scroll-behavior:smooth}
 body{margin:0;text-wrap:pretty}
 .fc1:focus-visible{left:12px !important;top:12px !important}
 </style>
+<link rel="stylesheet" href="/premium.css">
 </head>
 <body class="pm">
-<a class="fc1" href="#main-content" style="position:absolute;left:-9999px;top:0;background:var(--color-accent);color:#fff;padding:12px 20px;font-weight:600;font-size:14px;z-index:100;text-decoration:none">Skip to content</a>
+<a class="pm-skip" href="#main-content">Skip to content</a>
 
 <nav class="pm-nav" aria-label="Main">
   <div class="pm-wrap">
@@ -69,24 +69,25 @@ body{margin:0;text-wrap:pretty}
 </nav>
 
 <div data-mobile-menu hidden>
-  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
-      <button type="button" data-menu-close aria-label="Close menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  <div class="pm-mobile">
+    <div class="pm-mobile-top">
+      <a href="/" class="pm-brand"><img src="/assets/images/logo.png" alt="" width="26" height="26">Nuno Fontoura</a>
+      <button type="button" data-menu-close aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
-    <a href="/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Home</a>
-    <a href="/about/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">About</a>
-    <a href="/business-advisory/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Business Advisory</a>
-    <a href="/free-resources/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Free Resources</a>
-    <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;color:var(--color-accent)">Free VOS assessment</a>
+    <a class="pm-mlink" href="/" data-menu-close>Home</a>
+    <a class="pm-mlink" href="/about/" data-menu-close>About</a>
+    <a class="pm-mlink" href="/business-advisory/" data-menu-close>Business Advisory</a>
+    <a class="pm-mlink" href="/free-resources/" data-menu-close>Free Resources</a>
+    <a class="pm-mlink" href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close>Free VOS assessment</a>
     <div class="pm-lang-mobile">
       <a href="/" aria-current="true" data-menu-close><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16">English</a>
       <a href="/pt/" lang="pt" hreflang="pt"><img class="pm-flag" src="/assets/flags/pt.svg" alt="" width="24" height="16">Portugu&ecirc;s</a>
     </div>
-    <a href="/book/" class="btn btn-primary" data-menu-close style="margin-top:28px;justify-content:center;color:var(--color-bg)">Book a call</a>
+    <a href="/book/" class="btn btn-primary" data-menu-close>Book a call</a>
   </div>
 </div>
 
-<main id="main-content">
+<main id="main-content" class="pm-main">
 
   <section class="pm-hero">
     <div class="pm-wrap">
@@ -265,30 +266,31 @@ body{margin:0;text-wrap:pretty}
   <div class="pm-wrap">
     <div class="pm-legal">
       <span>&copy; 2026 Nuno Fontoura &middot; NabiaEdge &middot; <a href="/privacy/">Privacy</a></span>
-      <a href="/pt/" lang="pt">Portugu&ecirc;s</a>
+      <a href="/pt/" lang="pt" hreflang="pt">Portugu&ecirc;s</a>
     </div>
   </div>
 </footer>
 
+<a class="book-badge" href="/book/">Book a call</a>
 <script>
 (function () {
   var menu = document.querySelector('[data-mobile-menu]');
-  var toggles = document.querySelectorAll('[data-menu-toggle]');
-  if (!menu) return;
-  function set(open) {
-    menu.hidden = !open;
-    toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (menu) {
+    var toggles = document.querySelectorAll('[data-menu-toggle]');
+    var set = function (open) {
+      menu.hidden = !open;
+      toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-menu-toggle]')) set(menu.hidden);
+      else if (e.target.closest('[data-menu-close]')) set(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
   }
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('[data-menu-toggle]')) set(menu.hidden);
-    else if (e.target.closest('[data-menu-close]')) set(false);
-  });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
   var lang = document.querySelector('.pm-lang');
   if (lang) document.addEventListener('click', function (e) { if (lang.open && !lang.contains(e.target)) lang.open = false; });
 })();
 </script>
-<a class="book-badge" href="/book/">Book a call</a>
 </body>
 </html>

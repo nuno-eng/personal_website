@@ -7,7 +7,7 @@
 <meta name="description" content="This page does not exist.">
 
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1E3A8A">
+<meta name="theme-color" content="#0F1D3D">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
 
 <style>
@@ -45,39 +45,54 @@ body{margin:0;text-wrap:pretty}
 <style>
 .hv1:hover{color:var(--color-accent) !important}
 </style>
+<link rel="stylesheet" href="/premium.css">
 </head>
-<body>
-<nav class="nav" style="border-bottom:2px solid var(--color-divider)">
-  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
-    <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="" width="24" height="24" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
-    <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500;margin-left:auto">
+<body class="pm">
+<a class="pm-skip" href="#main-content">Skip to content</a>
+
+<nav class="pm-nav" aria-label="Main">
+  <div class="pm-wrap">
+    <a href="/" class="pm-brand"><img src="/assets/images/logo.png" alt="" width="26" height="26">Nuno Fontoura</a>
+    <div class="pm-links">
       <a href="/about/">About</a>
       <a href="/business-advisory/">Business Advisory</a>
       <a href="/free-resources/">Free Resources</a>
-      <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" style="color:var(--color-accent);font-weight:700">Free VOS assessment</a>
-      <a href="/pt/">PT</a>
+      <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener">Free VOS assessment</a>
+      <details class="pm-lang">
+        <summary aria-label="Language: English"><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16"></summary>
+        <div class="pm-lang-menu">
+          <a href="/404.html" aria-current="true"><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16">English</a>
+          <a href="/pt/" lang="pt" hreflang="pt"><img class="pm-flag" src="/assets/flags/pt.svg" alt="" width="24" height="16">Portugu&ecirc;s</a>
+        </div>
+      </details>
+      <a href="/book/" class="btn btn-primary">Book a call</a>
     </div>
-    <button type="button" class="nfc-menu-btn" data-menu-toggle aria-expanded="false" aria-label="Open menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);margin-left:auto">
+    <button type="button" class="pm-menu-btn" data-menu-toggle aria-expanded="false" aria-label="Open menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
   </div>
 </nav>
 
 <div data-mobile-menu hidden>
-  <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
-      <button type="button" data-menu-close aria-label="Close menu" style="background:none;border:none;padding:8px;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  <div class="pm-mobile">
+    <div class="pm-mobile-top">
+      <a href="/" class="pm-brand"><img src="/assets/images/logo.png" alt="" width="26" height="26">Nuno Fontoura</a>
+      <button type="button" data-menu-close aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
-    <a href="/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
-    <a href="/about/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">About</a>
-    <a href="/business-advisory/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Business Advisory</a>
-    <a href="/free-resources/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Free Resources</a>
-    <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none;color:var(--color-accent)">Free VOS assessment</a>
-    <a href="/pt/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">PT</a>
+    <a class="pm-mlink" href="/" data-menu-close>Home</a>
+    <a class="pm-mlink" href="/about/" data-menu-close>About</a>
+    <a class="pm-mlink" href="/business-advisory/" data-menu-close>Business Advisory</a>
+    <a class="pm-mlink" href="/free-resources/" data-menu-close>Free Resources</a>
+    <a class="pm-mlink" href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close>Free VOS assessment</a>
+    <div class="pm-lang-mobile">
+      <a href="/404.html" aria-current="true" data-menu-close><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16">English</a>
+      <a href="/pt/" lang="pt" hreflang="pt"><img class="pm-flag" src="/assets/flags/pt.svg" alt="" width="24" height="16">Portugu&ecirc;s</a>
+    </div>
+    <a href="/book/" class="btn btn-primary" data-menu-close>Book a call</a>
   </div>
 </div>
 
-<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)" class="pm-main">
   <section style="padding:112px 0 120px;max-width:720px">
     <span style="display:block;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px">404 &middot; Page not found</span>
     <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.4vw,64px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 24px">This page doesn&rsquo;t exist.</h1>
@@ -91,38 +106,33 @@ body{margin:0;text-wrap:pretty}
   </section>
 </main>
 
-<footer style="border-top:2px solid var(--color-divider);background:var(--color-bg)">
-  <div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,72px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
+<footer class="pm-footer">
+  <div class="pm-wrap pm-grid">
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contact</h2>
-        <a class="hv1" href="mailto:info@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">info@nabiaedge.com</a>
-        <a class="hv1" href="mailto:support@nabiaedge.com" style="display:flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Support: support@nabiaedge.com</a>
+      <h2>Contact</h2>
+      <a href="mailto:info@nabiaedge.com">info@nabiaedge.com</a>
+      <a href="mailto:support@nabiaedge.com">Support: support@nabiaedge.com</a>
     </div>
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Follow</h2>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
-        <a class="hv1" href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>LinkedIn</span></a>
-        <a class="hv1" href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="0"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></a>
-      </div>
+      <h2>Follow</h2>
+      <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener">Instagram</a>
     </div>
     <div>
-      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Pages</h2>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
-        <a class="hv1" href="/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Home</a>
-        <a class="hv1" href="/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Business Advisory</a>
-        <a class="hv1" href="/about/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">About</a>
-        <a class="hv1" href="/vessel-operating-system/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Vessel Operating System</a>
-        <a class="hv1" href="/case-studies/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Case studies</a>
-        <a class="hv1" href="/free-resources/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Free Resources</a>
-        <a class="hv1" href="/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Book a call</a>
-        <a class="hv1" href="/subscribe/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Newsletter</a>
-      </div>
+      <h2>Pages</h2>
+      <a href="/business-advisory/">Business Advisory</a>
+      <a href="/about/">About</a>
+      <a href="/vessel-operating-system/">Vessel Operating System</a>
+      <a href="/case-studies/">Case studies</a>
+      <a href="/free-resources/">Free Resources</a>
+      <a href="/subscribe/">Newsletter</a>
+      <a href="/book/">Book a call</a>
     </div>
   </div>
-  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
-    <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">
-      <span>&copy; 2026 Nuno Fontoura &middot; NabiaEdge &middot; <a href="/privacy/" style="color:inherit">Privacy</a></span>
-      <a class="hv1" href="/pt/" style="color:color-mix(in srgb, var(--color-text) 75%, transparent);text-decoration:none;font-weight:700">Portugu&ecirc;s</a>
+  <div class="pm-wrap">
+    <div class="pm-legal">
+      <span>&copy; 2026 Nuno Fontoura &middot; NabiaEdge &middot; <a href="/privacy/">Privacy</a></span>
+      <a href="/pt/" lang="pt" hreflang="pt">Portugu&ecirc;s</a>
     </div>
   </div>
 </footer>
@@ -130,18 +140,21 @@ body{margin:0;text-wrap:pretty}
 <script>
 (function () {
   var menu = document.querySelector('[data-mobile-menu]');
-  var toggles = document.querySelectorAll('[data-menu-toggle]');
-  if (!menu) return;
-  function set(open) {
-    menu.hidden = !open;
-    toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (menu) {
+    var toggles = document.querySelectorAll('[data-menu-toggle]');
+    var set = function (open) {
+      menu.hidden = !open;
+      toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-menu-toggle]')) set(menu.hidden);
+      else if (e.target.closest('[data-menu-close]')) set(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
   }
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('[data-menu-toggle]')) set(menu.hidden);
-    else if (e.target.closest('[data-menu-close]')) set(false);
-  });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
+  var lang = document.querySelector('.pm-lang');
+  if (lang) document.addEventListener('click', function (e) { if (lang.open && !lang.contains(e.target)) lang.open = false; });
 })();
 </script>
 </body>
