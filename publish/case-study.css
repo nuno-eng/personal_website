@@ -34,3 +34,20 @@
 /* Client logo on case study cards and pages */
 .cs-logo { display: block; height: 44px; width: auto; margin: 0 0 16px; }
 .cs-page .cs-logo { height: 64px; margin-bottom: 24px; }
+
+.cs-note { font-size: 14.5px; line-height: 23px; padding: 12px 16px; margin: 0 0 28px; background: var(--color-surface); border-left: 4px solid var(--color-divider); max-width: 70ch; }
+.cs-disclosure { font-size: 13px !important; line-height: 20px !important; margin: -8px 0 16px !important; font-style: italic; }
+.cs-quote { margin: 56px 0 0; padding: 28px 0 0; border-top: 2px solid var(--color-divider); }
+.cs-quote blockquote { margin: 0 0 16px; font-family: var(--font-heading); font-weight: 800; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; letter-spacing: -0.01em; }
+.cs-quote figcaption { font-size: 14px; }
+.cs-more { margin-top: 32px; font-weight: 700; }
+.about-hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 32px clamp(24px, 5vw, 64px); align-items: center; }
+.about-hero figure { margin: 0; }
+.about-hero img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: top; display: block; }
+@media (max-width: 760px) { .about-hero { grid-template-columns: 1fr; } .about-hero figure { max-width: 320px; } }
+.vos-pillars { display: grid; gap: 40px; margin-top: 24px; }
+.vos-pillars h3 { font-size: 24px; margin: 0 0 6px; color: var(--color-accent); }
+.vos-pillars h3 span { display: block; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text); margin-top: 4px; }
+.vos-pillars > section > p { margin: 0 0 12px; max-width: 64ch; }
+.vos-bands { max-width: 420px; }
+.cs-page .tbl { overflow-x: auto; }
