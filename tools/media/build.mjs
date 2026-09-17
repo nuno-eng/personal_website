@@ -51,8 +51,8 @@ function shareHtml(s) {
   h1 b{font-weight:600}
   .s{margin-top:auto;font-size:21px;line-height:1.45;color:#b8c2d8;font-weight:500}
   .photo{position:relative;flex:1;overflow:hidden}
-  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:24% 30%}
-  .photo::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0F1D3D 0%,rgba(15,29,61,0) 28%)}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:24% 30%;opacity:.62;filter:saturate(.85)}
+  .photo::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0F1D3D 0%,rgba(15,29,61,.55) 30%,rgba(15,29,61,.25) 100%)}
 </style></head><body>
 <div class="copy"><div class="k">${s.kicker}</div><h1>${s.title}</h1><div class="s">${SUB[s.lang]}</div></div>
 <div class="photo"><img src="${fileUrl(path.join(SRC, 'suit.png'))}"></div>
