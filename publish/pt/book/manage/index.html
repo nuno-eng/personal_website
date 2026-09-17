@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Política de privacidade | Nuno Fontoura</title>
-<meta name="description" content="Como Nuno Fontoura (NabiaEdge) recolhe, usa e protege os dados pessoais deste site.">
-<link rel="canonical" href="https://www.nunofontoura.com/pt/privacy/">
-<link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/privacy/">
+<title>Gerir a Sua Chamada | Nuno Fontoura</title>
+<meta name="description" content="Reagendar ou cancelar a sua chamada exploratória.">
+
+<meta name="robots" content="noindex">
 <meta name="theme-color" content="#1E3A8A">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -14,9 +14,9 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Nuno Fontoura">
 <meta property="og:locale" content="pt_PT">
-<meta property="og:url" content="https://www.nunofontoura.com/pt/privacy/">
-<meta property="og:title" content="Política de privacidade | Nuno Fontoura">
-<meta property="og:description" content="Como Nuno Fontoura (NabiaEdge) recolhe, usa e protege os dados pessoais deste site.">
+<meta property="og:url" content="https://www.nunofontoura.com/pt/book/manage/">
+<meta property="og:title" content="Gerir a Sua Chamada | Nuno Fontoura">
+<meta property="og:description" content="Reagendar ou cancelar a sua chamada exploratória.">
 <meta property="og:image" content="https://www.nunofontoura.com/assets/og/business-advisory-pt.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,6 +25,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
+<link rel="stylesheet" href="/booking.css">
+<script src="/booking.js" defer></script>
+<link rel="stylesheet" href="/case-study.css">
 
 <style>
 body{margin:0;text-wrap:pretty}
@@ -57,7 +60,7 @@ body{margin:0;text-wrap:pretty}
       <a href="/pt/">Home</a>
       <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
       <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" style="color:var(--color-accent);font-weight:700">Avalia&ccedil;&atilde;o gratuita</a>
-      <a href="/privacy/">EN</a>
+      <a href="/">EN</a>
     </div>
     <button type="button" class="nfc-menu-btn" data-menu-toggle aria-expanded="false" aria-label="Abrir menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);margin-left:auto">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -73,29 +76,13 @@ body{margin:0;text-wrap:pretty}
     <a href="/pt/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
     <a href="/pt/business-advisory/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Assessoria de Neg&oacute;cio</a>
     <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none;color:var(--color-accent)">Avalia&ccedil;&atilde;o gratuita</a>
-    <a href="/privacy/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
+    <a href="/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
   </div>
 </div>
 
 <main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
-  <section style="padding:96px 0 96px">
-    <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(38px,5.4vw,64px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 24px">Política de privacidade</h1>
-    <p style="font-size:14px;color:color-mix(in srgb, var(--color-text) 65%, transparent)">Última atualização: 17 de setembro de 2026</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Responsável pelo tratamento</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7">Nuno Fontoura, a operar como NabiaEdge, é responsável pelos dados pessoais recolhidos através deste site. Contacto: <a href="mailto:info@nabiaedge.com">info@nabiaedge.com</a>.</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Que dados recolhemos e porquê</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7"><strong>Marcação de chamadas.</strong> Quando marca uma chamada neste site, recebemos o seu nome, email, o horário escolhido, o seu fuso horário e as respostas às perguntas de marcação, e criamos um evento no nosso Google Calendar com um link do Google Meet. Usamos estes dados para preparar e realizar a chamada e fazer o seguimento. Fundamento: diligências pré-contratuais a seu pedido.</p>
-<p style="max-width:68ch;font-size:16px;line-height:1.7"><strong>Newsletter e recursos gratuitos.</strong> Se subscrever ou pedir um recurso por email, guardamos o seu email, o primeiro nome (opcional), o idioma, a página onde subscreveu e quem o recomendou. Usamos estes dados para enviar os emails que pediu. Fundamento: o seu consentimento, que pode retirar a qualquer momento através do link em cada email.</p>
-<p style="max-width:68ch;font-size:16px;line-height:1.7"><strong>Emails que nos envia.</strong> Guardamos as suas mensagens para responder e manter o histórico da conversa. Fundamento: o nosso interesse legítimo em responder-lhe.</p>
-<p style="max-width:68ch;font-size:16px;line-height:1.7"><strong>Estatísticas do site.</strong> Usamos o Cloudflare Web Analytics, que conta visitas sem cookies e sem o identificar.</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Quem trata os dados por nós</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7">Cloudflare (alojamento, base de dados e estatísticas), Resend (envio de emails) e Google (calendário, Google Meet e email). Alguns estão fora da UE e recorrem às cláusulas contratuais-tipo da Comissão Europeia ou ao Quadro de Privacidade de Dados UE&ndash;EUA. Nunca vendemos os seus dados.</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Durante quanto tempo</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7">Dados da newsletter até cancelar a subscrição, sendo apagados no prazo de 30 dias. Registos de marcações até 24 meses após a chamada. Registos de emails durante o tempo necessário à relação e a obrigações legais ou contabilísticas.</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Cookies</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7">Este site não define cookies.</p>
-<h2 style="font-size:22px;margin:40px 0 12px">Os seus direitos</h2>
-<p style="max-width:68ch;font-size:16px;line-height:1.7">Pode pedir acesso, retificação, apagamento ou portabilidade dos seus dados, opor-se ou limitar o seu tratamento e retirar o consentimento a qualquer momento, escrevendo para <a href="mailto:info@nabiaedge.com">info@nabiaedge.com</a>. Pode também apresentar reclamação à <a href="https://www.cnpd.pt" rel="noopener">CNPD</a>.</p>
+  <section style="padding:72px 0 96px">
+    <div class="booker" data-booking data-lang="pt" data-mode="manage"></div>
   </section>
 </main>
 
@@ -125,7 +112,7 @@ body{margin:0;text-wrap:pretty}
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
     <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">
       <span>&copy; 2026 Nuno Fontoura &middot; NabiaEdge &middot; <a href="/pt/privacy/" style="color:inherit">Privacidade</a></span>
-      <a class="hv2" href="/privacy/" style="color:color-mix(in srgb, var(--color-text) 75%, transparent);text-decoration:none;font-weight:700">English</a>
+      <a class="hv2" href="/" style="color:color-mix(in srgb, var(--color-text) 75%, transparent);text-decoration:none;font-weight:700">English</a>
     </div>
   </div>
 </footer>

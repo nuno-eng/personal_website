@@ -28,6 +28,8 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": "Business Advisory", "description": "A 12-week programme for founder-led creative and production agencies, built on the Vessel Operating System, with a 90-day plan and tracked execution.", "url": "https://www.nunofontoura.com/business-advisory/", "provider": {"@type": "ProfessionalService", "@id": "https://www.nunofontoura.com/#nabiaedge", "name": "NabiaEdge", "url": "https://www.nunofontoura.com/"}, "inLanguage": "en", "audience": {"@type": "BusinessAudience", "audienceType": "Founders of creative and production agencies"}}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
+<link rel="stylesheet" href="/booking.css">
+<script src="/booking.js" defer></script>
 <link rel="stylesheet" href="/case-study.css">
 
 <style>
@@ -228,7 +230,7 @@ body{margin:0;text-wrap:pretty}
   <section id="book-a-call" class="booking-section">
     <h2 style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 16px">Book a 30-minute discovery call</h2>
     <p style="margin:0 0 40px;color:color-mix(in srgb, var(--color-text) 70%, transparent);max-width:50ch;margin-left:auto;margin-right:auto;font-size:15px">Map out where you are, what's not working, and what success looks like on the other side.</p>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="min-width:320px;height:700px"></div>
+    <div class="booker" data-booking data-lang="en"></div>
   </section>
 </main>
 
@@ -282,35 +284,6 @@ body{margin:0;text-wrap:pretty}
     else if (e.target.closest('[data-menu-close]')) set(false);
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
-})();
-</script>
-<script>
-// Calendly loads only when the booking widget comes near the screen or the
-// visitor starts interacting, so it no longer slows down the first paint.
-(function () {
-  var loaded = false;
-  function load() {
-    if (loaded) return;
-    loaded = true;
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://assets.calendly.com/assets/external/widget.css';
-    document.head.appendChild(css);
-    var js = document.createElement('script');
-    js.src = 'https://assets.calendly.com/assets/external/widget.js';
-    js.async = true;
-    js.onload = function () {  };
-    document.head.appendChild(js);
-  }
-  var widget = document.querySelector('.calendly-inline-widget');
-  if (widget && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries, observer) {
-      if (entries.some(function (e) { return e.isIntersecting; })) { observer.disconnect(); load(); }
-    }, { rootMargin: '600px' }).observe(widget);
-  }
-  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (type) {
-    window.addEventListener(type, load, { once: true, passive: true });
-  });
 })();
 </script>
 </body>

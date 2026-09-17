@@ -1,0 +1,30 @@
+/* Discovery call booker. Built on ds/styles.css tokens. */
+.booker { background: var(--color-bg); color: var(--color-text); border: 2px solid var(--color-divider); border-top: 6px solid var(--color-accent); padding: clamp(18px, 3vw, 32px); text-align: left; max-width: 760px; margin: 0 auto; }
+.booker h3 { font-size: 22px; margin: 0 0 4px; }
+.bk-sub { font-size: 14px; margin: 0 0 18px; color: color-mix(in srgb, var(--color-text) 72%, transparent); }
+.bk-days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin: 0 0 16px; scrollbar-width: thin; }
+.bk-day { flex: 0 0 auto; min-width: 72px; padding: 10px 8px; border: 1px solid var(--color-divider); background: var(--color-surface); cursor: pointer; font: inherit; text-align: center; color: inherit; }
+.bk-day b { display: block; font-family: var(--font-heading); font-weight: 800; font-size: 18px; }
+.bk-day span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+.bk-day[aria-pressed="true"] { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); }
+.bk-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
+.bk-time { padding: 10px 6px; border: 1px solid var(--color-accent); background: transparent; color: var(--color-accent); font: inherit; font-weight: 700; cursor: pointer; }
+.bk-time:hover, .bk-time:focus-visible { background: var(--color-accent); color: var(--color-bg); }
+.bk-form { display: grid; gap: 14px; }
+.bk-form label > span { display: block; font-size: 13.5px; font-weight: 600; margin: 0 0 5px; }
+.bk-form .input { min-height: 44px; font-size: 16px; padding: 9px 12px; }
+.bk-form textarea.input { min-height: 96px; }
+.bk-form select.input { appearance: auto; }
+.bk-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .bk-row { grid-template-columns: 1fr; } }
+.bk-chosen { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; padding: 12px 14px; background: var(--color-surface); margin: 0 0 16px; font-size: 15px; }
+.bk-chosen strong { font-family: var(--font-heading); font-weight: 800; }
+.bk-link { background: none; border: 0; padding: 0; font: inherit; color: var(--color-accent); text-decoration: underline; cursor: pointer; }
+.bk-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.bk-actions .btn { min-height: 46px; padding: 0 22px; font-size: 15px; }
+.bk-msg { font-size: 14.5px; margin: 8px 0 0; min-height: 22px; }
+.bk-msg[data-state="error"] { color: #b42318; font-weight: 600; }
+.bk-empty { font-size: 15px; }
+.bk-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+.book-badge { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 50; background: var(--color-accent); color: var(--color-bg); font-family: var(--font-heading); font-weight: 800; font-size: 14px; text-decoration: none; padding: 12px 18px; box-shadow: var(--shadow-md); }
+.book-badge:hover { background: var(--color-accent-700); color: var(--color-bg); }

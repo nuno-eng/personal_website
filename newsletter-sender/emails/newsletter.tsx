@@ -44,7 +44,7 @@ const ISSUE = {
   cta: {
     lead: 'Want help building your operating cadence?',
     label: 'Book a 30-minute call',
-    href: 'https://calendly.com/nuno-nabiaedge/30min',
+    href: 'https://www.nunofontoura.com/book/',
   },
 };
 // ───────────────────────────────────────────────────────────────────────────

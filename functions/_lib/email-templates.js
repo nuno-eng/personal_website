@@ -9,7 +9,7 @@
 import { escapeHtml } from './http.js';
 
 export const NEWSLETTER_NAME = { en: 'Operating Notes', pt: 'Notas Operacionais' };
-const BOOKING_URL = 'https://calendly.com/nuno-nabiaedge/30min';
+const BOOKING_URL = 'https://www.nunofontoura.com/book/';
 
 const COLOR = { bg: '#f3f2f2', surface: '#ffffff', text: '#201e1d', muted: '#7d7979', accent: '#1E3A8A', rule: '#d7d3d3' };
 const FONT = "Archivo, 'Helvetica Neue', Arial, sans-serif";
@@ -87,23 +87,23 @@ const COPY = {
       blocks: [
         'Uma semana depois, uma pergunta direta: há algum problema operacional que gostaria de resolver este trimestre?',
         'Se sim, marque uma chamada de 30 minutos. Vemos onde se está a perder tempo e dinheiro, e sai com a primeira correção, quer trabalhemos juntos ou não.',
-        { button: 'Marcar chamada de 30 minutos', href: BOOKING_URL },
+        { button: 'Marcar chamada de 30 minutos', href: 'https://www.nunofontoura.com/pt/book/' },
         'Não é o momento certo? Sem problema. A newsletter continua a chegar, e o seu link de recomendação continua ativo: {referralLink}',
       ],
     },
   },
 };
 
-function paragraph(text) {
+export function paragraph(text) {
   return `<p style="font-family:${FONT};font-size:16px;line-height:26px;color:${COLOR.text};margin:0 0 18px;">${text}</p>`;
 }
 
-function button(label, href) {
+export function button(label, href) {
   return `<p style="margin:8px 0 26px;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${COLOR.accent};color:${COLOR.bg};font-family:${FONT};font-size:15px;font-weight:800;text-decoration:none;padding:14px 22px;">${escapeHtml(label)}</a></p>`;
 }
 
 // The branded frame shared by every email: header strip, body, footer.
-function wrap({ lang, subject, preview, bodyHtml, footerHtml }) {
+export function wrap({ lang, subject, preview, bodyHtml, footerHtml }) {
   return `<!doctype html>
 <html lang="${lang}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head>
