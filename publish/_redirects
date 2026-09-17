@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+/lead-magnets                 /free-resources/ 301
+/lead-magnets/                /free-resources/ 301
+/assets/lead-magnets/:file    /assets/free-resources/:file 301

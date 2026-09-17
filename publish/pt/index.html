@@ -3,291 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nuno Fontoura &ndash; Consultor Operacional &amp; Assessor de Neg&oacute;cio</title>
-<meta name="description" content="Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio: mais capacidade, custos mais baixos, menos depend&ecirc;ncia do fundador. Marque uma chamada explorat&oacute;ria.">
-<meta property="og:title" content="Nuno Fontoura &ndash; Consultor Operacional &amp; Assessor de Neg&oacute;cio">
-<meta property="og:description" content="Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio: mais capacidade, custos mais baixos, menos depend&ecirc;ncia do fundador.">
+<title>Nuno Fontoura | Consultor Operacional para Fundadores</title>
+<meta name="description" content="Ex-oficial dos Fuzileiros e 7 anos e meio na Amazon. Ajudo fundadores a corrigir o lado operacional do negócio: mais capacidade, menos dependência do fundador.">
+<link rel="canonical" href="https://www.nunofontoura.com/pt/">
+<link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/">
+<link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/">
+<link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/">
+<meta name="theme-color" content="#1E3A8A">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="./support.js"></script>
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-<template id="__bundler_thumbnail" data-bg-color="#f3f2f2">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#f3f2f2"/>
-    <rect x="200" y="560" width="60" height="60" fill="#1E3A8A"/>
-    <text x="200" y="330" font-family="Arial, sans-serif" font-weight="800" font-size="150" fill="#201e1d">NF</text>
-  </svg>
-</template>
-</head>
-<body>
-<x-dc>
+<meta property="og:site_name" content="Nuno Fontoura">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:url" content="https://www.nunofontoura.com/pt/">
+<meta property="og:title" content="Nuno Fontoura | Consultor Operacional para Fundadores">
+<meta property="og:description" content="Ex-oficial dos Fuzileiros e 7 anos e meio na Amazon. Ajudo fundadores a corrigir o lado operacional do negócio: mais capacidade, menos dependência do fundador.">
+<meta property="og:image" content="https://www.nunofontoura.com/assets/og/home-pt.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://www.nunofontoura.com/#nuno", "name": "Nuno Fontoura", "url": "https://www.nunofontoura.com/", "image": "https://www.nunofontoura.com/assets/images/headshot.jpg", "jobTitle": "Operations Advisor", "email": "mailto:info@nabiaedge.com", "worksFor": {"@id": "https://www.nunofontoura.com/#nabiaedge"}, "sameAs": ["https://www.linkedin.com/in/nfontoura", "https://www.instagram.com/nuno.fontoura/", "https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG"]}, {"@type": "ProfessionalService", "@id": "https://www.nunofontoura.com/#nabiaedge", "name": "NabiaEdge", "url": "https://www.nunofontoura.com/", "logo": "https://www.nunofontoura.com/icon-512.png", "image": "https://www.nunofontoura.com/assets/og/home.jpg", "email": "info@nabiaedge.com", "founder": {"@id": "https://www.nunofontoura.com/#nuno"}, "knowsLanguage": ["en", "pt"]}, {"@type": "WebSite", "@id": "https://www.nunofontoura.com/#website", "url": "https://www.nunofontoura.com/", "name": "Nuno Fontoura", "inLanguage": ["en", "pt-PT"], "publisher": {"@id": "https://www.nunofontoura.com/#nuno"}}]}</script>
+<link rel="stylesheet" href="/ds/styles.css">
 
-<helmet>
-<style>
-/* Modernist — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
-
-:root {
-  --color-bg: #f3f2f2;
-  --color-surface: #eae9e9;
-  --color-text: #201e1d;
-  --color-accent: #1E3A8A;
-  --color-accent-2: #2952B8;
-  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
-
-  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
-     same step of any role matches the others in visual value. */
-  --color-neutral-100: #f8f4f4;
-  --color-neutral-200: #eae7e7;
-  --color-neutral-300: #d7d3d3;
-  --color-neutral-400: #bab6b6;
-  --color-neutral-500: #9b9797;
-  --color-neutral-600: #7d7979;
-  --color-neutral-700: #605d5d;
-  --color-neutral-800: #444141;
-  --color-neutral-900: #2d2b2b;
-
-  --color-accent-100: #e8f0ff;
-  --color-accent-200: #d0e0ff;
-  --color-accent-300: #a8c8ff;
-  --color-accent-400: #5fa1ff;
-  --color-accent-500: #2952b8;
-  --color-accent-600: #1e3a8a;
-  --color-accent-700: #16266e;
-  --color-accent-800: #0f1853;
-  --color-accent-900: #0a0f38;
-
-  --color-accent-2-100: #e8f0ff;
-  --color-accent-2-200: #d0e0ff;
-  --color-accent-2-300: #a8c8ff;
-  --color-accent-2-400: #5fa1ff;
-  --color-accent-2-500: #2952b8;
-  --color-accent-2-600: #1e3a8a;
-  --color-accent-2-700: #16266e;
-  --color-accent-2-800: #0f1853;
-  --color-accent-2-900: #0a0f38;
-
-  --font-heading: "Archivo", system-ui, sans-serif;
-  --font-heading-weight: 800;
-  --font-body: "Archivo", system-ui, sans-serif;
-
-  --space-1: 4.0px;
-  --space-2: 8.0px;
-  --space-3: 12.0px;
-  --space-4: 16.0px;
-  --space-6: 24.0px;
-  --space-8: 32.0px;
-
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-
-  /* Elevation — derived from the ground: soft ink-tinted shadows on a
-     light theme, a hairline edge + ambient darkness on a dark one. */
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
-}
-
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-}
-h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
-
-.grayscale{filter:grayscale(1) contrast(1.08)}
-
-/* ══════════════════════════════════════════════════════════════════════════
-   Components — built with the tokens above. Plain CSS
-   on plain HTML: no JavaScript, no build step. Each class is documented in
-   readme.md and demonstrated in foundations/ and components/.
-   ══════════════════════════════════════════════════════════════════════ */
-
-*, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
-}
-h1 { font-size: 42px; }
-h2 { font-size: 32px; }
-h3 { font-size: 25px; }
-h4 { font-size: 20px; }
-h5 { font-size: 16px; }
-h6 { font-size: 13px; }
-h6 { letter-spacing: 0.08em; text-transform: uppercase; }
-p { margin: 0 0 var(--space-3); }
-a { color: var(--color-accent); text-underline-offset: 3px; }
-img { display: block; max-width: 100%; }
-figure { margin: 0; }
-figcaption {
-  font-size: 11px; margin-top: var(--space-1);
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-}
-.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
-:focus { outline: none; }
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
-
-/* — rules — */
-.hr {
-  height: 2px; border: 0; margin: var(--space-4) 0;
-  background: var(--color-divider);
-}
-
-/* — buttons — */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  cursor: pointer; text-decoration: none;
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
-     the pair sits side by side in sign-up rows */
-  background: transparent; border: 1px solid transparent;
-  padding: var(--space-2) calc(var(--space-3) * 1.2);
-  border-radius: var(--radius-md);
-}
-.btn svg { display: block; }
-.btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn-primary { background: var(--color-accent); color: var(--color-bg); }
-.btn-primary:hover { background: var(--color-accent-600); }
-.btn-primary:active { background: var(--color-accent-700); }
-.btn-secondary { border-color: var(--color-divider); }
-.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
-.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
-.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
-.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
-.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
-.btn-icon { width: 36px; height: 36px; padding: 0; }
-.btn-block { width: 100%; margin-top: var(--space-2); justify-content: flex-start; text-align: left; }
-
-/* — forms — */
-.field > label {
-  display: block; font-size: 12px; margin-bottom: 5px;
-  color: color-mix(in srgb, var(--color-text) 70%, transparent);
-}
-.input {
-  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
-  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
-  background: var(--color-surface);
-  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
-}
-.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
-.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
-textarea.input { min-height: 90px; resize: vertical; }
-.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
-.radio input, .seg-opt input {
-  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
-}
-.radio .dot {
-  width: 16px; height: 16px; flex: none; border-radius: 50%;
-  border: 1.5px solid var(--color-divider);
-}
-.radio:hover .dot { border-color: var(--color-accent); }
-.radio input:checked + .dot {
-  border-color: var(--color-accent); background: var(--color-accent);
-  box-shadow: inset 0 0 0 4px var(--color-bg);
-}
-.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-.seg {
-  display: inline-flex; overflow: hidden;
-  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
-}
-.seg-opt {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 12px; font-size: 13px; cursor: pointer;
-}
-.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
-.seg-opt:has(input:checked) { background: var(--color-accent); color: var(--color-bg); }
-.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
-.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
-
-/* — cards — */
-.card {
-  display: flex; flex-direction: column; gap: var(--space-2);
-  padding: var(--space-3); border-radius: var(--radius-md); background: var(--color-surface);
-}
-.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
-.card-title {
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  font-size: 17px; line-height: 1.2;
-}
-.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
-.card-meta {
-  display: flex; align-items: center; gap: 6px; font-size: 11px;
-  color: color-mix(in srgb, var(--color-text) 50%, transparent);
-}
-.elev-sm { box-shadow: var(--shadow-sm); }
-.elev-md { box-shadow: var(--shadow-md); }
-.elev-lg { box-shadow: var(--shadow-lg); }
-
-/* — tags — */
-.tag {
-  display: inline-flex; align-items: center; font-size: 11px;
-  letter-spacing: 0.02em; padding: 3px 10px;
-  border-radius: calc(var(--radius-md) * 0.75);
-}
-.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
-.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
-.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
-.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
-
-/* — navigation — */
-.nav {
-  display: flex; align-items: center; gap: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 2px solid var(--color-divider);
-}
-.nav-brand {
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  font-size: 18px; margin-right: auto;
-}
-.nav a { color: inherit; text-decoration: none; font-size: 14px; }
-.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
-
-/* — tables — */
-.table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.table th {
-  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 60%, transparent);
-  padding: var(--space-2); border-bottom: 2px solid var(--color-divider);
-}
-.table td {
-  padding: var(--space-2);
-  border-bottom: 1px solid var(--color-divider);
-}
-.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
-
-/* — dialog — */
-.dialog-backdrop {
-  position: fixed; inset: 0; display: grid; place-items: center;
-  padding: var(--space-4);
-  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
-}
-.dialog {
-  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
-  padding: var(--space-4); border-radius: var(--radius-lg);
-  background: var(--color-surface); box-shadow: var(--shadow-lg);
-}
-.dialog-title {
-  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
-  font-size: 20px;
-}
-.dialog-body { font-size: 14px; opacity: 0.85; }
-.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
-
-
-</style>
-<script src="../_ds/modernist-cb000389-977c-4d2b-a051-0d5082fbc04b/_ds_bundle.js"></script>
 <style>
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;text-wrap:pretty}
 .nfc-menu-btn{display:none}
-@media (max-width:640px){.nfc-navlinks{display:none}.nfc-menu-btn{display:flex !important}}
+@media (max-width:640px){.nfc-navlinks{display:none !important}.nfc-menu-btn{display:flex !important}}
 @media (max-width:880px){.nfc-cards3{grid-template-columns:1fr !important}.nfc-cards2{grid-template-columns:1fr !important}}
 
 @media (max-width:640px){
@@ -299,34 +45,35 @@ body{margin:0;text-wrap:pretty}
   a[href*="msn.com"]{flex-direction:column !important;text-align:center !important}
 }
 </style>
-</helmet>
-
+<style>
+.hv1:hover{color:var(--color-accent) !important}
+</style>
+</head>
+<body>
 <nav class="nav" style="border-bottom:2px solid var(--color-divider)">
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px);width:100%;display:flex;align-items:center;gap:var(--space-4)">
-    <a href="/pt/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="Nuno Fontoura" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
+    <a href="/pt/" class="nav-brand" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px"><img src="/assets/images/logo.png" alt="" width="24" height="24" style="width:24px;height:24px;display:block;object-fit:cover;flex-shrink:0"><span style="white-space:nowrap">Nuno Fontoura</span></a>
     <div class="nfc-navlinks" style="display:flex;gap:28px;align-items:center;font-weight:500;margin-left:auto">
       <a href="/pt/">Home</a>
       <a href="/pt/business-advisory/">Assessoria de Neg&oacute;cio</a>
-      <a href="/pt/micro-consulting/">Micro-Consultoria</a>
       <a href="/">EN</a>
     </div>
-    <button type="button" class="nfc-menu-btn" onClick="{{ toggleMenu }}" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);margin-left:auto">
+    <button type="button" class="nfc-menu-btn" data-menu-toggle aria-expanded="false" aria-label="Abrir menu" style="background:none;border:none;padding:8px;cursor:pointer;color:var(--color-text);margin-left:auto">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
   </div>
 </nav>
 
-<sc-if value="{{ mobileOpen }}" hint-placeholder-val="{{ false }}">
+<div data-mobile-menu hidden>
   <div style="position:fixed;inset:0;background:var(--color-bg);z-index:60;padding:24px clamp(20px,5vw,72px);display:flex;flex-direction:column;overflow-y:auto">
     <div style="display:flex;justify-content:flex-end;margin-bottom:24px">
-      <button type="button" onClick="{{ closeMenu }}" style="background:none;border:none;padding:8px;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <button type="button" data-menu-close aria-label="Fechar menu" style="background:none;border:none;padding:8px;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
     </div>
-    <a href="/pt/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
-    <a href="/pt/business-advisory/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Assessoria de Neg&oacute;cio</a>
-    <a href="/pt/micro-consulting/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Micro-Consultoria</a>
-    <a href="/" onClick="{{ closeMenu }}" style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
+    <a href="/pt/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Home</a>
+    <a href="/pt/business-advisory/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">Assessoria de Neg&oacute;cio</a>
+    <a href="/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:18px;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none">EN</a>
   </div>
-</sc-if>
+</div>
 
 <main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
 
@@ -336,9 +83,9 @@ body{margin:0;text-wrap:pretty}
         <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,5vw,52px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 24px">Ajudo fundadores a corrigir o lado operacional do seu neg&oacute;cio.</h1>
         <p style="font-size:18px;line-height:29px;color:var(--color-text);margin:0 0 20px">Mais capacidade. Custos mais baixos. Menos depend&ecirc;ncia do fundador.</p>
         <p style="font-size:14.5px;line-height:26px;color:color-mix(in srgb, var(--color-text) 75%, transparent);margin:0 0 32px">Seis anos como oficial dos Fuzileiros portugueses. Sete anos na Amazon em Opera&ccedil;&otilde;es, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Agora a aplicar essa disciplina operacional a neg&oacute;cios liderados por fundadores atrav&eacute;s da NabiaEdge.</p>
-        <a href="#contact" class="btn btn-primary" style="color:var(--color-bg)">Marcar Chamada Estrat&eacute;gica</a>
+        <a href="#contact" class="btn btn-primary" style="color:var(--color-bg)">Marcar chamada explorat&oacute;ria</a>
       </div>
-      <img src="../assets/images/Headshot_website.png" alt="Nuno Fontoura" style="width:100%;height:400px;object-fit:cover;object-position:top;border:1px solid var(--color-divider)">
+      <picture><source srcset="/assets/images/headshot.webp" type="image/webp"><img src="/assets/images/headshot.jpg" alt="Nuno Fontoura" width="800" height="1000" fetchpriority="high" style="width:100%;height:400px;object-fit:cover;object-position:top;border:1px solid var(--color-divider)"></picture>
     </div>
   </section>
 
@@ -397,7 +144,7 @@ body{margin:0;text-wrap:pretty}
     <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 32px">O que dizem, e onde j&aacute; sa&iacute;mos</h2>
 
     <a href="https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG?ocid=finance-verthp-feeds" target="_blank" rel="noopener" class="card" style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--color-divider);text-decoration:none;color:var(--color-text);margin-bottom:32px;max-width:640px">
-      <img src="../assets/images/msn-feature.jpg" alt="Destaque na MSN: Nuno Fontoura entre os Top 10 Homens Mais Inspiradores de 2026" style="width:140px;height:140px;object-fit:cover;border-radius:4px;flex-shrink:0">
+      <picture><source srcset="/assets/images/msn-feature.webp" type="image/webp"><img src="/assets/images/msn-feature-400.jpg" alt="Destaque na MSN: Nuno Fontoura entre os Top 10 Homens Mais Inspiradores de 2026" width="400" height="400" loading="lazy" style="width:140px;height:140px;object-fit:cover;border-radius:4px;flex-shrink:0"></picture>
       <div style="display:flex;flex-direction:column;gap:6px">
         <span style="font-family:var(--font-heading);font-weight:800;font-size:16px">Destaque na MSN</span>
         <span style="font-size:13px;color:var(--color-accent);font-weight:700">Ler o artigo &rarr;</span>
@@ -430,56 +177,77 @@ body{margin:0;text-wrap:pretty}
 <footer style="border-top:2px solid var(--color-divider);background:var(--color-bg)">
   <div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,72px) 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
     <div>
-      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contacto</h4>
-        <a href="mailto:info@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">info@nabiaedge.com</a>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contacto</h2>
+        <a class="hv1" href="mailto:info@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">info@nabiaedge.com</a>
     </div>
     <div>
-      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Redes</h4>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Redes</h2>
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
-        <a href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>LinkedIn</span></a>
-        <a href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="0"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></a>
+        <a class="hv1" href="https://www.linkedin.com/in/nfontoura" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>LinkedIn</span></a>
+        <a class="hv1" href="https://www.instagram.com/nuno.fontoura/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="0"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg><span>Instagram</span></a>
       </div>
     </div>
     <div>
-      <h4 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">P&aacute;ginas</h4>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">P&aacute;ginas</h2>
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px">
-        <a href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Home</a>
-        <a href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Assessoria de Neg&oacute;cio</a>
-        <a href="/pt/micro-consulting/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Micro-Consultoria</a>
-        <a href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px" style-hover="color:var(--color-accent)">Marcar chamada</a>
+        <a class="hv1" href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Home</a>
+        <a class="hv1" href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Assessoria de Neg&oacute;cio</a>
+        <a class="hv1" href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Marcar chamada</a>
       </div>
     </div>
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
-    <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">
-      <span>&copy; 2026 Nuno Fontoura. Assessoria de Neg&oacute;cio.</span>
-      <a href="/" style="color:color-mix(in srgb, var(--color-text) 60%, transparent);text-decoration:none;font-weight:700" style-hover="color:var(--color-accent)">English</a>
+    <div style="border-top:1px solid var(--color-divider);padding:28px 0;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:13px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">
+      <span>&copy; 2026 Nuno Fontoura &middot; NabiaEdge &middot; <a href="/pt/privacy/" style="color:inherit">Privacidade</a></span>
+      <a class="hv1" href="/" style="color:color-mix(in srgb, var(--color-text) 75%, transparent);text-decoration:none;font-weight:700">English</a>
     </div>
   </div>
 </footer>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  state = { mobileOpen: false };
-  toggleMenu = () => this.setState(s => ({ mobileOpen: !s.mobileOpen }));
-  closeMenu = () => this.setState({ mobileOpen: false });
-  renderVals() {
-    return {
-      mobileOpen: this.state.mobileOpen,
-      toggleMenu: this.toggleMenu,
-      closeMenu: this.closeMenu
-    };
-  }
-}
-
-</script>
-
 <script>
-  window.addEventListener('load', function() {
-    Calendly.initBadgeWidget({ url: 'https://calendly.com/nuno-nabiaedge/30min', text: 'Marcar chamada', color: '#1e3a8a', textColor: '#ffffff', branding: true });
+(function () {
+  var menu = document.querySelector('[data-mobile-menu]');
+  var toggles = document.querySelectorAll('[data-menu-toggle]');
+  if (!menu) return;
+  function set(open) {
+    menu.hidden = !open;
+    toggles.forEach(function (t) { t.setAttribute('aria-expanded', String(open)); });
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-menu-toggle]')) set(menu.hidden);
+    else if (e.target.closest('[data-menu-close]')) set(false);
   });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
+})();
 </script>
-
+<script>
+// Calendly loads only when the booking widget comes near the screen or the
+// visitor starts interacting, so it no longer slows down the first paint.
+(function () {
+  var loaded = false;
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = 'https://assets.calendly.com/assets/external/widget.js';
+    js.async = true;
+    js.onload = function () { if (window.Calendly) Calendly.initBadgeWidget({ url: 'https://calendly.com/nuno-nabiaedge/30min', text: 'Marcar chamada', color: '#1E3A8A', textColor: '#f3f2f2', branding: true }); };
+    document.head.appendChild(js);
+  }
+  var widget = document.querySelector('.calendly-inline-widget');
+  if (widget && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries, observer) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { observer.disconnect(); load(); }
+    }, { rootMargin: '600px' }).observe(widget);
+  }
+  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (type) {
+    window.addEventListener(type, load, { once: true, passive: true });
+  });
+})();
+</script>
 </body>
 </html>

@@ -85,3 +85,15 @@ See `DEPLOYMENT_GUIDE.md` for step-by-step instructions on deploying to GitHub +
 ---
 
 Built with care to convert serious founders into strategic partners.
+
+## Editing pages (September 2026)
+
+The pages in `publish/` are now plain static HTML: no React, no `support.js`. Edit them directly.
+
+If you export a page again from the design tool (a file containing `<x-dc>`), convert it before publishing:
+
+```bash
+python3 tools/dc-to-static.py publish/<page>/index.html
+```
+
+When you add or rename a page, also update `publish/sitemap.xml`, and give the page its own `<title>`, meta description, canonical link and share image (`publish/assets/og/`). Redirects for moved pages go in `publish/_redirects`.
