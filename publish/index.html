@@ -53,7 +53,13 @@ body{margin:0;text-wrap:pretty}
       <a href="/business-advisory/">Business Advisory</a>
       <a href="/free-resources/">Free Resources</a>
       <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener">Free VOS assessment</a>
-      <a href="/pt/" lang="pt">PT</a>
+      <details class="pm-lang">
+        <summary aria-label="Language: English"><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16"></summary>
+        <div class="pm-lang-menu">
+          <a href="/" aria-current="true"><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16">English</a>
+          <a href="/pt/" lang="pt" hreflang="pt"><img class="pm-flag" src="/assets/flags/pt.svg" alt="" width="24" height="16">Portugu&ecirc;s</a>
+        </div>
+      </details>
       <a href="/book/" class="btn btn-primary">Book a call</a>
     </div>
     <button type="button" class="pm-menu-btn" data-menu-toggle aria-expanded="false" aria-label="Open menu">
@@ -72,7 +78,10 @@ body{margin:0;text-wrap:pretty}
     <a href="/business-advisory/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Business Advisory</a>
     <a href="/free-resources/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Free Resources</a>
     <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;color:var(--color-accent)">Free VOS assessment</a>
-    <a href="/pt/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">PT</a>
+    <div class="pm-lang-mobile">
+      <a href="/" aria-current="true" data-menu-close><img class="pm-flag" src="/assets/flags/gb.svg" alt="" width="24" height="16">English</a>
+      <a href="/pt/" lang="pt" hreflang="pt"><img class="pm-flag" src="/assets/flags/pt.svg" alt="" width="24" height="16">Portugu&ecirc;s</a>
+    </div>
     <a href="/book/" class="btn btn-primary" data-menu-close style="margin-top:28px;justify-content:center;color:var(--color-bg)">Book a call</a>
   </div>
 </div>
@@ -276,6 +285,8 @@ body{margin:0;text-wrap:pretty}
     else if (e.target.closest('[data-menu-close]')) set(false);
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
+  var lang = document.querySelector('.pm-lang');
+  if (lang) document.addEventListener('click', function (e) { if (lang.open && !lang.contains(e.target)) lang.open = false; });
 })();
 </script>
 <a class="book-badge" href="/book/">Book a call</a>
