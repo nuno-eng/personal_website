@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.nunofontoura.com/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/business-advisory/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/business-advisory/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/business-advisory/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/business-advisory/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/business-advisory/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/business-advisory/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/business-advisory/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/business-advisory/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/micro-consulting/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/micro-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/micro-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/micro-consulting/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/micro-consulting/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/micro-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/micro-consulting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/micro-consulting/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/privacy/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/privacy/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/free-resources/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
