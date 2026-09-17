@@ -1,6 +1,6 @@
 # Discovery call booking (/book/)
 
-Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on the home, Business Advisory, Micro Consulting and Free Resources pages.
+Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on the home, Business Advisory and Free Resources pages.
 
 | Piece | Where |
 |---|---|
@@ -14,10 +14,11 @@ Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on th
 | Pages | `/book/`, `/pt/book/`, `/book/manage/`, `/pt/book/manage/`, `/book/approve/`, `/call-booked/`, `/pt/call-booked/` |
 
 ## Current rules
-- **Hours:** Monday to Friday, 09:00–13:00 and 13:30–18:30, Lisbon time. Visitors see times in their own time zone.
+- **Hours:** Monday to Friday, 09:00–18:30, Lisbon time. Visitors see times in their own time zone.
+- **Lunch:** a free hour always stays open somewhere between 12:30 and 14:00. A 12:30 call moves lunch to 13:00–14:00; a 13:30 call moves it to 12:30–13:30.
 - **Length:** 30-minute calls starting on the hour or half hour.
 - **Spacing:** 10 minutes free before each call and 15 minutes free after it, since calls tend to run over. The same gaps apply around your other calendar events.
-- **Booking window:** at least 12 hours' notice, up to 28 days ahead, at most 3 calls a day.
+- **Booking window:** at least 16 hours' notice, up to 28 days ahead, at most 3 calls a day.
 
 ## How visitors see times
 - **Week view:** one week at a time, with arrows to move between weeks.
