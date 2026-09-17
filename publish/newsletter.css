@@ -1,0 +1,40 @@
+/* Newsletter signup components. Built on the Modernist tokens in ds/styles.css. */
+
+.nl-form { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.nl-form[hidden] { display: none; }
+.nl-form .input { flex: 1 1 220px; min-height: 48px; font-size: 16px; padding: 10px 14px; }
+.nl-form .btn { min-height: 48px; padding: 0 24px; font-size: 15px; flex: 0 0 auto; }
+.nl-stack { flex-direction: column; }
+.nl-stack .input, .nl-stack .btn { flex: none; width: 100%; }
+
+/* Honeypot: off-screen for people, still filled in by naive bots. */
+.nl-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
+
+.nl-status { font-size: 14px; line-height: 22px; min-height: 22px; margin: 10px 0 0; }
+.nl-status[data-state="error"] { color: #b42318; font-weight: 600; }
+.nl-fine { font-size: 13px; line-height: 20px; margin: 4px 0 0; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
+
+.nl-success[hidden] { display: none; }
+.nl-success { border-left: 4px solid var(--color-accent); background: var(--color-surface); padding: 20px 22px; }
+.nl-success h3 { font-size: 20px; margin: 0 0 6px; }
+.nl-success p { font-size: 15px; margin: 0 0 12px; }
+.nl-link {
+  display: block; word-break: break-all; font-size: 14px; font-weight: 700;
+  padding: 10px 12px; margin: 0 0 12px;
+  background: var(--color-bg); border: 1px solid var(--color-divider);
+}
+.nl-share[hidden] { display: none; }
+.nl-share-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.nl-share-row .btn { min-height: 40px; }
+
+.nl-kicker {
+  display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-accent-700); margin: 0 0 14px;
+}
+
+/* Home page block: copy beside the form, stacked on narrow screens. */
+.nl-split {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px clamp(24px, 5vw, 96px); align-items: center; padding: 84px 0;
+}
+@media (max-width: 880px) { .nl-split { grid-template-columns: 1fr; padding: 64px 0; } }

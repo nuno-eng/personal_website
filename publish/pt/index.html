@@ -28,6 +28,8 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://www.nunofontoura.com/#nuno", "name": "Nuno Fontoura", "url": "https://www.nunofontoura.com/", "image": "https://www.nunofontoura.com/assets/images/headshot.jpg", "jobTitle": "Operations Advisor", "email": "mailto:info@nabiaedge.com", "worksFor": {"@id": "https://www.nunofontoura.com/#nabiaedge"}, "sameAs": ["https://www.linkedin.com/in/nfontoura", "https://www.instagram.com/nuno.fontoura/", "https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG"]}, {"@type": "ProfessionalService", "@id": "https://www.nunofontoura.com/#nabiaedge", "name": "NabiaEdge", "url": "https://www.nunofontoura.com/", "logo": "https://www.nunofontoura.com/icon-512.png", "image": "https://www.nunofontoura.com/assets/og/home.jpg", "email": "info@nabiaedge.com", "founder": {"@id": "https://www.nunofontoura.com/#nuno"}, "knowsLanguage": ["en", "pt"], "description": "I help founders of creative and production agencies build the operating system that runs the business without them. Ex-Marines officer, 7.5 years at Amazon."}, {"@type": "WebSite", "@id": "https://www.nunofontoura.com/#website", "url": "https://www.nunofontoura.com/", "name": "Nuno Fontoura", "inLanguage": ["en", "pt-PT"], "publisher": {"@id": "https://www.nunofontoura.com/#nuno"}}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
+<link rel="stylesheet" href="/newsletter.css">
+<script src="/newsletter.js" defer></script>
 
 <style>
 html{scroll-behavior:smooth}
@@ -167,6 +169,39 @@ body{margin:0;text-wrap:pretty}
     </div>
   </section>
 
+  <hr class="hr" style="height:2px;margin:0">
+
+  <section id="newsletter" class="nl-split" data-newsletter-root>
+    <div>
+      <span class="nl-kicker">Notas Operacionais &middot; Newsletter</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-0.015em;margin:0 0 16px"><span style="display:block">Ainda n&atilde;o &eacute; altura de uma chamada?</span><span style="display:block;color:var(--color-accent)">Receba as notas operacionais.</span></h2>
+      <p style="font-size:16px;line-height:27px;max-width:52ch;margin:0">Uma ideia operacional pr&aacute;tica por edi&ccedil;&atilde;o para fundadores que carregam demasiado. Sistemas que pode aplicar na mesma semana, com base nos Fuzileiros, na Amazon e nos neg&oacute;cios que acompanho.</p>
+    </div>
+    <div>
+      <form class="nl-form" data-newsletter data-lang="pt" novalidate>
+        <input class="input" type="text" name="name" placeholder="Primeiro nome (opcional)" aria-label="Primeiro nome (opcional)" autocomplete="given-name" maxlength="60">
+        <input class="input" type="email" name="email" placeholder="Endere&ccedil;o de email" aria-label="Endere&ccedil;o de email" autocomplete="email" required>
+        <div class="nl-hp" aria-hidden="true"><input type="text" name="company_website" tabindex="-1" autocomplete="off"></div>
+        <button class="btn btn-primary" type="submit" style="flex:1 1 100%">Subscrever</button>
+        <p class="nl-fine" style="flex:1 1 100%">Sem spam. Cancele a subscri&ccedil;&atilde;o com um clique.</p>
+      </form>
+      <p class="nl-status" data-newsletter-status role="status" aria-live="polite"></p>
+      <div class="nl-success" data-newsletter-success hidden>
+        <h3>Subscri&ccedil;&atilde;o feita.</h3>
+        <p>Verifique a sua caixa de entrada: o email de boas-vindas vai a caminho.</p>
+        <div data-newsletter-share>
+          <p>Conhece um fundador a quem isto seria &uacute;til? O seu link pessoal:</p>
+          <a class="nl-link" data-newsletter-link href="/pt/subscribe/"></a>
+          <div class="nl-share-row">
+            <button class="btn btn-primary" type="button" data-newsletter-copy>Copiar link</button>
+            <a class="btn btn-secondary" data-share="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-secondary" data-share="email" href="#">Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <section id="contact" style="background:var(--color-accent);color:var(--color-bg)">
@@ -196,6 +231,7 @@ body{margin:0;text-wrap:pretty}
         <a class="hv1" href="/pt/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Home</a>
         <a class="hv1" href="/pt/business-advisory/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Assessoria de Neg&oacute;cio</a>
         <a class="hv1" href="/pt/#contact" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Marcar chamada</a>
+        <a class="hv1" href="/pt/subscribe/" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Newsletter</a>
       </div>
     </div>
   </div>
