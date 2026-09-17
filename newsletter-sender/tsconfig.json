@@ -10,5 +10,5 @@
     "noEmit": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["emails", "scripts"]
+  "include": ["emails", "scripts", "transactional"]
 }

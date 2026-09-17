@@ -108,3 +108,19 @@ npx wrangler d1 execute newsletter-db --remote --command \
 
 - Newsletter issues are English only. The subscriber's language is stored in D1. To send Portuguese issues, create a second Resend segment and add PT subscribers to it.
 - The rate limit is per IP. Many signups from one office network or event Wi-Fi in the same hour will hit it (5 per hour). Raise `MAX_NEW_PER_IP_PER_HOUR` in `functions/api/subscribe.js` if that becomes a problem.
+
+## Automated email design
+All automated emails (welcome sequence, free resources, booking emails, alerts) are React Email templates in `newsletter-sender/transactional/`. `brand.tsx` holds the shared layout; `definitions.tsx` holds the copy. After editing, rebuild the HTML the site sends:
+
+```bash
+cd newsletter-sender && npm run build:emails
+```
+
+This writes `functions/_lib/generated/emails.js`. Commit it with your change.
+
+## Free resource PDFs
+The four PDFs are generated from `tools/pdf/content.mjs`, and every writing space is a fillable field. To change a PDF, edit the content and rebuild:
+
+```bash
+cd tools/pdf && npm install && npm run build
+```

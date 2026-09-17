@@ -14,6 +14,7 @@
 import { generateReferralCode } from '../_lib/referral.js';
 import { sendWelcomeSequence } from '../_lib/send-sequence.js';
 import { segmentId, sendEmail, upsertContact } from '../_lib/resend.js';
+import { ownerAlert } from '../_lib/emails.js';
 import { jsonResponse, normalizeLang, readJson, referralLink, sha256Hex, siteUrl } from '../_lib/http.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -148,17 +149,13 @@ async function generateUniqueCode(db) {
 }
 
 function notifyOwner(env, { email, name, lang, source, referredBy }) {
-  const lines = [
-    `Email: ${email}`,
-    `Name: ${name || '-'}`,
-    `Language: ${lang}`,
-    `Signed up on: ${source || '-'}`,
-    `Referred by code: ${referredBy || '-'}`,
-  ];
   return sendEmail(env, {
     to: env.NOTIFY_EMAIL,
-    subject: `New newsletter subscriber: ${email}`,
-    text: lines.join('\n'),
-    html: `<pre style="font:14px/1.6 monospace">${lines.map((l) => l.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))).join('\n')}</pre>`,
+    ...ownerAlert({
+      title: `New newsletter subscriber: ${email}`,
+      heading: 'New newsletter subscriber',
+      intro: `${name || email} just subscribed to Operating Notes.`,
+      rows: [['Email', email], ['Name', name || '-'], ['Language', lang], ['Signed up on', source || '-'], ['Referred by code', referredBy || '-']],
+    }),
   }).catch((err) => console.error('Owner notification error:', err));
 }
