@@ -30,3 +30,7 @@
 .cs-cta .btn-light { background: var(--color-bg); color: var(--color-accent); }
 .cs-cta .btn-outline { border: 1px solid var(--color-bg); color: var(--color-bg); }
 .cs-cta .btn { padding: 14px 22px; }
+
+/* Client logo on case study cards and pages */
+.cs-logo { display: block; height: 44px; width: auto; margin: 0 0 16px; }
+.cs-page .cs-logo { height: 64px; margin-bottom: 24px; }
