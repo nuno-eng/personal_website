@@ -2,8 +2,7 @@
 .booker { background: var(--color-bg); color: var(--color-text); border: 2px solid var(--color-divider); border-top: 6px solid var(--color-accent); padding: clamp(18px, 3vw, 32px); text-align: left; max-width: 760px; margin: 0 auto; }
 .booker h3 { font-size: 22px; margin: 0 0 4px; }
 .bk-sub { font-size: 14px; margin: 0 0 18px; color: color-mix(in srgb, var(--color-text) 72%, transparent); }
-.bk-days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin: 0 0 16px; scrollbar-width: thin; }
-.bk-day { flex: 0 0 auto; min-width: 72px; padding: 10px 8px; border: 1px solid var(--color-divider); background: var(--color-surface); cursor: pointer; font: inherit; text-align: center; color: inherit; }
+.bk-day { padding: 10px 4px; border: 1px solid var(--color-divider); background: var(--color-surface); cursor: pointer; font: inherit; text-align: center; color: inherit; }
 .bk-day b { display: block; font-family: var(--font-heading); font-weight: 800; font-size: 18px; }
 .bk-day span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
 .bk-day[aria-pressed="true"] { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg); }
@@ -28,3 +27,20 @@
 .bk-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 .book-badge { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 50; background: var(--color-accent); color: var(--color-bg); font-family: var(--font-heading); font-weight: 800; font-size: 14px; text-decoration: none; padding: 12px 18px; box-shadow: var(--shadow-md); }
 .book-badge:hover { background: var(--color-accent-700); color: var(--color-bg); }
+
+.bk-weeknav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 10px; }
+.bk-weeklabel { font-family: var(--font-heading); font-weight: 800; font-size: 16px; }
+.bk-arrow { width: 40px; height: 40px; border: 1px solid var(--color-divider); background: var(--color-surface); font-size: 24px; line-height: 1; cursor: pointer; color: var(--color-text); }
+.bk-arrow:disabled { opacity: 0.35; cursor: default; }
+.bk-week { display: grid; gap: 6px; margin: 0 0 16px; }
+.bk-day:disabled { opacity: 0.4; cursor: default; background: transparent; }
+.bk-more { margin: 12px 0 0; font-size: 14px; }
+.bk-more[hidden] { display: none; }
+.bk-suggest-row { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid var(--color-divider); font-size: 14.5px; }
+.bk-option .input { min-height: 44px; }
+.bk-approve { display: grid; gap: 10px; margin: 16px 0; }
+.bk-approve .bk-chosen { margin: 0; align-items: center; }
+.bk-approve .btn { margin-left: auto; min-height: 42px; padding: 0 18px; }
+.bk-preferred { outline: 2px solid var(--color-accent); }
+.bk-flag { font-size: 13px; font-weight: 700; color: #b42318; }
+.bk-ok { font-size: 13px; font-weight: 700; color: #1d6b3a; }

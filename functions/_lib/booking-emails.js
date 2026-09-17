@@ -116,3 +116,46 @@ export function renderOwnerAlert(kind, { booking, manageLink }) {
     html: `<pre style="font:14px/1.6 monospace;white-space:pre-wrap">${escapeHtml(lines.join('\n'))}</pre>`,
   };
 }
+
+// Acknowledgement to a visitor who suggested times.
+export function renderRequestAck(req) {
+  const lang = req.lang === 'pt' ? 'pt' : 'en';
+  const first = req.name.split(' ')[0];
+  const times = req.options.map((o) => formatWhen(new Date(o), req.tz, lang).full);
+  const c = lang === 'pt'
+    ? { subject: 'Recebi as suas sugestões de horário', preview: 'Confirmo uma hora em breve.', hi: `Olá ${first},`, lead: 'Obrigado. Recebi as horas que sugeriu para a chamada exploratória:', next: 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.', footer: 'Recebe este email porque sugeriu uma hora para uma chamada em nunofontoura.com.' }
+    : { subject: 'I got your suggested times', preview: 'I’ll confirm a time shortly.', hi: `Hi ${first},`, lead: 'Thanks. I’ve received the times you suggested for a discovery call:', next: 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.', footer: 'You are receiving this because you suggested a call time at nunofontoura.com.' };
+  const list = `<ul style="font-family:Arial,sans-serif;font-size:16px;line-height:26px;color:#201e1d;margin:0 0 18px;padding-left:20px;">${times.map((t) => `<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
+  return {
+    subject: c.subject,
+    text: [c.hi, c.lead, ...times.map((t) => `- ${t}`), c.next, 'Nuno', '---', c.footer].join('\n\n'),
+    html: wrap({ lang, subject: c.subject, preview: c.preview, bodyHtml: [paragraph(escapeHtml(c.hi)), paragraph(escapeHtml(c.lead)), list, paragraph(escapeHtml(c.next)), paragraph('Nuno')].join('\n'), footerHtml: escapeHtml(c.footer) }),
+  };
+}
+
+// Alert to Nuno with one "Book this time" link per suggestion. Replying goes to the visitor.
+export function renderRequestAlert(req, { approveLink }) {
+  const L = LABELS.en;
+  const lisbon = req.options.map((o) => formatWhen(new Date(o), 'Europe/Lisbon', 'en'));
+  const theirs = req.options.map((o) => formatWhen(new Date(o), req.tz, 'en'));
+  const subject = `Time request: ${req.name}, ${req.agency}`;
+  const details = [
+    `Name: ${req.name}`, `Email: ${req.email}`, `Agency: ${req.agency}`, `Website: ${req.website || '-'}`,
+    `Type: ${L.agencyType[req.agency_type] || '-'}`, `Team size: ${L.teamSize[req.team_size] || '-'}`, `Urgency: ${L.urgency[req.urgency] || '-'}`,
+    `Heard from: ${L.heardFrom[req.heard_from] || '-'}`, `Language: ${req.lang} · Their time zone: ${req.tz}`, '', 'Problem to fix:', req.problem,
+    ...(req.note ? ['', 'Note:', req.note] : []),
+  ];
+  const optionsHtml = lisbon.map((w, i) => `${paragraph(`<strong>${escapeHtml(w.full)}</strong>${req.tz !== 'Europe/Lisbon' ? `<br><span style="color:#7d7979;font-size:14px;">Their time: ${escapeHtml(theirs[i].full)}</span>` : ''}`)}${button('Book this time', approveLink(i))}`).join('\n');
+  const body = [
+    paragraph(`<strong>${escapeHtml(req.name)}</strong> couldn&rsquo;t find a slot and suggested these times. Click one to book it: the calendar event, Meet link and confirmation go out automatically.`),
+    optionsHtml,
+    paragraph('None work? Reply to this email to write to them directly.'),
+    `<pre style="font:14px/1.6 monospace;white-space:pre-wrap;background:#f3f2f2;padding:12px;">${escapeHtml(details.join('\n'))}</pre>`,
+  ].join('\n');
+  return {
+    subject,
+    replyTo: req.email,
+    text: [`${req.name} suggested these times (Lisbon):`, ...lisbon.map((w, i) => `- ${w.full}: ${approveLink(i)}`), '', ...details].join('\n'),
+    html: wrap({ lang: 'en', subject, preview: `${req.options.length} suggested time(s)`, bodyHtml: body, footerHtml: 'Sent by the booking tool on nunofontoura.com.' }),
+  };
+}
