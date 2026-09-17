@@ -30,8 +30,8 @@ function candidateSlots(now) {
 export async function availableSlots(env, { now = new Date(), ignoreBookingId = null } = {}) {
   const candidates = candidateSlots(now);
   if (!candidates.length) return [];
-  const from = new Date(candidates[0].start.getTime() - BOOKING.bufferMin * MIN);
-  const to = new Date(candidates.at(-1).end.getTime() + BOOKING.bufferMin * MIN);
+  const from = new Date(candidates[0].start.getTime() - BOOKING.bufferAfterMin * MIN);
+  const to = new Date(candidates.at(-1).end.getTime() + BOOKING.bufferAfterMin * MIN);
 
   let busy = await busyIntervals(env, from, to);
   const { results: booked } = await env.DB
@@ -48,13 +48,16 @@ export async function availableSlots(env, { now = new Date(), ignoreBookingId = 
     const key = zonedDate(new Date(b.start_utc), BOOKING.timeZone).dateKey;
     perDay[key] = (perDay[key] || 0) + 1;
     // our own bookings count as busy even before Google Calendar reflects them
-    busy.push({ start: new Date(b.start_utc), end: new Date(b.end_utc) });
+    busy.push({ start: new Date(b.start_utc), end: new Date(b.end_utc), call: true });
   }
 
-  const buffer = BOOKING.bufferMin * MIN;
+  const before = BOOKING.bufferBeforeMin * MIN;
+  const after = BOOKING.bufferAfterMin * MIN;
   return candidates
     .filter((s) => (perDay[s.dateKey] || 0) < BOOKING.maxPerDay)
-    .filter((s) => !busy.some((b) => s.start.getTime() - buffer < b.end.getTime() && s.end.getTime() + buffer > b.start.getTime()))
+    // the slot needs `after` free before the next busy block, and `before` free after the
+    // previous one (or `after`, when the previous block is another discovery call)
+    .filter((s) => !busy.some((b) => s.start.getTime() - (b.call ? Math.max(before, after) : before) < b.end.getTime() && s.end.getTime() + after > b.start.getTime()))
     .filter((s) => leavesLunch(s, busy))
     .map((s) => s.start);
 }

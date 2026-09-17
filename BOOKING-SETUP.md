@@ -15,7 +15,7 @@ Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on th
 ## Current rules
 - **Hours:** Monday to Friday, 09:00–13:00 and 13:30–18:30, Lisbon time. Visitors see times in their own time zone.
 - **Length:** 30-minute calls starting on the hour or half hour.
-- **Spacing:** 10 minutes kept free around every busy block in your calendar.
+- **Spacing:** 10 minutes free before each call and 15 minutes free after it, since calls tend to run over. The same gaps apply around your other calendar events.
 - **Booking window:** at least 12 hours' notice, up to 28 days ahead, at most 3 calls a day.
 
 ## What happens on a booking
