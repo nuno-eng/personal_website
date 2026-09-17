@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   name TEXT NOT NULL,
   email TEXT NOT NULL,
   agency TEXT NOT NULL,
+  website TEXT,
   agency_type TEXT,
   team_size TEXT,
   problem TEXT,

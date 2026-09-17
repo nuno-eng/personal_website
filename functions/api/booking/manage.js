@@ -27,7 +27,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const pt = booking.lang === 'pt';
   if (booking.status !== 'confirmed') return jsonResponse({ error: pt ? 'Esta chamada já foi cancelada.' : 'This call has already been cancelled.' }, 409);
   if (new Date(booking.start_utc) < new Date()) return jsonResponse({ error: pt ? 'Esta chamada já passou.' : 'This call has already taken place.' }, 409);
-  if (!calendarConfigured(env)) return jsonResponse({ error: 'Temporarily unavailable. Email info@nabiaedge.com.' }, 503);
+  if (!calendarConfigured(env)) return jsonResponse({ error: 'Temporarily unavailable. Email support@nabiaedge.com.' }, 503);
   const base = siteUrl(env, request);
   const now = new Date().toISOString();
 
@@ -57,7 +57,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     } catch (err) {
       console.error('Move event failed:', err);
       await env.DB.prepare('UPDATE bookings SET start_utc = ?, end_utc = ?, updated_at = ? WHERE id = ?').bind(booking.start_utc, booking.end_utc, now, booking.id).run();
-      return jsonResponse({ error: 'Temporarily unavailable. Email info@nabiaedge.com.' }, 502);
+      return jsonResponse({ error: 'Temporarily unavailable. Email support@nabiaedge.com.' }, 502);
     }
     await cancelBookingEmails(env, booking);
     const moved = { ...booking, start_utc: start.toISOString(), end_utc: end.toISOString() };

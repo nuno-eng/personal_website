@@ -55,7 +55,28 @@ export async function availableSlots(env, { now = new Date(), ignoreBookingId = 
   return candidates
     .filter((s) => (perDay[s.dateKey] || 0) < BOOKING.maxPerDay)
     .filter((s) => !busy.some((b) => s.start.getTime() - buffer < b.end.getTime() && s.end.getTime() + buffer > b.start.getTime()))
+    .filter((s) => leavesLunch(s, busy))
     .map((s) => s.start);
+}
+
+// True if, with this slot booked, a free block of BOOKING.lunch.minutes still
+// fits inside that day's lunch window.
+function leavesLunch(slot, busy) {
+  const { window: [from, to], minutes } = BOOKING.lunch;
+  const d = zonedDate(slot.start, BOOKING.timeZone);
+  const at = (hhmm) => { const [h, m] = hhmm.split(':').map(Number); return zonedToUtc(d.year, d.month, d.day, h, m, BOOKING.timeZone).getTime(); };
+  const winStart = at(from), winEnd = at(to);
+  if (slot.end.getTime() <= winStart || slot.start.getTime() >= winEnd) return true;
+  const blocks = [...busy, slot]
+    .map((b) => [Math.max(b.start.getTime(), winStart), Math.min(b.end.getTime(), winEnd)])
+    .filter(([a, b]) => a < b)
+    .sort((x, y) => x[0] - y[0]);
+  let cursor = winStart;
+  for (const [a, b] of blocks) {
+    if (a - cursor >= minutes * MIN) return true;
+    cursor = Math.max(cursor, b);
+  }
+  return winEnd - cursor >= minutes * MIN;
 }
 
 export async function isSlotAvailable(env, start, opts) {

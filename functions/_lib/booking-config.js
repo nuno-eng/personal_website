@@ -4,17 +4,20 @@ export const BOOKING = {
   durationMin: 30,
   stepMin: 30,
   bufferMin: 10, // kept free before and after every busy block
-  minNoticeHours: 12,
+  minNoticeHours: 16,
   maxPerDay: 3,
   daysAhead: 28, // Resend can schedule emails up to 30 days out; the follow-up is sent a day after the call
   // ISO weekday (1 = Monday) -> open windows
   hours: {
-    1: [['09:00', '13:00'], ['13:30', '18:30']],
-    2: [['09:00', '13:00'], ['13:30', '18:30']],
-    3: [['09:00', '13:00'], ['13:30', '18:30']],
-    4: [['09:00', '13:00'], ['13:30', '18:30']],
-    5: [['09:00', '13:00'], ['13:30', '18:30']],
+    1: [['09:00', '18:30']],
+    2: [['09:00', '18:30']],
+    3: [['09:00', '18:30']],
+    4: [['09:00', '18:30']],
+    5: [['09:00', '18:30']],
   },
+  // A free hour for lunch must remain somewhere inside this window every day.
+  // A 12:30 call moves lunch to 13:00-14:00; a 13:30 call moves it to 12:30-13:30.
+  lunch: { window: ['12:30', '14:00'], minutes: 60 },
 };
 
 export const CHOICES = {

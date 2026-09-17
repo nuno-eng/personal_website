@@ -1,5 +1,5 @@
 // POST /api/booking  -> creates a discovery call
-// Body: { start, name, email, agency, agencyType, teamSize, problem, urgency, heardFrom?, lang, tz, source, honeypot }
+// Body: { start, name, email, agency, website?, agencyType, teamSize, problem, urgency, heardFrom?, lang, tz, source, honeypot }
 import { BOOKING, CHOICES, LABELS } from '../../_lib/booking-config.js';
 import { isSlotAvailable } from '../../_lib/availability.js';
 import { calendarConfigured, createEvent } from '../../_lib/google-calendar.js';
@@ -9,8 +9,8 @@ import { jsonResponse, normalizeLang, readJson, sha256Hex, siteUrl } from '../..
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const ERR = {
-  en: { fields: 'Please fill in all required fields.', email: 'Enter a valid email address.', taken: 'That time was just taken. Please pick another.', unavailable: 'Booking is temporarily unavailable. Email info@nabiaedge.com and I will find a time.', rate: 'Too many bookings from this connection. Try again later.' },
-  pt: { fields: 'Preencha todos os campos obrigatórios.', email: 'Introduza um email válido.', taken: 'Essa hora acabou de ser marcada. Escolha outra, por favor.', unavailable: 'As marcações estão temporariamente indisponíveis. Escreva para info@nabiaedge.com e encontramos uma hora.', rate: 'Demasiadas marcações a partir desta ligação. Tente mais tarde.' },
+  en: { fields: 'Please fill in all required fields.', email: 'Enter a valid email address.', taken: 'That time was just taken. Please pick another.', unavailable: 'Booking is temporarily unavailable. Email support@nabiaedge.com and I will find a time.', rate: 'Too many bookings from this connection. Try again later.' },
+  pt: { fields: 'Preencha todos os campos obrigatórios.', email: 'Introduza um email válido.', taken: 'Essa hora acabou de ser marcada. Escolha outra, por favor.', unavailable: 'As marcações estão temporariamente indisponíveis. Escreva para support@nabiaedge.com e encontramos uma hora.', rate: 'Demasiadas marcações a partir desta ligação. Tente mais tarde.' },
 };
 
 const clean = (v, max) => String(v ?? '').trim().slice(0, max);
@@ -26,6 +26,7 @@ export async function onRequestPost(context) {
     name: clean(body.name, 100),
     email: clean(body.email, 254).toLowerCase(),
     agency: clean(body.agency, 200),
+    website: clean(body.website, 200) || null,
     agency_type: clean(body.agencyType, 30),
     team_size: clean(body.teamSize, 10),
     problem: clean(body.problem, 2000),
@@ -68,9 +69,9 @@ export async function onRequestPost(context) {
   // Reserve the slot first: the partial unique index rejects a double booking.
   try {
     await db.prepare(
-      `INSERT INTO bookings (id, status, start_utc, end_utc, name, email, agency, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, ip_hash, created_at, updated_at)
-       VALUES (?, 'confirmed', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(b.id, b.start_utc, b.end_utc, b.name, b.email, b.agency, b.agency_type, b.team_size, b.problem, b.urgency, b.heard_from, b.lang, b.tz, b.source, ipHash, now, now).run();
+      `INSERT INTO bookings (id, status, start_utc, end_utc, name, email, agency, website, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, ip_hash, created_at, updated_at)
+       VALUES (?, 'confirmed', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(b.id, b.start_utc, b.end_utc, b.name, b.email, b.agency, b.website, b.agency_type, b.team_size, b.problem, b.urgency, b.heard_from, b.lang, b.tz, b.source, ipHash, now, now).run();
   } catch (err) {
     console.error('Slot reservation failed:', err);
     return jsonResponse({ error: e.taken }, 409);
@@ -84,7 +85,7 @@ export async function onRequestPost(context) {
       summary: `Discovery call: ${b.name} (${b.agency})`,
       attendee: { email: b.email, displayName: b.name },
       description: [
-        `Agency: ${b.agency}`, `Type: ${L.agencyType[b.agency_type]}`, `Team size: ${L.teamSize[b.team_size]}`,
+        `Agency: ${b.agency}`, `Website: ${b.website || '-'}`, `Type: ${L.agencyType[b.agency_type]}`, `Team size: ${L.teamSize[b.team_size]}`,
         `Urgency: ${L.urgency[b.urgency]}`, `Heard from: ${b.heard_from ? L.heardFrom[b.heard_from] : '-'}`, '',
         'Problem to fix:', b.problem, '', `Reschedule or cancel: ${await manageLink(env, base, b)}`,
       ].join('\n'),

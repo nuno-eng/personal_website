@@ -96,6 +96,7 @@ export function renderOwnerAlert(kind, { booking, manageLink }) {
     `Name: ${booking.name}`,
     `Email: ${booking.email}`,
     `Agency: ${booking.agency}`,
+    `Website: ${booking.website || '-'}`,
     `Type: ${L.agencyType[booking.agency_type] || '-'}`,
     `Team size: ${L.teamSize[booking.team_size] || '-'}`,
     `Urgency: ${L.urgency[booking.urgency] || '-'}`,

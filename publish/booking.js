@@ -5,8 +5,8 @@
   var S = {
     en: {
       title: 'Book a 30-minute discovery call', sub: 'Pick a time. Shown in your time zone: ', loading: 'Loading available times…',
-      none: 'No times are available in the next four weeks. Email info@nabiaedge.com and I’ll find one.', loadError: 'Could not load available times. Refresh the page or email info@nabiaedge.com.',
-      change: 'Change time', name: 'Your name', email: 'Email', agency: 'Agency name and website', agencyType: 'What kind of agency is it?', teamSize: 'How many people work in the business?',
+      none: 'No times are available in the next four weeks. Email support@nabiaedge.com and I’ll find one.', loadError: 'Could not load available times. Refresh the page or email support@nabiaedge.com.',
+      change: 'Change time', name: 'Your name', email: 'Email', agency: 'Agency name', website: 'Website (optional)', agencyType: 'What kind of agency is it?', teamSize: 'How many people work in the business?',
       problem: 'What’s the one operational problem you most want to fix?', urgency: 'How soon do you want to fix it?', heardFrom: 'How did you hear about me? (optional)', choose: 'Choose…',
       confirm: 'Confirm booking', sending: 'Booking…', required: 'Please fill in all required fields.', network: 'Network error. Try again.',
       privacy: 'Your answers are only used to prepare for the call. <a href="/privacy/">Privacy policy</a>.',
@@ -21,8 +21,8 @@
     },
     pt: {
       title: 'Marcar uma chamada exploratória de 30 minutos', sub: 'Escolha uma hora. No seu fuso horário: ', loading: 'A carregar horas disponíveis…',
-      none: 'Não há horas disponíveis nas próximas quatro semanas. Escreva para info@nabiaedge.com e encontro uma.', loadError: 'Não foi possível carregar as horas. Atualize a página ou escreva para info@nabiaedge.com.',
-      change: 'Mudar hora', name: 'O seu nome', email: 'Email', agency: 'Nome e website da agência', agencyType: 'Que tipo de agência é?', teamSize: 'Quantas pessoas trabalham no negócio?',
+      none: 'Não há horas disponíveis nas próximas quatro semanas. Escreva para support@nabiaedge.com e encontro uma.', loadError: 'Não foi possível carregar as horas. Atualize a página ou escreva para support@nabiaedge.com.',
+      change: 'Mudar hora', name: 'O seu nome', email: 'Email', agency: 'Nome da agência', website: 'Website (opcional)', agencyType: 'Que tipo de agência é?', teamSize: 'Quantas pessoas trabalham no negócio?',
       problem: 'Qual é o problema operacional que mais quer resolver?', urgency: 'Quando quer resolvê-lo?', heardFrom: 'Como me conheceu? (opcional)', choose: 'Escolha…',
       confirm: 'Confirmar marcação', sending: 'A marcar…', required: 'Preencha todos os campos obrigatórios.', network: 'Erro de rede. Tente novamente.',
       privacy: 'As suas respostas só são usadas para preparar a chamada. <a href="/pt/privacy/">Política de privacidade</a>.',
@@ -118,7 +118,8 @@
     var form = el('form', { class: 'bk-form', novalidate: '' },
       '<div class="bk-row"><label><span>' + esc(t.name) + ' *</span><input class="input" id="' + id + '-name" name="name" autocomplete="name" required maxlength="100"></label>' +
       '<label><span>' + esc(t.email) + ' *</span><input class="input" id="' + id + '-email" name="email" type="email" autocomplete="email" required></label></div>' +
-      '<label><span>' + esc(t.agency) + ' *</span><input class="input" id="' + id + '-agency" name="agency" required maxlength="200"></label>' +
+      '<div class="bk-row"><label><span>' + esc(t.agency) + ' *</span><input class="input" id="' + id + '-agency" name="agency" autocomplete="organization" required maxlength="200"></label>' +
+      '<label><span>' + esc(t.website) + '</span><input class="input" id="' + id + '-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="agency.com" maxlength="200"></label></div>' +
       '<div class="bk-row"><label><span>' + esc(t.agencyType) + ' *</span><select class="input" id="' + id + '-type" name="agencyType" required>' + options(t.agencyTypes, t) + '</select></label>' +
       '<label><span>' + esc(t.teamSize) + ' *</span><select class="input" id="' + id + '-size" name="teamSize" required>' + options(t.teamSizes, t) + '</select></label></div>' +
       '<label><span>' + esc(t.problem) + ' *</span><textarea class="input" id="' + id + '-problem" name="problem" required maxlength="2000"></textarea></label>' +
@@ -137,7 +138,7 @@
       btn.disabled = true; msg.removeAttribute('data-state'); msg.textContent = t.sending;
       var f = form.elements;
       api('POST', '/api/booking', {
-        start: start.toISOString(), name: f.name.value, email: f.email.value, agency: f.agency.value, agencyType: f.agencyType.value,
+        start: start.toISOString(), name: f.name.value, email: f.email.value, agency: f.agency.value, website: f.website.value, agencyType: f.agencyType.value,
         teamSize: f.teamSize.value, problem: f.problem.value, urgency: f.urgency.value, heardFrom: f.heardFrom.value,
         honeypot: f.company_website.value, lang: lang, tz: tz, source: location.pathname,
       }).then(function (res) {
