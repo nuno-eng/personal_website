@@ -10,13 +10,19 @@ Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on th
 | API | `functions/api/booking/` (`slots`, `index` = create, `manage` = reschedule/cancel) |
 | Emails (confirmation, reminders, follow-up, reschedule, cancel, owner alert) | `functions/_lib/booking-emails.js` |
 | Widget | `publish/booking.js`, `publish/booking.css` |
-| Pages | `/book/`, `/pt/book/`, `/book/manage/`, `/pt/book/manage/`, `/call-booked/`, `/pt/call-booked/` |
+| Suggested times | `functions/api/booking/request.js`, approve page `/book/approve/` |
+| Pages | `/book/`, `/pt/book/`, `/book/manage/`, `/pt/book/manage/`, `/book/approve/`, `/call-booked/`, `/pt/call-booked/` |
 
 ## Current rules
 - **Hours:** Monday to Friday, 09:00–13:00 and 13:30–18:30, Lisbon time. Visitors see times in their own time zone.
 - **Length:** 30-minute calls starting on the hour or half hour.
 - **Spacing:** 10 minutes free before each call and 15 minutes free after it, since calls tend to run over. The same gaps apply around your other calendar events.
 - **Booking window:** at least 12 hours' notice, up to 28 days ahead, at most 3 calls a day.
+
+## How visitors see times
+- **Week view:** one week at a time, with arrows to move between weeks.
+- **Free days:** if a day has more than 8 open times, only the on-the-hour times show at first. **Show all times** reveals the rest.
+- **Suggest a time:** below the times, **None of these work? Suggest a time** opens a form. The visitor answers the same questions and proposes up to three times (up to 90 days ahead). They get an acknowledgement email. You get an alert with a **Book this time** button per suggestion, which opens `/book/approve/` and shows whether each time clashes with your calendar. Booking from there works like a normal booking (event, Meet link, confirmation, reminders) and ignores the usual hours, so you can accept an evening call. Replying to the alert emails the visitor.
 
 ## What happens on a booking
 1. **Slot check:** the slot is checked again against your Google Calendar and existing bookings, then saved in D1.

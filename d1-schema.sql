@@ -65,3 +65,29 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_bookings_confirmed_slot ON bookings(start_utc) WHERE status = 'confirmed';
 CREATE INDEX IF NOT EXISTS idx_bookings_ip_created ON bookings(ip_hash, created_at);
+
+-- Times suggested by visitors when no slot works (/book/ "Suggest a time").
+CREATE TABLE IF NOT EXISTS booking_requests (
+  id TEXT PRIMARY KEY,
+  status TEXT NOT NULL,            -- pending | accepting | accepted
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  agency TEXT NOT NULL,
+  website TEXT,
+  agency_type TEXT,
+  team_size TEXT,
+  problem TEXT,
+  urgency TEXT,
+  heard_from TEXT,
+  lang TEXT NOT NULL DEFAULT 'en',
+  tz TEXT,
+  source TEXT,
+  options TEXT NOT NULL,           -- JSON array of ISO start times
+  note TEXT,
+  accepted_option INTEGER,
+  booking_id TEXT,
+  ip_hash TEXT,
+  created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_booking_requests_ip_created ON booking_requests(ip_hash, created_at);

@@ -72,7 +72,7 @@ export async function unsubscribeContact(env, email) {
 }
 
 // Sends (or schedules, with scheduledAt) one email. Returns the Resend id or null.
-export async function sendEmail(env, { to, subject, html, text, scheduledAt, headers, idempotencyKey }) {
+export async function sendEmail(env, { to, subject, html, text, scheduledAt, headers, idempotencyKey, replyTo }) {
   const res = await call(env, '/emails', {
     method: 'POST',
     headers: idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {},
@@ -82,7 +82,7 @@ export async function sendEmail(env, { to, subject, html, text, scheduledAt, hea
       subject,
       html,
       text,
-      reply_to: env.RESEND_REPLY_TO || undefined,
+      reply_to: replyTo || env.RESEND_REPLY_TO || undefined,
       scheduled_at: scheduledAt,
       headers,
     },
