@@ -132,3 +132,11 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 
 .pm .book-badge { border-radius: 999px; background: var(--color-accent); font-weight: 600; }
 .pm .book-badge:hover { background: var(--color-accent-2); }
+
+/* refinements */
+.pm-split.pm-even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.pm-portrait img { max-width: 440px; filter: grayscale(1) contrast(1.05); }
+.pm .booker .bk-day, .pm .booker .bk-time, .pm .booker .bk-arrow, .pm .booker .bk-chosen { border-radius: 10px; }
+.pm .booker .input { border-radius: 10px; padding: 9px 14px; }
+.pm .booker .btn { border-radius: 999px; }
+@media (max-width: 880px) { .pm-split.pm-even { grid-template-columns: 1fr; } }
