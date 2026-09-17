@@ -229,3 +229,4 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm-home .pm-case h3 { font-weight: 300 !important; letter-spacing: -0.035em !important; }
 /* legacy uppercase kickers → premium kicker */
 .pm-main span[style*="text-transform:uppercase"], .pm-main .nl-kicker { text-transform: none !important; letter-spacing: 0 !important; font-size: 15px !important; font-weight: 600 !important; color: var(--color-accent-2) !important; }
+.pm-main .btn { border-radius: 999px !important; }
