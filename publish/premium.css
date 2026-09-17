@@ -250,3 +250,8 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
   .pm-hero-dark .pm-hero-bg { width: 100%; }
   .pm-hero-dark::before { background: linear-gradient(180deg, rgba(15,29,61,0.55) 0%, rgba(15,29,61,0.85) 45%, #0F1D3D 80%); }
 }
+
+/* booking sections: heading centred over the calendar */
+.pm .booking-section { text-align: center; }
+.pm .booking-section > h2, .pm .booking-section > p { margin-left: auto !important; margin-right: auto !important; max-width: 760px; }
+.pm .booking-section .booker { text-align: left; }
