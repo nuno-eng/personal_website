@@ -88,7 +88,8 @@ add('resource-en', 'Your copy: {{resourceTitle}}',
   <Layout lang="en" eyebrow="Free resource" preview="{{preview}}" footer={<>You are receiving this because you requested a free resource at nunofontoura.com. This is a one-off email.</>}>
     <H>{'{{resourceTitle}}'}</H>
     <P>Hi,</P>
-    <P>Here is your copy, as requested. It&apos;s a fillable PDF: type straight into it on screen, save it, and share it with your team.</P>
+    <P>Here is your copy, as requested. It&apos;s a fillable PDF: type straight into the grey fields, save it, and share it with your team.</P>
+    <P>To fill it in, open it in Chrome, Edge, Adobe Acrobat Reader or Preview on a Mac. Email and phone previews usually show it as read-only.</P>
     <Cta href="{{downloadUrl}}">{'{{downloadLabel}}'}</Cta>
     <Details rows={[['How to use it', '{{howTo}}']]} />
     <P>{'{{next}}'}</P>

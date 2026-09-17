@@ -124,3 +124,5 @@ The four PDFs are generated from `tools/pdf/content.mjs`, and every writing spac
 ```bash
 cd tools/pdf && npm install && npm run build
 ```
+
+Then bump the `?v=` value in `functions/_lib/resources.js` and in the PDF links on `/free-resources/` and `/vessel-operating-system/`. Cloudflare lets browsers cache PDFs for 4 hours, so without a new version number people keep seeing the old file.
