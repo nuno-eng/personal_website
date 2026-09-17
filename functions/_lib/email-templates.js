@@ -27,7 +27,7 @@ const COPY = {
       subject: `You're in: ${NEWSLETTER_NAME.en}`,
       preview: 'What to expect, and one question for you.',
       blocks: [
-        `Thanks for subscribing to ${NEWSLETTER_NAME.en}. Every issue is one operational idea for founder-led businesses: how work gets done, who owns what, and how to stop being the bottleneck. Drawn from six years in the Portuguese Marines, seven and a half at Amazon, and the founders I work with now.`,
+        `Thanks for subscribing to ${NEWSLETTER_NAME.en}. Every two weeks you get one operational idea for founder-led agencies: how work gets done, who owns what, and how to stop being the bottleneck. Drawn from six years in the Portuguese Marines, seven and a half at Amazon, and the founders I work with now.`,
         "No motivation, no filler. If an issue doesn't change what you do on Monday, I haven't done my job.",
         'One question to start: what is the operational problem taking most of your time right now? Hit reply and tell me. I read every answer, and the most common ones become future issues.',
         'If someone you know is carrying their whole business on their back, send them your personal link:',
@@ -64,7 +64,7 @@ const COPY = {
       subject: `Bem-vindo às ${NEWSLETTER_NAME.pt}`,
       preview: 'O que esperar, e uma pergunta para si.',
       blocks: [
-        `Obrigado por subscrever as ${NEWSLETTER_NAME.pt}. Cada edição traz uma ideia operacional para negócios liderados por fundadores: como o trabalho se faz, quem é responsável pelo quê, e como deixar de ser o gargalo. Com base em seis anos nos Fuzileiros, sete anos e meio na Amazon, e nos fundadores com quem trabalho hoje.`,
+        `Obrigado por subscrever as ${NEWSLETTER_NAME.pt}. De duas em duas semanas recebe uma ideia operacional para agências lideradas por fundadores: como o trabalho se faz, quem é responsável pelo quê, e como deixar de ser o gargalo. Com base em seis anos nos Fuzileiros, sete anos e meio na Amazon, e nos fundadores com quem trabalho hoje.`,
         'Sem motivação vazia, sem enchimento. Se uma edição não mudar o que faz na segunda-feira, não fiz o meu trabalho.',
         'Uma pergunta para começar: qual é o problema operacional que mais tempo lhe ocupa neste momento? Responda a este email e diga-me. Leio todas as respostas, e as mais comuns tornam-se futuras edições.',
         'Se conhece alguém que carrega o negócio inteiro às costas, envie-lhe o seu link pessoal:',
