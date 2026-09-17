@@ -3,7 +3,8 @@ export const BOOKING = {
   timeZone: 'Europe/Lisbon',
   durationMin: 30,
   stepMin: 30,
-  bufferMin: 10, // kept free before and after every busy block
+  bufferBeforeMin: 10, // free time before a discovery call
+  bufferAfterMin: 15, // free time after a discovery call, because calls tend to run over
   minNoticeHours: 16,
   maxPerDay: 3,
   daysAhead: 28, // Resend can schedule emails up to 30 days out; the follow-up is sent a day after the call
