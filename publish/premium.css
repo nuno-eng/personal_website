@@ -40,7 +40,8 @@ a:hover { color: var(--color-accent-2); }
 .pm-links a:hover { color: var(--color-accent-2); }
 .pm-links .btn { padding: 11px 22px; min-height: 0; font-size: 15px; }
 .pm-menu-btn { display: none; margin-left: auto; background: none; border: 0; padding: 8px; cursor: pointer; color: var(--color-text); }
-@media (max-width: 960px) { .pm-links { display: none; } .pm-menu-btn { display: flex; } }
+.pm-links a { white-space: nowrap; }
+@media (max-width: 1100px) { .pm-links { display: none; } .pm-menu-btn { display: flex; } }
 
 /* hero */
 .pm-hero { background: var(--color-bg); overflow: hidden; }
