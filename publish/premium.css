@@ -173,3 +173,4 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm-hero.pm-hero-text .pm-wrap { grid-template-columns: minmax(0, 1fr); }
 .pm-hero.pm-hero-text .pm-hero-copy { max-width: 900px; }
 @media (max-width: 880px) { .pm-compare, .pm-steps { grid-template-columns: 1fr; } }
+.pm-links .btn-primary, .pm-links .btn-primary:hover { color: var(--pm-white); }
