@@ -256,7 +256,11 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm .booking-section > h2, .pm .booking-section > p { margin-left: auto !important; margin-right: auto !important; max-width: 760px; }
 .pm .booking-section .booker { text-align: left; }
 
-/* About page: Marines photo */
-.pm .about-marines { margin: 8px 0 36px; max-width: 720px; }
-.pm .about-marines img { width: 100%; height: auto; border-radius: var(--pm-radius); }
+/* About page: portrait and Marines photo */
+.pm .about-hero img { height: auto; max-height: 640px; object-position: 50% 12%; }
+.pm .about-discipline { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 32px clamp(28px, 5vw, 64px); align-items: start; }
+.pm .about-discipline .cs-steps { margin-top: 0; }
+.pm .about-marines { margin: 8px 0 0; position: sticky; top: 100px; }
+.pm .about-marines img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 62% 30%; border-radius: var(--pm-radius); }
 .pm .about-marines figcaption { margin-top: 10px; font-size: 14px; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
+@media (max-width: 880px) { .pm .about-discipline { grid-template-columns: 1fr; } .pm .about-marines { position: static; max-width: 420px; } }
