@@ -94,35 +94,62 @@ const COPY = {
   },
 };
 
+function paragraph(text) {
+  return `<p style="font-family:${FONT};font-size:16px;line-height:26px;color:${COLOR.text};margin:0 0 18px;">${text}</p>`;
+}
+
+function button(label, href) {
+  return `<p style="margin:8px 0 26px;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${COLOR.accent};color:${COLOR.bg};font-family:${FONT};font-size:15px;font-weight:800;text-decoration:none;padding:14px 22px;">${escapeHtml(label)}</a></p>`;
+}
+
+// The branded frame shared by every email: header strip, body, footer.
+function wrap({ lang, subject, preview, bodyHtml, footerHtml }) {
+  return `<!doctype html>
+<html lang="${lang}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(subject)}</title></head>
+<body style="margin:0;padding:0;background:${COLOR.bg};">
+<div style="display:none;max-height:0;overflow:hidden;">${escapeHtml(preview)}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLOR.bg};">
+<tr><td align="center" style="padding:32px 16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;background:${COLOR.surface};border-top:4px solid ${COLOR.accent};">
+<tr><td style="padding:28px 32px 4px;font-family:${FONT};font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:${COLOR.accent};">${escapeHtml(NEWSLETTER_NAME[lang] || NEWSLETTER_NAME.en)} &middot; Nuno Fontoura</td></tr>
+<tr><td style="padding:20px 32px 12px;">${bodyHtml}</td></tr>
+<tr><td style="padding:0 32px 28px;border-top:1px solid ${COLOR.rule};">
+<p style="font-family:${FONT};font-size:12px;line-height:18px;color:${COLOR.muted};margin:18px 0 0;">${footerHtml}</p>
+</td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
 export function renderSequenceEmail(kind, { lang, name, referralLink, unsubLink }) {
   const copy = COPY[lang] || COPY.en;
   const email = copy[kind];
-  const p = `font-family:${FONT};font-size:16px;line-height:26px;color:${COLOR.text};margin:0 0 18px;`;
   const refAnchor = referralLink
     ? `<a href="${escapeHtml(referralLink)}" style="color:${COLOR.accent};font-weight:700;word-break:break-all;">${escapeHtml(referralLink)}</a>`
     : '';
 
-  const html = [`<p style="${p}">${escapeHtml(copy.greeting(name))}</p>`];
+  const html = [paragraph(escapeHtml(copy.greeting(name)))];
   const text = [copy.greeting(name)];
 
   for (const block of email.blocks) {
     if (typeof block === 'string') {
       if (block.includes('{referralLink}') && !referralLink) continue;
-      html.push(`<p style="${p}">${block.split('{referralLink}').map(escapeHtml).join(refAnchor)}</p>`);
+      html.push(paragraph(block.split('{referralLink}').map(escapeHtml).join(refAnchor)));
       text.push(block.replaceAll('{referralLink}', referralLink || ''));
     } else if (block.link) {
       if (!referralLink) continue;
-      html.push(`<p style="${p}">${refAnchor}</p>`);
+      html.push(paragraph(refAnchor));
       text.push(referralLink);
     } else if (block.button) {
-      html.push(
-        `<p style="margin:8px 0 26px;"><a href="${escapeHtml(block.href)}" style="display:inline-block;background:${COLOR.accent};color:${COLOR.bg};font-family:${FONT};font-size:15px;font-weight:800;text-decoration:none;padding:14px 22px;">${escapeHtml(block.button)}</a></p>`
-      );
+      html.push(button(block.button, block.href));
       text.push(`${block.button}: ${block.href}`);
     }
   }
 
-  html.push(`<p style="${p}">${escapeHtml(copy.signoff)}</p>`);
+  html.push(paragraph(escapeHtml(copy.signoff)));
   text.push(copy.signoff);
 
   const unsubHtml = unsubLink
@@ -132,23 +159,40 @@ export function renderSequenceEmail(kind, { lang, name, referralLink, unsubLink 
   return {
     subject: email.subject,
     text: `${text.join('\n\n')}\n\n---\n${copy.footer}${unsubLink ? `\n${copy.unsubscribe}: ${unsubLink}` : ''}\n`,
-    html: `<!doctype html>
-<html lang="${lang}">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(email.subject)}</title></head>
-<body style="margin:0;padding:0;background:${COLOR.bg};">
-<div style="display:none;max-height:0;overflow:hidden;">${escapeHtml(email.preview)}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLOR.bg};">
-<tr><td align="center" style="padding:32px 16px;">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;background:${COLOR.surface};border-top:4px solid ${COLOR.accent};">
-<tr><td style="padding:28px 32px 4px;font-family:${FONT};font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:${COLOR.accent};">${escapeHtml(NEWSLETTER_NAME[lang] || NEWSLETTER_NAME.en)} &middot; Nuno Fontoura</td></tr>
-<tr><td style="padding:20px 32px 12px;">${html.join('\n')}</td></tr>
-<tr><td style="padding:0 32px 28px;border-top:1px solid ${COLOR.rule};">
-<p style="font-family:${FONT};font-size:12px;line-height:18px;color:${COLOR.muted};margin:18px 0 0;">${escapeHtml(copy.footer)}${unsubHtml}</p>
-</td></tr>
-</table>
-</td></tr>
-</table>
-</body>
-</html>`,
+    html: wrap({ lang, subject: email.subject, preview: email.preview, bodyHtml: html.join('\n'), footerHtml: escapeHtml(copy.footer) + unsubHtml }),
+  };
+}
+
+// Delivery email for a free resource requested on /free-resources/. It is
+// transactional (the person asked for this file), so it has no unsubscribe
+// link; the newsletter is only added when they ticked the opt-in box.
+export function renderResourceEmail(resource, { base }) {
+  const url = `${base}${resource.file}`;
+  const subject = `Your copy: ${resource.title}`;
+  const body = [
+    paragraph('Hi,'),
+    paragraph(`Here is ${escapeHtml(resource.title)}, as requested.`),
+    button(resource.cta, url),
+    paragraph(escapeHtml(resource.howTo)),
+    paragraph(escapeHtml(resource.next)),
+    button('Take the free VOS assessment', 'https://vos.nabiaedge.com/trial'),
+    paragraph('If anything in it doesn&rsquo;t make sense for your agency, reply to this email. I read every reply.'),
+    paragraph('Nuno'),
+  ];
+  const text = [
+    'Hi,',
+    `Here is ${resource.title}, as requested.`,
+    `${resource.cta}: ${url}`,
+    resource.howTo,
+    resource.next,
+    'Take the free VOS assessment: https://vos.nabiaedge.com/trial',
+    "If anything in it doesn't make sense for your agency, reply to this email. I read every reply.",
+    'Nuno',
+  ];
+  const footer = 'You are receiving this because you requested a free resource at nunofontoura.com.';
+  return {
+    subject,
+    text: `${text.join('\n\n')}\n\n---\n${footer}\n`,
+    html: wrap({ lang: 'en', subject, preview: resource.preview, bodyHtml: body.join('\n'), footerHtml: escapeHtml(footer) }),
   };
 }

@@ -92,6 +92,10 @@ npx wrangler d1 execute newsletter-db --remote --command \
 # which pages convert
 npx wrangler d1 execute newsletter-db --remote --command \
   "SELECT source, COUNT(*) AS n FROM subscribers GROUP BY source ORDER BY n DESC"
+
+# free resource requests (who asked for which PDF, and whether they opted in)
+npx wrangler d1 execute newsletter-db --remote --command \
+  "SELECT created_at, email, resource, newsletter FROM resource_requests ORDER BY created_at DESC LIMIT 50"
 ```
 
 ## Editing copy
