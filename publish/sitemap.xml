@@ -69,4 +69,20 @@
     <lastmod>2026-09-17</lastmod>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.nunofontoura.com/subscribe/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/subscribe/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/subscribe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/subscribe/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/subscribe/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/subscribe/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/subscribe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nunofontoura.com/subscribe/"/>
+  </url>
 </urlset>

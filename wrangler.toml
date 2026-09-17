@@ -1,0 +1,20 @@
+# Cloudflare Pages configuration for personal-website.
+# While this file exists, Cloudflare uses it (not the dashboard) for the
+# variables and bindings below. Secrets are not stored here: set
+# RESEND_API_KEY and UNSUB_SECRET with `npx wrangler pages secret put`
+# (see NEWSLETTER-SETUP.md).
+name = "personal-website"
+pages_build_output_dir = "publish"
+compatibility_date = "2026-08-18"
+
+[vars]
+RESEND_SEGMENT_ID = "ce95e700-e414-41c5-ad63-6e6dc4aa9bb6"
+RESEND_FROM = "Nuno Fontoura <nuno@news.nunofontoura.com>"
+RESEND_REPLY_TO = "info@nabiaedge.com"
+SITE_URL = "https://www.nunofontoura.com"
+NOTIFY_EMAIL = "info@nabiaedge.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "newsletter-db"
+database_id = "a902b747-7b9c-42e3-af7b-2e05fb26e975"
