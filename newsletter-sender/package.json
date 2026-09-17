@@ -7,7 +7,8 @@
     "preview": "email dev --dir emails --port 3001",
     "send:test": "tsx scripts/send-newsletter.tsx --test",
     "send": "tsx scripts/send-newsletter.tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:emails": "tsx scripts/build-emails.tsx"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

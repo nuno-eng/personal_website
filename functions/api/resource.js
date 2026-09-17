@@ -10,6 +10,7 @@
 import { RESOURCES } from '../_lib/resources.js';
 import { renderResourceEmail } from '../_lib/email-templates.js';
 import { sendEmail } from '../_lib/resend.js';
+import { ownerAlert } from '../_lib/emails.js';
 import { jsonResponse, readJson, sha256Hex, siteUrl } from '../_lib/http.js';
 import { onRequestPost as subscribe } from './subscribe.js';
 
@@ -81,13 +82,15 @@ export async function onRequestPost(context) {
   }
 
   if (env.NOTIFY_EMAIL) {
-    const lines = [`Email: ${email}`, `Resource: ${resource.title}`, `Newsletter opt-in: ${newsletter ? 'yes' : 'no'}`, `Page: ${source || '-'}`];
     waitUntil(
       sendEmail(env, {
         to: env.NOTIFY_EMAIL,
-        subject: `Free resource request: ${resource.title}`,
-        text: lines.join('\n'),
-        html: `<pre style="font:14px/1.6 monospace">${lines.join('\n').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]))}</pre>`,
+        ...ownerAlert({
+          title: `Free resource request: ${resource.title}`,
+          heading: 'Free resource request',
+          intro: `${email} asked for ${resource.title}.`,
+          rows: [['Email', email], ['Resource', resource.title], ['Newsletter opt-in', newsletter ? 'yes' : 'no'], ['Page', source || '-']],
+        }),
       }).catch((err) => console.error('Owner notification error:', err))
     );
   }

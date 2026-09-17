@@ -1,0 +1,8 @@
+{
+  "name": "resource-pdfs",
+  "private": true,
+  "type": "module",
+  "description": "Builds the fillable free-resource PDFs in publish/assets/free-resources/",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": { "pdf-lib": "^1.17.1", "puppeteer-core": "^24.0.0" }
+}
