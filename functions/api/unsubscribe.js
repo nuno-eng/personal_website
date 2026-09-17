@@ -92,6 +92,7 @@ function page(lang, title, body, action, status) {
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>${escapeHtml(title)}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
 <style>
   body { min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; }
