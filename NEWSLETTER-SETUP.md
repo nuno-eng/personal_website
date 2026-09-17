@@ -31,31 +31,26 @@ Protection: a hidden honeypot field, at most 5 new signups per IP per hour, sign
 2. **API Keys**: create a key with *Full access*. Contacts and broadcasts need more than a sending-only key.
 3. **Audience > Segments**: create a segment called `Newsletter` and copy its ID.
 
-## 2. Cloudflare D1
+## 2. Cloudflare (done in the repo)
+
+The D1 database `newsletter-db` (Western Europe) exists with the schema applied. `wrangler.toml` binds it as `DB` and sets the non-secret variables (`RESEND_SEGMENT_ID`, `RESEND_FROM`, `RESEND_REPLY_TO`, `SITE_URL`, `NOTIFY_EMAIL`). While `wrangler.toml` exists, Cloudflare reads variables and bindings from it instead of the dashboard, so edit them there.
+
+## 3. Secrets (you run these once)
+
+Each command prompts for the value. Set both secrets for production and preview:
 
 ```bash
-npx wrangler login
-npx wrangler d1 create newsletter-db
-npx wrangler d1 execute newsletter-db --remote --file=d1-schema.sql
+npx wrangler pages secret put RESEND_API_KEY --project-name personal-website
+npx wrangler pages secret put RESEND_API_KEY --project-name personal-website --env preview
 ```
 
-Then go to **Workers & Pages > personal-website > Settings > Bindings > Add > D1 database**, set the variable name to `DB` and pick `newsletter-db`. Do this for both Production and Preview.
+For `UNSUB_SECRET`, use the same random value in both environments, so unsubscribe links from preview tests also work in production:
 
-## 3. Cloudflare environment variables
+```bash
+S=$(openssl rand -hex 32) && echo "$S" | npx wrangler pages secret put UNSUB_SECRET --project-name personal-website && echo "$S" | npx wrangler pages secret put UNSUB_SECRET --project-name personal-website --env preview
+```
 
-Go to **personal-website > Settings > Variables and Secrets**, and add these for Production (and Preview if you want to test there):
-
-| Name | Value | Type |
-|---|---|---|
-| `RESEND_API_KEY` | your Resend key | Secret |
-| `RESEND_SEGMENT_ID` | the segment ID from step 1 | Text |
-| `RESEND_FROM` | `Nuno Fontoura <nuno@news.nunofontoura.com>` | Text |
-| `RESEND_REPLY_TO` | `info@nabiaedge.com` (replies to the welcome emails go here) | Text |
-| `SITE_URL` | `https://www.nunofontoura.com` | Text |
-| `UNSUB_SECRET` | output of `openssl rand -hex 32`. Don't change it later, or old unsubscribe links stop working | Secret |
-| `NOTIFY_EMAIL` | where new-subscriber alerts go (optional) | Text |
-
-Redeploy after adding them: **Deployments > ... > Retry deployment**.
+Don't change `UNSUB_SECRET` later, or links in emails already sent stop working. Preview deployments use the same database and Resend segment as production, so delete test signups afterwards (step 4).
 
 ## 4. Test before going live
 
