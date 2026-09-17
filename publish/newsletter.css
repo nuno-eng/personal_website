@@ -38,3 +38,14 @@
   gap: 28px clamp(24px, 5vw, 96px); align-items: center; padding: 84px 0;
 }
 @media (max-width: 880px) { .nl-split { grid-template-columns: 1fr; padding: 64px 0; } }
+
+/* Free resource request forms (/free-resources/) */
+.res-form { display: grid; gap: 10px; margin: 0; }
+.res-form .input { min-height: 46px; font-size: 16px; padding: 10px 14px; }
+.res-form .btn { min-height: 46px; font-size: 14px; }
+.res-opt { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; line-height: 20px; cursor: pointer; color: color-mix(in srgb, var(--color-text) 80%, transparent); }
+.res-opt input { margin: 3px 0 0; accent-color: var(--color-accent); }
+.res-form .nl-status { margin: 0; min-height: 0; }
+.res-done { border-left: 4px solid var(--color-accent); background: var(--color-surface); padding: 14px 16px; font-size: 14.5px; line-height: 22px; }
+.res-done strong { display: block; font-family: var(--font-heading); font-weight: 800; }
+.res-note { font-size: 13px; line-height: 20px; margin: 28px 0 0; color: color-mix(in srgb, var(--color-text) 72%, transparent); }

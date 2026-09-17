@@ -16,3 +16,6 @@
 
 /*.png
   Cache-Control: public, max-age=2592000
+
+/assets/free-resources/*
+  X-Robots-Tag: noindex

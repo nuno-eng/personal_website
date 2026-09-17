@@ -19,3 +19,17 @@ CREATE TABLE IF NOT EXISTS subscribers (
 
 CREATE INDEX IF NOT EXISTS idx_subscribers_referred_by ON subscribers(referred_by_code);
 CREATE INDEX IF NOT EXISTS idx_subscribers_ip_created ON subscribers(ip_hash, created_at);
+
+-- Free resource requests from /free-resources/ (email delivery).
+CREATE TABLE IF NOT EXISTS resource_requests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT NOT NULL,
+  resource TEXT NOT NULL,
+  newsletter INTEGER NOT NULL DEFAULT 0,
+  source TEXT,
+  ip_hash TEXT,
+  created_at TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_resource_requests_ip_created ON resource_requests(ip_hash, created_at);
+CREATE INDEX IF NOT EXISTS idx_resource_requests_email ON resource_requests(email);
