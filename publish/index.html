@@ -28,6 +28,8 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://www.nunofontoura.com/#nuno", "name": "Nuno Fontoura", "url": "https://www.nunofontoura.com/", "image": "https://www.nunofontoura.com/assets/images/headshot.jpg", "jobTitle": "Founder, NabiaEdge", "email": "mailto:info@nabiaedge.com", "worksFor": {"@id": "https://www.nunofontoura.com/#nabiaedge"}, "sameAs": ["https://www.linkedin.com/in/nfontoura", "https://www.instagram.com/nuno.fontoura/", "https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG"]}, {"@type": "ProfessionalService", "@id": "https://www.nunofontoura.com/#nabiaedge", "name": "NabiaEdge", "url": "https://www.nunofontoura.com/", "logo": "https://www.nunofontoura.com/icon-512.png", "image": "https://www.nunofontoura.com/assets/og/home.jpg", "email": "info@nabiaedge.com", "founder": {"@id": "https://www.nunofontoura.com/#nuno"}, "knowsLanguage": ["en", "pt"], "description": "I help founders of creative and production agencies build the operating system that runs the business without them. Ex-Marines officer, 7.5 years at Amazon."}, {"@type": "WebSite", "@id": "https://www.nunofontoura.com/#website", "url": "https://www.nunofontoura.com/", "name": "Nuno Fontoura", "inLanguage": ["en", "pt-PT"], "publisher": {"@id": "https://www.nunofontoura.com/#nuno"}}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
+<link rel="stylesheet" href="/booking.css">
+<script src="/booking.js" defer></script>
 <link rel="stylesheet" href="/case-study.css">
 <link rel="stylesheet" href="/newsletter.css">
 <script src="/newsletter.js" defer></script>
@@ -81,7 +83,7 @@ body{margin:0;text-wrap:pretty}
     <a href="/free-resources/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">Free Resources</a>
     <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;color:var(--color-accent)">Free VOS assessment</a>
     <a href="/pt/" data-menu-close style="font-family:var(--font-heading);font-weight:800;font-size:26px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text);text-decoration:none">PT</a>
-    <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary" data-menu-close style="margin-top:28px;justify-content:center;color:var(--color-bg)">Book a call</a>
+    <a href="/book/" class="btn btn-primary" data-menu-close style="margin-top:28px;justify-content:center;color:var(--color-bg)">Book a call</a>
   </div>
 </div>
 
@@ -102,7 +104,7 @@ body{margin:0;text-wrap:pretty}
       </h1>
       <p style="font-size:18px;line-height:29px;max-width:52ch;margin:32px 0 0">I help founders of creative and production agencies build the operating system that runs the business without them in every decision.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
-        <a href="https://calendly.com/nuno-nabiaedge/30min" target="_blank" rel="noopener" class="btn btn-primary">Book a discovery call</a>
+        <a href="/book/" class="btn btn-primary">Book a discovery call</a>
         <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" class="btn btn-secondary">Take the free VOS assessment</a>
       </div>
     </div>
@@ -286,7 +288,7 @@ body{margin:0;text-wrap:pretty}
       <span style="display:block">Ready to build systems</span>
       <span style="display:block">that hold under pressure?</span>
     </h3>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="max-width:560px;margin:42px auto 0;text-align:left;min-width:280px;height:480px;background:var(--color-bg)"></div>
+    <div class="booker" data-booking data-lang="en"></div>
   </div>
 </section>
 
@@ -298,6 +300,7 @@ body{margin:0;text-wrap:pretty}
     <div>
       <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contact</h2>
         <a class="hv3" href="mailto:info@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">info@nabiaedge.com</a>
+        <a class="hv3" href="mailto:support@nabiaedge.com" style="display:flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Support: support@nabiaedge.com</a>
     </div>
     <div>
       <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Follow</h2>
@@ -345,34 +348,6 @@ body{margin:0;text-wrap:pretty}
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
 })();
 </script>
-<script>
-// Calendly loads only when the booking widget comes near the screen or the
-// visitor starts interacting, so it no longer slows down the first paint.
-(function () {
-  var loaded = false;
-  function load() {
-    if (loaded) return;
-    loaded = true;
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://assets.calendly.com/assets/external/widget.css';
-    document.head.appendChild(css);
-    var js = document.createElement('script');
-    js.src = 'https://assets.calendly.com/assets/external/widget.js';
-    js.async = true;
-    js.onload = function () { if (window.Calendly) Calendly.initBadgeWidget({ url: 'https://calendly.com/nuno-nabiaedge/30min', text: 'Book a call', color: '#1E3A8A', textColor: '#f3f2f2', branding: true }); };
-    document.head.appendChild(js);
-  }
-  var widget = document.querySelector('.calendly-inline-widget');
-  if (widget && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries, observer) {
-      if (entries.some(function (e) { return e.isIntersecting; })) { observer.disconnect(); load(); }
-    }, { rootMargin: '600px' }).observe(widget);
-  }
-  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (type) {
-    window.addEventListener(type, load, { once: true, passive: true });
-  });
-})();
-</script>
+<a class="book-badge" href="/book/">Book a call</a>
 </body>
 </html>

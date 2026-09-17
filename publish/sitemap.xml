@@ -110,4 +110,18 @@
     <lastmod>2026-09-17</lastmod>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.nunofontoura.com/book/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/book/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/book/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/book/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/book/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/book/"/>
+  </url>
 </urlset>

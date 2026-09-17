@@ -28,6 +28,8 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": "Assessoria de Negócio", "description": "Programa de 12 semanas para agências criativas e de produção lideradas pelo fundador, assente no Vessel Operating System, com um plano de 90 dias acompanhado.", "url": "https://www.nunofontoura.com/pt/business-advisory/", "provider": {"@type": "ProfessionalService", "@id": "https://www.nunofontoura.com/#nabiaedge", "name": "NabiaEdge", "url": "https://www.nunofontoura.com/"}, "inLanguage": "pt-PT", "audience": {"@type": "BusinessAudience", "audienceType": "Founders of creative and production agencies"}}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
 <link rel="stylesheet" href="/ds/styles.css">
+<link rel="stylesheet" href="/booking.css">
+<script src="/booking.js" defer></script>
 <link rel="stylesheet" href="/case-study.css">
 
 <style>
@@ -228,7 +230,7 @@ body{margin:0;text-wrap:pretty}
   <section id="book-a-call" class="booking-section">
     <h2 style="font-family:Georgia, serif;font-size:42px;font-weight:700;margin:0 0 16px">Marcar uma chamada explorat&oacute;ria de 30 minutos</h2>
     <p style="margin:0 0 40px;color:color-mix(in srgb, var(--color-text) 70%, transparent);max-width:50ch;margin-left:auto;margin-right:auto;font-size:15px">Mapeie onde est&aacute;, o que n&atilde;o est&aacute; a funcionar, e como &eacute; o sucesso do outro lado.</p>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/nuno-nabiaedge/30min" style="min-width:320px;height:700px"></div>
+    <div class="booker" data-booking data-lang="pt"></div>
   </section>
 </main>
 
@@ -237,6 +239,7 @@ body{margin:0;text-wrap:pretty}
     <div>
       <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Contacto</h2>
         <a class="hv2" href="mailto:info@nabiaedge.com" style="display:inline-flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">info@nabiaedge.com</a>
+        <a class="hv2" href="mailto:support@nabiaedge.com" style="display:flex;align-items:center;gap:10px;color:color-mix(in srgb, var(--color-text) 70%, transparent);text-decoration:none;font-size:15px;line-height:32px">Suporte: support@nabiaedge.com</a>
     </div>
     <div>
       <h2 style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin:0 0 20px;color:var(--color-text)">Redes</h2>
@@ -278,35 +281,6 @@ body{margin:0;text-wrap:pretty}
     else if (e.target.closest('[data-menu-close]')) set(false);
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) set(false); });
-})();
-</script>
-<script>
-// Calendly loads only when the booking widget comes near the screen or the
-// visitor starts interacting, so it no longer slows down the first paint.
-(function () {
-  var loaded = false;
-  function load() {
-    if (loaded) return;
-    loaded = true;
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://assets.calendly.com/assets/external/widget.css';
-    document.head.appendChild(css);
-    var js = document.createElement('script');
-    js.src = 'https://assets.calendly.com/assets/external/widget.js';
-    js.async = true;
-    js.onload = function () {  };
-    document.head.appendChild(js);
-  }
-  var widget = document.querySelector('.calendly-inline-widget');
-  if (widget && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries, observer) {
-      if (entries.some(function (e) { return e.isIntersecting; })) { observer.disconnect(); load(); }
-    }, { rootMargin: '600px' }).observe(widget);
-  }
-  ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (type) {
-    window.addEventListener(type, load, { once: true, passive: true });
-  });
 })();
 </script>
 </body>
