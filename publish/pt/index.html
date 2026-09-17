@@ -97,100 +97,121 @@ body{margin:0;text-wrap:pretty}
   </div>
 </div>
 
-<main id="main-content" style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)" class="pm-main">
+<main id="main-content" class="pm-main pm-home">
 
-  <section style="padding:96px 0 70px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center">
+  <section class="pm-hero">
+    <div class="pm-wrap">
+      <div class="pm-hero-copy">
+        <span class="pm-kicker">Fundador, NabiaEdge &middot; Para fundadores de ag&ecirc;ncias</span>
+        <h1 class="pm-light">A sua ag&ecirc;ncia n&atilde;o devia <b>depender de si para tudo.</b></h1>
+        <p>Ajudo fundadores de ag&ecirc;ncias criativas e de produ&ccedil;&atilde;o a construir o sistema operacional que gere o neg&oacute;cio sem precisar de si em todas as decis&otilde;es.</p>
+        <div class="pm-actions">
+          <a href="/pt/book/" class="btn btn-primary">Marcar chamada explorat&oacute;ria</a>
+          <a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" class="btn btn-secondary">Fazer a avalia&ccedil;&atilde;o VOS gratuita</a>
+        </div>
+      </div>
+      <div class="pm-hero-photo">
+        <picture><source srcset="/assets/images/headshot.webp" type="image/webp"><img src="/assets/images/headshot.jpg" alt="Nuno Fontoura" width="800" height="1000" fetchpriority="high"></picture>
+      </div>
+    </div>
+  </section>
+
+  <section class="pm-band" aria-label="Resultados e percurso">
+    <div class="pm-wrap">
+      <div class="pm-stat"><b>&minus;30%</b><span>decis&otilde;es tomadas pelo dono da Yunik, em cinco meses</span></div>
+      <div class="pm-stat"><b>&minus;70%</b><span>valores em d&iacute;vida numa cl&iacute;nica gerida pela minha irm&atilde;</span></div>
+      <div class="pm-stat"><b>13,5 anos</b><span>como oficial dos Fuzileiros e na Amazon</span></div>
+      <div class="pm-stat"><b>Top 10</b><span><a href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener">Homens Mais Inspiradores 2026, MSN</a></span></div>
+    </div>
+  </section>
+
+  <section class="pm-section" id="services">
+    <div class="pm-wrap">
+      <div class="pm-head">
+        <div>
+          <span class="pm-kicker">Para quem &eacute;</span>
+          <h2 class="pm-light">Para fundadores que <b>carregam demasiado.</b></h2>
+          <p>A receita est&aacute; a crescer, a equipa est&aacute; a crescer, e todas as decis&otilde;es continuam a passar por si. Isso n&atilde;o &eacute; uma falha pessoal, &eacute; um problema de estrutura. E tem solu&ccedil;&atilde;o.</p>
+        </div>
+      </div>
+      <div class="pm-cards pm-two">
+        <a class="pm-card" href="/pt/business-advisory/">
+          <span class="pm-num">Programa 1:1</span>
+          <h3>Assessoria de Neg&oacute;cio</h3>
+          <p>Estrutura, responsabiliza&ccedil;&atilde;o e um sistema para gerir o neg&oacute;cio, constru&iacute;do para fundadores que querem resultados, n&atilde;o uma palestra motivacional.</p>
+          <span class="pm-textlink">Conhecer a Assessoria</span>
+        </a>
+        <a class="pm-card" href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener">
+          <span class="pm-num">Gratuito</span>
+          <h3>Avalia&ccedil;&atilde;o VOS gratuita</h3>
+          <p>N&atilde;o sabe por onde come&ccedil;ar? Avalie a sua ag&ecirc;ncia nos tr&ecirc;s pilares do Vessel Operating System e veja onde decis&otilde;es, tempo ou dinheiro est&atilde;o a ficar presos.</p>
+          <span class="pm-textlink">Fazer a avalia&ccedil;&atilde;o</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pm-section pm-tint" id="vos">
+    <div class="pm-wrap">
+      <div class="pm-head">
+        <div>
+          <span class="pm-kicker">O Vessel Operating System</span>
+          <h2 class="pm-light">Tr&ecirc;s pilares. <b>Um sistema operacional.</b></h2>
+        </div>
+      </div>
+      <div class="pm-cards">
+        <div class="pm-card"><span class="pm-num">01</span><h3>The Bridge</h3><span class="pm-sub">Vis&atilde;o e Estrat&eacute;gia</span><p>De onde o neg&oacute;cio &eacute; conduzido. Uma Bridge fraca significa pessoas a trabalhar muito, mas em dire&ccedil;&otilde;es diferentes.</p></div>
+        <div class="pm-card"><span class="pm-num">02</span><h3>The Hull</h3><span class="pm-sub">Sistemas e Dinheiro</span><p>O que mant&eacute;m o neg&oacute;cio estanque e em movimento. Uma boa Bridge pode continuar a meter &aacute;gua aqui.</p></div>
+        <div class="pm-card"><span class="pm-num">03</span><h3>The Cargo Hold</h3><span class="pm-sub">Produto e Marketing</span><p>O que leva ao mercado. Um por&atilde;o cheio com um casco fraco afunda; um casco forte com o por&atilde;o vazio n&atilde;o vai a lado nenhum.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pm-section" id="proof">
+    <div class="pm-wrap">
+      <div class="pm-case">
+        <div>
+          <img class="pm-logo" src="/assets/logos/yunik.svg" alt="Yunik" width="66" height="44">
+          <span class="pm-kicker">Caso de estudo &middot; Yunik, Viseu</span>
+          <h3 class="pm-light">Menos 30% de decis&otilde;es na secret&aacute;ria do dono <b>em cinco meses.</b></h3>
+          <p>Uma ag&ecirc;ncia de brand activation com est&uacute;dio de design, oficina de produ&ccedil;&atilde;o e equipas de instala&ccedil;&atilde;o pr&oacute;prios, onde todas as decis&otilde;es passavam pelo dono.</p>
+          <div class="pm-actions">
+            <a class="btn btn-primary" href="/case-studies/yunik/" hreflang="en">Ler o caso de estudo (em ingl&ecirc;s)</a>
+          </div>
+        </div>
+        <ul>
+          <li><b>&minus;30%</b>decis&otilde;es tomadas pelo dono</li>
+          <li><b>&minus;10%</b>horas de trabalho semanais do dono</li>
+          <li><b>5 meses</b>do diagn&oacute;stico aos resultados</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pm-section pm-tint" id="about">
+    <div class="pm-wrap pm-split">
+      <picture class="pm-portrait"><source srcset="/assets/images/headshot.webp" type="image/webp"><img src="/assets/images/headshot.jpg" alt="Nuno Fontoura" width="800" height="1000" loading="lazy"></picture>
       <div>
-        <h1 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,5vw,52px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 24px">A sua agência não devia depender de si para tudo.</h1>
-        <p style="font-size:18px;line-height:29px;color:var(--color-text);margin:0 0 20px">Ajudo fundadores de agências criativas e de produção a construir o sistema operacional que gere o negócio sem precisar de si em todas as decisões.</p>
-        <p style="font-size:14.5px;line-height:26px;color:color-mix(in srgb, var(--color-text) 75%, transparent);margin:0 0 32px">Seis anos como oficial dos Fuzileiros portugueses. Sete anos e meio na Amazon em Operações, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Agora a aplicar essa disciplina operacional a agências criativas e de produção através da NabiaEdge.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#contact" class="btn btn-primary" style="color:var(--color-bg)">Marcar chamada exploratória</a><a href="https://vos.nabiaedge.com/trial" target="_blank" rel="noopener" class="btn btn-secondary">Fazer a avaliação VOS gratuita</a></div>
-      </div>
-      <picture><source srcset="/assets/images/headshot.webp" type="image/webp"><img src="/assets/images/headshot.jpg" alt="Nuno Fontoura" width="800" height="1000" fetchpriority="high" style="width:100%;height:400px;object-fit:cover;object-position:top;border:1px solid var(--color-divider)"></picture>
-    </div>
-  </section>
-
-  <hr class="hr" style="height:2px;margin:0">
-
-  <section style="padding:70px 0" aria-label="O problema">
-    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">O problema</span>
-    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 24px">O fundador que cresceu mais do que o seu neg&oacute;cio</h2>
-    <p style="font-size:16px;line-height:28px;margin:0;max-width:70ch;color:color-mix(in srgb, var(--color-text) 82%, transparent)">Construiu algo real. A receita est&aacute; a crescer. A equipa est&aacute; a expandir, Mas continua envolvido em todas as decis&otilde;es. A funcionar por instinto e a "apagar fogos" em vez de seguir um plano. Sem um processo consistente para como o trabalho se faz, quem &eacute; respons&aacute;vel, para onde caminha. As suas opera&ccedil;&otilde;es n&atilde;o acompanharam o crescimento do neg&oacute;cio. Isso n&atilde;o &eacute; uma falha pessoal, &eacute; um problema de estrutura. E tem solu&ccedil;&atilde;o.</p>
-  </section>
-
-  <hr class="hr" style="height:2px;margin:0">
-
-  <section style="padding:70px 0" aria-label="O meu percurso">
-    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">O meu percurso</span>
-    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 40px">De onde vem esta disciplina</h2>
-    <div class="nfc-cards3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
-      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">Fuzileiros portugueses</h3>
-        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Seis anos de disciplina direta, ao n&iacute;vel dos Fuzileiros. Resili&ecirc;ncia sob press&atilde;o. Mestria no detalhe.</p>
-      </div>
-      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">Amazon</h3>
-        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Sete anos em Opera&ccedil;&otilde;es, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Disciplina de execu&ccedil;&atilde;o &agrave; escala.</p>
-      </div>
-      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:18px;margin:0 0 14px">NabiaEdge</h3>
-        <p style="font-size:14px;line-height:24px;margin:0;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Fundei a NabiaEdge para aplicar essa disciplina operacional diretamente a neg&oacute;cios liderados por fundadores e &agrave;s suas equipas.</p>
+        <span class="pm-kicker">O meu percurso</span>
+        <h2 class="pm-light">De onde vem <b>esta disciplina.</b></h2>
+        <p>Seis anos como oficial dos Fuzileiros portugueses. Sete anos e meio na Amazon em Opera&ccedil;&otilde;es, Desenvolvimento de Neg&oacute;cio e Gest&atilde;o de Programas. Agora fundador da NabiaEdge.</p>
+        <p>Resili&ecirc;ncia sob press&atilde;o e disciplina de execu&ccedil;&atilde;o &agrave; escala, aplicadas diretamente a neg&oacute;cios liderados por fundadores e &agrave;s suas equipas.</p>
+        <a class="pm-press" href="https://www.msn.com/en-us/news/other/top-10-most-inspiring-men-in-2026-/ar-AA23TQVG" target="_blank" rel="noopener">
+          <picture><source srcset="/assets/images/msn-feature.webp" type="image/webp"><img src="/assets/images/msn-feature-400.jpg" alt="" width="72" height="72" loading="lazy"></picture>
+          <span><small>Destaque na MSN</small><strong>Um dos Top 10 Homens Mais Inspiradores de 2026</strong></span>
+        </a>
       </div>
     </div>
   </section>
 
-  <hr class="hr" style="height:2px;margin:0">
-
-  <section id="services" style="padding:70px 0" aria-label="Como ajudo">
-    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">Como ajudo</span>
-    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 40px">Servi&ccedil;os</h2>
-    <div class="nfc-cards2" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-      <div class="card" style="padding:32px;border:1px solid var(--color-divider)">
-        <h3 style="font-family:var(--font-heading);font-weight:800;font-size:19px;margin:0 0 14px">Assessoria de Neg&oacute;cio</h3>
-        <p style="font-size:14.5px;line-height:25px;margin:0 0 20px;color:color-mix(in srgb, var(--color-text) 75%, transparent)">Estrutura, responsabiliza&ccedil;&atilde;o e um sistema para gerir o neg&oacute;cio, constru&iacute;do para fundadores que querem resultados, n&atilde;o uma palestra motivacional.</p>
-        <a href="/pt/business-advisory/" style="font-size:13px;font-weight:700;color:var(--color-accent);text-decoration:none">Explorar este programa &rarr;</a>
+  <section class="pm-section" id="newsletter" data-newsletter-root>
+    <div class="pm-wrap pm-split pm-even" style="align-items:start">
+      <div>
+        <span class="pm-kicker">Notas Operacionais &middot; Newsletter</span>
+        <h2 class="pm-light">Ainda n&atilde;o &eacute; altura de uma chamada? <b>Receba as notas operacionais.</b></h2>
+        <p>Uma ideia pr&aacute;tica de duas em duas semanas, para fundadores de ag&ecirc;ncias que carregam demasiado. Sistemas que pode aplicar na mesma semana, com base nos Fuzileiros, na Amazon e nos neg&oacute;cios que acompanho.</p>
       </div>
-    </div>
-  </section>
-
-  <hr class="hr" style="height:2px;margin:0">
-
-  <section id="proof" style="padding:70px 0" aria-label="Prova">
-    <span style="display:block;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 14px;font-weight:700">Prova</span>
-    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,4vw,40px);line-height:1.2;letter-spacing:-0.015em;margin:0 0 32px">Resultados, e onde j&aacute; sa&iacute;mos</h2>
-
-    <a href="https://www.msn.com/en-us/money/smallbusiness/top-10-most-inspiring-men-in-2026/ar-AA23TQVG?ocid=finance-verthp-feeds" target="_blank" rel="noopener" class="card" style="display:flex;flex-direction:row;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--color-divider);text-decoration:none;color:var(--color-text);margin-bottom:32px;max-width:640px">
-      <picture><source srcset="/assets/images/msn-feature.webp" type="image/webp"><img src="/assets/images/msn-feature-400.jpg" alt="Destaque na MSN: Nuno Fontoura entre os Top 10 Homens Mais Inspiradores de 2026" width="400" height="400" loading="lazy" style="width:140px;height:140px;object-fit:cover;border-radius:4px;flex-shrink:0"></picture>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <span style="font-family:var(--font-heading);font-weight:800;font-size:16px">Destaque na MSN</span>
-        <span style="font-size:13px;color:var(--color-accent);font-weight:700">Ler o artigo &rarr;</span>
-      </div>
-    </a>
-
-    <a class="cs-card" href="/case-studies/yunik/">
-      <img class="cs-logo" src="/assets/logos/yunik.svg" alt="Yunik" width="66" height="44">
-      <span class="cs-kicker">Caso de estudo &middot; Yunik, Viseu</span>
-      <h3>Menos 30% de decis&otilde;es na secret&aacute;ria do dono em cinco meses</h3>
-      <p>Uma ag&ecirc;ncia de brand activation com est&uacute;dio de design, oficina de produ&ccedil;&atilde;o e equipas de instala&ccedil;&atilde;o pr&oacute;prios, onde todas as decis&otilde;es passavam pelo dono.</p>
-      <div class="cs-stats">
-        <div><b>&minus;30%</b><span>decis&otilde;es tomadas pelo dono</span></div>
-        <div><b>&minus;10%</b><span>horas de trabalho semanais do dono</span></div>
-        <div><b>5 meses</b><span>do diagn&oacute;stico aos resultados</span></div>
-      </div>
-      <span class="cs-link">Ler o caso de estudo (em ingl&ecirc;s) &rarr;</span>
-    </a>
-  </section>
-
-  <hr class="hr" style="height:2px;margin:0">
-
-  <section id="newsletter" class="nl-split" data-newsletter-root>
-    <div>
-      <span class="nl-kicker">Notas Operacionais &middot; Newsletter</span>
-      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,3.6vw,44px);line-height:1.1;letter-spacing:-0.015em;margin:0 0 16px"><span style="display:block">Ainda n&atilde;o &eacute; altura de uma chamada?</span><span style="display:block;color:var(--color-accent)">Receba as notas operacionais.</span></h2>
-      <p style="font-size:16px;line-height:27px;max-width:52ch;margin:0">Uma ideia operacional pr&aacute;tica de duas em duas semanas, para fundadores de ag&ecirc;ncias que carregam demasiado. Sistemas que pode aplicar na mesma semana, com base nos Fuzileiros, na Amazon e nos neg&oacute;cios que acompanho.</p>
-    </div>
-    <div>
+      <div>
       <form class="nl-form" data-newsletter data-lang="pt" novalidate>
         <input class="input" type="text" name="name" placeholder="Primeiro nome (opcional)" aria-label="Primeiro nome (opcional)" autocomplete="given-name" maxlength="60">
         <input class="input" type="email" name="email" placeholder="Endere&ccedil;o de email" aria-label="Endere&ccedil;o de email" autocomplete="email" required>
@@ -212,15 +233,16 @@ body{margin:0;text-wrap:pretty}
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
 </main>
 
-<section id="contact" style="background:var(--color-accent);color:var(--color-bg)">
-  <div style="max-width:1200px;margin:0 auto;padding:84px clamp(20px,5vw,72px);text-align:center">
-    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(32px,4.2vw,48px);line-height:1.15;letter-spacing:-0.015em;margin:0 0 20px">Pronto para construir um modelo operacional melhor?</h2>
-    <p style="font-size:16px;line-height:27px;margin:0 auto 40px;max-width:56ch">Marque uma chamada estrat&eacute;gica. Vamos discutir onde est&aacute;, o que est&aacute; a falhar, e como corrigir.</p>
+<section id="contact" class="pm-cta">
+  <div class="pm-wrap">
+    <h2 class="pm-light">Descubra onde a sua ag&ecirc;ncia <b>depende de si.</b></h2>
+    <p>Uma chamada explorat&oacute;ria de 30 minutos. Vemos onde decis&otilde;es, tempo ou dinheiro est&atilde;o a ficar presos, e sai com a primeira corre&ccedil;&atilde;o.</p>
     <div class="booker" data-booking data-lang="pt"></div>
   </div>
 </section>
