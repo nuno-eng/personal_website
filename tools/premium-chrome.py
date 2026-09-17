@@ -4,7 +4,7 @@
 Re-runnable: it replaces everything between <body> and <main>, the <footer>, and the menu script.
 Page content inside <main> is left alone; publish/premium.css restyles it.
 """
-import os, re, sys
+import hashlib, os, re, sys
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'publish')
 
@@ -154,6 +154,16 @@ def footer(lang, alt):
   </div>
 </footer>'''
 
+def version_assets(s):
+    """Add ?v=<content hash> to local CSS/JS links so browsers fetch changed files straight away."""
+    def stamp(mo):
+        attr, path = mo.group(1), mo.group(2)
+        local = os.path.join(ROOT, path.lstrip('/'))
+        if not os.path.isfile(local): return mo.group(0)
+        h = hashlib.sha1(open(local, 'rb').read()).hexdigest()[:10]
+        return f'{attr}="{path}?v={h}"'
+    return re.sub(r'(href|src)="(/[\w./-]+\.(?:css|js))(?:\?v=[\w]+)?"', stamp, s)
+
 def process(fp):
     rel = os.path.relpath(fp, ROOT)
     src = open(fp, encoding='utf-8').read()
@@ -164,10 +174,10 @@ def process(fp):
     # head
     s = re.sub(r'<meta name="theme-color" content="[^"]*">', '<meta name="theme-color" content="#0F1D3D">', s)
     s = re.sub(r'family=Archivo:wght@[0-9;]+', 'family=Archivo:wght@300;400;500;600;800', s)
-    if '/premium.css' not in s:
+    if '/premium.css' not in s:  # first run
         s = s.replace('</head>', '<link rel="stylesheet" href="/premium.css">\n</head>', 1)
     else:  # keep premium.css last so it wins over page styles
-        s = s.replace('<link rel="stylesheet" href="/premium.css">\n', '', 1).replace('</head>', '<link rel="stylesheet" href="/premium.css">\n</head>', 1)
+        s = re.sub(r'<link rel="stylesheet" href="/premium\.css(?:\?v=\w+)?">\n', '', s, count=1).replace('</head>', '<link rel="stylesheet" href="/premium.css">\n</head>', 1)
     # body + chrome
     s = re.sub(r'<body[^>]*>', '<body class="pm">', s, count=1)
     b = s.index('<body class="pm">') + len('<body class="pm">')
@@ -179,6 +189,7 @@ def process(fp):
     # menu script
     s = re.sub(r'<script>\s*\(function \(\) \{\s*var menu = document.*?\}\)\(\);\s*</script>\n?', '', s, flags=re.S)
     s = s.replace('</body>', MENU_JS + '</body>', 1)
+    s = version_assets(s)
     if s != src:
         open(fp, 'w', encoding='utf-8').write(s)
     return rel, lang, alt
