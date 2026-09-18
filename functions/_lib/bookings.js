@@ -2,6 +2,7 @@
 import { signToken, verifyToken } from './unsubscribe-token.js';
 import { cancelEmail, sendEmail } from './resend.js';
 import { renderBookingEmail, renderOwnerAlert } from './booking-emails.js';
+import { KINDS, kindOf } from './booking-config.js';
 
 const HOUR = 3600000;
 
@@ -14,7 +15,7 @@ export function verifyManageToken(env, id, token) {
   return Boolean(id && token && env.UNSUB_SECRET) && verifyToken(`booking:${id}`, token, env.UNSUB_SECRET);
 }
 
-// Confirmation (or reschedule notice) now; reminders and follow-up scheduled in Resend.
+// Confirmation (or reschedule notice) now; reminders (and, for discovery calls, a follow-up) scheduled in Resend.
 export async function sendBookingEmails(env, base, booking, kind = 'confirmed') {
   const link = await manageLink(env, base, booking);
   const start = new Date(booking.start_utc).getTime();
@@ -32,7 +33,7 @@ export async function sendBookingEmails(env, base, booking, kind = 'confirmed') 
     send(kind),
     start - 24 * HOUR > now + 5 * 60000 ? send('reminder24', start - 24 * HOUR) : null,
     start - HOUR > now + 5 * 60000 ? send('reminder1', start - HOUR) : null,
-    send('followup', end + 24 * HOUR),
+    KINDS[kindOf(booking.kind)].followup ? send('followup', end + 24 * HOUR) : null,
   ]);
   return { reminder24_id: r24, reminder1_id: r1, followup_id: fu };
 }

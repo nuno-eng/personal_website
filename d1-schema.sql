@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS bookings (
   followup_id TEXT,
   ip_hash TEXT,
   created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL
+  updated_at TEXT NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'discovery' -- discovery | networking
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS idx_bookings_confirmed_slot ON bookings(start_utc) WHERE status = 'confirmed';
@@ -87,7 +88,8 @@ CREATE TABLE IF NOT EXISTS booking_requests (
   accepted_option INTEGER,
   booking_id TEXT,
   ip_hash TEXT,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'discovery'
 );
 
 CREATE INDEX IF NOT EXISTS idx_booking_requests_ip_created ON booking_requests(ip_hash, created_at);

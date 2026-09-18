@@ -1,4 +1,4 @@
-# Discovery call booking (/book/)
+# Bookings: discovery calls (/book/) and 1:1 with Nuno (/meet/)
 
 Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on the home, Business Advisory and Free Resources pages.
 
@@ -12,6 +12,18 @@ Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on th
 | Widget | `publish/booking.js`, `publish/booking.css` |
 | Suggested times | `functions/api/booking/request.js`, approve page `/book/approve/` |
 | Pages | `/book/`, `/pt/book/`, `/book/manage/`, `/pt/book/manage/`, `/book/approve/`, `/call-booked/`, `/pt/call-booked/` |
+
+## Meeting types
+Both types are 30 minutes and share one calendar, the same hours, buffers and the 3-a-day limit. They're set in `KINDS` in `functions/_lib/booking-config.js`.
+
+| | Discovery call | 1:1 with Nuno (internal type `networking`) |
+|---|---|---|
+| Page | `/book/`, `/pt/book/` (public, in the menu and on pages) | `/meet/`, `/pt/meet/` (private link: not in menus, search engines or the sitemap) |
+| Form | Agency questions (type, team size, problem, urgency) | Name, email, company, website/LinkedIn, topic |
+| Emails | Confirmation, reminders, follow-up with the VOS assessment | Confirmation and reminders only |
+| Calendar title | `Discovery call: Name (Agency)` | `1:1 with Nuno: Name (Company)` |
+
+Reschedule/cancel links and "Suggest a time" work for both. The widget picks the type from `data-kind="networking"` on the page.
 
 ## Current rules
 - **Hours:** Monday to Friday, 09:00–18:30, UK time (London). Visitors see times in their own time zone.

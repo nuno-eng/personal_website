@@ -1,6 +1,6 @@
 // Shared by /api/booking (visitor picks a slot) and /api/booking/request
 // (Nuno accepts a time the visitor suggested).
-import { BOOKING, CHOICES, LABELS } from './booking-config.js';
+import { BOOKING, CHOICES, KINDS, LABELS, kindOf } from './booking-config.js';
 import { createEvent } from './google-calendar.js';
 import { alertOwner, manageLink, sendBookingEmails } from './bookings.js';
 import { isValidTimeZone } from './timezone.js';
@@ -18,7 +18,9 @@ const clean = (v, max) => String(v ?? '').trim().slice(0, max);
 export function parseForm(body) {
   const lang = normalizeLang(body.lang);
   const e = ERR[lang];
+  const kind = kindOf(body.kind);
   const b = {
+    kind,
     name: clean(body.name, 100),
     email: clean(body.email, 254).toLowerCase(),
     agency: clean(body.agency, 200),
@@ -32,7 +34,11 @@ export function parseForm(body) {
     tz: isValidTimeZone(body.tz) ? body.tz : BOOKING.timeZone,
     source: clean(body.source, 160) || null,
   };
-  if (!b.name || !b.agency || !b.problem || !CHOICES.agencyType.includes(b.agency_type) || !CHOICES.teamSize.includes(b.team_size) || !CHOICES.urgency.includes(b.urgency)) {
+  if (kind === 'networking') {
+    // Networking asks only for name, email, company, website/LinkedIn and a topic.
+    b.agency_type = null; b.team_size = null; b.urgency = null;
+    if (!b.name || !b.agency || !b.problem) return { error: e.fields, lang };
+  } else if (!b.name || !b.agency || !b.problem || !CHOICES.agencyType.includes(b.agency_type) || !CHOICES.teamSize.includes(b.team_size) || !CHOICES.urgency.includes(b.urgency)) {
     return { error: e.fields, lang };
   }
   if (b.heard_from && !CHOICES.heardFrom.includes(b.heard_from)) b.heard_from = null;
@@ -48,6 +54,7 @@ export async function createBooking(env, base, b, start, { ipHash = null, waitUn
   const db = env.DB;
   const booking = {
     ...b,
+    kind: kindOf(b.kind),
     id: [...crypto.getRandomValues(new Uint8Array(8))].map((x) => x.toString(16).padStart(2, '0')).join(''),
     start_utc: start.toISOString(),
     end_utc: new Date(start.getTime() + BOOKING.durationMin * 60000).toISOString(),
@@ -56,9 +63,9 @@ export async function createBooking(env, base, b, start, { ipHash = null, waitUn
 
   try {
     await db.prepare(
-      `INSERT INTO bookings (id, status, start_utc, end_utc, name, email, agency, website, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, ip_hash, created_at, updated_at)
-       VALUES (?, 'confirmed', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(booking.id, booking.start_utc, booking.end_utc, booking.name, booking.email, booking.agency, booking.website, booking.agency_type, booking.team_size, booking.problem, booking.urgency, booking.heard_from, booking.lang, booking.tz, booking.source, ipHash, now, now).run();
+      `INSERT INTO bookings (id, kind, status, start_utc, end_utc, name, email, agency, website, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, ip_hash, created_at, updated_at)
+       VALUES (?, ?, 'confirmed', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(booking.id, booking.kind, booking.start_utc, booking.end_utc, booking.name, booking.email, booking.agency, booking.website, booking.agency_type, booking.team_size, booking.problem, booking.urgency, booking.heard_from, booking.lang, booking.tz, booking.source, ipHash, now, now).run();
   } catch (err) {
     console.error('Slot reservation failed:', err);
     return { status: 409, body: { error: e.taken } };
@@ -68,13 +75,15 @@ export async function createBooking(env, base, b, start, { ipHash = null, waitUn
   try {
     const event = await createEvent(env, {
       start, end: new Date(booking.end_utc), timeZone: BOOKING.timeZone, requestId: booking.id,
-      summary: `Discovery call: ${booking.name} (${booking.agency})`,
+      summary: `${KINDS[booking.kind].title}: ${booking.name} (${booking.agency})`,
       attendee: { email: booking.email, displayName: booking.name },
-      description: [
-        `Agency: ${booking.agency}`, `Website: ${booking.website || '-'}`, `Type: ${L.agencyType[booking.agency_type]}`, `Team size: ${L.teamSize[booking.team_size]}`,
-        `Urgency: ${L.urgency[booking.urgency]}`, `Heard from: ${booking.heard_from ? L.heardFrom[booking.heard_from] : '-'}`, '',
-        'Problem to fix:', booking.problem, '', `Reschedule or cancel: ${await manageLink(env, base, booking)}`,
-      ].join('\n'),
+      description: (booking.kind === 'networking'
+        ? [`Company: ${booking.agency}`, `Website / LinkedIn: ${booking.website || '-'}`, `Heard from: ${booking.heard_from ? L.heardFrom[booking.heard_from] : '-'}`, '',
+            'Wants to talk about:', booking.problem]
+        : [`Agency: ${booking.agency}`, `Website: ${booking.website || '-'}`, `Type: ${L.agencyType[booking.agency_type]}`, `Team size: ${L.teamSize[booking.team_size]}`,
+            `Urgency: ${L.urgency[booking.urgency]}`, `Heard from: ${booking.heard_from ? L.heardFrom[booking.heard_from] : '-'}`, '',
+            'Problem to fix:', booking.problem]
+      ).concat(['', `Reschedule or cancel: ${await manageLink(env, base, booking)}`]).join('\n'),
     });
     booking.event_id = event.id;
     booking.meet_link = event.meetLink;

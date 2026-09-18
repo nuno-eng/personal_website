@@ -1,25 +1,33 @@
-// Discovery call emails. Layout and copy: newsletter-sender/transactional/definitions.tsx.
+// Booking emails (discovery calls and 1:1s with Nuno). Layout and copy: newsletter-sender/transactional/definitions.tsx.
 import { escapeHtml } from './http.js';
 import { ownerAlert, renderEmail } from './emails.js';
 import { formatWhen } from './timezone.js';
-import { LABELS } from './booking-config.js';
+import { KINDS, LABELS, kindOf } from './booking-config.js';
 
 const greet = (lang, name) => (lang === 'pt' ? `Olá ${name.split(' ')[0]},` : `Hi ${name.split(' ')[0]},`);
 
 export function renderBookingEmail(kind, { booking, base, manageLink }) {
   const lang = booking.lang === 'pt' ? 'pt' : 'en';
   const w = formatWhen(new Date(booking.start_utc), booking.tz, lang);
-  return renderEmail(`booking-${kind}-${lang}`, {
+  const k = kindOf(booking.kind);
+  return renderEmail(`${k === 'networking' ? 'meeting' : 'booking'}-${kind}-${lang}`, {
     greeting: greet(lang, booking.name),
     when: w.full, day: w.day, time: w.time,
     meetLink: booking.meet_link || `${base}${lang === 'pt' ? '/pt' : ''}/call-booked/`,
     manageLink: manageLink || `${base}${lang === 'pt' ? '/pt' : ''}/book/`,
-    rebookUrl: `${base}${lang === 'pt' ? '/pt' : ''}/book/`,
+    rebookUrl: `${base}${KINDS[k].page[lang]}`,
   });
 }
 
 function answerRows(x) {
   const L = LABELS.en;
+  if (kindOf(x.kind) === 'networking') {
+    return [
+      ['Name', x.name], ['Email', x.email], ['Company', x.agency], ['Website / LinkedIn', x.website || '-'],
+      ['Wants to talk about', x.problem], ['Heard from', L.heardFrom[x.heard_from] || '-'],
+      ['Language', `${x.lang} · their time zone ${x.tz}`], ['Source', x.source || '-'],
+    ];
+  }
   return [
     ['Name', x.name], ['Email', x.email], ['Agency', x.agency], ['Website', x.website || '-'],
     ['Type', L.agencyType[x.agency_type] || '-'], ['Team size', L.teamSize[x.team_size] || '-'],
@@ -30,7 +38,8 @@ function answerRows(x) {
 
 export function renderOwnerAlert(kind, { booking, manageLink }) {
   const w = formatWhen(new Date(booking.start_utc), 'Europe/London', 'en');
-  const title = { confirmed: 'New discovery call', rescheduled: 'Discovery call rescheduled', cancelled: 'Discovery call cancelled' }[kind];
+  const what = KINDS[kindOf(booking.kind)].title;
+  const title = { confirmed: `New ${KINDS[kindOf(booking.kind)].short}`, rescheduled: `${what} rescheduled`, cancelled: `${what} cancelled` }[kind];
   const alert = ownerAlert({
     title: `${title}: ${booking.name}, ${booking.agency} (${w.day} ${w.time})`,
     heading: title,
@@ -44,7 +53,7 @@ export function renderOwnerAlert(kind, { booking, manageLink }) {
 export function renderRequestAck(req) {
   const lang = req.lang === 'pt' ? 'pt' : 'en';
   const times = req.options.map((o) => formatWhen(new Date(o), req.tz, lang).full);
-  return renderEmail(`request-ack-${lang}`, { greeting: greet(lang, req.name) }, {
+  return renderEmail(`${kindOf(req.kind) === 'networking' ? 'meeting-' : ''}request-ack-${lang}`, { greeting: greet(lang, req.name) }, {
     times: { html: times.map(escapeHtml).join('<br>'), text: times.join('\n') },
   });
 }
@@ -57,8 +66,8 @@ export function renderRequestAlert(req, { approveLink }) {
   });
   return {
     ...ownerAlert({
-      title: `Time request: ${req.name}, ${req.agency}`,
-      heading: 'Suggested times',
+      title: `Time request (${KINDS[kindOf(req.kind)].short}): ${req.name}, ${req.agency}`,
+      heading: `Suggested times: ${KINDS[kindOf(req.kind)].short}`,
       intro: `${req.name} couldn’t find a slot and suggested these times. Click one to book it: the calendar event, Meet link and confirmation go out automatically. None work? Reply to this email to write to them directly.`,
       actions,
       rows: [...answerRows(req), ...(req.note ? [['Note', req.note]] : [])],

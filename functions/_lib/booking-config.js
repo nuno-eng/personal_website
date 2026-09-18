@@ -1,4 +1,4 @@
-// Discovery call booking rules. Times are UK local time (Europe/London).
+// Booking rules shared by every meeting type. Times are UK local time (Europe/London).
 export const BOOKING = {
   timeZone: 'Europe/London',
   durationMin: 30,
@@ -20,6 +20,20 @@ export const BOOKING = {
   // A 12:30 call moves lunch to 13:00-14:00; a 13:30 call moves it to 12:30-13:30.
   lunch: { window: ['12:30', '14:00'], minutes: 60 },
 };
+
+// Meeting types. Both are 30 minutes and share the calendar, hours, buffers and daily limit above.
+// discovery: public (/book/). networking (shown as "1:1 with Nuno"): private link only (/meet/), shorter form, no follow-up email.
+export const KINDS = {
+  discovery: {
+    title: 'Discovery call', short: 'discovery call', page: { en: '/book/', pt: '/pt/book/' },
+    followup: true,
+  },
+  networking: {
+    title: '1:1 with Nuno', short: '1:1 with Nuno', page: { en: '/meet/', pt: '/pt/meet/' },
+    followup: false,
+  },
+};
+export const kindOf = (k) => (k === 'networking' ? 'networking' : 'discovery');
 
 export const CHOICES = {
   agencyType: ['creative', 'production', 'marketing', 'brand-activation', 'other'],
