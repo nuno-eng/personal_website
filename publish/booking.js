@@ -45,7 +45,7 @@
     },
   };
 
-  var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Europe/Lisbon';
+  var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Europe/London';
 
   function el(tag, attrs, html) {
     var e = document.createElement(tag);
@@ -239,7 +239,7 @@
     var r = params.get('r'), token = params.get('t'), preferred = params.get('o');
     root.innerHTML = '<h3>Suggested times</h3><p class="bk-msg" role="status">Loading\u2026</p>';
     var msg = root.querySelector('.bk-msg');
-    var lisbon = function (iso) { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Lisbon', weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso)); };
+    var ukTime = function (iso) { return new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso)); };
     api('GET', '/api/booking/request?r=' + encodeURIComponent(r || '') + '&t=' + encodeURIComponent(token || '')).then(function (res) {
       if (!res.ok) { msg.setAttribute('data-state', 'error'); msg.textContent = 'This link is invalid.'; return; }
       var q = res.data;
@@ -247,13 +247,13 @@
       root.appendChild(el('div', { class: 'bk-chosen' }, '<strong>' + esc(q.name) + '</strong><span>' + esc(q.agency) + (q.website ? ' \u00b7 ' + esc(q.website) : '') + '</span><span>' + esc(q.email) + '</span>'));
       root.appendChild(el('p', { class: 'bk-sub' }, '<strong>Problem:</strong> ' + esc(q.problem) + (q.note ? '<br><strong>Note:</strong> ' + esc(q.note) : '')));
       if (q.status !== 'pending') {
-        root.appendChild(el('p', {}, 'Already booked' + (q.acceptedOption != null ? ' for ' + esc(lisbon(q.options[q.acceptedOption].start)) + ' (Lisbon)' : '') + '.'));
+        root.appendChild(el('p', {}, 'Already booked' + (q.acceptedOption != null ? ' for ' + esc(ukTime(q.options[q.acceptedOption].start)) + ' (UK time)' : '') + '.'));
         return;
       }
       var list = el('div', { class: 'bk-approve' });
       q.options.forEach(function (o, i) {
         var row = el('div', { class: 'bk-chosen' + (String(i) === preferred ? ' bk-preferred' : '') },
-          '<strong>' + esc(lisbon(o.start)) + '</strong><span>Lisbon</span>' +
+          '<strong>' + esc(ukTime(o.start)) + '</strong><span>UK time</span>' +
           (o.past ? '<span class="bk-flag">In the past</span>' : o.conflict ? '<span class="bk-flag">Clashes with your calendar</span>' : o.conflict === false ? '<span class="bk-ok">Free in your calendar</span>' : ''));
         if (!o.past) {
           var btn = el('button', { type: 'button', class: 'btn btn-primary' }, 'Book this time');
@@ -263,7 +263,7 @@
             api('POST', '/api/booking/request', { r: r, t: token, action: 'accept', option: i }).then(function (x) {
               if (!x.ok) { status.setAttribute('data-state', 'error'); status.textContent = x.data.error || 'Something went wrong.'; [].forEach.call(list.querySelectorAll('button'), function (y) { y.disabled = false; }); return; }
               list.innerHTML = '';
-              status.textContent = 'Booked for ' + lisbon(x.data.start) + ' (Lisbon). The calendar invitation, Meet link and confirmation have been sent to ' + q.email + '.';
+              status.textContent = 'Booked for ' + ukTime(x.data.start) + ' (UK time). The calendar invitation, Meet link and confirmation have been sent to ' + q.email + '.';
             });
           });
           row.appendChild(btn);

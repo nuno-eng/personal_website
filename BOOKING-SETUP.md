@@ -14,7 +14,7 @@ Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on th
 | Pages | `/book/`, `/pt/book/`, `/book/manage/`, `/pt/book/manage/`, `/book/approve/`, `/call-booked/`, `/pt/call-booked/` |
 
 ## Current rules
-- **Hours:** Monday to Friday, 09:00–18:30, Lisbon time. Visitors see times in their own time zone.
+- **Hours:** Monday to Friday, 09:00–18:30, UK time (London). Visitors see times in their own time zone.
 - **Lunch:** a free hour always stays open somewhere between 12:30 and 14:00. A 12:30 call moves lunch to 13:00–14:00; a 13:30 call moves it to 12:30–13:30.
 - **Length:** 30-minute calls starting on the hour or half hour.
 - **Spacing:** 10 minutes free before each call and 15 minutes free after it, since calls tend to run over. The same gaps apply around your other calendar events.

@@ -1,6 +1,6 @@
-// Discovery call booking rules. Times are Lisbon local time.
+// Discovery call booking rules. Times are UK local time (Europe/London).
 export const BOOKING = {
-  timeZone: 'Europe/Lisbon',
+  timeZone: 'Europe/London',
   durationMin: 30,
   stepMin: 30,
   bufferBeforeMin: 10, // free time before a discovery call

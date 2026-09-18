@@ -29,12 +29,12 @@ function answerRows(x) {
 }
 
 export function renderOwnerAlert(kind, { booking, manageLink }) {
-  const w = formatWhen(new Date(booking.start_utc), 'Europe/Lisbon', 'en');
+  const w = formatWhen(new Date(booking.start_utc), 'Europe/London', 'en');
   const title = { confirmed: 'New discovery call', rescheduled: 'Discovery call rescheduled', cancelled: 'Discovery call cancelled' }[kind];
   const alert = ownerAlert({
     title: `${title}: ${booking.name}, ${booking.agency} (${w.day} ${w.time})`,
     heading: title,
-    intro: `${w.full}, Lisbon time.${kind === 'cancelled' ? '' : ' Use the links below to reschedule or cancel, so the reminders stay in sync. Don’t edit the event in Google Calendar directly.'}`,
+    intro: `${w.full}, UK time.${kind === 'cancelled' ? '' : ' Use the links below to reschedule or cancel, so the reminders stay in sync. Don’t edit the event in Google Calendar directly.'}`,
     actions: kind === 'cancelled' ? [] : [['Join Google Meet', booking.meet_link || ''], ['Reschedule or cancel', manageLink]].filter(([, h]) => h),
     rows: answerRows(booking),
   });
@@ -51,9 +51,9 @@ export function renderRequestAck(req) {
 
 export function renderRequestAlert(req, { approveLink }) {
   const actions = req.options.map((o, i) => {
-    const lis = formatWhen(new Date(o), 'Europe/Lisbon', 'en');
-    const theirs = req.tz !== 'Europe/Lisbon' ? ` · their time ${formatWhen(new Date(o), req.tz, 'en').time} ${req.tz}` : '';
-    return [`Book ${lis.day.replace(/ \d{4}$/, '')}, ${lis.time}`, approveLink(i), `Lisbon${theirs}`];
+    const lis = formatWhen(new Date(o), 'Europe/London', 'en');
+    const theirs = req.tz !== 'Europe/London' ? ` · their time ${formatWhen(new Date(o), req.tz, 'en').time} ${req.tz}` : '';
+    return [`Book ${lis.day.replace(/ \d{4}$/, '')}, ${lis.time}`, approveLink(i), `UK time${theirs}`];
   });
   return {
     ...ownerAlert({

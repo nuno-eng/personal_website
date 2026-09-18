@@ -10,7 +10,7 @@ function candidateSlots(now) {
   const slots = [];
   const today = zonedDate(now, timeZone);
   for (let i = 0; i <= daysAhead; i++) {
-    // walk calendar days in Lisbon; noon avoids DST edge cases
+    // walk calendar days in UK time; noon avoids DST edge cases
     const noon = zonedToUtc(today.year, today.month, today.day + i, 12, 0, timeZone);
     const d = zonedDate(noon, timeZone);
     for (const [from, to] of hours[d.isoWeekday] || []) {
