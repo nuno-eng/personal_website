@@ -170,31 +170,31 @@ for (const lang of ['en', 'pt'] as const) {
       <P>{lang === 'en' ? 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.' : 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.'}</P>
       <Signature lang={lang} />
     </Layout>);
-  // ---- networking meetings (private /meet/ link): same layout, no VOS prompts, no follow-up ----
+  // ---- 1:1 with Nuno (private /meet/ link, internal kind "networking"): same layout, no VOS prompts, no follow-up ----
   const n = lang === 'en'
     ? {
-        eyebrow: 'Networking meeting', footer: <>You are receiving this because you booked a networking meeting at nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reschedule or cancel</a></>,
-        confirmed: ['Confirmed: networking meeting on {{day}}, {{time}}', 'Our networking meeting is booked.', 'Our 30-minute networking meeting is booked. A calendar invitation from nuno@nabiaedge.com is on its way too.', 'Your meeting is booked'],
-        rescheduled: ['Rescheduled: networking meeting on {{day}}, {{time}}', 'Our meeting has a new time.', 'Our networking meeting has moved to a new time. The calendar invitation has been updated.', 'Your meeting has a new time'],
-        reminder24: ['Tomorrow at {{time}}: our networking meeting', 'A quick reminder about tomorrow.', 'A reminder that our networking meeting is tomorrow. Looking forward to it.', 'See you tomorrow'],
-        reminder1: ['In 1 hour: our networking meeting', 'Starting in an hour.', 'Our networking meeting starts in an hour.', 'Starting in an hour'],
-        cancelled: ['Cancelled: networking meeting on {{day}}', 'Our networking meeting is cancelled.', 'Our networking meeting is cancelled, and the calendar invitation has been removed.', 'Your meeting is cancelled'],
-        cancelFooter: <>You are receiving this because you cancelled a networking meeting at nunofontoura.com.</>,
+        eyebrow: '1:1 with Nuno', footer: <>You are receiving this because you booked a 1:1 with Nuno at nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reschedule or cancel</a></>,
+        confirmed: ['Confirmed: 1:1 with Nuno on {{day}}, {{time}}', 'Our 1:1 is booked.', 'Our 30-minute 1:1 is booked. A calendar invitation from nuno@nabiaedge.com is on its way too.', 'Your 1:1 is booked'],
+        rescheduled: ['Rescheduled: 1:1 with Nuno on {{day}}, {{time}}', 'Our 1:1 has a new time.', 'Our 1:1 has moved to a new time. The calendar invitation has been updated.', 'Your 1:1 has a new time'],
+        reminder24: ['Tomorrow at {{time}}: our 1:1', 'A quick reminder about tomorrow.', 'A reminder that our 1:1 is tomorrow. Looking forward to it.', 'See you tomorrow'],
+        reminder1: ['In 1 hour: our 1:1', 'Starting in an hour.', 'Our 1:1 starts in an hour.', 'Starting in an hour'],
+        cancelled: ['Cancelled: 1:1 with Nuno on {{day}}', 'Our 1:1 is cancelled.', 'Our 1:1 is cancelled, and the calendar invitation has been removed.', 'Your 1:1 is cancelled'],
+        cancelFooter: <>You are receiving this because you cancelled a 1:1 with Nuno at nunofontoura.com.</>,
         again: 'Book another time', was: 'Was',
-        ack: ['I got your suggested times', 'I’ll confirm a time shortly.', 'Thanks, I’ve got your times', 'You suggested these times for a networking meeting:', 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.'],
+        ack: ['I got your suggested times', 'I’ll confirm a time shortly.', 'Thanks, I’ve got your times', 'You suggested these times for a 1:1 with Nuno:', 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.'],
         ackFooter: <>You are receiving this because you suggested a meeting time at nunofontoura.com.</>, times: 'Times',
       }
     : {
-        eyebrow: 'Reunião de networking', footer: <>Recebe este email porque marcou uma reunião de networking em nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reagendar ou cancelar</a></>,
-        confirmed: ['Confirmada: reunião de networking a {{day}}, {{time}}', 'A nossa reunião de networking está marcada.', 'A nossa reunião de networking de 30 minutos está marcada. Vai também receber um convite de calendário de nuno@nabiaedge.com.', 'A sua reunião está marcada'],
-        rescheduled: ['Reagendada: reunião de networking a {{day}}, {{time}}', 'A nossa reunião tem uma nova hora.', 'A nossa reunião de networking mudou de hora. O convite de calendário foi atualizado.', 'A sua reunião tem nova hora'],
-        reminder24: ['Amanhã às {{time}}: a nossa reunião de networking', 'Um lembrete rápido para amanhã.', 'Lembrete: a nossa reunião de networking é amanhã. Até lá.', 'Até amanhã'],
-        reminder1: ['Daqui a 1 hora: a nossa reunião de networking', 'Começa daqui a uma hora.', 'A nossa reunião de networking começa daqui a uma hora.', 'Começa daqui a uma hora'],
-        cancelled: ['Cancelada: reunião de networking a {{day}}', 'A nossa reunião de networking foi cancelada.', 'A nossa reunião de networking foi cancelada e o convite de calendário removido.', 'A sua reunião foi cancelada'],
-        cancelFooter: <>Recebe este email porque cancelou uma reunião de networking em nunofontoura.com.</>,
+        eyebrow: 'Conversa 1:1 com o Nuno', footer: <>Recebe este email porque marcou uma conversa 1:1 com o Nuno em nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reagendar ou cancelar</a></>,
+        confirmed: ['Confirmada: conversa 1:1 com o Nuno a {{day}}, {{time}}', 'A nossa conversa 1:1 está marcada.', 'A nossa conversa 1:1 de 30 minutos está marcada. Vai também receber um convite de calendário de nuno@nabiaedge.com.', 'A sua conversa está marcada'],
+        rescheduled: ['Reagendada: conversa 1:1 com o Nuno a {{day}}, {{time}}', 'A nossa conversa tem uma nova hora.', 'A nossa conversa 1:1 mudou de hora. O convite de calendário foi atualizado.', 'A sua conversa tem nova hora'],
+        reminder24: ['Amanhã às {{time}}: a nossa conversa 1:1', 'Um lembrete rápido para amanhã.', 'Lembrete: a nossa conversa 1:1 é amanhã. Até lá.', 'Até amanhã'],
+        reminder1: ['Daqui a 1 hora: a nossa conversa 1:1', 'Começa daqui a uma hora.', 'A nossa conversa 1:1 começa daqui a uma hora.', 'Começa daqui a uma hora'],
+        cancelled: ['Cancelada: conversa 1:1 com o Nuno a {{day}}', 'A nossa conversa 1:1 foi cancelada.', 'A nossa conversa 1:1 foi cancelada e o convite de calendário removido.', 'A sua conversa foi cancelada'],
+        cancelFooter: <>Recebe este email porque cancelou uma conversa 1:1 com o Nuno em nunofontoura.com.</>,
         again: 'Marcar outra hora', was: 'Era',
-        ack: ['Recebi as suas sugestões de horário', 'Confirmo uma hora em breve.', 'Obrigado, recebi as suas horas', 'Sugeriu estas horas para uma reunião de networking:', 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.'],
-        ackFooter: <>Recebe este email porque sugeriu uma hora para uma reunião em nunofontoura.com.</>, times: 'Horas',
+        ack: ['Recebi as suas sugestões de horário', 'Confirmo uma hora em breve.', 'Obrigado, recebi as suas horas', 'Sugeriu estas horas para uma conversa 1:1 com o Nuno:', 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.'],
+        ackFooter: <>Recebe este email porque sugeriu uma hora para uma conversa em nunofontoura.com.</>, times: 'Horas',
       };
   for (const kind of ['confirmed', 'rescheduled', 'reminder24', 'reminder1'] as const) {
     const [subject, preview, lead, heading] = n[kind];

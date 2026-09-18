@@ -1,6 +1,6 @@
 // Booking widget. Mounts into every [data-booking] element.
 //   data-lang="en|pt"          language
-//   data-kind="networking"     book a networking meeting instead of a discovery call (shorter form)
+//   data-kind="networking"     book a 1:1 with Nuno instead of a discovery call (shorter form)
 //   data-mode="manage"         reschedule/cancel an existing booking (id & t from the URL)
 (function () {
   var S = {
@@ -46,20 +46,20 @@
     },
   };
 
-  // Networking meetings reuse everything above, with these differences.
+  // 1:1s with Nuno (kind "networking") reuse everything above, with these differences.
   var NET = {
     en: {
-      title: 'Book a 30-minute networking meeting', agency: 'Company', website: 'Website or LinkedIn (optional)', websitePh: 'linkedin.com/in/…',
-      problem: 'What would you like to talk about?', privacy: 'Your answers are only used to prepare for the meeting. <a href="/privacy/">Privacy policy</a>.',
-      manageTitle: 'Your networking meeting', cancel: 'Cancel this meeting', cancelConfirm: 'Cancel the meeting? This can’t be undone.',
+      title: 'Book a 30-minute 1:1 with Nuno', agency: 'Company', website: 'Website or LinkedIn (optional)', websitePh: 'linkedin.com/in/…',
+      problem: 'What would you like to talk about?', privacy: 'Your answers are only used to prepare for our 1:1. <a href="/privacy/">Privacy policy</a>.',
+      manageTitle: 'Your 1:1 with Nuno', cancel: 'Cancel this meeting', cancelConfirm: 'Cancel the meeting? This can’t be undone.',
       cancelled: 'Your meeting is cancelled. A confirmation is on its way to your inbox.', moveTo: 'Move my meeting to this time',
       moved: 'Done. Your meeting is moved and the calendar invitation is updated.', past: 'This meeting has already taken place.', wasCancelled: 'This meeting was cancelled.',
       booked: '/meet/booked/', book: '/meet/',
     },
     pt: {
-      title: 'Marcar uma reunião de networking de 30 minutos', agency: 'Empresa', website: 'Website ou LinkedIn (opcional)', websitePh: 'linkedin.com/in/…',
+      title: 'Marcar uma conversa 1:1 de 30 minutos com o Nuno', agency: 'Empresa', website: 'Website ou LinkedIn (opcional)', websitePh: 'linkedin.com/in/…',
       problem: 'Sobre o que gostaria de falar?', privacy: 'As suas respostas só são usadas para preparar a reunião. <a href="/pt/privacy/">Política de privacidade</a>.',
-      manageTitle: 'A sua reunião de networking', cancel: 'Cancelar esta reunião', cancelConfirm: 'Cancelar a reunião? Não é possível desfazer.',
+      manageTitle: 'A sua conversa 1:1 com o Nuno', cancel: 'Cancelar esta reunião', cancelConfirm: 'Cancelar a reunião? Não é possível desfazer.',
       cancelled: 'A reunião foi cancelada. Vai receber uma confirmação por email.', moveTo: 'Mudar a reunião para esta hora',
       moved: 'Feito. A reunião foi mudada e o convite de calendário atualizado.', past: 'Esta reunião já decorreu.', wasCancelled: 'Esta reunião foi cancelada.',
       booked: '/pt/meet/booked/', book: '/pt/meet/',
@@ -283,7 +283,7 @@
       var q = res.data;
       msg.textContent = '';
       root.appendChild(el('div', { class: 'bk-chosen' }, '<strong>' + esc(q.name) + '</strong><span>' + esc(q.agency) + (q.website ? ' \u00b7 ' + esc(q.website) : '') + '</span><span>' + esc(q.email) + '</span>'));
-      root.querySelector('h3').textContent = q.kind === 'networking' ? 'Suggested times: networking meeting' : 'Suggested times: discovery call';
+      root.querySelector('h3').textContent = q.kind === 'networking' ? 'Suggested times: 1:1 with Nuno' : 'Suggested times: discovery call';
       root.appendChild(el('p', { class: 'bk-sub' }, '<strong>' + (q.kind === 'networking' ? 'Wants to talk about' : 'Problem') + ':</strong> ' + esc(q.problem) + (q.note ? '<br><strong>Note:</strong> ' + esc(q.note) : '')));
       if (q.status !== 'pending') {
         root.appendChild(el('p', {}, 'Already booked' + (q.acceptedOption != null ? ' for ' + esc(ukTime(q.options[q.acceptedOption].start)) + ' (UK time)' : '') + '.'));

@@ -1,4 +1,4 @@
-// Booking emails (discovery calls and networking meetings). Layout and copy: newsletter-sender/transactional/definitions.tsx.
+// Booking emails (discovery calls and 1:1s with Nuno). Layout and copy: newsletter-sender/transactional/definitions.tsx.
 import { escapeHtml } from './http.js';
 import { ownerAlert, renderEmail } from './emails.js';
 import { formatWhen } from './timezone.js';
@@ -39,7 +39,7 @@ function answerRows(x) {
 export function renderOwnerAlert(kind, { booking, manageLink }) {
   const w = formatWhen(new Date(booking.start_utc), 'Europe/London', 'en');
   const what = KINDS[kindOf(booking.kind)].title;
-  const title = { confirmed: `New ${what.toLowerCase()}`, rescheduled: `${what} rescheduled`, cancelled: `${what} cancelled` }[kind];
+  const title = { confirmed: `New ${KINDS[kindOf(booking.kind)].short}`, rescheduled: `${what} rescheduled`, cancelled: `${what} cancelled` }[kind];
   const alert = ownerAlert({
     title: `${title}: ${booking.name}, ${booking.agency} (${w.day} ${w.time})`,
     heading: title,
@@ -66,8 +66,8 @@ export function renderRequestAlert(req, { approveLink }) {
   });
   return {
     ...ownerAlert({
-      title: `Time request (${KINDS[kindOf(req.kind)].title.toLowerCase()}): ${req.name}, ${req.agency}`,
-      heading: `Suggested times: ${KINDS[kindOf(req.kind)].title.toLowerCase()}`,
+      title: `Time request (${KINDS[kindOf(req.kind)].short}): ${req.name}, ${req.agency}`,
+      heading: `Suggested times: ${KINDS[kindOf(req.kind)].short}`,
       intro: `${req.name} couldn’t find a slot and suggested these times. Click one to book it: the calendar event, Meet link and confirmation go out automatically. None work? Reply to this email to write to them directly.`,
       actions,
       rows: [...answerRows(req), ...(req.note ? [['Note', req.note]] : [])],

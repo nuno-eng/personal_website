@@ -22,14 +22,14 @@ export const BOOKING = {
 };
 
 // Meeting types. Both are 30 minutes and share the calendar, hours, buffers and daily limit above.
-// discovery: public (/book/). networking: private link only (/meet/), shorter form, no follow-up email.
+// discovery: public (/book/). networking (shown as "1:1 with Nuno"): private link only (/meet/), shorter form, no follow-up email.
 export const KINDS = {
   discovery: {
-    title: 'Discovery call', page: { en: '/book/', pt: '/pt/book/' },
+    title: 'Discovery call', short: 'discovery call', page: { en: '/book/', pt: '/pt/book/' },
     followup: true,
   },
   networking: {
-    title: 'Networking meeting', page: { en: '/meet/', pt: '/pt/meet/' },
+    title: '1:1 with Nuno', short: '1:1 with Nuno', page: { en: '/meet/', pt: '/pt/meet/' },
     followup: false,
   },
 };
