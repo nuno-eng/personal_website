@@ -170,6 +170,63 @@ for (const lang of ['en', 'pt'] as const) {
       <P>{lang === 'en' ? 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.' : 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.'}</P>
       <Signature lang={lang} />
     </Layout>);
+  // ---- networking meetings (private /meet/ link): same layout, no VOS prompts, no follow-up ----
+  const n = lang === 'en'
+    ? {
+        eyebrow: 'Networking meeting', footer: <>You are receiving this because you booked a networking meeting at nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reschedule or cancel</a></>,
+        confirmed: ['Confirmed: networking meeting on {{day}}, {{time}}', 'Our networking meeting is booked.', 'Our 30-minute networking meeting is booked. A calendar invitation from nuno@nabiaedge.com is on its way too.', 'Your meeting is booked'],
+        rescheduled: ['Rescheduled: networking meeting on {{day}}, {{time}}', 'Our meeting has a new time.', 'Our networking meeting has moved to a new time. The calendar invitation has been updated.', 'Your meeting has a new time'],
+        reminder24: ['Tomorrow at {{time}}: our networking meeting', 'A quick reminder about tomorrow.', 'A reminder that our networking meeting is tomorrow. Looking forward to it.', 'See you tomorrow'],
+        reminder1: ['In 1 hour: our networking meeting', 'Starting in an hour.', 'Our networking meeting starts in an hour.', 'Starting in an hour'],
+        cancelled: ['Cancelled: networking meeting on {{day}}', 'Our networking meeting is cancelled.', 'Our networking meeting is cancelled, and the calendar invitation has been removed.', 'Your meeting is cancelled'],
+        cancelFooter: <>You are receiving this because you cancelled a networking meeting at nunofontoura.com.</>,
+        again: 'Book another time', was: 'Was',
+        ack: ['I got your suggested times', 'I’ll confirm a time shortly.', 'Thanks, I’ve got your times', 'You suggested these times for a networking meeting:', 'I’ll confirm one of them, or propose another, by the end of the next working day. Once it’s confirmed you’ll get the calendar invitation with the Google Meet link.'],
+        ackFooter: <>You are receiving this because you suggested a meeting time at nunofontoura.com.</>, times: 'Times',
+      }
+    : {
+        eyebrow: 'Reunião de networking', footer: <>Recebe este email porque marcou uma reunião de networking em nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reagendar ou cancelar</a></>,
+        confirmed: ['Confirmada: reunião de networking a {{day}}, {{time}}', 'A nossa reunião de networking está marcada.', 'A nossa reunião de networking de 30 minutos está marcada. Vai também receber um convite de calendário de nuno@nabiaedge.com.', 'A sua reunião está marcada'],
+        rescheduled: ['Reagendada: reunião de networking a {{day}}, {{time}}', 'A nossa reunião tem uma nova hora.', 'A nossa reunião de networking mudou de hora. O convite de calendário foi atualizado.', 'A sua reunião tem nova hora'],
+        reminder24: ['Amanhã às {{time}}: a nossa reunião de networking', 'Um lembrete rápido para amanhã.', 'Lembrete: a nossa reunião de networking é amanhã. Até lá.', 'Até amanhã'],
+        reminder1: ['Daqui a 1 hora: a nossa reunião de networking', 'Começa daqui a uma hora.', 'A nossa reunião de networking começa daqui a uma hora.', 'Começa daqui a uma hora'],
+        cancelled: ['Cancelada: reunião de networking a {{day}}', 'A nossa reunião de networking foi cancelada.', 'A nossa reunião de networking foi cancelada e o convite de calendário removido.', 'A sua reunião foi cancelada'],
+        cancelFooter: <>Recebe este email porque cancelou uma reunião de networking em nunofontoura.com.</>,
+        again: 'Marcar outra hora', was: 'Era',
+        ack: ['Recebi as suas sugestões de horário', 'Confirmo uma hora em breve.', 'Obrigado, recebi as suas horas', 'Sugeriu estas horas para uma reunião de networking:', 'Confirmo uma delas ou proponho outra até ao fim do próximo dia útil. Assim que estiver confirmada, recebe o convite de calendário com o link do Google Meet.'],
+        ackFooter: <>Recebe este email porque sugeriu uma hora para uma reunião em nunofontoura.com.</>, times: 'Horas',
+      };
+  for (const kind of ['confirmed', 'rescheduled', 'reminder24', 'reminder1'] as const) {
+    const [subject, preview, lead, heading] = n[kind];
+    add(`meeting-${kind}-${lang}`, subject,
+      <Layout lang={lang} eyebrow={n.eyebrow} preview={preview} footer={n.footer}>
+        <H>{heading}</H>
+        <P>{'{{greeting}}'}</P>
+        <P>{lead}</P>
+        {details}
+        <Cta href="{{meetLink}}">{t.join}</Cta>
+        {manage}
+        <Signature lang={lang} />
+      </Layout>);
+  }
+  add(`meeting-cancelled-${lang}`, n.cancelled[0],
+    <Layout lang={lang} eyebrow={n.eyebrow} preview={n.cancelled[1]} footer={n.cancelFooter}>
+      <H>{n.cancelled[3]}</H>
+      <P>{'{{greeting}}'}</P>
+      <P>{n.cancelled[2]}</P>
+      <Details rows={[[n.was, '{{when}}']]} />
+      <Cta href="{{rebookUrl}}">{n.again}</Cta>
+      <Signature lang={lang} />
+    </Layout>);
+  add(`meeting-request-ack-${lang}`, n.ack[0],
+    <Layout lang={lang} eyebrow={n.eyebrow} preview={n.ack[1]} footer={n.ackFooter}>
+      <H>{n.ack[2]}</H>
+      <P>{'{{greeting}}'}</P>
+      <P>{n.ack[3]}</P>
+      <Details rows={[[n.times, '{{{times}}}']]} />
+      <P>{n.ack[4]}</P>
+      <Signature lang={lang} />
+    </Layout>);
   add(`referral-link-${lang}`, lang === 'en' ? `Your ${NAME.en} referral link` : `O seu link de recomendação das ${NAME.pt}`,
     <Layout lang={lang} eyebrow={NAME[lang]} preview={lang === 'en' ? 'Here is your personal link.' : 'Aqui está o seu link pessoal.'} footer={lang === 'en' ? <>You asked for your referral link at nunofontoura.com.</> : <>Pediu o seu link de recomendação em nunofontoura.com.</>}>
       <H>{lang === 'en' ? 'Your referral link' : 'O seu link de recomendação'}</H>

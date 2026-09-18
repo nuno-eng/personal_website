@@ -17,7 +17,7 @@ export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const booking = await load(env, url.searchParams.get('id'), url.searchParams.get('t'));
   if (!booking) return jsonResponse({ error: 'This link is invalid.' }, 404);
-  return jsonResponse({ status: booking.status, start: booking.start_utc, tz: booking.tz, lang: booking.lang, name: booking.name, meetLink: booking.meet_link, past: new Date(booking.start_utc) < new Date() });
+  return jsonResponse({ kind: booking.kind || 'discovery', status: booking.status, start: booking.start_utc, tz: booking.tz, lang: booking.lang, name: booking.name, meetLink: booking.meet_link, past: new Date(booking.start_utc) < new Date() });
 }
 
 export async function onRequestPost({ request, env, waitUntil }) {

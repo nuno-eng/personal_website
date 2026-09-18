@@ -36,7 +36,7 @@ export async function onRequestGet({ request, env }) {
     }
   }
   return jsonResponse({
-    status: r.status, acceptedOption: r.accepted_option, name: r.name, email: r.email, agency: r.agency, website: r.website,
+    kind: r.kind || 'discovery', status: r.status, acceptedOption: r.accepted_option, name: r.name, email: r.email, agency: r.agency, website: r.website,
     agencyType: r.agency_type, teamSize: r.team_size, urgency: r.urgency, problem: r.problem, note: r.note, tz: r.tz,
     options: options.map((o, i) => ({ start: o, past: new Date(o) < new Date(), conflict: conflicts[i] })),
   });
@@ -71,9 +71,9 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const id = [...crypto.getRandomValues(new Uint8Array(8))].map((x) => x.toString(16).padStart(2, '0')).join('');
   const note = String(body.note ?? '').trim().slice(0, 1000) || null;
   await env.DB.prepare(
-    `INSERT INTO booking_requests (id, status, name, email, agency, website, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, options, note, ip_hash, created_at)
-     VALUES (?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-  ).bind(id, b.name, b.email, b.agency, b.website, b.agency_type, b.team_size, b.problem, b.urgency, b.heard_from, b.lang, b.tz, b.source, JSON.stringify(options), note, ipHash, new Date(now).toISOString()).run();
+    `INSERT INTO booking_requests (id, kind, status, name, email, agency, website, agency_type, team_size, problem, urgency, heard_from, lang, tz, source, options, note, ip_hash, created_at)
+     VALUES (?, ?, 'pending', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).bind(id, b.kind, b.name, b.email, b.agency, b.website, b.agency_type, b.team_size, b.problem, b.urgency, b.heard_from, b.lang, b.tz, b.source, JSON.stringify(options), note, ipHash, new Date(now).toISOString()).run();
 
   const base = siteUrl(env, request);
   const t = await tokenFor(env, id);
@@ -105,6 +105,7 @@ async function accept({ request, env, waitUntil }, body) {
   if (!claim.meta?.changes) return jsonResponse({ error: 'This request has already been booked.' }, 409);
 
   const b = {
+    kind: r.kind || 'discovery',
     name: r.name, email: r.email, agency: r.agency, website: r.website, agency_type: r.agency_type, team_size: r.team_size,
     problem: r.problem, urgency: r.urgency, heard_from: r.heard_from, lang: r.lang, tz: r.tz, source: `${r.source || ''} (suggested time)`,
   };

@@ -1,5 +1,6 @@
-// Discovery call booker. Mounts into every [data-booking] element.
+// Booking widget. Mounts into every [data-booking] element.
 //   data-lang="en|pt"          language
+//   data-kind="networking"     book a networking meeting instead of a discovery call (shorter form)
 //   data-mode="manage"         reschedule/cancel an existing booking (id & t from the URL)
 (function () {
   var S = {
@@ -44,6 +45,33 @@
       booked: '/pt/call-booked/', book: '/pt/book/', locale: 'pt-PT',
     },
   };
+
+  // Networking meetings reuse everything above, with these differences.
+  var NET = {
+    en: {
+      title: 'Book a 30-minute networking meeting', agency: 'Company', website: 'Website or LinkedIn (optional)', websitePh: 'linkedin.com/in/…',
+      problem: 'What would you like to talk about?', privacy: 'Your answers are only used to prepare for the meeting. <a href="/privacy/">Privacy policy</a>.',
+      manageTitle: 'Your networking meeting', cancel: 'Cancel this meeting', cancelConfirm: 'Cancel the meeting? This can’t be undone.',
+      cancelled: 'Your meeting is cancelled. A confirmation is on its way to your inbox.', moveTo: 'Move my meeting to this time',
+      moved: 'Done. Your meeting is moved and the calendar invitation is updated.', past: 'This meeting has already taken place.', wasCancelled: 'This meeting was cancelled.',
+      booked: '/meet/booked/', book: '/meet/',
+    },
+    pt: {
+      title: 'Marcar uma reunião de networking de 30 minutos', agency: 'Empresa', website: 'Website ou LinkedIn (opcional)', websitePh: 'linkedin.com/in/…',
+      problem: 'Sobre o que gostaria de falar?', privacy: 'As suas respostas só são usadas para preparar a reunião. <a href="/pt/privacy/">Política de privacidade</a>.',
+      manageTitle: 'A sua reunião de networking', cancel: 'Cancelar esta reunião', cancelConfirm: 'Cancelar a reunião? Não é possível desfazer.',
+      cancelled: 'A reunião foi cancelada. Vai receber uma confirmação por email.', moveTo: 'Mudar a reunião para esta hora',
+      moved: 'Feito. A reunião foi mudada e o convite de calendário atualizado.', past: 'Esta reunião já decorreu.', wasCancelled: 'Esta reunião foi cancelada.',
+      booked: '/pt/meet/booked/', book: '/pt/meet/',
+    },
+  };
+  function strings(lang, kind) {
+    var t = {};
+    for (var k in S[lang]) t[k] = S[lang][k];
+    if (kind === 'networking') for (var n in NET[lang]) t[n] = NET[lang][n];
+    t.kind = kind === 'networking' ? 'networking' : 'discovery';
+    return t;
+  }
 
   var tz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'Europe/London';
 
@@ -158,6 +186,14 @@
   }
 
   function fieldsHtml(t, id) {
+    if (t.kind === 'networking') {
+      return '<div class="bk-row"><label><span>' + esc(t.name) + ' *</span><input class="input" id="' + id + '-name" name="name" autocomplete="name" required maxlength="100"></label>' +
+        '<label><span>' + esc(t.email) + ' *</span><input class="input" id="' + id + '-email" name="email" type="email" autocomplete="email" required></label></div>' +
+        '<div class="bk-row"><label><span>' + esc(t.agency) + ' *</span><input class="input" id="' + id + '-agency" name="agency" autocomplete="organization" required maxlength="200"></label>' +
+        '<label><span>' + esc(t.website) + '</span><input class="input" id="' + id + '-website" name="website" type="text" inputmode="url" placeholder="' + esc(t.websitePh) + '" maxlength="200"></label></div>' +
+        '<label><span>' + esc(t.problem) + ' *</span><textarea class="input" id="' + id + '-problem" name="problem" required maxlength="2000"></textarea></label>' +
+        '<label><span>' + esc(t.heardFrom) + '</span><select class="input" id="' + id + '-heard" name="heardFrom">' + options(t.heard, t) + '</select></label>';
+    }
     return       '<div class="bk-row"><label><span>' + esc(t.name) + ' *</span><input class="input" id="' + id + '-name" name="name" autocomplete="name" required maxlength="100"></label>' +
       '<label><span>' + esc(t.email) + ' *</span><input class="input" id="' + id + '-email" name="email" type="email" autocomplete="email" required></label></div>' +
       '<div class="bk-row"><label><span>' + esc(t.agency) + ' *</span><input class="input" id="' + id + '-agency" name="agency" autocomplete="organization" required maxlength="200"></label>' +
@@ -168,6 +204,8 @@
       '<div class="bk-row"><label><span>' + esc(t.urgency) + ' *</span><select class="input" id="' + id + '-urgency" name="urgency" required>' + options(t.urgencies, t) + '</select></label>' +
       '<label><span>' + esc(t.heardFrom) + '</span><select class="input" id="' + id + '-heard" name="heardFrom">' + options(t.heard, t) + '</select></label></div>';
   }
+
+  function val(field) { return field ? field.value : ''; }
 
   function options(map, t) {
     var h = '<option value="">' + esc(t.choose) + '</option>';
@@ -223,8 +261,8 @@
       btn.disabled = true; msg.removeAttribute('data-state'); msg.textContent = t.sending;
       api('POST', '/api/booking/request', {
         options: opts, note: f.note.value, name: f.name.value, email: f.email.value, agency: f.agency.value, website: f.website.value,
-        agencyType: f.agencyType.value, teamSize: f.teamSize.value, problem: f.problem.value, urgency: f.urgency.value, heardFrom: f.heardFrom.value,
-        honeypot: f.company_website.value, lang: lang, tz: tz, source: location.pathname,
+        agencyType: val(f.agencyType), teamSize: val(f.teamSize), problem: f.problem.value, urgency: val(f.urgency), heardFrom: f.heardFrom.value,
+        honeypot: f.company_website.value, lang: lang, tz: tz, source: location.pathname, kind: t.kind,
       }).then(function (res) {
         if (!res.ok) { msg.setAttribute('data-state', 'error'); msg.textContent = res.data.error || t.network; btn.disabled = false; return; }
         root.innerHTML = '';
@@ -245,7 +283,8 @@
       var q = res.data;
       msg.textContent = '';
       root.appendChild(el('div', { class: 'bk-chosen' }, '<strong>' + esc(q.name) + '</strong><span>' + esc(q.agency) + (q.website ? ' \u00b7 ' + esc(q.website) : '') + '</span><span>' + esc(q.email) + '</span>'));
-      root.appendChild(el('p', { class: 'bk-sub' }, '<strong>Problem:</strong> ' + esc(q.problem) + (q.note ? '<br><strong>Note:</strong> ' + esc(q.note) : '')));
+      root.querySelector('h3').textContent = q.kind === 'networking' ? 'Suggested times: networking meeting' : 'Suggested times: discovery call';
+      root.appendChild(el('p', { class: 'bk-sub' }, '<strong>' + (q.kind === 'networking' ? 'Wants to talk about' : 'Problem') + ':</strong> ' + esc(q.problem) + (q.note ? '<br><strong>Note:</strong> ' + esc(q.note) : '')));
       if (q.status !== 'pending') {
         root.appendChild(el('p', {}, 'Already booked' + (q.acceptedOption != null ? ' for ' + esc(ukTime(q.options[q.acceptedOption].start)) + ' (UK time)' : '') + '.'));
         return;
@@ -301,9 +340,9 @@
       btn.disabled = true; msg.removeAttribute('data-state'); msg.textContent = t.sending;
       var f = form.elements;
       api('POST', '/api/booking', {
-        start: start.toISOString(), name: f.name.value, email: f.email.value, agency: f.agency.value, website: f.website.value, agencyType: f.agencyType.value,
-        teamSize: f.teamSize.value, problem: f.problem.value, urgency: f.urgency.value, heardFrom: f.heardFrom.value,
-        honeypot: f.company_website.value, lang: lang, tz: tz, source: location.pathname,
+        start: start.toISOString(), name: f.name.value, email: f.email.value, agency: f.agency.value, website: f.website.value, agencyType: val(f.agencyType),
+        teamSize: val(f.teamSize), problem: f.problem.value, urgency: val(f.urgency), heardFrom: f.heardFrom.value,
+        honeypot: f.company_website.value, lang: lang, tz: tz, source: location.pathname, kind: t.kind,
       }).then(function (res) {
         if (!res.ok) {
           msg.setAttribute('data-state', 'error'); msg.textContent = res.data.error || t.network; btn.disabled = false;
@@ -325,6 +364,10 @@
     api('GET', '/api/booking/manage?id=' + encodeURIComponent(id || '') + '&t=' + encodeURIComponent(token || '')).then(function (res) {
       if (!res.ok) { msg.setAttribute('data-state', 'error'); msg.textContent = t.invalid; return; }
       var b = res.data;
+      if (b.kind === 'networking' && t.kind !== 'networking') {
+        t = strings(root.getAttribute('data-lang') === 'pt' ? 'pt' : 'en', 'networking');
+        root.querySelector('h3').textContent = t.manageTitle;
+      }
       msg.textContent = '';
       if (b.status !== 'confirmed') { msg.textContent = t.wasCancelled; root.appendChild(el('p', {}, '<a class="btn btn-primary" href="' + t.book + '">' + esc(t.rebook) + '</a>')); return; }
       if (b.past) { msg.textContent = t.past; return; }
@@ -375,7 +418,7 @@
       if (root.getAttribute('data-ready')) return;
       root.setAttribute('data-ready', '1');
       var lang = root.getAttribute('data-lang') === 'pt' ? 'pt' : 'en';
-      var t = S[lang];
+      var t = strings(lang, root.getAttribute('data-kind'));
       if (root.getAttribute('data-mode') === 'manage') manageFlow(root, t);
       else if (root.getAttribute('data-mode') === 'approve') approveFlow(root);
       else bookFlow(root, t, lang);
