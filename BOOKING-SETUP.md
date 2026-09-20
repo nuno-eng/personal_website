@@ -1,6 +1,6 @@
 # Bookings: discovery calls (/book/) and 1:1 with Nuno (/meet/)
 
-Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on the home, Business Advisory and Free Resources pages.
+Replaces Calendly. Visitors book on `/book/` (EN) or `/pt/book/` (PT), and on the home, Biz Ops Advisory and Free Resources pages.
 
 | Piece | Where |
 |---|---|
