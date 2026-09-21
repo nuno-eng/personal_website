@@ -416,4 +416,159 @@ ${sig}`,
   ],
 };
 
-export const DOCS = [audit, rulebook, planner, scorecard];
+
+// ---------------------------------------------------------------- Before You Hire
+const rateRows = (prefix, items) =>
+  items
+    .map((t, i) => `
+<tr class="${i % 2 ? 'shade' : ''}">
+  <td class="c" style="width:7%;font-weight:800">${i + 1}</td>
+  <td>${t}</td>
+  <td style="width:15%"><div class="fld" data-field="${prefix}_${i + 1}"></div></td>
+</tr>`)
+    .join('');
+
+const pillarPage = (n, name, word, lead, prefix, items) => `
+<section class="block">
+  <p class="kicker">Pillar ${n} of 3</p>
+  <h2>${name} &mdash; ${word}</h2>
+  <p class="lead">${lead}</p>
+  <table class="t">
+    <thead><tr><th>#</th><th>Rate each 1 (not true at all) to 5 (completely true)</th><th>Score</th></tr></thead>
+    <tbody>${rateRows(prefix, items)}</tbody>
+  </table>
+</section>
+<section class="block">
+  <div class="grid2">
+    <div>${field(`${prefix}_total`, `${word.charAt(0).toUpperCase()}${word.slice(1)} subtotal`, { hint: 'out of 20' })}</div>
+    <div>${field(`${prefix}_low`, 'The statement you scored lowest')}</div>
+  </div>
+</section>`;
+
+const hire = {
+  file: 'before-you-hire.pdf',
+  type: 'Readiness check',
+  title: 'Before You Hire',
+  subtitle: 'A 20-minute check on whether your agency is ready to grow, before you add headcount.',
+  meta: ['Fillable PDF', '8 pages', '20 minutes'],
+  pages: [
+    `
+<section class="block">
+  <p class="kicker">The premise</p>
+  <h2>Another pair of hands, or a better structure?</h2>
+  <p class="lead">Most agency founders hire when the pressure gets too high. The relief lasts about a month. Then the same decisions queue up behind a bigger team, the same approvals wait on you, and the pressure comes back with a salary attached.</p>
+  <p>Sometimes you genuinely need another pair of hands. Often you need the business to stop depending on you being in the room. This check tells you which one you are looking at, before you post the job.</p>
+</section>
+<section class="block">
+  <p class="kicker">What this is built on</p>
+  <h3>The Vessel Operating System</h3>
+  <p>Every business floats on three pillars. VOS looks at each one separately, because a business can be strong in one and weak in another at the same time, and that gap is usually where the risk hides.</p>
+  <div class="cards c3">
+    <div class="card"><div class="big">Strategy</div><p><b>The Bridge.</b> Where the business is steered from: direction, ownership of decisions, and the plan people are actually rowing towards.</p></div>
+    <div class="card"><div class="big">Systems</div><p><b>The Hull.</b> What keeps you watertight: margin, numbers you trust, and delivery that holds without you.</p></div>
+    <div class="card"><div class="big">Product</div><p><b>The Cargo Hold.</b> What you carry to market: how work arrives, what you sell, and the clients who come back.</p></div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">How to use it</p>
+  <ol class="steps">
+    <li><b>Answer twelve statements</b>, four per pillar, from 1 to 5 (pages 2&ndash;4).</li>
+    <li><b>Total your score</b> out of 60 and read the verdict (page 5).</li>
+    <li><b>Price the hire</b> you are considering, then write the three things you will change first (pages 6&ndash;7).</li>
+  </ol>
+  <p class="small muted">Answer honestly, not aspirationally. Type into the grey fields and save the file, or print it and write by hand.</p>
+</section>`,
+    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means people work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
+      'My team knows which decisions they can make without me, and which have to come to me.',
+      'If I were away for two weeks, work would keep moving to the same standard.',
+      'We have a written plan for this quarter that we actually review.',
+      'Anyone here could say in one sentence what we are best at and who we do it for.',
+    ]),
+    pillarPage(2, 'The Hull', 'systems', 'Margin, numbers and delivery. A weak Hull means a new salary lands on a business that cannot yet see what it earns or what it can take on.', 'hull', [
+      'I know what we make on each service line, not just total revenue.',
+      'The numbers I steer by come from one source everyone trusts.',
+      'Delivery runs on a written process, not on me being in the room.',
+      'I can see this week how much capacity the team actually has.',
+    ]),
+    pillarPage(3, 'The Cargo Hold', 'product', 'Demand, offer and retention. A weak Cargo Hold means you hire for work you hope will arrive, rather than work you can see coming.', 'cargo', [
+      'New work comes from more than one predictable source, not only referrals.',
+      'I know roughly what it costs to win a client and what one is worth to us.',
+      'Our offer changes on purpose, not because a client asked.',
+      'Something we do actively brings clients back. Retention is not luck.',
+    ]),
+    `
+<section class="block">
+  <p class="kicker">Your score</p>
+  <h2>What the number means</h2>
+  <div class="grid2">
+    <div>${field('score_total', 'Total score', { hint: 'out of 60' })}</div>
+    <div>${field('score_weakest', 'Weakest pillar', { hint: 'strategy, systems or product' })}</div>
+  </div>
+</section>
+<section class="block">
+  <div class="stages">
+    <div class="stage"><b>12&ndash;29 &middot; Hiring now will multiply the problem</b>Whatever is unclear today gets copied onto the new person, and you end up managing the confusion as well as doing the work. Fix your two lowest-scoring statements first.</div>
+    <div class="stage"><b>30&ndash;44 &middot; Hire, but not yet</b>You have enough structure to absorb someone, but not enough for them to work without you. Put two things in place before the offer goes out.</div>
+    <div class="stage"><b>45&ndash;60 &middot; You are ready</b>The risk now is losing what works as you grow. Write down what currently holds it together, before a new person changes it.</div>
+  </div>
+</section>
+<div class="callout"><p><b>Read the pillars, not just the total.</b> A business strong in two pillars and weak in one usually fails at the weak one, whatever the total says. If your lowest subtotal is strategy, a hire will not fix it. If it is systems, a hire will expose it.</p></div>`,
+    `
+<section class="block">
+  <p class="kicker">The other side of the decision</p>
+  <h2>What hiring anyway will cost you</h2>
+  <p>Before you post the job, fill this in with your own numbers. Not the salary you have in your head: the whole cost of the first year.</p>
+  <table class="t">
+    <thead><tr><th>Cost</th><th>Your figure</th></tr></thead>
+    <tbody>
+      <tr><td>Salary</td><td style="width:34%"><div class="fld" data-field="cost_salary"></div></td></tr>
+      <tr class="shade"><td>Employer National Insurance and pension</td><td><div class="fld" data-field="cost_oncost"></div></td></tr>
+      <tr><td>Recruitment fee, or your time to hire</td><td><div class="fld" data-field="cost_recruit"></div></td></tr>
+      <tr class="shade"><td>Laptop, software, desk</td><td><div class="fld" data-field="cost_kit"></div></td></tr>
+      <tr><td>Your hours onboarding them, at what your hour is worth</td><td><div class="fld" data-field="cost_onboard"></div></td></tr>
+      <tr class="shade"><td>Your hours managing them each week, for the first six months</td><td><div class="fld" data-field="cost_manage"></div></td></tr>
+      <tr><td><b>First-year total</b></td><td><div class="fld" data-field="cost_total"></div></td></tr>
+    </tbody>
+  </table>
+</section>
+<div class="callout"><p>Now put that number next to your score. Under 30, it is the price of hiring into a structure that is not ready for the person.</p></div>`,
+    `
+<section class="block">
+  <p class="kicker">Before you hire, or before they start</p>
+  <h2>Your three next steps</h2>
+  <p>Three things, not ten. Each one needs a name and a date, or it will not happen.</p>
+</section>
+<section class="block">
+  <div class="rule"><span class="num">Step 1</span>
+    ${field('step1_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step1_owner', 'Who owns it')}</div><div>${field('step1_when', 'By when')}</div></div>
+  </div>
+  <div class="rule"><span class="num">Step 2</span>
+    ${field('step2_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step2_owner', 'Who owns it')}</div><div>${field('step2_when', 'By when')}</div></div>
+  </div>
+  <div class="rule"><span class="num">Step 3</span>
+    ${field('step3_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step3_owner', 'Who owns it')}</div><div>${field('step3_when', 'By when')}</div></div>
+  </div>
+</section>`,
+    `
+<section class="block">
+  <p class="kicker">Where this stops</p>
+  <h2>What this check does not cover</h2>
+  <p class="lead">This tells you whether you are ready to hire, and what it is likely to cost if you are not. It does not tell you where the business is actually stuck, or in what order to fix things.</p>
+  <p>That is a different piece of work: finding the one constraint holding everything else back, and sequencing the fixes so they hold under pressure. Twelve statements cannot do that, and any tool that claims to is selling you something.</p>
+</section>
+<section class="block">
+  <p class="kicker">The fuller picture</p>
+  <div class="cards c2">
+    <div class="card"><p><b>The free VOS assessment</b> scores nine areas across the three pillars, from 0 to 100, and names the area to look at first.</p></div>
+    <div class="card"><p><b>A 30-minute discovery call</b> reads your answers with you. I will tell you honestly whether hiring is the right next move, whether or not we work together.</p></div>
+  </div>
+</section>
+${cta('You have the symptoms. The free VOS assessment turns them into a Business Health score across all nine areas, so you know what to fix before you add anyone.')}
+${sig}`,
+  ],
+};
+
+export const DOCS = [audit, rulebook, planner, scorecard, hire];

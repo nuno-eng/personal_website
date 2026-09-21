@@ -3,6 +3,14 @@
 // ?v= changes whenever the PDFs are rebuilt, so browsers don't show a cached old copy.
 
 export const RESOURCES = {
+  'before-you-hire': {
+    title: 'Before You Hire',
+    file: '/assets/free-resources/before-you-hire.pdf?v=20260921',
+    cta: 'Download the check',
+    preview: 'Twelve statements, a score out of 60, and an honest answer on whether your agency is ready for another person.',
+    howTo: 'Give it 20 minutes on your own. Score the twelve statements 1 to 5, total each pillar, then price the hire you are considering on page 6. Finish by writing the three things you will change first, each with an owner and a date.',
+    next: 'The check tells you whether you are ready. The free VOS assessment tells you where the business is actually stuck, across all nine areas.',
+  },
   'founder-bottleneck-audit': {
     title: 'The Founder Bottleneck Audit',
     file: '/assets/free-resources/founder-bottleneck-audit.pdf?v=20260917b',
