@@ -4,8 +4,8 @@
 const VOS = 'https://vos.nabiaedge.com/trial';
 const BOOK = 'https://www.nunofontoura.com/book/';
 
-const field = (name, label, { size = '', hint = '' } = {}) =>
-  `${label ? `<span class="label">${label}${hint ? ` <span class="hint">${hint}</span>` : ''}</span>` : ''}<div class="fld ${size}" data-field="${name}"${size ? ' data-ml' : ''}></div>`;
+const field = (name, label, { size = '', hint = '', calc = '' } = {}) =>
+  `${label ? `<span class="label">${label}${hint ? ` <span class="hint">${hint}</span>` : ''}</span>` : ''}<div class="fld ${size}" data-field="${name}"${size ? ' data-ml' : ''}${calc ? ` data-calc="${calc}"` : ''}></div>`;
 const check = (name) => `<span class="chk" data-check="${name}"></span>`;
 
 const cta = (lead) => `
@@ -440,7 +440,7 @@ const pillarPage = (n, name, word, lead, prefix, items) => `
 </section>
 <section class="block">
   <div class="grid2">
-    <div>${field(`${prefix}_total`, `${word.charAt(0).toUpperCase()}${word.slice(1)} subtotal`, { hint: 'out of 20' })}</div>
+    <div>${field(`${prefix}_total`, `${word.charAt(0).toUpperCase()}${word.slice(1)} subtotal`, { hint: 'out of 20 &middot; adds up on its own in Acrobat', calc: [1, 2, 3, 4].map((i) => `${prefix}_${i}`).join(',') })}</div>
     <div>${field(`${prefix}_low`, 'The statement you scored lowest')}</div>
   </div>
 </section>`;
@@ -449,24 +449,24 @@ const hire = {
   file: 'before-you-hire.pdf',
   type: 'Readiness check',
   title: 'Before You Hire',
-  subtitle: 'A 20-minute check on whether your agency is ready to grow, before you add headcount.',
+  subtitle: 'A 20-minute check on whether your production agency is ready to grow, before you add headcount.',
   meta: ['Fillable PDF', '8 pages', '20 minutes'],
   pages: [
     `
 <section class="block">
   <p class="kicker">The premise</p>
   <h2>Another pair of hands, or a better structure?</h2>
-  <p class="lead">Most agency founders hire when the pressure gets too high. The relief lasts about a month. Then the same decisions queue up behind a bigger team, the same approvals wait on you, and the pressure comes back with a salary attached.</p>
-  <p>Sometimes you genuinely need another pair of hands. Often you need the business to stop depending on you being in the room. This check tells you which one you are looking at, before you post the job.</p>
+  <p class="lead">Most production agency founders hire when the pressure gets too high: another project manager, another pair of hands in the workshop, another account lead. The relief lasts about a month. Then the same decisions queue up behind a bigger team, the same quotes and sign-offs wait on you, and the pressure comes back with a salary attached.</p>
+  <p>Sometimes the work really has outgrown the team. More often, the jobs, crews and suppliers still run through you, and a new person inherits that. This tells you which one you are looking at, before you post the job.</p>
 </section>
 <section class="block">
   <p class="kicker">What this is built on</p>
   <h3>The Vessel Operating System</h3>
-  <p>Every business floats on three pillars. VOS looks at each one separately, because a business can be strong in one and weak in another at the same time, and that gap is usually where the risk hides.</p>
+  <p>Every agency floats on three pillars. VOS looks at each one separately, because you can be strong in one and weak in another at the same time, and that gap is where the risk hides. It was built with founder-led production and brand activation agencies.</p>
   <div class="cards c3">
     <div class="card"><div class="big">Strategy</div><p><b>The Bridge.</b> Where the business is steered from: direction, ownership of decisions, and the plan people are actually rowing towards.</p></div>
-    <div class="card"><div class="big">Systems</div><p><b>The Hull.</b> What keeps you watertight: margin, numbers you trust, and delivery that holds without you.</p></div>
-    <div class="card"><div class="big">Product</div><p><b>The Cargo Hold.</b> What you carry to market: how work arrives, what you sell, and the clients who come back.</p></div>
+    <div class="card"><div class="big">Systems</div><p><b>The Hull.</b> What keeps you watertight: margin per job, numbers you trust, and production that holds without you on site.</p></div>
+    <div class="card"><div class="big">Product</div><p><b>The Cargo Hold.</b> What you carry to market: how jobs arrive, what you sell, and the clients who come back next season.</p></div>
   </div>
 </section>
 <section class="block">
@@ -478,30 +478,30 @@ const hire = {
   </ol>
   <p class="small muted">Answer honestly, not aspirationally. Type into the grey fields and save the file, or print it and write by hand.</p>
 </section>`,
-    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means people work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
-      'My team knows which decisions they can make without me, and which have to come to me.',
-      'If I were away for two weeks, work would keep moving to the same standard.',
+    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means crews and account leads work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
+      'My team knows which decisions they can make on a job without me, and which have to come to me.',
+      'If I were away for two weeks, live jobs would keep moving to the same standard.',
       'We have a written plan for this quarter that we actually review.',
-      'Anyone here could say in one sentence what we are best at and who we do it for.',
+      'Anyone here could say in one sentence what we are best at building, and who we build it for.',
     ]),
-    pillarPage(2, 'The Hull', 'systems', 'Margin, numbers and delivery. A weak Hull means a new salary lands on a business that cannot yet see what it earns or what it can take on.', 'hull', [
-      'I know what we make on each service line, not just total revenue.',
+    pillarPage(2, 'The Hull', 'systems', 'Margin, numbers and production. A weak Hull means a new salary lands on a business that cannot yet see what it makes per job, or how much work the workshop can take.', 'hull', [
+      'I know what we make on each job type, not just total revenue.',
       'The numbers I steer by come from one source everyone trusts.',
-      'Delivery runs on a written process, not on me being in the room.',
-      'I can see this week how much capacity the team actually has.',
+      'Quoting, production and install run on a written process, not on me being in the room.',
+      'I can see this week how much crew and workshop capacity we actually have.',
     ]),
-    pillarPage(3, 'The Cargo Hold', 'product', 'Demand, offer and retention. A weak Cargo Hold means you hire for work you hope will arrive, rather than work you can see coming.', 'cargo', [
-      'New work comes from more than one predictable source, not only referrals.',
-      'I know roughly what it costs to win a client and what one is worth to us.',
+    pillarPage(3, 'The Cargo Hold', 'product', 'Demand, offer and retention. A weak Cargo Hold means you hire for jobs you hope will land, rather than work you can already see in the pipeline.', 'cargo', [
+      'New jobs come from more than one predictable source, not only repeat clients and referrals.',
+      'I know roughly what it costs to win a client and what one is worth across a year.',
       'Our offer changes on purpose, not because a client asked.',
-      'Something we do actively brings clients back. Retention is not luck.',
+      'Something we do actively brings clients back for the next campaign. Retention is not luck.',
     ]),
     `
 <section class="block">
   <p class="kicker">Your score</p>
   <h2>What the number means</h2>
   <div class="grid2">
-    <div>${field('score_total', 'Total score', { hint: 'out of 60' })}</div>
+    <div>${field('score_total', 'Total score', { hint: 'out of 60 &middot; the three subtotals added up', calc: 'bridge_total,hull_total,cargo_total' })}</div>
     <div>${field('score_weakest', 'Weakest pillar', { hint: 'strategy, systems or product' })}</div>
   </div>
 </section>
@@ -517,17 +517,17 @@ const hire = {
 <section class="block">
   <p class="kicker">The other side of the decision</p>
   <h2>What hiring anyway will cost you</h2>
-  <p>Before you post the job, fill this in with your own numbers. Not the salary you have in your head: the whole cost of the first year.</p>
+  <p>Before you post the job, fill this in with your own numbers. Not the day rate or salary you have in your head: the whole cost of the first year, including the time it takes off you.</p>
   <table class="t">
     <thead><tr><th>Cost</th><th>Your figure</th></tr></thead>
     <tbody>
       <tr><td>Salary</td><td style="width:34%"><div class="fld" data-field="cost_salary"></div></td></tr>
       <tr class="shade"><td>Employer National Insurance and pension</td><td><div class="fld" data-field="cost_oncost"></div></td></tr>
       <tr><td>Recruitment fee, or your time to hire</td><td><div class="fld" data-field="cost_recruit"></div></td></tr>
-      <tr class="shade"><td>Laptop, software, desk</td><td><div class="fld" data-field="cost_kit"></div></td></tr>
+      <tr class="shade"><td>Laptop, software, desk, tools or PPE</td><td><div class="fld" data-field="cost_kit"></div></td></tr>
       <tr><td>Your hours onboarding them, at what your hour is worth</td><td><div class="fld" data-field="cost_onboard"></div></td></tr>
       <tr class="shade"><td>Your hours managing them each week, for the first six months</td><td><div class="fld" data-field="cost_manage"></div></td></tr>
-      <tr><td><b>First-year total</b></td><td><div class="fld" data-field="cost_total"></div></td></tr>
+      <tr><td><b>First-year total</b></td><td><div class="fld" data-field="cost_total" data-calc="cost_salary,cost_oncost,cost_recruit,cost_kit,cost_onboard,cost_manage"></div></td></tr>
     </tbody>
   </table>
 </section>
@@ -536,7 +536,12 @@ const hire = {
 <section class="block">
   <p class="kicker">Before you hire, or before they start</p>
   <h2>Your three next steps</h2>
-  <p>Three things, not ten. Each one needs a name and a date, or it will not happen.</p>
+  <p class="lead">Take them straight from your answers: the two statements you scored lowest, and the pillar with the weakest subtotal. Those are the gaps a new person would inherit.</p>
+  <p>Three things, not ten. Each one needs a name and a date, or it will not happen. If a step is really a project, write the first week of it instead.</p>
+  <div class="grid2">
+    <div>${field('steps_weakest', 'Weakest pillar (from page 5)')}</div>
+    <div>${field('steps_lowest', 'Your two lowest-scoring statements')}</div>
+  </div>
 </section>
 <section class="block">
   <div class="rule"><span class="num">Step 1</span>
@@ -556,7 +561,7 @@ const hire = {
 <section class="block">
   <p class="kicker">Where this stops</p>
   <h2>What this check does not cover</h2>
-  <p class="lead">This tells you whether you are ready to hire, and what it is likely to cost if you are not. It does not tell you where the business is actually stuck, or in what order to fix things.</p>
+  <p class="lead">This tells you whether you are ready to hire, and what it is likely to cost if you are not. It does not tell you where the agency is actually stuck, or in what order to fix things.</p>
   <p>That is a different piece of work: finding the one constraint holding everything else back, and sequencing the fixes so they hold under pressure. Twelve statements cannot do that, and any tool that claims to is selling you something.</p>
 </section>
 <section class="block">
