@@ -7,11 +7,13 @@
 //   <div data-field="name" [data-ml]>   text field (data-ml = multi-line)
 //   <span data-check="name">            checkbox
 //   <span data-radio="group" data-value="3">  radio option
+//   data-calc="a,b,c" on a text field: Acrobat adds the listed fields up automatically
+//   (Acrobat and Edge run the calculation; Preview and Chrome leave it to be typed).
 // Content lives in ./content.mjs. Set CHROME_PATH if Chrome isn't in the default location.
 import fs from 'node:fs';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFBool, PDFDocument, PDFName, PDFString, rgb, StandardFonts } from 'pdf-lib';
 import { DOCS } from './content.mjs';
 
 const OUT = path.resolve(import.meta.dirname, '../../publish/assets/free-resources');
@@ -134,7 +136,7 @@ for (const doc of DOCS) {
   const widgets = await page.evaluate(() => {
     const out = [];
     const rect = (el) => { const r = el.getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height }; };
-    for (const el of document.querySelectorAll('[data-field]')) out.push({ kind: 'text', name: el.dataset.field, ml: el.hasAttribute('data-ml'), ...rect(el) });
+    for (const el of document.querySelectorAll('[data-field]')) out.push({ kind: 'text', name: el.dataset.field, ml: el.hasAttribute('data-ml'), calc: el.dataset.calc || null, ...rect(el) });
     for (const el of document.querySelectorAll('[data-check]')) out.push({ kind: 'check', name: el.dataset.check, ...rect(el) });
     for (const el of document.querySelectorAll('[data-radio]')) out.push({ kind: 'radio', name: el.dataset.radio, value: el.dataset.value, ...rect(el) });
     return out;
@@ -151,6 +153,7 @@ for (const doc of DOCS) {
   const ink = rgb(0.125, 0.118, 0.114);
   const navy = rgb(0.118, 0.227, 0.541);
   const radios = {};
+  const calcOrder = [];
   for (const w of widgets) {
     const pageIndex = Math.floor((w.y + 0.5) / PAGE_H_PX);
     const target = pages[pageIndex];
@@ -160,6 +163,15 @@ for (const doc of DOCS) {
       if (w.ml) f.enableMultiline();
       f.addToPage(target, { ...box, borderWidth: 0, backgroundColor: rgb(0.961, 0.965, 0.98), textColor: ink, font });
       f.setFontSize(w.ml ? 9 : 10);
+      if (w.calc) {
+        // Acrobat's own sum helper, so the subtotal adds itself up as the reader types.
+        const js = `AFSimple_Calculate("SUM", ${JSON.stringify(w.calc.split(',').map((n) => n.trim()))});`;
+        f.acroField.dict.set(
+          PDFName.of('AA'),
+          pdf.context.obj({ C: { S: PDFName.of('JavaScript'), JS: PDFString.of(js) } })
+        );
+        calcOrder.push(f.acroField.ref);
+      }
     } else if (w.kind === 'check') {
       const c = form.createCheckBox(w.name);
       c.addToPage(target, { ...box, borderWidth: 1, borderColor: navy, backgroundColor: rgb(1, 1, 1), textColor: navy });
@@ -167,6 +179,10 @@ for (const doc of DOCS) {
       const g = radios[w.name] || (radios[w.name] = form.createRadioGroup(w.name));
       g.addOptionToPage(w.value, target, { ...box, borderWidth: 1, borderColor: navy, backgroundColor: rgb(1, 1, 1), textColor: navy });
     }
+  }
+  if (calcOrder.length) {
+    form.acroForm.dict.set(PDFName.of('CO'), pdf.context.obj(calcOrder));
+    form.acroForm.dict.set(PDFName.of('NeedAppearances'), PDFBool.True);
   }
   form.updateFieldAppearances(font);
   pdf.setTitle(doc.title);
