@@ -13,14 +13,14 @@ NAV = {
             links=[('About', '/about/'), ('Biz Ops Advisory', '/business-advisory/'), ('Free Resources', '/free-resources/')],
             mobile_home='Home'),
  'pt': dict(home='/pt/', skip='Saltar para o conte&uacute;do', open='Abrir menu', close='Fechar menu', lang_label='Idioma: Portugu&ecirc;s', book='Marcar chamada', book_href='/pt/book/',
-            links=[('Assessoria Biz Ops', '/pt/business-advisory/')],
+            links=[('Sobre (EN)', '/about/'), ('Assessoria Biz Ops', '/pt/business-advisory/'), ('Recursos gratuitos (EN)', '/free-resources/')],
             mobile_home='In&iacute;cio'),
 }
 FOOT = {
  'en': dict(contact='Contact', support='Support', follow='Follow', pages='Pages', privacy=('Privacy', '/privacy/'), other='Portugu&ecirc;s',
             links=[('Biz Ops Advisory', '/business-advisory/'), ('About', '/about/'), ('Vessel Operating System', '/vessel-operating-system/'), ('Case studies', '/case-studies/'), ('Free Resources', '/free-resources/'), ('Free VOS assessment', 'https://vos.nabiaedge.com/trial'), ('Newsletter', '/subscribe/'), ('Book a call', '/book/')]),
  'pt': dict(contact='Contacto', support='Suporte', follow='Redes', pages='P&aacute;ginas', privacy=('Privacidade', '/pt/privacy/'), other='English',
-            links=[('In&iacute;cio', '/pt/'), ('Assessoria Biz Ops', '/pt/business-advisory/'), ('Avalia&ccedil;&atilde;o VOS gratuita', 'https://vos.nabiaedge.com/trial'), ('Newsletter', '/pt/subscribe/'), ('Marcar chamada', '/pt/book/')]),
+            links=[('In&iacute;cio', '/pt/'), ('Assessoria Biz Ops', '/pt/business-advisory/'), ('Sobre (EN)', '/about/'), ('Vessel Operating System (EN)', '/vessel-operating-system/'), ('Casos de estudo (EN)', '/case-studies/'), ('Recursos gratuitos (EN)', '/free-resources/'), ('Avalia&ccedil;&atilde;o VOS gratuita', 'https://vos.nabiaedge.com/trial'), ('Newsletter', '/pt/subscribe/'), ('Marcar chamada', '/pt/book/')]),
 }
 FLAG = {'en': '/assets/flags/gb.svg', 'pt': '/assets/flags/pt.svg'}
 NAME = {'en': 'English', 'pt': 'Portugu&ecirc;s'}
