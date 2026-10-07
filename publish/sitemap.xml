@@ -124,4 +124,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/book/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/book/"/>
   </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/about/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/about/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/about/"/>
+  </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/vessel-operating-system/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/vessel-operating-system/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/vessel-operating-system/"/>
+  </url>
 </urlset>
