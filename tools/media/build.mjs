@@ -31,6 +31,7 @@ const SHARE = [
   { out: 'business-advisory-pt', lang: 'pt', kicker: 'Assessoria Biz Ops', title: 'Deixe de ser <b>imprescind&iacute;vel.</b>' },
   { out: 'about-pt', lang: 'pt', kicker: 'Sobre', title: 'Opera&ccedil;&otilde;es sob press&atilde;o em <b>tr&ecirc;s mundos diferentes.</b>' },
   { out: 'vessel-operating-system-pt', lang: 'pt', kicker: 'O Vessel Operating System', title: 'Veja onde o seu neg&oacute;cio est&aacute;, <b>e corrija o mais fraco.</b>' },
+  { out: 'free-resources-pt', lang: 'pt', kicker: 'Recursos gratuitos', title: 'Quatro formas de ver onde a sua ag&ecirc;ncia <b>est&aacute; mesmo.</b>' },
   { out: 'case-studies', lang: 'en', kicker: 'Case studies', title: 'What changes when the business <b>stops running through the founder.</b>' },
   { out: 'case-study-yunik', lang: 'en', kicker: 'Case study &middot; Yunik', title: '30% fewer decisions on the owner&rsquo;s desk <b>in five months.</b>' },
   { out: 'case-study-psicodramatizar', lang: 'en', kicker: 'Case study &middot; Psicodramatizar', title: '70% less money owed, <b>80% fewer late payments.</b>' },

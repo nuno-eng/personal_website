@@ -11,7 +11,7 @@ import { RESOURCES } from '../_lib/resources.js';
 import { renderResourceEmail } from '../_lib/email-templates.js';
 import { sendEmail } from '../_lib/resend.js';
 import { ownerAlert } from '../_lib/emails.js';
-import { jsonResponse, readJson, sha256Hex, siteUrl } from '../_lib/http.js';
+import { jsonResponse, readJson, sha256Hex, siteUrl, normalizeLang } from '../_lib/http.js';
 import { onRequestPost as subscribe } from './subscribe.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
 
   const id = await sendEmail(env, {
     to: email,
-    ...renderResourceEmail(resource, { base: siteUrl(env, request) }),
+    ...renderResourceEmail(resource, { base: siteUrl(env, request), lang: normalizeLang(body.lang) }),
     idempotencyKey: `resource:${body.resource}:${email}:${new Date().toISOString().slice(0, 13)}`,
   });
   if (!id) return jsonResponse({ error: 'Could not send the email right now. Try again shortly.' }, 502);
