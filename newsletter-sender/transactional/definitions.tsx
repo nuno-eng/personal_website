@@ -84,6 +84,20 @@ add('seq-day7-pt', 'Vale 30 minutos?',
   </Layout>);
 
 // ---------------- free resource delivery ----------------
+add('resource-pt', 'A sua c\u00f3pia: {{resourceTitle}}',
+  <Layout lang="pt" eyebrow="Recurso gratuito" preview="{{preview}}" footer={<>Recebe este email porque pediu um recurso gratuito em nunofontoura.com. &Eacute; um email &uacute;nico.</>}>
+    <H>{'{{resourceTitle}}'}</H>
+    <P>Ol&aacute;,</P>
+    <P>Aqui est&aacute; a sua c&oacute;pia, como pediu. &Eacute; um PDF edit&aacute;vel: escreva diretamente nos campos cinzentos, guarde e partilhe com a equipa. O documento est&aacute; em ingl&ecirc;s.</P>
+    <P>Para o preencher, abra-o no Chrome, Edge, Adobe Acrobat Reader ou Pr&eacute;-visualiza&ccedil;&atilde;o no Mac. Nos telem&oacute;veis e no email costuma abrir apenas para leitura.</P>
+    <Cta href="{{downloadUrl}}">{'{{downloadLabel}}'}</Cta>
+    <Details rows={[['Como usar', '{{howTo}}']]} />
+    <P>{'{{next}}'}</P>
+    <Cta href={VOS}>Fazer a avalia&ccedil;&atilde;o VOS gratuita</Cta>
+    <P>Se algo n&atilde;o fizer sentido para a sua ag&ecirc;ncia, responda a este email. Leio todas as respostas.</P>
+    <Signature lang="pt" />
+  </Layout>);
+
 add('resource-en', 'Your copy: {{resourceTitle}}',
   <Layout lang="en" eyebrow="Free resource" preview="{{preview}}" footer={<>You are receiving this because you requested a free resource at nunofontoura.com. This is a one-off email.</>}>
     <H>{'{{resourceTitle}}'}</H>

@@ -138,4 +138,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/vessel-operating-system/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/vessel-operating-system/"/>
   </url>
+  <url>
+    <loc>https://www.nunofontoura.com/pt/free-resources/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nunofontoura.com/free-resources/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://www.nunofontoura.com/pt/free-resources/"/>
+  </url>
 </urlset>
