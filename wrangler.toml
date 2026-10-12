@@ -13,6 +13,9 @@ RESEND_FROM = "Nuno Fontoura <nuno@news.nunofontoura.com>"
 RESEND_REPLY_TO = "info@nabiaedge.com"
 SITE_URL = "https://www.nunofontoura.com"
 NOTIFY_EMAIL = "info@nabiaedge.com"
+# Resend segment for free resource requests (separate from the newsletter).
+# Create it in Resend > Audience > Segments, then paste its ID here.
+RESOURCE_SEGMENT_ID = ""
 
 [[d1_databases]]
 binding = "DB"

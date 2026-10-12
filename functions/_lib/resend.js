@@ -62,6 +62,27 @@ export async function upsertContact(env, { email, firstName }) {
   return true;
 }
 
+// Adds someone who requested a free resource to the "Free resource requests"
+// segment (RESOURCE_SEGMENT_ID), which is what the follow-up automation in Resend
+// listens to. This segment is separate from the newsletter, and the function
+// never touches the unsubscribed flag: someone who already opted out of email
+// stays opted out.
+export async function addToResourceSegment(env, email) {
+  const segment = env.RESOURCE_SEGMENT_ID;
+  if (!segment) return false;
+
+  // Creates the contact if it's new. If it already exists the call fails, which is fine.
+  await call(env, '/contacts', { method: 'POST', body: { email, unsubscribed: false } });
+
+  const added = await call(
+    env,
+    `/contacts/${encodeURIComponent(email)}/segments/${encodeURIComponent(segment)}`,
+    { method: 'POST' }
+  );
+  if (!added.ok) console.error('Resend add to resource segment:', added.status, await added.text());
+  return added.ok;
+}
+
 export async function unsubscribeContact(env, email) {
   const res = await call(env, `/contacts/${encodeURIComponent(email)}`, {
     method: 'PATCH',
