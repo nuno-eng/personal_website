@@ -67,8 +67,10 @@ export async function upsertContact(env, { email, firstName }) {
 // listens to. This segment is separate from the newsletter, and the function
 // never touches the unsubscribed flag: someone who already opted out of email
 // stays opted out.
-export async function addToResourceSegment(env, email) {
-  const segment = env.RESOURCE_SEGMENT_ID;
+export async function addToResourceSegment(env, email, lang = 'en') {
+  // Portuguese requesters go to their own segment, so they get the Portuguese follow-up.
+  // If that segment isn't set up yet they're skipped rather than sent English.
+  const segment = lang === 'pt' ? env.RESOURCE_SEGMENT_ID_PT : env.RESOURCE_SEGMENT_ID;
   if (!segment) return false;
 
   // Creates the contact if it's new. If it already exists the call fails, which is fine.

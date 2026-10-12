@@ -68,9 +68,10 @@ export async function onRequestPost(context) {
       .run();
   }
 
-  if (env.RESOURCE_SEGMENT_ID) {
-    // Everyone who asks for a resource joins the follow-up segment, newsletter or not.
-    waitUntil(addToResourceSegment(env, email));
+  const lang = normalizeLang(body.lang);
+  if (env.RESOURCE_SEGMENT_ID || env.RESOURCE_SEGMENT_ID_PT) {
+    // Everyone who asks for a resource joins the follow-up segment for their language, newsletter or not.
+    waitUntil(addToResourceSegment(env, email, lang));
   }
 
   if (newsletter) {
