@@ -8,11 +8,11 @@ const field = (name, label, { size = '', hint = '', calc = '', expr = '' } = {})
   `${label ? `<span class="label">${label}${hint ? ` <span class="hint">${hint}</span>` : ''}</span>` : ''}<div class="fld ${size}" data-field="${name}"${size ? ' data-ml' : ''}${calc ? ` data-calc="${calc}"` : ''}${expr ? ` data-calc-expr="${expr}"` : ''}></div>`;
 const check = (name) => `<span class="chk" data-check="${name}"></span>`;
 
-const cta = (lead) => `
+const cta = (lead, withVos = false) => `
 <div class="cta">
   <h2>Want to install this properly?</h2>
   <p>${lead}</p>
-  <div class="btns"><a class="primary" href="${VOS}">Take the free VOS assessment</a><a class="secondary" href="${BOOK}">Book a discovery call</a></div>
+  <div class="btns">${withVos ? `<a class="primary" href="${VOS}">Take the free VOS assessment</a><a class="secondary" href="${BOOK}">Book a discovery call</a>` : `<a class="primary" href="${BOOK}">Book a discovery call</a>`}</div>
 </div>`;
 const sig = `<div class="sig"><div><b>Nuno Fontoura</b>Founder, NabiaEdge</div><div class="muted">info@nabiaedge.com &middot; nunofontoura.com</div></div>`;
 
@@ -155,7 +155,7 @@ ${ruleBlock('rule', 3, true)}`,
   <p>That list is your audit.</p>
   ${field('closing_list', '', { size: 'xl' })}
 </section>
-${cta('The audit covers one area. The free VOS assessment scores all nine areas of a founder-led agency, so you can see where the next bottleneck is before it costs you.')}
+${cta('The audit covers one area. A discovery call looks at how the rest of your agency runs, so you can see where the next bottleneck is before it costs you.')}
 ${sig}`,
   ],
 };
@@ -220,7 +220,7 @@ ${ruleBlock('rule', 4)}
   <p class="kicker">Notes</p>
   ${field('notes', '', { size: 'xl' })}
 </section>
-<div class="callout"><p>This is the same discipline VOS tracks under <b>Operations &amp; Delivery</b>: whether someone new could run your core process from written instructions alone. A decision rule applies that discipline to judgement calls instead of tasks.</p></div>
+<div class="callout"><p>This is the same discipline behind any reliable operation: whether someone new could run your core process from written instructions alone. A decision rule applies it to judgement calls instead of tasks.</p></div>
 ${cta('Install decision rules across every part of the business, not just the approvals you happened to notice.')}
 ${sig}`,
   ],
@@ -310,8 +310,8 @@ ${field('start_date', 'Planner start date', { hint: 'week 1 begins' })}`,
     <div class="card"><p><b>Confusing visibility with micromanagement.</b> The rhythm lets you step back without losing sight, not interfere more often.</p></div>
   </div>
 </section>
-<div class="callout"><p>This is the same governance cadence VOS installs and tracks as one of its core deliverables, with the first cycle actually run, not just scheduled.</p></div>
-${cta('Build your cadence with support: the free VOS assessment shows which areas of your business most need a regular review.')}
+<div class="callout"><p>This is a governance cadence in its simplest form, with the first cycle actually run, not just scheduled.</p></div>
+${cta('Build your cadence with support: a discovery call shows which areas of your business most need a regular review.')}
 ${sig}`,
   ],
 };
@@ -410,7 +410,7 @@ ${field('first_change', 'The first change you would make', { size: 'xl' })}
   <p class="kicker">Backed by a guarantee</p>
   <p>If, by the end of month one, VOS hasn&rsquo;t produced a specific, named item you can point to and say &ldquo;that&rsquo;s now off my desk&rdquo;, you don&rsquo;t pay for months two and three.</p>
 </section>
-${cta('This preview shows what VOS measures. The free assessment tells you where your business actually sits, with your Business Health score and band at the end.')}
+${cta('This preview shows what VOS measures. The free assessment tells you where your business actually sits, with your Business Health score and band at the end.', true)}
 ${sig}`,
   ],
 };
@@ -459,9 +459,9 @@ const hire = {
   <p>Sometimes the work really has outgrown the team. More often, the jobs, teams and suppliers still run through you, and a new person inherits that. This tells you which one you are looking at, before you post the job.</p>
 </section>
 <section class="block">
-  <p class="kicker">What this is built on</p>
-  <h3>The Vessel Operating System</h3>
-  <p>Every agency floats on three pillars. VOS looks at each one separately, because you can be strong in one and weak in another at the same time, and that gap is where the risk hides. It was built with founder-led production and brand activation agencies.</p>
+  <p class="kicker">What this looks at</p>
+  <h3>Three parts of the business</h3>
+  <p>Every agency floats on three pillars. Each is checked separately, because you can be strong in one and weak in another at the same time, and that gap is where the risk hides.</p>
   <div class="cards c3">
     <div class="card"><div class="big">Strategy</div><p><b>The Bridge.</b> Where the business is steered from: direction, ownership of decisions, and the plan people are actually rowing towards.</p></div>
     <div class="card"><div class="big">Systems</div><p><b>The Hull.</b> What keeps you watertight: margin per job, numbers you trust, and production that holds without you on site.</p></div>
@@ -566,11 +566,10 @@ const hire = {
 <section class="block">
   <p class="kicker">The fuller picture</p>
   <div class="cards c2">
-    <div class="card"><p><b>The free VOS assessment</b> scores nine areas across the three pillars, from 0 to 100, and names the area to look at first.</p></div>
     <div class="card"><p><b>A 30-minute discovery call</b> reads your answers with you. I will tell you honestly whether hiring is the right next move, whether or not we work together.</p></div>
   </div>
 </section>
-${cta('You have the symptoms. The free VOS assessment turns them into a Business Health score across all nine areas, so you know what to fix before you add anyone.')}
+${cta('You have the symptoms. A discovery call turns them into a short list of what to fix before you add anyone.')}
 ${sig}`,
   ],
 };
@@ -582,11 +581,11 @@ ${sig}`,
 const mrow = (i, name, label, { hint = '', expr = '', calc = '', strong = false } = {}) => `
 <tr class="${i % 2 ? 'shade' : ''}"><td>${strong ? '<b>' : ''}${label}${strong ? '</b>' : ''}${hint ? ` <span class="hint">${hint}</span>` : ''}</td><td style="width:30%"><div class="fld" data-field="${name}"${calc ? ` data-calc="${calc}"` : ''}${expr ? ` data-calc-expr="${expr}"` : ''}></div></td></tr>`;
 const mtable = (head, rows) => `<table class="t"><thead><tr><th>${head}</th><th>Your figure</th></tr></thead><tbody>${rows.map((r, i) => mrow(i, ...r)).join('')}</tbody></table>`;
-const planRow = (p) => `
+const planRow = (p, kpi = 'a number') => `
 <div class="grid3">
   <div>${field(`${p}_owner`, 'Who owns the install')}</div>
   <div>${field(`${p}_start`, 'Start date')}</div>
-  <div>${field(`${p}_target`, 'Your 30-day target', { hint: 'a number' })}</div>
+  <div>${field(`${p}_target`, 'Your 30-day target', { hint: kpi })}</div>
 </div>`;
 const chkLine = (name, text) => `<div class="chkrow">${check(name)}<span>${text}</span></div>`;
 
@@ -602,31 +601,32 @@ const leakmap = {
   file: 'agency-margin-leak-map.pdf',
   type: 'Margin diagnostic',
   title: 'The Agency Margin Leak Map',
-  subtitle: 'Seven places margin leaks between brief and cash. Measure each one in five minutes, then install the system that closes it.',
+  subtitle: 'Seven places margin leaks between brief and cash. Estimate each one in five minutes, then install the system that closes it.',
   meta: ['Fillable PDF', '11 pages', '50 minutes'],
   pages: [
     `
 <section class="block">
   <p class="kicker">The premise</p>
   <h2>Margin rarely disappears in one place</h2>
-  <p class="lead">An agency can win good work, deliver it well and still keep less than it should. The money goes quietly: in pitches that never convert, in extras nobody priced, in a quote that was wrong before the job began, in invoices that wait.</p>
+  <p class="lead">An agency can win good work, deliver it well and still keep less than it should. The money goes quietly: in pitches that never convert, in extras nobody priced, in a quote that was wrong before the job began.</p>
   <p>This map covers seven leaks, plus the outside pressures that widen them: late payment and a shifting economy. Measure each from your last twelve months of data, then install the system on your side that closes it. Leak 3 applies only to agencies that make physical product.</p>
+  <p class="small muted"><b>In this map, &ldquo;margin leak&rdquo; means avoidable profit, contribution or cash-flow impact.</b> Figures are estimates.</p>
 </section>
 <section class="block">
   <p class="kicker">How to use it</p>
   <ol class="steps">
-    <li><b>Measure.</b> Type your figures into the grey fields. In Acrobat or Edge, the totals work themselves out.</li>
+    <li><b>Measure.</b> Type figures into the grey fields. In Acrobat or Edge, totals work themselves out.</li>
     <li><b>Install.</b> Each leak page has a ready-made system: a checklist, template or rule. Fill it in.</li>
-    <li><b>Choose three.</b> Page 10 collects your figures. Pick the three biggest and re-measure in 30 days.</li>
+    <li><b>Choose three.</b> Page 10 collects your figures. Pick the three most material and re-measure in 30 days.</li>
   </ol>
-  <p class="small muted">Round your figures: a rough number you can act on beats an exact one you never find. Type into the fields and save, or print and write by hand.</p>
+  <p class="small muted">Type into the fields and save, or print and write by hand.</p>
 </section>
 <section class="block">
   <p class="kicker">The seven leaks</p>
   <div class="cards c3">
     <div class="card"><div class="big">Win</div><p><b>1. Pitching</b><br>Free work spent chasing business that does not convert.<br><b>2. Scope creep</b><br>Delivered work that was never priced.</p></div>
-    <div class="card"><div class="big">Make</div><p><b>3. Unit cost</b><br>Product quoted below what it truly costs. <i>Production only.</i><br><b>6. Time-priced revenue</b><br>Income that rises only when headcount does.</p></div>
-    <div class="card"><div class="big">Keep</div><p><b>4. Cash tied up</b><br>Money sitting in stock and receivables.<br><b>5. Late invoices</b><br>Cash that is earned but not yet yours.<br><b>7. Informal systems</b><br>Work that stops when one person is away.</p></div>
+    <div class="card"><div class="big">Make</div><p><b>3. Unit cost</b><br>Product quoted below what it truly costs. <i>Production only.</i><br><b>6. Capacity-bound revenue</b><br>Income that grows only as delivery hours do.</p></div>
+    <div class="card"><div class="big">Keep</div><p><b>4. Cash tied up</b><br>Your cash committed before you can bill.<br><b>5. Late invoices</b><br>Overdue cash that is earned but not yet yours.<br><b>7. Informal systems</b><br>Work that stops when one person is away.</p></div>
   </div>
 </section>`,
 
@@ -636,21 +636,21 @@ const leakmap = {
   ${mtable('Last 12 months', [
     ['l1_n', 'Pitches you put together'],
     ['l1_hrs', 'Average hours of team time per pitch'],
-    ['l1_rate', 'What an hour of that time costs you', { hint: '&pound;' }],
+    ['l1_rate', 'Blended internal cost per team hour', { hint: '&pound; &middot; fully loaded, not your billing rate' }],
     ['l1_won', 'Pitches won'],
-    ['l1_cost', 'Total cost of pitching', { hint: '&pound; &middot; works itself out', expr: 'l1_n*l1_hrs*l1_rate', strong: true }],
+    ['l1_cost', 'Total cost of pitching (cost of sale)', { hint: '&pound; &middot; works itself out', expr: 'l1_n*l1_hrs*l1_rate', strong: true }],
     ['l1_perwin', 'Cost of each win', { hint: '&pound; &middot; works itself out', expr: 'l1_cost/l1_won', strong: true }],
   ])}
 </section>
 <section class="block">
   <p class="kicker">Install it</p>
   <h3>A pitch budget and a go or no-go checklist</h3>
-  <p>Decide before you start, not after you have spent the week. Pitch only when at least four of the five are true.</p>
-  ${chkLine('l1_c1', 'The client fits the work we already do well.')}
-  ${chkLine('l1_c2', 'We know the budget, or the budget range, before we start.')}
-  ${chkLine('l1_c3', 'We have spoken to the person who decides, not only the person who briefed us.')}
-  ${chkLine('l1_c4', 'The pitch is paid, or the free part is capped.')}
-  ${chkLine('l1_c5', 'We have the capacity to deliver it if we win.')}
+  <p>Decide before you start, not after you have spent the week. Pitch only when the first two are true, and at least two of the other three.</p>
+  ${chkLine('l1_c1', '<b>Must:</b> We know the budget, or the budget range, before we start.')}
+  ${chkLine('l1_c2', '<b>Must:</b> We have the capacity to deliver it if we win.')}
+  ${chkLine('l1_c3', 'The client fits the work we already do well.')}
+  ${chkLine('l1_c4', 'We have spoken to the person who decides, not only the person who briefed us.')}
+  ${chkLine('l1_c5', 'The pitch is paid, or the free part is capped.')}
   <div class="grid3">
     <div>${field('l1_cap_hrs', 'Maximum hours per pitch')}</div>
     <div>${field('l1_cap_gbp', 'Maximum spend per pitch', { hint: '&pound;' })}</div>
@@ -659,13 +659,13 @@ const leakmap = {
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l1')}
+  ${planRow('l1', 'cost per win, or maximum pitch hours')}
 </section>`,
 
     leakHead(2, 'Scope creep', 'Every small extra feels reasonable at the time. Added together they are a project you delivered and never invoiced.') + `
 <section class="block">
   <p class="kicker">Measure it</p>
-  <p class="small">Take your last four projects. Estimate the hours of work delivered that were not in the signed scope.</p>
+  <p class="small">Last four projects: hours delivered outside the signed scope.</p>
   <table class="t">
     <thead><tr><th>Project</th><th style="width:30%">Hours outside scope</th></tr></thead>
     <tbody>
@@ -679,10 +679,10 @@ const leakmap = {
 <section class="block">
   <p class="kicker">Install it</p>
   <h3>Scope that says what is out, and a one-page change request</h3>
-  ${chkLine('l2_c1', 'Every proposal lists what is <b>not</b> included, as well as what is.')}
-  ${chkLine('l2_c2', 'Every contract carries a one-page change request as an attachment.')}
-  ${chkLine('l2_c3', 'The team knows that no extra work starts until a change request is signed.')}
-  <div class="rule" style="margin-top:6mm"><span class="num">Change request template</span>
+  ${chkLine('l2_c1', 'Every proposal lists what is <b>not</b> included.')}
+  ${chkLine('l2_c2', 'Every contract attaches a one-page change request.')}
+  ${chkLine('l2_c3', 'No material extra work starts without written approval. Minor ones are logged.')}
+  <div class="rule" style="margin-top:3mm"><span class="num">Change request template</span>
     ${field('l2_t_what', 'What is being asked for')}
     <div class="grid3">
       <div>${field('l2_t_hrs', 'Extra hours')}</div>
@@ -693,50 +693,50 @@ const leakmap = {
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l2')}
+  ${planRow('l2', 'hours outside scope')}
 </section>`,
 
-    leakHead(3, 'Unit cost', 'A quote built on a rough cost per unit can be wrong before the first piece is made. Setup, wastage and overhead are the lines most often left out.', ' &middot; production only') + `
+    leakHead(3, 'Unit cost', 'A quote built on a rough cost per unit can be wrong before the first piece is made. Setup, wastage and overhead are the lines most often left out.', ' &middot; physical production only') + `
 <section class="block">
   <p class="kicker">Measure it</p>
-  <p class="small">Take your last product run. Compare what you quoted with what it cost.</p>
+  <p class="small">Last product run. Enter costs as totals for the whole run.</p>
   ${mtable('Cost per unit, last run', [
     ['l3_quoted', 'Cost per unit you quoted', { hint: '&pound;' }],
-    ['l3_mat', 'Materials actually used', { hint: '&pound;' }],
-    ['l3_lab', 'Labour actually spent', { hint: '&pound;' }],
-    ['l3_setup', 'Setup and changeover, shared across the run', { hint: '&pound;' }],
-    ['l3_waste', 'Wastage and rejects, shared across the run', { hint: '&pound;' }],
-    ['l3_over', 'Fair share of overhead', { hint: '&pound;' }],
-    ['l3_actual', 'Actual cost per unit', { hint: '&pound; &middot; adds up on its own', calc: 'l3_mat,l3_lab,l3_setup,l3_waste,l3_over', strong: true }],
-    ['l3_gap', 'Gap against your quote', { hint: '&pound; per unit &middot; works itself out', expr: 'l3_actual-l3_quoted', strong: true }],
+    ['l3_rununits', 'Saleable units in the run'],
+    ['l3_mat', 'Materials actually used, run total', { hint: '&pound;' }],
+    ['l3_lab', 'Labour actually spent, run total', { hint: '&pound;' }],
+    ['l3_setup', 'Setup and changeover, run total', { hint: '&pound;' }],
+    ['l3_waste', 'Wastage and rejects, run total', { hint: '&pound;' }],
+    ['l3_over', 'Fair share of overhead, run total', { hint: '&pound;' }],
+    ['l3_actual', 'Actual cost per unit', { hint: '&pound; &middot; run total divided by saleable units', expr: '(l3_mat+l3_lab+l3_setup+l3_waste+l3_over)/l3_rununits', strong: true }],
+    ['l3_gap', 'Gap against your quote', { hint: '&pound; per unit &middot; actual cost minus quoted cost', expr: 'l3_actual-l3_quoted', strong: true }],
     ['l3_units', 'Units you make in a year'],
-    ['l3_annual', 'Margin leaking each year', { hint: '&pound; &middot; works itself out', expr: 'l3_gap*l3_units', strong: true }],
+    ['l3_annual', 'Under-recovered cost each year', { hint: '&pound; &middot; works itself out', expr: 'l3_gap*l3_units', strong: true }],
   ])}
 </section>
 <section class="block">
   <p class="kicker">Install it</p>
   <h3>One cost sheet, used for every quote</h3>
-  <p>Use the six lines above as a standing template. Overhead is shared out on what causes it, such as setups or machine time, not on a flat percentage.</p>
-  ${chkLine('l3_c1', 'No quote goes out without the six lines filled in.')}
+  <p>Use these lines as a template. Share overhead out on what causes it, not a flat percentage.</p>
+  ${chkLine('l3_c1', 'No quote goes out without every cost line filled in.')}
   ${chkLine('l3_c2', 'After each run, actual cost is entered next to the quote.')}
-  ${chkLine('l3_c3', 'Rates for labour, setup and overhead are reviewed every quarter.')}
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l3')}
+  ${planRow('l3', 'gap per unit, in pounds')}
 </section>`,
 
     leakHead(4, 'Cash tied up', 'Margin on paper is not cash in hand. Every day stock sits on a shelf, or a client sits on an invoice, you are lending your own money.') + `
 <section class="block">
   <p class="kicker">Measure it</p>
-  <p class="small">Service-only agencies can leave stock at zero.</p>
-  ${mtable('Last quarter', [
-    ['l4_cos', 'Cost of delivering the work, for a year', { hint: '&pound; &middot; materials, bought-in costs and delivery labour' }],
-    ['l4_stock', 'Days work and materials sit before billing'],
-    ['l4_recv', 'Days between invoice and payment'],
+  <p class="small">Cash you have committed to delivery before you are entitled to bill. Money owed after the invoice is Leak 5. Include materials and stock where you hold them.</p>
+  ${mtable('Last 12 months', [
+    ['l4_cos', 'Annual delivery cost', { hint: '&pound; &middot; materials, bought-in costs and delivery labour' }],
+    ['l4_stock', 'Days from committing delivery cost to issuing the invoice'],
+    ['l4_recv', 'Work done and not yet invoiced today', { hint: '&pound; &middot; for reference' }],
     ['l4_pay', 'Days you take to pay your own suppliers'],
-    ['l4_cycle', 'Cash cycle in days', { hint: 'stock + receivables &minus; payables &middot; works itself out', expr: 'l4_stock+l4_recv-l4_pay', strong: true }],
-    ['l4_cash', 'Cash tied up on average', { hint: '&pound; &middot; works itself out', expr: 'l4_cos/365*l4_cycle', strong: true }],
+    ['l4_cycle', 'Days your own cash is committed before you can bill', { hint: 'days to invoice &minus; days you take to pay suppliers', expr: 'l4_stock-l4_pay', strong: true }],
+    ['l4_cash', 'Estimated cash exposure', { hint: '&pound; &middot; works itself out', expr: 'l4_cos/365*l4_cycle', strong: true }],
   ])}
 </section>
 <section class="block">
@@ -744,16 +744,16 @@ const leakmap = {
   <h3>A monthly cash-cycle sheet</h3>
   <p>Fill in the three figures on the same day each month. Choose one to shorten and set a number of days.</p>
   <table class="t">
-    <thead><tr><th style="width:22%">Month</th><th>Stock days</th><th>Receivable days</th><th>Payable days</th></tr></thead>
+    <thead><tr><th style="width:22%">Month</th><th>Days to invoice</th><th>Unbilled work, &pound;</th><th>Days you pay suppliers</th></tr></thead>
     <tbody>
       ${[1, 2, 3].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l4_m${i}_m"></div></td><td><div class="fld" data-field="l4_m${i}_s"></div></td><td><div class="fld" data-field="l4_m${i}_r"></div></td><td><div class="fld" data-field="l4_m${i}_p"></div></td></tr>`).join('')}
     </tbody>
   </table>
-  <div class="chkrow" style="margin-top:3mm"><span>Lever I will pull first:</span> ${check('l4_lv1')}<span>Stock</span> ${check('l4_lv2')}<span>Receivables</span> ${check('l4_lv3')}<span>Payables, agreed in writing</span></div>
+  <div class="chkrow" style="margin-top:3mm"><span>Lever I will pull first:</span> ${check('l4_lv1')}<span>Invoicing speed</span> ${check('l4_lv2')}<span>Deposits</span> ${check('l4_lv3')}<span>Payables, agreed in writing</span></div>
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l4')}
+  ${planRow('l4', 'days from cost to invoice')}
 </section>`,
 
     leakHead(5, 'Late invoices', 'Work done and invoiced is still not yours until it is paid. Agreed terms and a fixed routine decide how long that takes.') + `
@@ -764,7 +764,7 @@ const leakmap = {
     ['l5_over', 'Value of invoices past their terms', { hint: '&pound;' }],
     ['l5_n', 'Number of invoices past terms'],
     ['l5_days', 'Average days past terms'],
-    ['l5_pct', 'Share of a year&rsquo;s billing that is overdue', { hint: '% &middot; works itself out', expr: 'l5_over/l5_billed*100', strong: true }],
+    ['l5_pct', 'Share of a year&rsquo;s billing that is overdue', { hint: '% &middot; a collection indicator, not a margin figure', expr: 'l5_over/l5_billed*100', strong: true }],
   ])}
 </section>
 <section class="block">
@@ -778,6 +778,7 @@ const leakmap = {
   ${chkLine('l5_c1', 'Deposit or milestone payments are written on every quote. For production, the deposit covers materials.')}
   ${chkLine('l5_c2', 'Payment terms are on the quote and the invoice, in the same words.')}
   ${chkLine('l5_c3', 'One named person chases on the fixed day, using the ladder below.')}
+  <p class="small">Example ladder: day 1, reminder with statement. Day 7, direct email to the client contact. Day 14, call and escalate to the commercial owner. Day 30, pause discretionary work and escalate formally. Adapt it to your contract and the client relationship.</p>
   <table class="t">
     <thead><tr><th style="width:22%">Days past terms</th><th>What happens, and who does it</th></tr></thead>
     <tbody>
@@ -789,10 +790,10 @@ const leakmap = {
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l5')}
+  ${planRow('l5', 'overdue value, or average days past terms')}
 </section>`,
 
-    leakHead(6, 'Revenue tied to headcount', 'If income only grows when you add people, margin stays flat. Packaging one repeatable service breaks that link.') + `
+    leakHead(6, 'Revenue constrained by delivery capacity', 'If growth needs a matching rise in delivery hours or headcount, you scale revenue without improving leverage. Packaging one service breaks that link.') + `
 <section class="block">
   <p class="kicker">Measure it</p>
   ${mtable('Last 12 months', [
@@ -806,23 +807,23 @@ const leakmap = {
 <section class="block">
   <p class="kicker">Install it</p>
   <h3>One packaged service, priced per output</h3>
-  <p>Choose the service you already deliver most often. Fix the scope, fix the price, and check the margin before you offer it.</p>
   ${field('l6_name', 'The service')}
   ${field('l6_scope', 'Fixed scope, in one sentence', { size: 'ml' })}
   <div class="grid3">
     <div>${field('l6_price', 'Price per output', { hint: '&pound;' })}</div>
     <div>${field('l6_hrs', 'Hours to deliver it')}</div>
-    <div>${field('l6_hcost', 'Cost of an hour', { hint: '&pound;' })}</div>
+    <div>${field('l6_hcost', 'Fully loaded delivery cost per hour', { hint: '&pound;' })}</div>
   </div>
-  <div class="grid2">
-    <div>${field('l6_margin', 'Margin on each one', { hint: '&pound; &middot; works itself out', expr: 'l6_price-l6_hrs*l6_hcost' })}</div>
-    <div>${field('l6_mpct', 'Margin', { hint: '% &middot; works itself out', expr: '(l6_price-l6_hrs*l6_hcost)/l6_price*100' })}</div>
+  <div class="grid3">
+    <div>${field('l6_bought', 'Bought-in costs per output', { hint: '&pound;' })}</div>
+    <div>${field('l6_margin', 'Contribution per package', { hint: '&pound; &middot; price minus direct cost', expr: 'l6_price-l6_hrs*l6_hcost-l6_bought' })}</div>
+    <div>${field('l6_mpct', 'Contribution', { hint: '% &middot; works itself out', expr: '(l6_price-l6_hrs*l6_hcost-l6_bought)/l6_price*100' })}</div>
   </div>
   ${chkLine('l6_c1', 'The steps are written down, so anyone trained can deliver it the same way.')}
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l6')}
+  ${planRow('l6', 'share of work sold as fixed-scope packages')}
 </section>`,
 
     leakHead(7, 'Informal systems', 'What lives in one person&rsquo;s head works until that person is away, busy or gone. A written checklist and a named backup turn it into a system.') + `
@@ -832,12 +833,13 @@ const leakmap = {
   <table class="t">
     <thead><tr><th>Process</th><th style="width:24%">Who runs it</th><th style="width:12%">Written?</th><th style="width:24%">Backup</th></tr></thead>
     <tbody>
-      ${[1, 2, 3, 4, 5].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l7_p${i}_name"></div></td><td><div class="fld" data-field="l7_p${i}_who"></div></td><td class="c">${check(`l7_p${i}_w`)}</td><td><div class="fld" data-field="l7_p${i}_bk"></div></td></tr>`).join('')}
+      ${[1, 2, 3, 4].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l7_p${i}_name"></div></td><td><div class="fld" data-field="l7_p${i}_who"></div></td><td class="c">${check(`l7_p${i}_w`)}</td><td><div class="fld" data-field="l7_p${i}_bk"></div></td></tr>`).join('')}
     </tbody>
   </table>
-  <div class="grid2" style="margin-top:3mm">
-    <div>${field('l7_missing', 'Processes with no written checklist')}</div>
-    <div>${field('l7_nobackup', 'Processes with no named backup')}</div>
+  <div class="grid3" style="margin-top:3mm">
+    <div>${field('l7_missing', 'No written checklist')}</div>
+    <div>${field('l7_nobackup', 'No named backup')}</div>
+    <div>${field('l7_fail', 'Hurts most if it fails')}</div>
   </div>
 </section>
 <section class="block">
@@ -854,28 +856,29 @@ const leakmap = {
       <div>${field('l7_t_owner', 'Owner')}</div>
       <div>${field('l7_t_backup', 'Backup owner')}</div>
     </div>
+    ${chkLine('l7_t_used', 'The backup has performed it at least once, from this checklist.')}
   </div>
 </section>
 <section class="block">
   <p class="kicker">Your install plan</p>
-  ${planRow('l7')}
+  ${planRow('l7', 'critical processes with a trained backup')}
 </section>`,
 
     `
 <section class="block">
   <p class="kicker">Beyond the seven</p>
   <h2>Outside pressure, inside systems</h2>
-  <p class="lead">You cannot stop clients paying late or the economy shifting. You can set the rules and buffers that decide how much it costs you.</p>
+  <p class="lead">You cannot stop late payment or a shifting economy. You can set the rules and buffers that decide the cost.</p>
 </section>
 <section class="block">
   <p class="kicker">Late payment: put your rights in your terms</p>
-  ${chkLine('x_c1', 'Our terms state that we charge statutory interest and compensation on late commercial payments, in plain words.')}
-  ${chkLine('x_c2', 'The same wording is on every quote, contract and invoice.')}
+  ${chkLine('x_c1', 'Our terms state our right to statutory interest and compensation on late payments, subject to contract, law and advice.')}
+  ${chkLine('x_c2', 'The same wording is on every quote and invoice.')}
   ${chkLine('x_c3', 'We have decided the day we apply it, and who has the authority to waive it.')}
   <div class="grid3">
     <div>${field('x_apply', 'Apply it after', { hint: 'days past terms' })}</div>
     <div>${field('x_waive', 'Who can waive it')}</div>
-    <div>${field('x_check', 'Date to check the current rules', { hint: 'with your accountant' })}</div>
+    <div>${field('x_check', 'Date to check the current rules', { hint: 'with your accountant or solicitor' })}</div>
   </div>
 </section>
 <section class="block">
@@ -893,7 +896,7 @@ const leakmap = {
   </table>
   <div class="grid3" style="margin-top:3mm">
     <div>${field('x_buf_target', 'Buffer target', { hint: 'weeks' })}</div>
-    <div>${field('x_share_cap', 'Cap on one client', { hint: '% of revenue' })}</div>
+    <div>${field('x_share_cap', 'Cap on one client', { hint: '% &middot; by profit and payment record' })}</div>
     <div>${field('x_review', 'Price and cost review', { hint: 'how often, and who' })}</div>
   </div>
   ${chkLine('x_c4', 'Contracts longer than three months include a price-review clause.')}
@@ -913,25 +916,25 @@ const leakmap = {
 <section class="block">
   <p class="kicker">Your map</p>
   <h2>All seven leaks in one place</h2>
-  <p>Leaks 1 to 5 fill in from your earlier pages when you use Acrobat or Edge. In other viewers, copy the figure across.</p>
+  <p>Leaks 1 to 5 fill in from earlier pages in Acrobat or Edge. Elsewhere, copy the figure across.</p>
   <table class="t">
     <thead><tr><th>Leak</th><th style="width:30%">Your figure</th></tr></thead>
     <tbody>
-      <tr><td><b>1. Pitching</b> <span class="hint">&pound; spent a year</span></td><td><div class="fld" data-field="s1" data-calc-expr="l1_cost"></div></td></tr>
-      <tr class="shade"><td><b>2. Scope creep</b> <span class="hint">&pound; given away</span></td><td><div class="fld" data-field="s2" data-calc-expr="l2_cost"></div></td></tr>
-      <tr><td><b>3. Unit cost</b> <span class="hint">&pound; a year, production only</span></td><td><div class="fld" data-field="s3" data-calc-expr="l3_annual"></div></td></tr>
-      <tr class="shade"><td><b>4. Cash tied up</b> <span class="hint">&pound; on average</span></td><td><div class="fld" data-field="s4" data-calc-expr="l4_cash"></div></td></tr>
-      <tr><td><b>5. Late invoices</b> <span class="hint">&pound; overdue now</span></td><td><div class="fld" data-field="s5" data-calc-expr="l5_over"></div></td></tr>
-      <tr class="shade"><td><b>6. Revenue tied to headcount</b> <span class="hint">% priced by time</span></td><td><div class="fld" data-field="s6" data-calc-expr="l6_share"></div></td></tr>
+      <tr><td><b>1. Pitching</b> <span class="hint">cost of sale, &pound; a year</span></td><td><div class="fld" data-field="s1" data-calc-expr="l1_cost"></div></td></tr>
+      <tr class="shade"><td><b>2. Scope creep</b> <span class="hint">unbilled delivery, &pound;</span></td><td><div class="fld" data-field="s2" data-calc-expr="l2_cost"></div></td></tr>
+      <tr><td><b>3. Unit cost</b> <span class="hint">under-recovered, &pound; a year</span></td><td><div class="fld" data-field="s3" data-calc-expr="l3_annual"></div></td></tr>
+      <tr class="shade"><td><b>4. Cash tied up</b> <span class="hint">cash exposure, &pound;</span></td><td><div class="fld" data-field="s4" data-calc-expr="l4_cash"></div></td></tr>
+      <tr><td><b>5. Late invoices</b> <span class="hint">overdue receivables, &pound;</span></td><td><div class="fld" data-field="s5" data-calc-expr="l5_over"></div></td></tr>
+      <tr class="shade"><td><b>6. Capacity-bound revenue</b> <span class="hint">% priced by time</span></td><td><div class="fld" data-field="s6" data-calc-expr="l6_share"></div></td></tr>
       <tr><td><b>7. Informal systems</b> <span class="hint">processes with no checklist</span></td><td><div class="fld" data-field="s7" data-calc-expr="l7_missing"></div></td></tr>
-      <tr class="shade"><td><b>Margin leaking each year</b> <span class="hint">leaks 1 + 2 + 3</span></td><td><div class="fld" data-field="s_margin" data-calc="s1,s2,s3"></div></td></tr>
-      <tr><td><b>Cash held up</b> <span class="hint">leaks 4 + 5</span></td><td><div class="fld" data-field="s_cash" data-calc="s4,s5"></div></td></tr>
+      <tr class="shade"><td><b>Estimated annual profit impact</b> <span class="hint">leaks 1 to 3, indicative</span></td><td><div class="fld" data-field="s_margin" data-calc="s1,s2,s3"></div></td></tr>
     </tbody>
   </table>
+  <p class="small muted">Indicative, not accounting measures. Review leaks 4 and 5 together: they can include the same invoices. Pounds, percentages and days cannot be ranked against each other.</p>
 </section>
 <section class="block">
   <p class="kicker">Choose three</p>
-  <p>Pick the three biggest, by pounds or days, and install them in that order.</p>
+  <p>Pick the three most material: weigh impact, cash urgency and ease of fix. Install them in that order.</p>
   <div class="rule"><span class="num">Leak A</span><div class="grid3"><div>${field('top1_leak', 'Which leak')}</div><div>${field('top1_act', 'First action')}</div><div>${field('top1_date', 'Start date')}</div></div></div>
   <div class="rule"><span class="num">Leak B</span><div class="grid3"><div>${field('top2_leak', 'Which leak')}</div><div>${field('top2_act', 'First action')}</div><div>${field('top2_date', 'Start date')}</div></div></div>
   <div class="rule"><span class="num">Leak C</span><div class="grid3"><div>${field('top3_leak', 'Which leak')}</div><div>${field('top3_act', 'First action')}</div><div>${field('top3_date', 'Start date')}</div></div></div>
@@ -948,11 +951,11 @@ const leakmap = {
 <section class="block">
   <p class="kicker">The fuller picture</p>
   <div class="cards c2">
-    <div class="card"><p><b>The free VOS assessment</b> scores the whole business, not just margin, across nine areas from 0 to 100, and names the one to look at first.</p></div>
-    <div class="card"><p><b>A 30-minute discovery call</b> takes your three biggest leaks and ranks the fixes by cash impact, whether or not we work together.</p></div>
+    <div class="card"><p><b>A 30-minute discovery call</b> takes your three most material leaks and ranks the fixes by impact, whether or not we work together.</p></div>
   </div>
 </section>
-${cta('You have the leaks and your numbers. The free VOS assessment shows how they connect to the rest of the business, so you fix them in the right order.')}
+<p class="small muted">This is a management diagnostic, not accounting, tax or legal advice. Figures are indicative estimates for prioritisation. Reconcile them to your accounts and contracts before making financial or legal decisions.</p>
+${cta('You have the leaks and your numbers. A discovery call puts them in the right order and fits each system to the people who will run it.')}
 ${sig}`,
   ],
 };
@@ -1103,11 +1106,10 @@ const readiness = {
 <section class="block">
   <p class="kicker">The fuller picture</p>
   <div class="cards c2">
-    <div class="card"><p><b>The free VOS assessment</b> scores the whole business across nine areas, from 0 to 100, and names the one to look at first.</p></div>
     <div class="card"><p><b>A 30-minute discovery call</b> reads your scorecard with you. I will tell you honestly what to put in place before the first batch, whether or not we work together.</p></div>
   </div>
 </section>
-${cta('You know where the gaps are. The free VOS assessment scores the whole business across nine areas, so you can see how the move to product sits alongside everything else.')}
+${cta('You know where the gaps are. A discovery call shows how the move to product sits alongside the rest of the business.')}
 ${sig}`,
   ],
 };
