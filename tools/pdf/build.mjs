@@ -122,21 +122,23 @@ function html(doc) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${doc.title}</title><style>${CSS}</style></head><body>${pages}</body></html>`;
 }
 
-const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
+const browser = await puppeteer.launch({ executablePath: CHROME, headless: true, args: process.env.NO_SANDBOX ? ['--no-sandbox'] : [] });
+const ONLY = (process.env.ONLY || '').split(',').filter(Boolean);
 for (const doc of DOCS) {
+  if (ONLY.length && !ONLY.includes(doc.file)) continue;
   const page = await browser.newPage();
   await page.setViewport({ width: 794, height: 1123 });
   await page.emulateMediaType('print');
   await page.setContent(html(doc), { waitUntil: 'networkidle0', timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
 
-  const overflow = await page.evaluate(() => [...document.querySelectorAll('.content')].map((c, i) => (c.scrollHeight > c.clientHeight + 1 ? i + 1 : 0)).filter(Boolean));
-  if (overflow.length) throw new Error(`${doc.file}: content overflows on page(s) ${overflow.join(', ')}`);
+  const overflow = await page.evaluate(() => [...document.querySelectorAll('.content')].map((c, i) => (c.scrollHeight > c.clientHeight + 1 ? `${i + 1} (+${Math.round((c.scrollHeight - c.clientHeight) * 0.2646)}mm)` : 0)).filter(Boolean));
+  if (overflow.length) { if (process.env.WARN) console.warn(`OVERFLOW ${doc.file}: page(s) ${overflow.join(', ')}`); else throw new Error(`${doc.file}: content overflows on page(s) ${overflow.join(', ')}`); }
 
   const widgets = await page.evaluate(() => {
     const out = [];
     const rect = (el) => { const r = el.getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY, w: r.width, h: r.height }; };
-    for (const el of document.querySelectorAll('[data-field]')) out.push({ kind: 'text', name: el.dataset.field, ml: el.hasAttribute('data-ml'), calc: el.dataset.calc || null, ...rect(el) });
+    for (const el of document.querySelectorAll('[data-field]')) out.push({ kind: 'text', name: el.dataset.field, ml: el.hasAttribute('data-ml'), calc: el.dataset.calc || null, expr: el.dataset.calcExpr || null, ...rect(el) });
     for (const el of document.querySelectorAll('[data-check]')) out.push({ kind: 'check', name: el.dataset.check, ...rect(el) });
     for (const el of document.querySelectorAll('[data-radio]')) out.push({ kind: 'radio', name: el.dataset.radio, value: el.dataset.value, ...rect(el) });
     return out;
@@ -170,6 +172,12 @@ for (const doc of DOCS) {
           PDFName.of('AA'),
           pdf.context.obj({ C: { S: PDFName.of('JavaScript'), JS: PDFString.of(js) } })
         );
+        calcOrder.push(f.acroField.ref);
+      } else if (w.expr) {
+        // Arithmetic on other fields (+ - * / and brackets). Blank or divide-by-zero leaves the result empty.
+        const body = w.expr.replace(/[A-Za-z_][A-Za-z0-9_]*/g, (id) => `n(${JSON.stringify(id)})`);
+        const js = `var d=this;var n=function(f){var x=d.getField(f);if(!x)return 0;var v=parseFloat(String(x.value).replace(/[^0-9.\\-]/g,''));return isNaN(v)?0:v;};var r=${body};event.value=(isFinite(r)&&r!==0)?Math.round(r*100)/100:'';`;
+        f.acroField.dict.set(PDFName.of('AA'), pdf.context.obj({ C: { S: PDFName.of('JavaScript'), JS: PDFString.of(js) } }));
         calcOrder.push(f.acroField.ref);
       }
     } else if (w.kind === 'check') {

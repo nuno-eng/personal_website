@@ -4,8 +4,8 @@
 const VOS = 'https://vos.nabiaedge.com/trial';
 const BOOK = 'https://www.nunofontoura.com/book/';
 
-const field = (name, label, { size = '', hint = '', calc = '' } = {}) =>
-  `${label ? `<span class="label">${label}${hint ? ` <span class="hint">${hint}</span>` : ''}</span>` : ''}<div class="fld ${size}" data-field="${name}"${size ? ' data-ml' : ''}${calc ? ` data-calc="${calc}"` : ''}></div>`;
+const field = (name, label, { size = '', hint = '', calc = '', expr = '' } = {}) =>
+  `${label ? `<span class="label">${label}${hint ? ` <span class="hint">${hint}</span>` : ''}</span>` : ''}<div class="fld ${size}" data-field="${name}"${size ? ' data-ml' : ''}${calc ? ` data-calc="${calc}"` : ''}${expr ? ` data-calc-expr="${expr}"` : ''}></div>`;
 const check = (name) => `<span class="chk" data-check="${name}"></span>`;
 
 const cta = (lead) => `
@@ -576,4 +576,541 @@ ${sig}`,
   ],
 };
 
-export const DOCS = [audit, rulebook, planner, scorecard, hire];
+
+// ---------------------------------------------------------------- shared helpers for the two newer tools
+// Table row with a field on the right. opts.expr = arithmetic on other field names (auto-calculates in Acrobat);
+// opts.calc = SUM of listed fields; opts.strong = bold result row.
+const mrow = (i, name, label, { hint = '', expr = '', calc = '', strong = false } = {}) => `
+<tr class="${i % 2 ? 'shade' : ''}"><td>${strong ? '<b>' : ''}${label}${strong ? '</b>' : ''}${hint ? ` <span class="hint">${hint}</span>` : ''}</td><td style="width:30%"><div class="fld" data-field="${name}"${calc ? ` data-calc="${calc}"` : ''}${expr ? ` data-calc-expr="${expr}"` : ''}></div></td></tr>`;
+const mtable = (head, rows) => `<table class="t"><thead><tr><th>${head}</th><th>Your figure</th></tr></thead><tbody>${rows.map((r, i) => mrow(i, ...r)).join('')}</tbody></table>`;
+const planRow = (p) => `
+<div class="grid3">
+  <div>${field(`${p}_owner`, 'Who owns the install')}</div>
+  <div>${field(`${p}_start`, 'Start date')}</div>
+  <div>${field(`${p}_target`, 'Your 30-day target', { hint: 'a number' })}</div>
+</div>`;
+const chkLine = (name, text) => `<div class="chkrow">${check(name)}<span>${text}</span></div>`;
+
+// ---------------------------------------------------------------- Agency Margin Leak Map
+const leakHead = (n, name, lead, tag = '') => `
+<section class="block">
+  <p class="kicker">Leak ${n} of 7${tag}</p>
+  <h2>${name}</h2>
+  <p class="lead">${lead}</p>
+</section>`;
+
+const leakmap = {
+  file: 'agency-margin-leak-map.pdf',
+  type: 'Margin diagnostic',
+  title: 'The Agency Margin Leak Map',
+  subtitle: 'Seven places margin leaks between brief and cash. Measure each one in five minutes, then install the system that closes it.',
+  meta: ['Fillable PDF', '11 pages', '50 minutes'],
+  pages: [
+    `
+<section class="block">
+  <p class="kicker">The premise</p>
+  <h2>Margin rarely disappears in one place</h2>
+  <p class="lead">An agency can win good work, deliver it well and still keep less than it should. The money goes quietly: in pitches that never convert, in extras nobody priced, in a quote that was wrong before the job began, in invoices that wait.</p>
+  <p>This map covers seven leaks, plus the outside pressures that widen them: late payment and a shifting economy. Measure each from your last twelve months of data, then install the system on your side that closes it. Leak 3 applies only to agencies that make physical product.</p>
+</section>
+<section class="block">
+  <p class="kicker">How to use it</p>
+  <ol class="steps">
+    <li><b>Measure.</b> Type your figures into the grey fields. In Acrobat or Edge, the totals work themselves out.</li>
+    <li><b>Install.</b> Each leak page has a ready-made system: a checklist, template or rule. Fill it in.</li>
+    <li><b>Choose three.</b> Page 10 collects your figures. Pick the three biggest and re-measure in 30 days.</li>
+  </ol>
+  <p class="small muted">Round your figures: a rough number you can act on beats an exact one you never find. Type into the fields and save, or print and write by hand.</p>
+</section>
+<section class="block">
+  <p class="kicker">The seven leaks</p>
+  <div class="cards c3">
+    <div class="card"><div class="big">Win</div><p><b>1. Pitching</b><br>Free work spent chasing business that does not convert.<br><b>2. Scope creep</b><br>Delivered work that was never priced.</p></div>
+    <div class="card"><div class="big">Make</div><p><b>3. Unit cost</b><br>Product quoted below what it truly costs. <i>Production only.</i><br><b>6. Time-priced revenue</b><br>Income that rises only when headcount does.</p></div>
+    <div class="card"><div class="big">Keep</div><p><b>4. Cash tied up</b><br>Money sitting in stock and receivables.<br><b>5. Late invoices</b><br>Cash that is earned but not yet yours.<br><b>7. Informal systems</b><br>Work that stops when one person is away.</p></div>
+  </div>
+</section>`,
+
+    leakHead(1, 'Pitching', 'Pitching is a cost of sale. Most agencies never total it, so it never gets a budget, and every pitch gets full effort whatever the odds.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  ${mtable('Last 12 months', [
+    ['l1_n', 'Pitches you put together'],
+    ['l1_hrs', 'Average hours of team time per pitch'],
+    ['l1_rate', 'What an hour of that time costs you', { hint: '&pound;' }],
+    ['l1_won', 'Pitches won'],
+    ['l1_cost', 'Total cost of pitching', { hint: '&pound; &middot; works itself out', expr: 'l1_n*l1_hrs*l1_rate', strong: true }],
+    ['l1_perwin', 'Cost of each win', { hint: '&pound; &middot; works itself out', expr: 'l1_cost/l1_won', strong: true }],
+  ])}
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>A pitch budget and a go or no-go checklist</h3>
+  <p>Decide before you start, not after you have spent the week. Pitch only when at least four of the five are true.</p>
+  ${chkLine('l1_c1', 'The client fits the work we already do well.')}
+  ${chkLine('l1_c2', 'We know the budget, or the budget range, before we start.')}
+  ${chkLine('l1_c3', 'We have spoken to the person who decides, not only the person who briefed us.')}
+  ${chkLine('l1_c4', 'The pitch is paid, or the free part is capped.')}
+  ${chkLine('l1_c5', 'We have the capacity to deliver it if we win.')}
+  <div class="grid3">
+    <div>${field('l1_cap_hrs', 'Maximum hours per pitch')}</div>
+    <div>${field('l1_cap_gbp', 'Maximum spend per pitch', { hint: '&pound;' })}</div>
+    <div>${field('l1_decider', 'Who says go or no-go')}</div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l1')}
+</section>`,
+
+    leakHead(2, 'Scope creep', 'Every small extra feels reasonable at the time. Added together they are a project you delivered and never invoiced.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  <p class="small">Take your last four projects. Estimate the hours of work delivered that were not in the signed scope.</p>
+  <table class="t">
+    <thead><tr><th>Project</th><th style="width:30%">Hours outside scope</th></tr></thead>
+    <tbody>
+      ${[1, 2, 3, 4].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l2_p${i}_name"></div></td><td><div class="fld" data-field="l2_p${i}_hrs"></div></td></tr>`).join('')}
+      <tr class="shade"><td><b>Total hours given away</b></td><td><div class="fld" data-field="l2_hours" data-calc="l2_p1_hrs,l2_p2_hrs,l2_p3_hrs,l2_p4_hrs"></div></td></tr>
+      <tr><td>Your hourly rate to clients <span class="hint">&pound;</span></td><td><div class="fld" data-field="l2_rate"></div></td></tr>
+      <tr class="shade"><td><b>Value of work given away</b> <span class="hint">&pound; &middot; works itself out</span></td><td><div class="fld" data-field="l2_cost" data-calc-expr="l2_hours*l2_rate"></div></td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>Scope that says what is out, and a one-page change request</h3>
+  ${chkLine('l2_c1', 'Every proposal lists what is <b>not</b> included, as well as what is.')}
+  ${chkLine('l2_c2', 'Every contract carries a one-page change request as an attachment.')}
+  ${chkLine('l2_c3', 'The team knows that no extra work starts until a change request is signed.')}
+  <div class="rule" style="margin-top:6mm"><span class="num">Change request template</span>
+    ${field('l2_t_what', 'What is being asked for')}
+    <div class="grid3">
+      <div>${field('l2_t_hrs', 'Extra hours')}</div>
+      <div>${field('l2_t_price', 'Extra price', { hint: '&pound;' })}</div>
+      <div>${field('l2_t_date', 'Impact on delivery date')}</div>
+    </div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l2')}
+</section>`,
+
+    leakHead(3, 'Unit cost', 'A quote built on a rough cost per unit can be wrong before the first piece is made. Setup, wastage and overhead are the lines most often left out.', ' &middot; production only') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  <p class="small">Take your last product run. Compare what you quoted with what it cost.</p>
+  ${mtable('Cost per unit, last run', [
+    ['l3_quoted', 'Cost per unit you quoted', { hint: '&pound;' }],
+    ['l3_mat', 'Materials actually used', { hint: '&pound;' }],
+    ['l3_lab', 'Labour actually spent', { hint: '&pound;' }],
+    ['l3_setup', 'Setup and changeover, shared across the run', { hint: '&pound;' }],
+    ['l3_waste', 'Wastage and rejects, shared across the run', { hint: '&pound;' }],
+    ['l3_over', 'Fair share of overhead', { hint: '&pound;' }],
+    ['l3_actual', 'Actual cost per unit', { hint: '&pound; &middot; adds up on its own', calc: 'l3_mat,l3_lab,l3_setup,l3_waste,l3_over', strong: true }],
+    ['l3_gap', 'Gap against your quote', { hint: '&pound; per unit &middot; works itself out', expr: 'l3_actual-l3_quoted', strong: true }],
+    ['l3_units', 'Units you make in a year'],
+    ['l3_annual', 'Margin leaking each year', { hint: '&pound; &middot; works itself out', expr: 'l3_gap*l3_units', strong: true }],
+  ])}
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>One cost sheet, used for every quote</h3>
+  <p>Use the six lines above as a standing template. Overhead is shared out on what causes it, such as setups or machine time, not on a flat percentage.</p>
+  ${chkLine('l3_c1', 'No quote goes out without the six lines filled in.')}
+  ${chkLine('l3_c2', 'After each run, actual cost is entered next to the quote.')}
+  ${chkLine('l3_c3', 'Rates for labour, setup and overhead are reviewed every quarter.')}
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l3')}
+</section>`,
+
+    leakHead(4, 'Cash tied up', 'Margin on paper is not cash in hand. Every day stock sits on a shelf, or a client sits on an invoice, you are lending your own money.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  <p class="small">Service-only agencies can leave stock at zero.</p>
+  ${mtable('Last quarter', [
+    ['l4_cos', 'Cost of delivering the work, for a year', { hint: '&pound; &middot; materials, bought-in costs and delivery labour' }],
+    ['l4_stock', 'Days work and materials sit before billing'],
+    ['l4_recv', 'Days between invoice and payment'],
+    ['l4_pay', 'Days you take to pay your own suppliers'],
+    ['l4_cycle', 'Cash cycle in days', { hint: 'stock + receivables &minus; payables &middot; works itself out', expr: 'l4_stock+l4_recv-l4_pay', strong: true }],
+    ['l4_cash', 'Cash tied up on average', { hint: '&pound; &middot; works itself out', expr: 'l4_cos/365*l4_cycle', strong: true }],
+  ])}
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>A monthly cash-cycle sheet</h3>
+  <p>Fill in the three figures on the same day each month. Choose one to shorten and set a number of days.</p>
+  <table class="t">
+    <thead><tr><th style="width:22%">Month</th><th>Stock days</th><th>Receivable days</th><th>Payable days</th></tr></thead>
+    <tbody>
+      ${[1, 2, 3].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l4_m${i}_m"></div></td><td><div class="fld" data-field="l4_m${i}_s"></div></td><td><div class="fld" data-field="l4_m${i}_r"></div></td><td><div class="fld" data-field="l4_m${i}_p"></div></td></tr>`).join('')}
+    </tbody>
+  </table>
+  <div class="chkrow" style="margin-top:3mm"><span>Lever I will pull first:</span> ${check('l4_lv1')}<span>Stock</span> ${check('l4_lv2')}<span>Receivables</span> ${check('l4_lv3')}<span>Payables, agreed in writing</span></div>
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l4')}
+</section>`,
+
+    leakHead(5, 'Late invoices', 'Work done and invoiced is still not yours until it is paid. Agreed terms and a fixed routine decide how long that takes.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  ${mtable('Right now', [
+    ['l5_billed', 'Total invoiced in the last 12 months', { hint: '&pound;' }],
+    ['l5_over', 'Value of invoices past their terms', { hint: '&pound;' }],
+    ['l5_n', 'Number of invoices past terms'],
+    ['l5_days', 'Average days past terms'],
+    ['l5_pct', 'Share of a year&rsquo;s billing that is overdue', { hint: '% &middot; works itself out', expr: 'l5_over/l5_billed*100', strong: true }],
+  ])}
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>Terms on every quote, and one chase routine</h3>
+  <div class="grid3">
+    <div>${field('l5_dep', 'Deposit on acceptance', { hint: '%' })}</div>
+    <div>${field('l5_terms', 'Payment terms', { hint: 'days' })}</div>
+    <div>${field('l5_chase', 'Fixed weekly chase day')}</div>
+  </div>
+  ${chkLine('l5_c1', 'Deposit or milestone payments are written on every quote. For production, the deposit covers materials.')}
+  ${chkLine('l5_c2', 'Payment terms are on the quote and the invoice, in the same words.')}
+  ${chkLine('l5_c3', 'One named person chases on the fixed day, using the ladder below.')}
+  <table class="t">
+    <thead><tr><th style="width:22%">Days past terms</th><th>What happens, and who does it</th></tr></thead>
+    <tbody>
+      <tr><td><div class="fld" data-field="l5_s1_d"></div></td><td><div class="fld" data-field="l5_s1_a"></div></td></tr>
+      <tr class="shade"><td><div class="fld" data-field="l5_s2_d"></div></td><td><div class="fld" data-field="l5_s2_a"></div></td></tr>
+      <tr><td><div class="fld" data-field="l5_s3_d"></div></td><td><div class="fld" data-field="l5_s3_a"></div></td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l5')}
+</section>`,
+
+    leakHead(6, 'Revenue tied to headcount', 'If income only grows when you add people, margin stays flat. Packaging one repeatable service breaks that link.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  ${mtable('Last 12 months', [
+    ['l6_rev', 'Revenue', { hint: '&pound;' }],
+    ['l6_heads', 'People on payroll, full-time equivalent'],
+    ['l6_perhead', 'Revenue per person', { hint: '&pound; &middot; works itself out', expr: 'l6_rev/l6_heads', strong: true }],
+    ['l6_hourly', 'Of your last 10 jobs, how many were priced by the hour'],
+    ['l6_share', 'Share of work priced by time', { hint: '% &middot; works itself out', expr: 'l6_hourly*10', strong: true }],
+  ])}
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>One packaged service, priced per output</h3>
+  <p>Choose the service you already deliver most often. Fix the scope, fix the price, and check the margin before you offer it.</p>
+  ${field('l6_name', 'The service')}
+  ${field('l6_scope', 'Fixed scope, in one sentence', { size: 'ml' })}
+  <div class="grid3">
+    <div>${field('l6_price', 'Price per output', { hint: '&pound;' })}</div>
+    <div>${field('l6_hrs', 'Hours to deliver it')}</div>
+    <div>${field('l6_hcost', 'Cost of an hour', { hint: '&pound;' })}</div>
+  </div>
+  <div class="grid2">
+    <div>${field('l6_margin', 'Margin on each one', { hint: '&pound; &middot; works itself out', expr: 'l6_price-l6_hrs*l6_hcost' })}</div>
+    <div>${field('l6_mpct', 'Margin', { hint: '% &middot; works itself out', expr: '(l6_price-l6_hrs*l6_hcost)/l6_price*100' })}</div>
+  </div>
+  ${chkLine('l6_c1', 'The steps are written down, so anyone trained can deliver it the same way.')}
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l6')}
+</section>`,
+
+    leakHead(7, 'Informal systems', 'What lives in one person&rsquo;s head works until that person is away, busy or gone. A written checklist and a named backup turn it into a system.') + `
+<section class="block">
+  <p class="kicker">Measure it</p>
+  <p class="small">List the processes that would stop delivery if the person running them were away for two weeks.</p>
+  <table class="t">
+    <thead><tr><th>Process</th><th style="width:24%">Who runs it</th><th style="width:12%">Written?</th><th style="width:24%">Backup</th></tr></thead>
+    <tbody>
+      ${[1, 2, 3, 4, 5].map((i) => `<tr class="${i % 2 ? '' : 'shade'}"><td><div class="fld" data-field="l7_p${i}_name"></div></td><td><div class="fld" data-field="l7_p${i}_who"></div></td><td class="c">${check(`l7_p${i}_w`)}</td><td><div class="fld" data-field="l7_p${i}_bk"></div></td></tr>`).join('')}
+    </tbody>
+  </table>
+  <div class="grid2" style="margin-top:3mm">
+    <div>${field('l7_missing', 'Processes with no written checklist')}</div>
+    <div>${field('l7_nobackup', 'Processes with no named backup')}</div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">Install it</p>
+  <h3>A one-page checklist for each critical process</h3>
+  <div class="rule"><span class="num">Checklist template</span>
+    <div class="grid2">
+      <div>${field('l7_t_proc', 'Process')}</div>
+      <div>${field('l7_t_trig', 'Starts when')}</div>
+    </div>
+    ${field('l7_t_steps', 'Steps, in order', { size: 'ml' })}
+    <div class="grid3">
+      <div>${field('l7_t_done', 'Done when')}</div>
+      <div>${field('l7_t_owner', 'Owner')}</div>
+      <div>${field('l7_t_backup', 'Backup owner')}</div>
+    </div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">Your install plan</p>
+  ${planRow('l7')}
+</section>`,
+
+    `
+<section class="block">
+  <p class="kicker">Beyond the seven</p>
+  <h2>Outside pressure, inside systems</h2>
+  <p class="lead">You cannot stop clients paying late or the economy shifting. You can set the rules and buffers that decide how much it costs you.</p>
+</section>
+<section class="block">
+  <p class="kicker">Late payment: put your rights in your terms</p>
+  ${chkLine('x_c1', 'Our terms state that we charge statutory interest and compensation on late commercial payments, in plain words.')}
+  ${chkLine('x_c2', 'The same wording is on every quote, contract and invoice.')}
+  ${chkLine('x_c3', 'We have decided the day we apply it, and who has the authority to waive it.')}
+  <div class="grid3">
+    <div>${field('x_apply', 'Apply it after', { hint: 'days past terms' })}</div>
+    <div>${field('x_waive', 'Who can waive it')}</div>
+    <div>${field('x_check', 'Date to check the current rules', { hint: 'with your accountant' })}</div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">Economic shifts: a buffer, a price review and a trigger plan</p>
+  <table class="t">
+    <thead><tr><th>Your buffers</th><th style="width:30%">Your figure</th></tr></thead>
+    <tbody>
+      ${mrow(0, 'x_cashbuf', 'Cash you could draw on today', { hint: '&pound;' })}
+      ${mrow(1, 'x_fixed', 'Fixed costs each month', { hint: '&pound; &middot; payroll, rent, software, loans' })}
+      ${mrow(2, 'x_weeks', 'Weeks of fixed costs covered', { hint: 'works itself out', expr: 'x_cashbuf/(x_fixed/4.33)', strong: true })}
+      ${mrow(3, 'x_top', 'Revenue from your largest client', { hint: '&pound;' })}
+      ${mrow(4, 'x_tot', 'Total revenue', { hint: '&pound;' })}
+      ${mrow(5, 'x_share', 'Share of revenue from one client', { hint: '% &middot; works itself out', expr: 'x_top/x_tot*100', strong: true })}
+    </tbody>
+  </table>
+  <div class="grid3" style="margin-top:3mm">
+    <div>${field('x_buf_target', 'Buffer target', { hint: 'weeks' })}</div>
+    <div>${field('x_share_cap', 'Cap on one client', { hint: '% of revenue' })}</div>
+    <div>${field('x_review', 'Price and cost review', { hint: 'how often, and who' })}</div>
+  </div>
+  ${chkLine('x_c4', 'Contracts longer than three months include a price-review clause.')}
+  <div class="rule" style="margin-top:4mm"><span class="num">Trigger plan</span>
+    <div class="grid2">
+      <div>${field('x_t1_if', 'If this happens', { hint: 'e.g. a client cuts its budget' })}</div>
+      <div>${field('x_t1_then', 'We do this', { hint: 'and who does it' })}</div>
+    </div>
+    <div class="grid2">
+      <div>${field('x_t2_if', 'If this happens', { hint: 'e.g. supplier costs rise' })}</div>
+      <div>${field('x_t2_then', 'We do this', { hint: 'and who does it' })}</div>
+    </div>
+  </div>
+</section>`,
+
+    `
+<section class="block">
+  <p class="kicker">Your map</p>
+  <h2>All seven leaks in one place</h2>
+  <p>Leaks 1 to 5 fill in from your earlier pages when you use Acrobat or Edge. In other viewers, copy the figure across.</p>
+  <table class="t">
+    <thead><tr><th>Leak</th><th style="width:30%">Your figure</th></tr></thead>
+    <tbody>
+      <tr><td><b>1. Pitching</b> <span class="hint">&pound; spent a year</span></td><td><div class="fld" data-field="s1" data-calc-expr="l1_cost"></div></td></tr>
+      <tr class="shade"><td><b>2. Scope creep</b> <span class="hint">&pound; given away</span></td><td><div class="fld" data-field="s2" data-calc-expr="l2_cost"></div></td></tr>
+      <tr><td><b>3. Unit cost</b> <span class="hint">&pound; a year, production only</span></td><td><div class="fld" data-field="s3" data-calc-expr="l3_annual"></div></td></tr>
+      <tr class="shade"><td><b>4. Cash tied up</b> <span class="hint">&pound; on average</span></td><td><div class="fld" data-field="s4" data-calc-expr="l4_cash"></div></td></tr>
+      <tr><td><b>5. Late invoices</b> <span class="hint">&pound; overdue now</span></td><td><div class="fld" data-field="s5" data-calc-expr="l5_over"></div></td></tr>
+      <tr class="shade"><td><b>6. Revenue tied to headcount</b> <span class="hint">% priced by time</span></td><td><div class="fld" data-field="s6" data-calc-expr="l6_share"></div></td></tr>
+      <tr><td><b>7. Informal systems</b> <span class="hint">processes with no checklist</span></td><td><div class="fld" data-field="s7" data-calc-expr="l7_missing"></div></td></tr>
+      <tr class="shade"><td><b>Margin leaking each year</b> <span class="hint">leaks 1 + 2 + 3</span></td><td><div class="fld" data-field="s_margin" data-calc="s1,s2,s3"></div></td></tr>
+      <tr><td><b>Cash held up</b> <span class="hint">leaks 4 + 5</span></td><td><div class="fld" data-field="s_cash" data-calc="s4,s5"></div></td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="block">
+  <p class="kicker">Choose three</p>
+  <p>Pick the three biggest, by pounds or days, and install them in that order.</p>
+  <div class="rule"><span class="num">Leak A</span><div class="grid3"><div>${field('top1_leak', 'Which leak')}</div><div>${field('top1_act', 'First action')}</div><div>${field('top1_date', 'Start date')}</div></div></div>
+  <div class="rule"><span class="num">Leak B</span><div class="grid3"><div>${field('top2_leak', 'Which leak')}</div><div>${field('top2_act', 'First action')}</div><div>${field('top2_date', 'Start date')}</div></div></div>
+  <div class="rule"><span class="num">Leak C</span><div class="grid3"><div>${field('top3_leak', 'Which leak')}</div><div>${field('top3_act', 'First action')}</div><div>${field('top3_date', 'Start date')}</div></div></div>
+  ${field('recheck', 'Date to re-run these tests', { hint: '30 days from now' })}
+</section>`,
+
+    `
+<section class="block">
+  <p class="kicker">Where this stops</p>
+  <h2>What this map does not do</h2>
+  <p class="lead">It measures what you can change, and gives you a system for each, including the pressures that start outside your business. It does not tell you which fixes to do first for your team, or how to make them stick once the week gets busy.</p>
+  <p>That part is sequencing: choosing the order, fitting the systems to the people who will run them, and checking they are still in use in three months. Seven leaks measured on one afternoon are a start. Closing them is the work.</p>
+</section>
+<section class="block">
+  <p class="kicker">The fuller picture</p>
+  <div class="cards c2">
+    <div class="card"><p><b>The free VOS assessment</b> scores the whole business, not just margin, across nine areas from 0 to 100, and names the one to look at first.</p></div>
+    <div class="card"><p><b>A 30-minute discovery call</b> takes your three biggest leaks and ranks the fixes by cash impact, whether or not we work together.</p></div>
+  </div>
+</section>
+${cta('You have the leaks and your numbers. The free VOS assessment shows how they connect to the rest of the business, so you fix them in the right order.')}
+${sig}`,
+  ],
+};
+
+// ---------------------------------------------------------------- Service-to-Product Readiness Scorecard
+const scoreRows = (prefix, items) =>
+  items
+    .map((t, i) => `
+<tr class="${i % 2 ? 'shade' : ''}">
+  <td class="c" style="width:7%;font-weight:800">${i + 1}</td>
+  <td>${t}</td>
+  <td style="width:13%"><div class="fld" data-field="${prefix}_${i + 1}"></div></td>
+</tr>`)
+    .join('');
+
+const readyPage = (n, name, lead, prefix, items, firstMove) => `
+<section class="block">
+  <p class="kicker">Pillar ${n} of 3</p>
+  <h2>${name}</h2>
+  <p class="lead">${lead}</p>
+  <table class="t">
+    <thead><tr><th>#</th><th>Score 0 (not true), 1 (partly true) or 2 (fully true)</th><th>Score</th></tr></thead>
+    <tbody>${scoreRows(prefix, items)}</tbody>
+  </table>
+</section>
+<section class="block">
+  <div class="grid2">
+    <div>${field(`${prefix}_total`, `${name} subtotal`, { hint: 'out of 8 &middot; adds up on its own in Acrobat', calc: [1, 2, 3, 4].map((i) => `${prefix}_${i}`).join(',') })}</div>
+    <div>${field(`${prefix}_low`, 'The statement you scored lowest')}</div>
+  </div>
+</section>
+<section class="block">
+  ${field(`${prefix}_note`, 'What would move your lowest statement up by one point?', { size: 'xl' })}
+</section>
+<section class="block">
+  <div class="callout"><p><b>If this pillar is your lowest, start here.</b> ${firstMove}</p></div>
+</section>`;
+
+const readiness = {
+  file: 'service-to-product-readiness-scorecard.pdf',
+  type: 'Readiness check',
+  title: 'Service-to-Product Readiness Scorecard',
+  subtitle: 'A 15-minute check on whether your business is ready to sell something you make, and not only something you do.',
+  meta: ['Fillable PDF', '7 pages', '15 minutes'],
+  pages: [
+    `
+<section class="block">
+  <p class="kicker">The premise</p>
+  <h2>Selling a product is a different business</h2>
+  <p class="lead">A service business sells time and skill, paid as the work happens. A product business sells units you made before anyone paid for them. The costs arrive first, the cash arrives later, and the decisions come every week instead of every project.</p>
+  <p>Agencies and founder-led businesses with their own production are well placed to make the move, because they already make things. What usually decides how it goes is whether the basics behind each unit are in place before the first batch is ordered. This scorecard checks twelve of them.</p>
+</section>
+<section class="block">
+  <p class="kicker">Three pillars</p>
+  <div class="cards c3">
+    <div class="card"><div class="big">Production</div><p>Can you make the same unit, to the same standard, every time, and know what it took?</p></div>
+    <div class="card"><div class="big">Cash and margin</div><p>Do you know what a unit really costs, and how long your money is tied up before it comes back?</p></div>
+    <div class="card"><div class="big">Decision rights</div><p>Who decides on price, stock and stopping, and are those rules written down?</p></div>
+  </div>
+</section>
+<section class="block">
+  <p class="kicker">How to use it</p>
+  <ol class="steps">
+    <li><b>Score twelve statements</b>, four per pillar, 0, 1 or 2 (pages 2&ndash;4).</li>
+    <li><b>Total your score</b> out of 24 and read where you sit (page 5).</li>
+    <li><b>Plan your first 30 days</b> from the lowest pillar (page 6).</li>
+  </ol>
+  <p class="small muted">Answer for how the business runs today, not how you intend it to run. Type into the grey fields and save the file, or print it and write by hand.</p>
+</section>`,
+    readyPage(1, 'Production', 'Whether you can repeat a build and know what it took. Without this, every batch is a new experiment and every cost is a guess.', 'prod', [
+      'We have a written build process that someone other than the person who designed it could follow.',
+      'For each batch, we record the material, labour and wastage that actually went in.',
+      'We have a pass or fail quality standard, written down, that is checked before anything ships.',
+      'Production time is planned separately from client service time, so one does not eat the other.',
+    ], 'Write the build process for the one product you would make first, as a checklist a new person could follow, and record real material, labour and wastage on the next three batches.'),
+    readyPage(2, 'Cash and margin', 'Whether you know what a unit costs and how long your money is tied up. A product that sells well can still drain the business if the cost and the cash cycle are not known.', 'cash', [
+      'We know the full cost per unit, including a fair share of overhead, not only materials.',
+      'We know how many days pass between paying for materials and being paid for the finished product.',
+      'Product work has its own budget, separate from the payroll funded by service fees.',
+      'We take a deposit or have written payment terms on product orders, and chase on a fixed day each week.',
+    ], 'Build a one-page cost sheet for one product: materials, labour, setup, wastage and overhead. Then count the days between paying suppliers and receiving payment.'),
+    readyPage(3, 'Decision rights', 'Whether the rules that govern the product are written down and owned. When they are not, every price, order and stop decision waits for one person.', 'dec', [
+      'We have a written pricing rule: cost plus a target margin, with a floor nobody goes below.',
+      'Someone other than the owner can approve a production change or minimum order, up to a stated limit.',
+      'One named person owns the product, with a monthly review of how it is performing.',
+      'We have a written trigger for when we stop making a product, such as a margin or sales level.',
+    ], 'Write the pricing rule and the approval limit on one page, name the product owner, and book the first monthly review in the diary.'),
+    `
+<section class="block">
+  <p class="kicker">Your score</p>
+  <h2>Where you sit</h2>
+  <div class="grid2">
+    <div>${field('score_total', 'Total score', { hint: 'out of 24 &middot; the three subtotals added up', calc: 'prod_total,cash_total,dec_total' })}</div>
+    <div>${field('score_lowest', 'Lowest pillar', { hint: 'production, cash and margin, or decision rights' })}</div>
+  </div>
+</section>
+<section class="block">
+  <div class="stages" style="grid-template-columns:repeat(3,1fr)">
+    <div class="stage"><b>0&ndash;8 &middot; Build the basics</b>Too much is still informal to sell a product safely. Fix your lowest pillar before you commit to stock, tooling or a launch.</div>
+    <div class="stage"><b>9&ndash;16 &middot; Test small</b>You have part of the foundation. Run a small, controlled batch with a cost sheet and a deposit, and learn before you scale.</div>
+    <div class="stage"><b>17&ndash;24 &middot; Ready to test at scale</b>The basics are in place. The risk now is growing faster than your systems, so keep the rules written as volume rises.</div>
+  </div>
+  <p class="small muted" style="margin-top:3mm">These bands are a working guide built from the twelve statements, not a measure against other businesses.</p>
+</section>
+<section class="block">
+  <p class="kicker">Your first move, by pillar</p>
+  <table class="t">
+    <thead><tr><th style="width:26%">Lowest pillar</th><th>The first thing to put in place</th></tr></thead>
+    <tbody>
+      <tr><td><b>Production</b></td><td>A written build process and a batch record for one product.</td></tr>
+      <tr class="shade"><td><b>Cash and margin</b></td><td>A cost sheet per unit, and the count of days your cash is tied up.</td></tr>
+      <tr><td><b>Decision rights</b></td><td>A one-page pricing rule, an approval limit and a named product owner.</td></tr>
+    </tbody>
+  </table>
+</section>
+<div class="callout"><p><b>Read the pillars, not just the total.</b> A strong score in two pillars and a weak one usually fails at the weak one. Cash and margin is the one that tends to show up last, and cost the most.</p></div>`,
+    `
+<section class="block">
+  <p class="kicker">Your next 30 days</p>
+  <h2>Three steps, with names and dates</h2>
+  <p class="lead">Take them from your lowest pillar and the statement you scored lowest. Three steps, not ten. If a step is really a project, write its first week instead.</p>
+  <div class="grid2">
+    <div>${field('plan_pillar', 'Lowest pillar')}</div>
+    <div>${field('plan_statement', 'Lowest-scoring statement')}</div>
+  </div>
+</section>
+<section class="block">
+  <div class="rule"><span class="num">Step 1</span>
+    ${field('step1_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step1_owner', 'Who owns it')}</div><div>${field('step1_when', 'By when')}</div></div>
+  </div>
+  <div class="rule"><span class="num">Step 2</span>
+    ${field('step2_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step2_owner', 'Who owns it')}</div><div>${field('step2_when', 'By when')}</div></div>
+  </div>
+  <div class="rule"><span class="num">Step 3</span>
+    ${field('step3_what', 'What changes', { size: 'ml' })}
+    <div class="grid2"><div>${field('step3_owner', 'Who owns it')}</div><div>${field('step3_when', 'By when')}</div></div>
+  </div>
+</section>
+`,
+    `
+<section class="block">
+  <p class="kicker">Where this stops</p>
+  <h2>What this scorecard does not do</h2>
+  <p class="lead">This tells you how ready the basics are. It does not tell you which product to make, what to charge, or how to fit production around live client work. That is the next piece of work, and I do it remotely with founders making this move.</p>
+</section>
+<section class="block">
+  <p class="kicker">The fuller picture</p>
+  <div class="cards c2">
+    <div class="card"><p><b>The free VOS assessment</b> scores the whole business across nine areas, from 0 to 100, and names the one to look at first.</p></div>
+    <div class="card"><p><b>A 30-minute discovery call</b> reads your scorecard with you. I will tell you honestly what to put in place before the first batch, whether or not we work together.</p></div>
+  </div>
+</section>
+${cta('You know where the gaps are. The free VOS assessment scores the whole business across nine areas, so you can see how the move to product sits alongside everything else.')}
+${sig}`,
+  ],
+};
+
+export const DOCS = [audit, rulebook, planner, scorecard, hire, readiness, leakmap];
