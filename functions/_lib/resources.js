@@ -51,4 +51,20 @@ export const RESOURCES = {
     howTo: 'Give it 15 minutes. Score the twelve statements 0, 1 or 2, total each pillar, then read where you sit on page 5. Finish with three steps for the next 30 days, each with an owner and a date.',
     next: 'The scorecard shows how ready the basics are. A discovery call shows how the move to product sits alongside the rest of the business.',
   },
+  'agency-margin-leak-map': {
+    title: 'The Agency Margin Leak Map',
+    file: '/assets/free-resources/agency-margin-leak-map.pdf?v=20261014b',
+    cta: 'Download the map',
+    preview: 'Seven places margin leaks between brief and cash, plus late payment and economic pressure, each with a test and a system on your side to close it.',
+    howTo: 'Give it 50 minutes. For each leak, type your last 12 months of figures into the measure table, then fill in the checklist, template or rule on the same page. On page 10, pick your three biggest leaks, set a start date for each, and re-run the tests in 30 days.',
+    next: 'The map shows where margin escapes. The free VOS assessment shows how those leaks connect to the rest of the business, so you fix them in the right order.',
+  },
+  'service-to-product-readiness-scorecard': {
+    title: 'The Service-to-Product Readiness Scorecard',
+    file: '/assets/free-resources/service-to-product-readiness-scorecard.pdf?v=20261014',
+    cta: 'Download the scorecard',
+    preview: 'Twelve statements across production, cash and margin, and decision rights, scored 0 to 2, with a first move for your weakest pillar.',
+    howTo: 'Give it 15 minutes. Score the twelve statements 0, 1 or 2, total each pillar, then read where you sit on page 5. Finish with three steps for the next 30 days, each with an owner and a date.',
+    next: 'The scorecard shows how ready the basics are. The free VOS assessment scores the whole business across nine areas, so you can see how the move to product sits alongside everything else.',
+  },
 };
