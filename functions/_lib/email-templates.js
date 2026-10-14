@@ -11,13 +11,14 @@ export function renderSequenceEmail(kind, { lang, name, referralLink, unsubLink 
   return renderEmail(`seq-${kind}-${l}`, { greeting, referralLink: referralLink || 'https://www.nunofontoura.com/subscribe/', unsubLink: unsubLink || 'https://www.nunofontoura.com/privacy/' });
 }
 
-export function renderResourceEmail(resource, { base }) {
-  return renderEmail('resource-en', {
-    resourceTitle: resource.title,
-    preview: resource.preview,
-    downloadLabel: resource.cta,
+export function renderResourceEmail(resource, { base, lang = 'en' }) {
+  const copy = lang === 'pt' && resource.pt ? { ...resource, ...resource.pt } : resource;
+  return renderEmail(`resource-${lang === 'pt' ? 'pt' : 'en'}`, {
+    resourceTitle: copy.title,
+    preview: copy.preview,
+    downloadLabel: copy.cta,
     downloadUrl: `${base}${resource.file}`,
-    howTo: resource.howTo,
-    next: resource.next,
+    howTo: copy.howTo,
+    next: copy.next,
   });
 }

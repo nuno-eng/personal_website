@@ -431,7 +431,7 @@ const rateRows = (prefix, items) =>
 const pillarPage = (n, name, word, lead, prefix, items) => `
 <section class="block">
   <p class="kicker">Pillar ${n} of 3</p>
-  <h2>${name} &mdash; ${word}</h2>
+  <h2>${name}: ${word}</h2>
   <p class="lead">${lead}</p>
   <table class="t">
     <thead><tr><th>#</th><th>Rate each 1 (not true at all) to 5 (completely true)</th><th>Score</th></tr></thead>
@@ -449,15 +449,15 @@ const hire = {
   file: 'before-you-hire.pdf',
   type: 'Readiness check',
   title: 'Before You Hire',
-  subtitle: 'A 20-minute check on whether your production agency is ready to grow, before you add headcount.',
+  subtitle: 'A 20-minute check on whether your agency is ready to grow, before you add headcount.',
   meta: ['Fillable PDF', '8 pages', '20 minutes'],
   pages: [
     `
 <section class="block">
   <p class="kicker">The premise</p>
   <h2>Another pair of hands, or a better structure?</h2>
-  <p class="lead">Most production agency founders hire when the pressure gets too high: another project manager, another pair of hands in the workshop, another account lead. The relief lasts about a month. Then the same decisions queue up behind a bigger team, the same quotes and sign-offs wait on you, and the pressure comes back with a salary attached.</p>
-  <p>Sometimes the work really has outgrown the team. More often, the jobs, crews and suppliers still run through you, and a new person inherits that. This tells you which one you are looking at, before you post the job.</p>
+  <p class="lead">Most agency founders hire when the pressure gets too high: another project manager, another pair of hands in delivery, another account lead. The relief lasts about a month. Then the same decisions queue up behind a bigger team, the same quotes and sign-offs wait on you, and the pressure comes back with a salary attached.</p>
+  <p>Sometimes the work really has outgrown the team. More often, the jobs, teams and suppliers still run through you, and a new person inherits that. This tells you which one you are looking at, before you post the job.</p>
 </section>
 <section class="block">
   <p class="kicker">What this is built on</p>
@@ -478,17 +478,17 @@ const hire = {
   </ol>
   <p class="small muted">Answer honestly, not aspirationally. Type into the grey fields and save the file, or print it and write by hand.</p>
 </section>`,
-    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means crews and account leads work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
+    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means delivery teams and account leads work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
       'My team knows which decisions they can make on a job without me, and which have to come to me.',
       'If I were away for two weeks, live jobs would keep moving to the same standard.',
       'We have a written plan for this quarter that we actually review.',
       'Anyone here could say in one sentence what we are best at building, and who we build it for.',
     ]),
-    pillarPage(2, 'The Hull', 'systems', 'Margin, numbers and production. A weak Hull means a new salary lands on a business that cannot yet see what it makes per job, or how much work the workshop can take.', 'hull', [
+    pillarPage(2, 'The Hull', 'systems', 'Margin, numbers and delivery. A weak Hull means a new salary lands on a business that cannot yet see what it makes per job, or how much work the team can take.', 'hull', [
       'I know what we make on each job type, not just total revenue.',
       'The numbers I steer by come from one source everyone trusts.',
-      'Quoting, production and install run on a written process, not on me being in the room.',
-      'I can see this week how much crew and workshop capacity we actually have.',
+      'Quoting, delivery and handover run on a written process, not on me being in the room.',
+      'I can see this week how much delivery capacity we actually have, across crew, studio and freelancers.',
     ]),
     pillarPage(3, 'The Cargo Hold', 'product', 'Demand, offer and retention. A weak Cargo Hold means you hire for jobs you hope will land, rather than work you can already see in the pipeline.', 'cargo', [
       'New jobs come from more than one predictable source, not only repeat clients and referrals.',
@@ -524,7 +524,7 @@ const hire = {
       <tr><td>Salary</td><td style="width:34%"><div class="fld" data-field="cost_salary"></div></td></tr>
       <tr class="shade"><td>Employer National Insurance and pension</td><td><div class="fld" data-field="cost_oncost"></div></td></tr>
       <tr><td>Recruitment fee, or your time to hire</td><td><div class="fld" data-field="cost_recruit"></div></td></tr>
-      <tr class="shade"><td>Laptop, software, desk, tools or PPE</td><td><div class="fld" data-field="cost_kit"></div></td></tr>
+      <tr class="shade"><td>Laptop, software, desk, tools or equipment</td><td><div class="fld" data-field="cost_kit"></div></td></tr>
       <tr><td>Your hours onboarding them, at what your hour is worth</td><td><div class="fld" data-field="cost_onboard"></div></td></tr>
       <tr class="shade"><td>Your hours managing them each week, for the first six months</td><td><div class="fld" data-field="cost_manage"></div></td></tr>
       <tr><td><b>First-year total</b></td><td><div class="fld" data-field="cost_total" data-calc="cost_salary,cost_oncost,cost_recruit,cost_kit,cost_onboard,cost_manage"></div></td></tr>
