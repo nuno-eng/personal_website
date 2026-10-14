@@ -71,14 +71,14 @@ const audit = {
   <p>The constraint isn&rsquo;t your team, and it isn&rsquo;t the market. It&rsquo;s the invisible queue of decisions, approvals and sign-offs waiting for your attention every day. The gap isn&rsquo;t that you are the bottleneck personally: it&rsquo;s that the operating infrastructure hasn&rsquo;t kept pace with the business.</p>
 </section>
 <section class="block">
-  <p class="kicker">What the research says</p>
+  <p class="kicker">What it looks like</p>
   <div class="cards c3">
-    <div class="card"><div class="big">62.5 h</div><p>average working week for the CEOs studied, with 72% of their time in meetings.</p><div class="src">Harvard Business Review</div></div>
-    <div class="card"><div class="big">36%</div><p>of CEO time spent in reactive mode, handling issues as they unfold.</p><div class="src">Harvard Business Review</div></div>
-    <div class="card"><div class="big">61%</div><p>of executives say at least half the time spent on decisions is ineffective.</p><div class="src">McKinsey &amp; Company</div></div>
+    <div class="card"><div class="big">Waiting</div><p>Work stops until you reply. Your team learns that the fastest route is to ask you.</p></div>
+    <div class="card"><div class="big">Reacting</div><p>Your day fills with issues as they arrive, and planned work is pushed back.</p></div>
+    <div class="card"><div class="big">Repeating</div><p>The same question reaches you again and again, because the answer was never written down.</p></div>
   </div>
 </section>
-<div class="callout"><p><b>A significant share of that time is decisions and approvals that should never reach your desk.</b> This audit finds them in three steps: track, question, then write the rule.</p></div>
+<div class="callout"><p><b>Many of those decisions and approvals should never reach your desk.</b> This audit finds them in three steps: track, question, then write the rule.</p></div>
 <section class="block">
   <p class="kicker">How to use this worksheet</p>
   <ol class="steps">
@@ -156,7 +156,6 @@ ${ruleBlock('rule', 3, true)}`,
   ${field('closing_list', '', { size: 'xl' })}
 </section>
 ${cta('The audit covers one area. The free VOS assessment scores all nine areas of a founder-led agency, so you can see where the next bottleneck is before it costs you.')}
-<p class="small muted">Sources: Harvard Business Review (CEO time use research); McKinsey &amp; Company (decision-making survey). Statistics are cited as reported.</p>
 ${sig}`,
   ],
 };
