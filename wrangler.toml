@@ -17,7 +17,7 @@ NOTIFY_EMAIL = "info@nabiaedge.com"
 # Create it in Resend > Audience > Segments, then paste its ID here.
 RESOURCE_SEGMENT_ID = "01b5d503-ca2b-4caa-844c-4f1877434318"
 # Same, for requests made from the Portuguese pages. Fill in after creating the Portuguese segment.
-RESOURCE_SEGMENT_ID_PT = ""
+RESOURCE_SEGMENT_ID_PT = "bfbab404-1792-4dce-901b-91845ee8536c"
 
 [[d1_databases]]
 binding = "DB"
