@@ -9,7 +9,7 @@
 
 import { RESOURCES } from '../_lib/resources.js';
 import { renderResourceEmail } from '../_lib/email-templates.js';
-import { addToResourceSegment, sendEmail } from '../_lib/resend.js';
+import { sendEmail, sendResourceEvent } from '../_lib/resend.js';
 import { ownerAlert } from '../_lib/emails.js';
 import { jsonResponse, readJson, sha256Hex, siteUrl, normalizeLang } from '../_lib/http.js';
 import { onRequestPost as subscribe } from './subscribe.js';
@@ -68,11 +68,8 @@ export async function onRequestPost(context) {
       .run();
   }
 
-  const lang = normalizeLang(body.lang);
-  if (env.RESOURCE_SEGMENT_ID || env.RESOURCE_SEGMENT_ID_PT) {
-    // Everyone who asks for a resource joins the follow-up segment for their language, newsletter or not.
-    waitUntil(addToResourceSegment(env, email, lang));
-  }
+  // Every request fires the follow-up event for its language (newsletter opt-in or not).
+  waitUntil(sendResourceEvent(env, { email, lang: normalizeLang(body.lang), resource: body.resource }));
 
   if (newsletter) {
     // Reuse the subscribe endpoint so opt-ins get exactly the same treatment.
