@@ -898,7 +898,7 @@ const leakmap = {
     <div>${field('x_review', 'Price and cost review', { hint: 'how often, and who' })}</div>
   </div>
   ${chkLine('x_c4', 'Contracts longer than three months include a price-review clause.')}
-  <div class="rule" style="margin-top:4mm"><span class="num">Trigger plan</span>
+  <div class="rule" style="margin-top:2mm"><span class="num">Trigger plan</span>
     <div class="grid2">
       <div>${field('x_t1_if', 'If this happens', { hint: 'e.g. a client cuts its budget' })}</div>
       <div>${field('x_t1_then', 'We do this', { hint: 'and who does it' })}</div>
