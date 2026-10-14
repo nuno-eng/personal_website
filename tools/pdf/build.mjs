@@ -39,7 +39,7 @@ body { font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; color: #201e1d
 .pf a { color: #77726f; text-decoration: none; }
 .cover { background: #1E3A8A; color: #fff; margin: 0 -17mm 9mm; padding: 14mm 17mm 11mm; position: relative; }
 .cover .brand { display: flex; align-items: center; gap: 3mm; font-size: 8pt; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; opacity: .9; margin-bottom: 9mm; }
-.cover .brand i { display: inline-block; width: 5mm; height: 5mm; background: #fff; }
+.cover .brand svg { display: block; height: 8mm; width: auto; }
 .cover .type { font-size: 8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #a8c8ff; margin-bottom: 2mm; }
 .cover h1 { font-size: 28pt; line-height: 1.05; letter-spacing: -.02em; margin: 0 0 4mm; font-weight: 800; }
 .cover p { font-size: 12pt; line-height: 1.45; margin: 0; max-width: 150mm; color: #e8eefc; }
@@ -109,12 +109,15 @@ table.bands td { padding: 2mm; }
 .stage b { display: block; color: #1E3A8A; font-size: 9pt; margin-bottom: 1mm; }
 `;
 
+// NabiaEdge mark in white, redrawn from Logo_White.psd as a vector so it stays sharp at any size.
+const LOGO = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 72 218 356" aria-hidden="true"><polygon fill="#fff" points="218,72 278,72 278,191 120,333.5 120,428 60,428 60,308 218,166"/></svg>';
+
 function html(doc) {
   const total = doc.pages.length;
   const pages = doc.pages.map((body, i) => `
 <section class="page${i === 0 ? ' first' : ''}">
   <div class="content">
-    ${i === 0 ? `<div class="cover"><div class="brand"><i></i>Nuno Fontoura &middot; Free resource</div><div class="type">${doc.type}</div><h1>${doc.title}</h1><p>${doc.subtitle}</p><div class="meta">${doc.meta.map((m) => `<span>${m}</span>`).join('')}</div></div>` : `<div class="run"><span><b>${doc.title}</b></span><span>Nuno Fontoura &middot; NabiaEdge</span></div>`}
+    ${i === 0 ? `<div class="cover"><div class="brand">${LOGO}Nuno Fontoura &middot; Free resource</div><div class="type">${doc.type}</div><h1>${doc.title}</h1><p>${doc.subtitle}</p><div class="meta">${doc.meta.map((m) => `<span>${m}</span>`).join('')}</div></div>` : `<div class="run"><span><b>${doc.title}</b></span><span>Nuno Fontoura &middot; NabiaEdge</span></div>`}
     ${body}
   </div>
   <div class="pf"><a href="https://www.nunofontoura.com">nunofontoura.com</a><span>${doc.title} &middot; Page ${i + 1} of ${total}</span></div>
