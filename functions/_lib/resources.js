@@ -16,8 +16,8 @@ export const RESOURCES = {
       title: 'Before You Hire',
       cta: 'Descarregar a verificação',
       preview: 'Doze afirmações, uma pontuação em 60 e uma resposta honesta sobre se a sua agência de produção está pronta para mais uma pessoa.',
-      howTo: 'Reserve 20 minutos sozinho. Pontue as doze afirmações de 1 a 5, some cada pilar e depois calcule o custo real da contratação que está a considerar na página 6. Termine com as três coisas que vai mudar primeiro, cada uma com responsável e data.',
-      next: 'A verificação diz-lhe se está pronto. Uma chamada exploratória mostra onde o negócio está mesmo preso.',
+      howTo: 'Reserve 20 minutos só para si. Pontue as doze afirmações de 1 a 5, some cada pilar e depois calcule o custo real da contratação que está a considerar na página 6. Termine com as três coisas que vai mudar primeiro, cada uma com responsável e data.',
+      next: 'A verificação diz-lhe se está pronto/a. Uma chamada exploratória mostra onde o negócio está mesmo preso.',
     },
   },
   'founder-bottleneck-audit': {

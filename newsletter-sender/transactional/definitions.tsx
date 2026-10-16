@@ -28,9 +28,9 @@ add('seq-welcome-en', `You're in: ${NAME.en}`,
     <Details rows={[['Your link', <TextLink href="{{referralLink}}">{'{{referralLink}}'}</TextLink>]]} />
     <Signature lang="en" />
   </Layout>);
-add('seq-welcome-pt', `Bem-vindo às ${NAME.pt}`,
+add('seq-welcome-pt', `Boas-vindas às ${NAME.pt}`,
   <Layout lang="pt" eyebrow={NAME.pt} preview="O que esperar, e uma pergunta para si." footer={seqFooter.pt}>
-    <H>Bem-vindo às {NAME.pt}.</H>
+    <H>Boas-vindas às {NAME.pt}.</H>
     <P>{'{{greeting}}'}</P>
     <P>Obrigado por subscrever. De duas em duas semanas recebe uma ideia operacional para agências lideradas por fundadores: como o trabalho se faz, quem é responsável pelo quê, e como deixar de ser o gargalo. Com base em seis anos nos Fuzileiros, sete anos e meio na Amazon, e nos fundadores com quem trabalho hoje.</P>
     <P>Sem motivação vazia, sem enchimento. Se uma edição não mudar o que faz na segunda-feira, não fiz o meu trabalho.</P>
