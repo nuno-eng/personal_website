@@ -8,7 +8,8 @@
     "send:test": "tsx scripts/send-newsletter.tsx --test",
     "send": "tsx scripts/send-newsletter.tsx",
     "typecheck": "tsc --noEmit",
-    "build:emails": "tsx scripts/build-emails.tsx"
+    "build:emails": "tsx scripts/build-emails.tsx",
+    "build:automations": "tsx scripts/build-automation-emails.tsx"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",
