@@ -1,7 +1,8 @@
 // Content for the free-resource PDFs. Each page is an HTML string that must fit one
 // A4 page (the build fails if a page overflows). Field names must be unique per document.
 
-const VOS = 'https://vos.nabiaedge.com/trial';
+// Only the VOS Scorecard Preview links to the assessment; tagged so VOS can tell it came from the PDF.
+const VOS = 'https://vos.nabiaedge.com/trial?utm_source=nunofontoura.com&amp;utm_medium=pdf&amp;utm_campaign=vos-assessment&amp;utm_content=vos-scorecard-preview';
 const BOOK = 'https://www.nunofontoura.com/book/';
 
 const field = (name, label, { size = '', hint = '', calc = '', expr = '' } = {}) =>
@@ -300,9 +301,9 @@ const scorecard = {
   <p class="kicker">Three pillars, nine areas</p>
   <p>VOS scores three pillars separately, because a business can be strong in one and weak in another at the same time, and that gap is usually where the risk is hiding.</p>
   <div class="pillars">
-    <div class="pillar"><h3>The Bridge</h3><div class="sub">Vision &amp; Strategy</div><p>Where the business is steered from: alignment, strategy, and the plan the whole team is actually rowing towards. A shaky Bridge means people work hard but pull in different directions.</p></div>
-    <div class="pillar"><h3>The Hull</h3><div class="sub">Systems &amp; Cash</div><p>What keeps the business watertight and moving: the money, the numbers you steer by, and the processes that deliver what you sold. A brilliant Bridge can still take on water here.</p></div>
-    <div class="pillar"><h3>The Cargo Hold</h3><div class="sub">Product &amp; Marketing</div><p>What you carry to market: the demand you create, what you sell, and the customers who come back. A strong Hull with an empty hold goes nowhere.</p></div>
+    <div class="pillar"><h3>The Bridge</h3><div class="sub">Direction &amp; People</div><p>Where the business is steered from: alignment, strategy, the plan the whole team is actually rowing towards, and the people who carry it. A shaky Bridge means people work hard but pull in different directions.</p></div>
+    <div class="pillar"><h3>The Hull</h3><div class="sub">Systems &amp; Cash</div><p>What keeps the business watertight and moving: cash and the forecast, the numbers you steer by, and the processes that deliver what you sold. A brilliant Bridge can still take on water here.</p></div>
+    <div class="pillar"><h3>The Cargo Hold</h3><div class="sub">Revenue &amp; Customers</div><p>What you carry to market: the demand you create, how it turns into paid work, what you sell, and the customers who come back. A strong Hull with an empty hold goes nowhere.</p></div>
   </div>
 </section>
 <div class="callout"><p><b>On the next page:</b> rate each of the nine areas from 1 (weak) to 5 (strong) on gut feel. It isn&rsquo;t your VOS score, but it shows where to look first.</p></div>`,
@@ -408,9 +409,9 @@ const hire = {
   <h3>Three parts of the business</h3>
   <p>Every agency floats on three pillars. Each is checked separately, because you can be strong in one and weak in another at the same time, and that gap is where the risk hides.</p>
   <div class="cards c3">
-    <div class="card"><div class="big">Strategy</div><p><b>The Bridge.</b> Where the business is steered from: direction, ownership of decisions, and the plan people are actually rowing towards.</p></div>
+    <div class="card"><div class="big">Direction</div><p><b>The Bridge.</b> Where the business is steered from: direction, ownership of decisions, the plan people are actually rowing towards, and the people who carry it.</p></div>
     <div class="card"><div class="big">Systems</div><p><b>The Hull.</b> What keeps you watertight: margin per job, numbers you trust, and production that holds without you on site.</p></div>
-    <div class="card"><div class="big">Product</div><p><b>The Cargo Hold.</b> What you carry to market: how jobs arrive, what you sell, and the clients who come back next season.</p></div>
+    <div class="card"><div class="big">Revenue</div><p><b>The Cargo Hold.</b> What you carry to market: how jobs arrive, what you sell, and the clients who come back next season.</p></div>
   </div>
 </section>
 <section class="block">
@@ -422,7 +423,7 @@ const hire = {
   </ol>
   <p class="small muted">Answer honestly, not aspirationally. Type into the grey fields and save the file, or print it and write by hand.</p>
 </section>`,
-    pillarPage(1, 'The Bridge', 'strategy', 'Direction, ownership and the plan. A weak Bridge means delivery teams and account leads work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
+    pillarPage(1, 'The Bridge', 'direction', 'Direction, ownership and the plan. A weak Bridge means delivery teams and account leads work hard in different directions, and a new hire inherits the confusion.', 'bridge', [
       'My team knows which decisions they can make on a job without me, and which have to come to me.',
       'If I were away for two weeks, live jobs would keep moving to the same standard.',
       'We have a written plan for this quarter that we actually review.',
@@ -434,7 +435,7 @@ const hire = {
       'Quoting, delivery and handover run on a written process, not on me being in the room.',
       'I can see this week how much delivery capacity we actually have, across crew, studio and freelancers.',
     ]),
-    pillarPage(3, 'The Cargo Hold', 'product', 'Demand, offer and retention. A weak Cargo Hold means you hire for jobs you hope will land, rather than work you can already see in the pipeline.', 'cargo', [
+    pillarPage(3, 'The Cargo Hold', 'revenue', 'Demand, offer and retention. A weak Cargo Hold means you hire for jobs you hope will land, rather than work you can already see in the pipeline.', 'cargo', [
       'New jobs come from more than one predictable source, not only repeat clients and referrals.',
       'I know roughly what it costs to win a client and what one is worth across a year.',
       'Our offer changes on purpose, not because a client asked.',
@@ -446,7 +447,7 @@ const hire = {
   <h2>What the number means</h2>
   <div class="grid2">
     <div>${field('score_total', 'Total score', { hint: 'out of 60 &middot; the three subtotals added up', calc: 'bridge_total,hull_total,cargo_total' })}</div>
-    <div>${field('score_weakest', 'Weakest pillar', { hint: 'strategy, systems or product' })}</div>
+    <div>${field('score_weakest', 'Weakest pillar', { hint: 'direction, systems or revenue' })}</div>
   </div>
 </section>
 <section class="block">

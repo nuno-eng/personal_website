@@ -7,7 +7,7 @@
 export const RESOURCES = {
   'before-you-hire': {
     title: 'Before You Hire',
-    file: '/assets/free-resources/before-you-hire.pdf?v=20261014g',
+    file: '/assets/free-resources/before-you-hire.pdf?v=20261016b',
     cta: 'Download the check',
     preview: 'Twelve statements, a score out of 60, and an honest answer on whether your production agency is ready for another person.',
     howTo: 'Give it 20 minutes on your own. Score the twelve statements 1 to 5, total each pillar, then price the hire you are considering on page 6. Finish by writing the three things you will change first, each with an owner and a date.',
@@ -22,7 +22,7 @@ export const RESOURCES = {
   },
   'founder-bottleneck-audit': {
     title: 'The Founder Bottleneck Audit',
-    file: '/assets/free-resources/founder-bottleneck-audit.pdf?v=20261016',
+    file: '/assets/free-resources/founder-bottleneck-audit.pdf?v=20261016b',
     cta: 'Download the audit',
     preview: 'Five days of tracking, three questions, and the decision rules that take recurring approvals off your desk.',
     howTo: 'Start on Monday: log every approval that reaches you for five working days, then run the three questions on each one. Write a decision rule for each recurring approval, with a trigger, a threshold and a named owner, test it once with that person, and stop answering those questions yourself.',
@@ -37,7 +37,7 @@ export const RESOURCES = {
   },
   'governance-cadence-planner': {
     title: 'The Governance Cadence Planner',
-    file: '/assets/free-resources/governance-cadence-planner.pdf?v=20261014g',
+    file: '/assets/free-resources/governance-cadence-planner.pdf?v=20261016b',
     cta: 'Download the planner',
     preview: 'A 13-week grid for a daily huddle, weekly review and monthly check-in you can actually run.',
     howTo: 'Install one layer at a time: the daily huddle in weeks 1 to 4, the weekly review from week 5, the monthly check-in from week 9. Keep each meeting short and always end with an owner and a date.',
@@ -52,7 +52,7 @@ export const RESOURCES = {
   },
   'agency-margin-leak-map': {
     title: 'The Agency Margin Leak Map',
-    file: '/assets/free-resources/agency-margin-leak-map.pdf?v=20261014g',
+    file: '/assets/free-resources/agency-margin-leak-map.pdf?v=20261016b',
     cta: 'Download the map',
     preview: 'Seven places margin leaks between brief and cash, plus late payment and economic pressure, each with a test and a system on your side to close it.',
     howTo: 'Give it 50 minutes. For each leak, type your last 12 months of figures into the measure table, then fill in the checklist, template or rule on the same page. On page 10, pick your three most material leaks, set a start date for each, and re-run the tests in 30 days.',
@@ -67,7 +67,7 @@ export const RESOURCES = {
   },
   'service-to-product-readiness-scorecard': {
     title: 'The Service-to-Product Readiness Scorecard',
-    file: '/assets/free-resources/service-to-product-readiness-scorecard.pdf?v=20261014g',
+    file: '/assets/free-resources/service-to-product-readiness-scorecard.pdf?v=20261016b',
     cta: 'Download the scorecard',
     preview: 'Twelve statements across production, cash and margin, and decision rights, scored 0 to 2, with a first move for your weakest pillar.',
     howTo: 'Give it 15 minutes. Score the twelve statements 0, 1 or 2, total each pillar, then read where you sit on page 5. Finish with three steps for the next 30 days, each with an owner and a date.',
