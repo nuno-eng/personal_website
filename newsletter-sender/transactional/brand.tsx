@@ -5,8 +5,10 @@ import { Body, Button, Column, Container, Head, Hr, Html, Img, Link, Preview, Ro
 import type { ReactNode } from 'react';
 
 export const SITE = 'https://www.nunofontoura.com';
-export const COLOR = { bg: '#f3f2f2', card: '#ffffff', ink: '#201e1d', body: '#3a3736', muted: '#77726f', rule: '#e4e1e0', navy: '#1E3A8A', tint: '#f1f4fb' };
+export const COLOR = { bg: '#f3f2f2', card: '#ffffff', ink: '#201e1d', body: '#3a3736', muted: '#77726f', rule: '#e4e1e0', navy: '#0F1D3D', tint: '#f1f4fb' };
 const FONT = "Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif";
+// The button used in every email, modelled on Resend's default button.
+export const BUTTON = { backgroundColor: COLOR.navy, color: '#ffffff', borderRadius: '4px', fontSize: '14px', fontWeight: 500, lineHeight: '100%', padding: '7px 12px', textDecoration: 'none', fontFamily: FONT };
 
 export function Layout({ lang = 'en', preview, eyebrow, children, footer }: { lang?: string; preview: string; eyebrow: string; children: ReactNode; footer: ReactNode }) {
   return (
@@ -48,7 +50,7 @@ export const P = ({ children }: { children: ReactNode }) => (
 
 export const Cta = ({ href, children }: { href: string; children: ReactNode }) => (
   <Section style={{ margin: '10px 0 24px' }}>
-    <Button href={href} style={{ backgroundColor: COLOR.navy, color: '#ffffff', fontSize: '15px', fontWeight: 800, textDecoration: 'none', padding: '14px 24px', fontFamily: FONT }}>{children}</Button>
+    <Button href={href} style={BUTTON}>{children}</Button>
   </Section>
 );
 
