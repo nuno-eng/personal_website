@@ -9,7 +9,7 @@ import { AUTOMATION_EMAILS } from '../transactional/automations.js';
 const dir = path.resolve(import.meta.dirname, '../automations');
 fs.mkdirSync(dir, { recursive: true });
 for (const e of AUTOMATION_EMAILS) {
-  const html = await render(e.element);
+  const html = await render(e.element, { pretty: true }); // one tag per line, so it can be copied from an editor
   if (!html.includes('{{{RESEND_UNSUBSCRIBE_URL}}}')) throw new Error(`${e.id}: missing the Resend unsubscribe link`);
   fs.writeFileSync(path.join(dir, `${e.id}.html`), html);
 }
