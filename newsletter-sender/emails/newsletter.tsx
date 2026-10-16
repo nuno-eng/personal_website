@@ -11,6 +11,7 @@ import {
   Section,
   Text,
 } from '@react-email/components';
+import { BUTTON } from '../transactional/brand.js';
 
 // ─── Edit this block for each issue ────────────────────────────────────────
 // scripts/send-newsletter.tsx refuses to broadcast while READY is false, so
@@ -114,7 +115,7 @@ export default function Newsletter() {
 
 // Inline styles: most email clients strip <style> blocks. Colours and font
 // match the website's design system.
-const color = { bg: '#f3f2f2', surface: '#ffffff', text: '#201e1d', muted: '#7d7979', accent: '#1E3A8A', rule: '#d7d3d3' };
+const color = { bg: '#f3f2f2', surface: '#ffffff', text: '#201e1d', muted: '#7d7979', accent: '#0F1D3D', rule: '#d7d3d3' };
 const font = "Archivo, 'Helvetica Neue', Arial, sans-serif";
 
 const main = { backgroundColor: color.bg, fontFamily: font, padding: '32px 16px' };
@@ -138,7 +139,7 @@ const h2 = { color: color.text, fontSize: '19px', fontWeight: 800, lineHeight: '
 const sectionStyle = { margin: '8px 0 12px' };
 const paragraph = { color: color.text, fontSize: '16px', lineHeight: '26px', margin: '0 0 18px' };
 const ctaSection = { borderLeft: `4px solid ${color.accent}`, backgroundColor: color.bg, padding: '18px 20px 22px', margin: '8px 0 26px' };
-const ctaButton = { backgroundColor: color.accent, color: color.bg, fontSize: '15px', fontWeight: 800, padding: '14px 22px', textDecoration: 'none' };
+const ctaButton = BUTTON;
 const hr = { borderColor: color.rule, margin: '24px 0 16px' };
 const footer = { color: color.muted, fontSize: '12px', lineHeight: '18px', margin: 0 };
 const footerLink = { color: color.muted, textDecoration: 'underline' };

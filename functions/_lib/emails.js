@@ -14,7 +14,7 @@ export function renderEmail(id, vars = {}, raw = {}) {
   return { subject: text(t.subject), html, text: text(t.text) };
 }
 
-const NAVY = '#1E3A8A';
+const NAVY = '#0F1D3D';
 const FONT = "Archivo,'Helvetica Neue',Helvetica,Arial,sans-serif";
 
 // Label/value table for alerts to Nuno.
@@ -31,7 +31,7 @@ export function rowsHtml(pairs) {
 
 export function buttonsHtml(buttons) {
   return {
-    html: buttons.map(([label, href, note]) => `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td style="background:${NAVY};"><a href="${escapeHtml(href)}" style="display:inline-block;padding:12px 20px;font:800 14px ${FONT};color:#ffffff;text-decoration:none;">${escapeHtml(label)}</a></td>${note ? `<td style="padding-left:12px;font:14px ${FONT};color:#3a3736;">${escapeHtml(note)}</td>` : ''}</tr></table>`).join(''),
+    html: buttons.map(([label, href, note]) => `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td style="background:${NAVY};border-radius:4px;"><a href="${escapeHtml(href)}" style="display:inline-block;padding:7px 12px;font:500 14px/100% ${FONT};color:#ffffff;text-decoration:none;border-radius:4px;">${escapeHtml(label)}</a></td>${note ? `<td style="padding-left:12px;font:14px ${FONT};color:#3a3736;">${escapeHtml(note)}</td>` : ''}</tr></table>`).join(''),
     text: buttons.map(([label, href, note]) => `${label}${note ? ` (${note})` : ''}: ${href}`).join('\n'),
   };
 }
