@@ -28,40 +28,27 @@ const trackerRows = days
 </tr>`))
   .join('');
 
-const ruleBlock = (prefix, n, compact = false) =>
-  compact
-    ? `
+const ruleBlock = (n) => `
 <div class="rule"><span class="num">Decision rule #${n}</span>
-  ${field(`${prefix}${n}_approval`, 'Recurring approval', { hint: 'what keeps landing on your desk?' })}
+  ${field(`rule${n}_approval`, 'Recurring approval', { hint: 'what keeps landing on your desk?' })}
   <div class="grid2">
-    <div>${field(`${prefix}${n}_trigger`, 'Trigger', { hint: 'when does it apply?' })}</div>
-    <div>${field(`${prefix}${n}_threshold`, 'Threshold or criteria')}</div>
+    <div>${field(`rule${n}_trigger`, 'Trigger', { hint: 'when does this rule apply?' })}</div>
+    <div>${field(`rule${n}_threshold`, 'Threshold or criteria', { hint: 'the number that decides it' })}</div>
   </div>
   <div class="grid2">
-    <div>${field(`${prefix}${n}_owner`, 'Who decides without you')}</div>
-    <div>${field(`${prefix}${n}_good`, 'What &ldquo;good enough&rdquo; looks like')}</div>
+    <div>${field(`rule${n}_owner`, 'Who decides without you')}</div>
+    <div>${field(`rule${n}_review`, 'Review date', { hint: 'when it gets checked' })}</div>
   </div>
-</div>`
-    : `
-<div class="rule"><span class="num">Decision rule #${n}</span>
-  ${field(`${prefix}${n}_approval`, 'Recurring approval', { hint: 'what keeps landing on your desk?' })}
-  <div class="grid2">
-    <div>${field(`${prefix}${n}_trigger`, 'Trigger', { hint: 'when does this rule apply?' })}</div>
-    <div>${field(`${prefix}${n}_threshold`, 'Threshold or criteria', { hint: 'the number that decides it' })}</div>
-  </div>
-  <div class="grid2">
-    <div>${field(`${prefix}${n}_owner`, 'Who decides without you')}</div>
-    <div>${field(`${prefix}${n}_review`, 'Review date', { hint: 'when it gets checked' })}</div>
-  </div>
-  ${field(`${prefix}${n}_good`, 'What &ldquo;good enough&rdquo; looks like', { size: 'ml' })}
-</div>`;
+  ${field(`rule${n}_good`, 'What &ldquo;good enough&rdquo; looks like', { size: 'ml' })}
+</div>
+<div class="grid2"><div>${field(`rule${n}_tested_with`, 'Tested with')}</div><div>${field(`rule${n}_tested_on`, 'Tested on')}</div></div>`;
 
 const audit = {
   file: 'founder-bottleneck-audit.pdf',
   type: 'Worksheet',
   title: 'The Founder Bottleneck Audit',
-  subtitle: 'Every decision that runs through you is a tax on your business. Find them, cost them, and cut them in one working week.',
-  meta: ['Fillable PDF', '5 pages', '5 days + 1 hour'],
+  subtitle: 'Every decision that runs through you is a tax on your business. Find them in one working week, then write the rules that take them off your desk.',
+  meta: ['Fillable PDF', '7 pages', '5 days + 2 hours'],
   pages: [
     `
 <section class="block">
@@ -78,13 +65,14 @@ const audit = {
     <div class="card"><div class="big">Repeating</div><p>The same question reaches you again and again, because the answer was never written down.</p></div>
   </div>
 </section>
-<div class="callout"><p><b>Many of those decisions and approvals should never reach your desk.</b> This audit finds them in three steps: track, question, then write the rule.</p></div>
+<div class="callout"><p><b>Many of those decisions and approvals should never reach your desk.</b> This audit finds them and takes them off your desk in four steps: track, question, write the rule, then test it.</p></div>
 <section class="block">
   <p class="kicker">How to use this worksheet</p>
   <ol class="steps">
     <li><b>Track</b> every approval that reaches you for five working days (page 2).</li>
     <li><b>Audit</b> the list with three questions (page 3).</li>
-    <li><b>Write a decision rule</b> for your top three recurring approvals, then act on it this week (pages 4&ndash;5).</li>
+    <li><b>Write a decision rule</b> for your top recurring approvals (pages 4&ndash;5).</li>
+    <li><b>Test each rule</b> with its new owner, then check it is working (page 6).</li>
   </ol>
   <p class="small muted">Type straight into the grey fields on screen and save the file, or print it and write by hand.</p>
 </section>`,
@@ -132,11 +120,34 @@ const audit = {
 <section class="block">
   <p class="kicker">Step 3</p>
   <h2>Write the rule</h2>
-  <p>Take your top three recurring approvals from Step 1 and write a decision rule for each. A rule with no number in it isn&rsquo;t a rule, it&rsquo;s a suggestion.</p>
+  <p>Take your top recurring approvals from Step 1 and write a decision rule for each: when it applies, the number that decides it, and who decides without you. A rule with no number in it isn&rsquo;t a rule, it&rsquo;s a suggestion.</p>
 </section>
-${ruleBlock('rule', 1, true)}
-${ruleBlock('rule', 2, true)}
-${ruleBlock('rule', 3, true)}`,
+${ruleBlock(1)}
+<div style="height:4mm"></div>
+${ruleBlock(2)}`,
+    `
+${ruleBlock(3)}
+<div style="height:4mm"></div>
+${ruleBlock(4)}`,
+    `
+<section class="block">
+  <p class="kicker">Step 4</p>
+  <h2>Test it, then let go</h2>
+  <p>Hand each decision to its new owner and watch what they do with it once, before you let go completely. Share the finished rules where your team already works, not in a folder nobody opens.</p>
+</section>
+<section class="block">
+  <p class="kicker">When a rule is working</p>
+  <p>A decision rule is working when the outcome stops being reported to you as a decision, only as a summary. If people still check with you after the rule exists, it&rsquo;s either too vague, or nobody told them it exists.</p>
+  <div class="chkrow">${check('check_numbers')}<div>The rule has a number or a clear condition in it.</div></div>
+  <div class="chkrow">${check('check_owner')}<div>It names one owner, not a team.</div></div>
+  <div class="chkrow">${check('check_shared')}<div>The people it affects have seen it and know where it lives.</div></div>
+  <div class="chkrow">${check('check_review')}<div>It has a review date in the calendar.</div></div>
+</section>
+<section class="block">
+  <p class="kicker">Notes</p>
+  ${field('notes', '', { size: 'xl' })}
+</section>
+<div class="callout"><p>This is the same discipline behind any reliable operation: whether someone new could run your core process from written instructions alone. A decision rule applies it to judgement calls instead of tasks.</p></div>`,
     `
 <section class="block">
   <p class="kicker">This week</p>
@@ -156,72 +167,6 @@ ${ruleBlock('rule', 3, true)}`,
   ${field('closing_list', '', { size: 'xl' })}
 </section>
 ${cta('The audit covers one area. A discovery call looks at how the rest of your agency runs, so you can see where the next bottleneck is before it costs you.')}
-${sig}`,
-  ],
-};
-
-// ---------------------------------------------------------------- Decision Rulebook
-const rulebook = {
-  file: 'decision-rulebook.pdf',
-  type: 'Template',
-  title: 'The Decision Rulebook',
-  subtitle: 'Turn recurring approvals into standing rules your team can use without you.',
-  meta: ['Fillable PDF', '4 pages', '20 minutes per rule'],
-  pages: [
-    `
-<section class="block">
-  <p class="kicker">Why this exists</p>
-  <h2>Codify the judgement you already carry</h2>
-  <p class="lead">Your team isn&rsquo;t asking for approval because they&rsquo;re unconfident. They&rsquo;re asking because they&rsquo;ve never been given the framework to decide without you.</p>
-  <p>The fix isn&rsquo;t handing tasks off. It&rsquo;s writing down the judgement you use every time, so the same decision doesn&rsquo;t reach your desk twice.</p>
-</section>
-<section class="block">
-  <p class="kicker">What a decision rule does</p>
-  <div class="cards c3">
-    <div class="card"><div class="big">1</div><p><b>Names when it applies.</b> The trigger that makes this rule the one to use.</p></div>
-    <div class="card"><div class="big">2</div><p><b>States the threshold.</b> The number or condition that decides the outcome.</p></div>
-    <div class="card"><div class="big">3</div><p><b>Says who decides.</b> A named owner, so nobody has to check with you.</p></div>
-  </div>
-</section>
-<section class="block">
-  <p class="kicker">How to use this</p>
-  <ol class="steps">
-    <li><b>Identify the approval.</b> Something that crossed your desk more than twice last month, where the outcome would have been the same whether you saw it or not.</li>
-    <li><b>Write the rule.</b> Use one rule block per approval. Be specific: a rule with no numbers in it is a suggestion.</li>
-    <li><b>Test it.</b> Hand the decision to its new owner and watch what they do with it once, before you let go completely.</li>
-  </ol>
-</section>
-<div class="callout"><p><b>Tip:</b> type into the grey fields and save the file. Share the finished rulebook where your team already works, not in a folder nobody opens.</p></div>`,
-    `
-<p class="kicker">The template</p>
-<h2 style="margin-bottom:6mm">Your decision rules</h2>
-${ruleBlock('rule', 1)}
-<div class="grid2"><div>${field('rule1_tested_with', 'Tested with')}</div><div>${field('rule1_tested_on', 'Tested on')}</div></div>
-<div style="height:4mm"></div>
-${ruleBlock('rule', 2)}
-<div class="grid2"><div>${field('rule2_tested_with', 'Tested with')}</div><div>${field('rule2_tested_on', 'Tested on')}</div></div>`,
-    `
-${ruleBlock('rule', 3)}
-<div class="grid2"><div>${field('rule3_tested_with', 'Tested with')}</div><div>${field('rule3_tested_on', 'Tested on')}</div></div>
-<div style="height:4mm"></div>
-${ruleBlock('rule', 4)}
-<div class="grid2"><div>${field('rule4_tested_with', 'Tested with')}</div><div>${field('rule4_tested_on', 'Tested on')}</div></div>`,
-    `
-<section class="block">
-  <p class="kicker">What good looks like</p>
-  <h2>When a rule is working</h2>
-  <p>A decision rule is working when the outcome stops being reported to you as a decision, only as a summary. If people still check with you after the rule exists, it&rsquo;s either too vague, or nobody told them it exists.</p>
-  <div class="chkrow">${check('check_numbers')}<div>The rule has a number or a clear condition in it.</div></div>
-  <div class="chkrow">${check('check_owner')}<div>It names one owner, not a team.</div></div>
-  <div class="chkrow">${check('check_shared')}<div>The people it affects have seen it and know where it lives.</div></div>
-  <div class="chkrow">${check('check_review')}<div>It has a review date in the calendar.</div></div>
-</section>
-<section class="block">
-  <p class="kicker">Notes</p>
-  ${field('notes', '', { size: 'xl' })}
-</section>
-<div class="callout"><p>This is the same discipline behind any reliable operation: whether someone new could run your core process from written instructions alone. A decision rule applies it to judgement calls instead of tasks.</p></div>
-${cta('Install decision rules across every part of the business, not just the approvals you happened to notice.')}
 ${sig}`,
   ],
 };
@@ -1114,4 +1059,4 @@ ${sig}`,
   ],
 };
 
-export const DOCS = [audit, rulebook, planner, scorecard, hire, readiness, leakmap];
+export const DOCS = [audit, planner, scorecard, hire, readiness, leakmap];

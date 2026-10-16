@@ -2,3 +2,5 @@
 /lead-magnets                 /free-resources/ 301
 /lead-magnets/                /free-resources/ 301
 /assets/lead-magnets/:file    /assets/free-resources/:file 301
+# The Decision Rulebook was merged into the Founder Bottleneck Audit (Oct 2026); old email links still work
+/assets/free-resources/decision-rulebook.pdf  /assets/free-resources/founder-bottleneck-audit.pdf 301
