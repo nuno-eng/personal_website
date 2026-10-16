@@ -18,9 +18,9 @@ NAV = {
 }
 FOOT = {
  'en': dict(contact='Contact', support='Support', follow='Follow', pages='Pages', privacy=('Privacy', '/privacy/'), other='Portugu&ecirc;s',
-            links=[('Biz Ops Advisory', '/business-advisory/'), ('About', '/about/'), ('Vessel Operating System', '/vessel-operating-system/'), ('Case studies', '/case-studies/'), ('Free Resources', '/free-resources/'), ('Free VOS assessment', 'https://vos.nabiaedge.com/trial'), ('Newsletter', '/subscribe/'), ('Book a call', '/book/')]),
+            links=[('Biz Ops Advisory', '/business-advisory/'), ('About', '/about/'), ('Vessel Operating System', '/vessel-operating-system/'), ('Case studies', '/case-studies/'), ('Free Resources', '/free-resources/'), ('Free VOS assessment', 'https://vos.nabiaedge.com/trial?utm_source=nunofontoura.com&amp;utm_medium=website&amp;utm_campaign=vos-assessment&amp;utm_content=footer'), ('Newsletter', '/subscribe/'), ('Book a call', '/book/')]),
  'pt': dict(contact='Contacto', support='Suporte', follow='Redes', pages='P&aacute;ginas', privacy=('Privacidade', '/pt/privacy/'), other='English',
-            links=[('In&iacute;cio', '/pt/'), ('Assessoria Biz Ops', '/pt/business-advisory/'), ('Sobre', '/pt/about/'), ('Vessel Operating System', '/pt/vessel-operating-system/'), ('Casos de estudo (EN)', '/case-studies/'), ('Recursos gratuitos', '/pt/free-resources/'), ('Avalia&ccedil;&atilde;o VOS gratuita', 'https://vos.nabiaedge.com/trial'), ('Newsletter', '/pt/subscribe/'), ('Marcar chamada', '/pt/book/')]),
+            links=[('In&iacute;cio', '/pt/'), ('Assessoria Biz Ops', '/pt/business-advisory/'), ('Sobre', '/pt/about/'), ('Vessel Operating System', '/pt/vessel-operating-system/'), ('Casos de estudo (EN)', '/case-studies/'), ('Recursos gratuitos', '/pt/free-resources/'), ('Avalia&ccedil;&atilde;o VOS gratuita', 'https://vos.nabiaedge.com/trial?utm_source=nunofontoura.com&amp;utm_medium=website&amp;utm_campaign=vos-assessment&amp;utm_content=pt-footer'), ('Newsletter', '/pt/subscribe/'), ('Marcar chamada', '/pt/book/')]),
 }
 FLAG = {'en': '/assets/flags/gb.svg', 'pt': '/assets/flags/pt.svg'}
 NAME = {'en': 'English', 'pt': 'Portugu&ecirc;s'}

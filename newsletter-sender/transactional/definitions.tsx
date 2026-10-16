@@ -4,7 +4,8 @@ import type { ReactElement } from 'react';
 import { Cta, Details, H, Layout, P, Quote, Signature, SITE, TextLink } from './brand.js';
 
 export type EmailDef = { id: string; subject: string; element: ReactElement };
-const VOS = 'https://vos.nabiaedge.com/trial';
+// Every assessment link is tagged so VOS can tell which email sent the visitor.
+const vos = (content: string) => `https://vos.nabiaedge.com/trial?utm_source=nunofontoura.com&utm_medium=email&utm_campaign=vos-assessment&utm_content=${content}`;
 const NAME = { en: 'Operating Notes', pt: 'Notas Operacionais' };
 const E: EmailDef[] = [];
 const add = (id: string, subject: string, element: ReactElement) => E.push({ id, subject, element });
@@ -93,7 +94,7 @@ add('resource-pt', 'A sua c\u00f3pia: {{resourceTitle}}',
     <Cta href="{{downloadUrl}}">{'{{downloadLabel}}'}</Cta>
     <Details rows={[['Como usar', '{{howTo}}']]} />
     <P>{'{{next}}'}</P>
-    <Cta href={VOS}>Fazer a avalia&ccedil;&atilde;o VOS gratuita</Cta>
+    <Cta href={vos('resource-email-pt')}>Fazer a avalia&ccedil;&atilde;o VOS gratuita</Cta>
     <P>Se algo n&atilde;o fizer sentido para a sua ag&ecirc;ncia, responda a este email. Leio todas as respostas.</P>
     <Signature lang="pt" />
   </Layout>);
@@ -107,7 +108,7 @@ add('resource-en', 'Your copy: {{resourceTitle}}',
     <Cta href="{{downloadUrl}}">{'{{downloadLabel}}'}</Cta>
     <Details rows={[['How to use it', '{{howTo}}']]} />
     <P>{'{{next}}'}</P>
-    <Cta href={VOS}>Take the free VOS assessment</Cta>
+    <Cta href={vos('resource-email-en')}>Take the free VOS assessment</Cta>
     <P>If anything in it doesn&apos;t make sense for your agency, reply to this email. I read every reply.</P>
     <Signature lang="en" />
   </Layout>);
@@ -151,7 +152,7 @@ for (const lang of ['en', 'pt'] as const) {
         <P>{lead}</P>
         {details}
         <Cta href="{{meetLink}}">{t.join}</Cta>
-        {kind !== 'reminder1' && <P>{t.prep} <TextLink href={VOS}>{t.vos}</TextLink></P>}
+        {kind !== 'reminder1' && <P>{t.prep} <TextLink href={vos(`booking-${kind}-${lang}`)}>{t.vos}</TextLink></P>}
         {manage}
         <Signature lang={lang} />
       </Layout>);
@@ -162,7 +163,7 @@ for (const lang of ['en', 'pt'] as const) {
       <P>{'{{greeting}}'}</P>
       <P>{lang === 'en' ? 'Thanks for making the time yesterday.' : 'Obrigado pelo tempo de ontem.'}</P>
       <P>{lang === 'en' ? 'If you haven’t already, the free VOS assessment scores your business across all three pillars, so you can see exactly where the next fix should go.' : 'Se ainda não fez, a avaliação VOS gratuita pontua o seu negócio nos três pilares, para ver exatamente onde deve estar a próxima correção.'}</P>
-      <Cta href={VOS}>{t.vos}</Cta>
+      <Cta href={vos(`booking-followup-${lang}`)}>{t.vos}</Cta>
       <P>{lang === 'en' ? 'And if anything we discussed needs a second look, just reply to this email.' : 'E se algo do que falámos precisar de uma segunda análise, basta responder a este email.'}</P>
       <Signature lang={lang} />
     </Layout>);
