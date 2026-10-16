@@ -34,10 +34,10 @@ body { font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; color: #201e1d
 .page.first { padding-top: 0; }
 .page.first .content { height: calc(297mm - 20mm); }
 .run { display: flex; justify-content: space-between; font-size: 7.5pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #77726f; border-bottom: 1px solid #e4e1e0; padding-bottom: 3mm; margin-bottom: 7mm; }
-.run b { color: #1E3A8A; }
+.run b { color: #0F1D3D; }
 .pf { position: absolute; left: 17mm; right: 17mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: #77726f; border-top: 1px solid #e4e1e0; padding-top: 2.5mm; }
 .pf a { color: #77726f; text-decoration: none; }
-.cover { background: #1E3A8A; color: #fff; margin: 0 -17mm 9mm; padding: 14mm 17mm 11mm; position: relative; }
+.cover { background: #0F1D3D; color: #fff; margin: 0 -17mm 9mm; padding: 14mm 17mm 11mm; position: relative; }
 .cover .brand { display: flex; align-items: center; gap: 3mm; font-size: 8pt; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; opacity: .9; margin-bottom: 9mm; }
 .cover .brand svg { display: block; height: 8mm; width: auto; }
 .cover .type { font-size: 8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #a8c8ff; margin-bottom: 2mm; }
@@ -45,7 +45,7 @@ body { font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; color: #201e1d
 .cover p { font-size: 12pt; line-height: 1.45; margin: 0; max-width: 150mm; color: #e8eefc; }
 .cover .meta { margin-top: 7mm; display: flex; gap: 6mm; font-size: 8pt; font-weight: 600; color: #cfdcf7; }
 .cover .meta span::before { content: '■ '; color: #a8c8ff; }
-.kicker { font-size: 8pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #1E3A8A; margin: 0 0 1.5mm; }
+.kicker { font-size: 8pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #0F1D3D; margin: 0 0 1.5mm; }
 h2 { font-size: 16pt; line-height: 1.2; letter-spacing: -.01em; margin: 0 0 3mm; font-weight: 800; }
 h3 { font-size: 11.5pt; margin: 0 0 1.5mm; font-weight: 800; }
 p { margin: 0 0 3mm; }
@@ -55,14 +55,14 @@ section.block { margin: 0 0 7mm; }
 .lead { font-size: 11.5pt; }
 .steps { counter-reset: s; margin: 0; padding: 0; list-style: none; }
 .steps li { counter-increment: s; position: relative; padding: 0 0 3mm 10mm; }
-.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 6.5mm; height: 6.5mm; background: #1E3A8A; color: #fff; font-weight: 800; font-size: 9pt; display: grid; place-items: center; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 6.5mm; height: 6.5mm; background: #0F1D3D; color: #fff; font-weight: 800; font-size: 9pt; display: grid; place-items: center; }
 .cards { display: grid; gap: 4mm; }
 .cards.c3 { grid-template-columns: repeat(3, 1fr); }
-.card { background: #f3f5fa; border-top: 3px solid #1E3A8A; padding: 4mm; }
-.card .big { font-size: 20pt; font-weight: 800; color: #1E3A8A; line-height: 1.05; margin-bottom: 1.5mm; }
+.card { background: #f3f5fa; border-top: 3px solid #0F1D3D; padding: 4mm; }
+.card .big { font-size: 20pt; font-weight: 800; color: #0F1D3D; line-height: 1.05; margin-bottom: 1.5mm; }
 .card p { font-size: 9pt; line-height: 1.45; margin: 0; }
 .card .src { font-size: 7.5pt; color: #77726f; margin-top: 2mm; }
-.callout { border-left: 4px solid #1E3A8A; background: #f3f5fa; padding: 4mm 5mm; margin: 0 0 6mm; }
+.callout { border-left: 4px solid #0F1D3D; background: #f3f5fa; padding: 4mm 5mm; margin: 0 0 6mm; }
 .callout p:last-child { margin: 0; }
 .label { display: block; font-size: 8pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #3a3736; margin: 0 0 1mm; }
 .hint { font-weight: 500; letter-spacing: 0; text-transform: none; color: #77726f; }
@@ -72,41 +72,41 @@ section.block { margin: 0 0 7mm; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 6mm; }
 .grid3 { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 0 5mm; }
 .rule { border: 1px solid #d9deea; padding: 4.5mm 5mm 1.5mm; margin: 0 0 5mm; position: relative; }
-.rule .num { position: absolute; top: -3mm; left: 4mm; background: #1E3A8A; color: #fff; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1mm 2.5mm; }
+.rule .num { position: absolute; top: -3mm; left: 4mm; background: #0F1D3D; color: #fff; font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 1mm 2.5mm; }
 table.t { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
-table.t th { text-align: left; font-size: 7pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: #1E3A8A; padding: 2mm; }
+table.t th { text-align: left; font-size: 7pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: #0F1D3D; padding: 2mm; }
 table.t td { border-bottom: 1px solid #e4e1e0; padding: 1.3mm 2mm; vertical-align: middle; }
 table.t td .fld { margin: 0; height: 7mm; }
 table.t td.c { text-align: center; }
 table.t tr.shade td { background: #fafbfd; }
-.chk { display: inline-block; width: 4.2mm; height: 4.2mm; border: 1.2px solid #1E3A8A; background: #fff; vertical-align: middle; }
+.chk { display: inline-block; width: 4.2mm; height: 4.2mm; border: 1.2px solid #0F1D3D; background: #fff; vertical-align: middle; }
 .chkrow { display: flex; gap: 3mm; align-items: flex-start; margin: 0 0 3mm; }
 .chkrow .chk { flex: none; margin-top: .8mm; }
 .yn { display: inline-flex; gap: 1.5mm; align-items: center; font-size: 7.5pt; color: #3a3736; margin-right: 2mm; }
-.rad { display: inline-block; width: 4.4mm; height: 4.4mm; border: 1.2px solid #1E3A8A; border-radius: 50%; background: #fff; vertical-align: middle; }
+.rad { display: inline-block; width: 4.4mm; height: 4.4mm; border: 1.2px solid #0F1D3D; border-radius: 50%; background: #fff; vertical-align: middle; }
 .rates { display: inline-flex; gap: 2.2mm; align-items: center; }
 .rates span.n { font-size: 7pt; color: #77726f; margin-right: -1.2mm; }
-.cta { background: #1E3A8A; color: #fff; padding: 6mm 7mm; margin: 2mm 0 5mm; }
+.cta { background: #0F1D3D; color: #fff; padding: 6mm 7mm; margin: 2mm 0 5mm; }
 .cta h2 { color: #fff; font-size: 14pt; margin-bottom: 2mm; }
 .cta p { color: #e8eefc; margin: 0 0 4mm; }
 .cta .btns { display: flex; gap: 4mm; flex-wrap: wrap; }
-.cta a { display: inline-block; padding: 2.8mm 5mm; font-weight: 800; font-size: 9.5pt; text-decoration: none; }
-.cta a.primary { background: #fff; color: #1E3A8A; }
+.cta a { display: inline-block; padding: 2mm 3.6mm; border-radius: 4px; font-weight: 500; font-size: 9.5pt; line-height: 1; text-decoration: none; }
+.cta a.primary { background: #fff; color: #0F1D3D; }
 .cta a.secondary { border: 1px solid #fff; color: #fff; }
 .sig { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #e4e1e0; padding-top: 3mm; font-size: 8.5pt; }
 .sig b { display: block; font-size: 10pt; }
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
 .pillar { border: 1px solid #d9deea; padding: 4mm; }
-.pillar h3 { color: #1E3A8A; margin-bottom: .5mm; }
+.pillar h3 { color: #0F1D3D; margin-bottom: .5mm; }
 .pillar .sub { font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2mm; }
 .pillar p { font-size: 9pt; line-height: 1.45; margin: 0; }
 table.areas td.area { width: 34%; font-weight: 700; }
-table.areas td.area span { display: block; font-size: 7pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E3A8A; }
+table.areas td.area span { display: block; font-size: 7pt; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #0F1D3D; }
 table.areas td.rate { width: 25%; white-space: nowrap; }
 table.bands td { padding: 2mm; }
 .stages { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; }
 .stage { background: #f3f5fa; padding: 3mm; font-size: 8pt; line-height: 1.4; }
-.stage b { display: block; color: #1E3A8A; font-size: 9pt; margin-bottom: 1mm; }
+.stage b { display: block; color: #0F1D3D; font-size: 9pt; margin-bottom: 1mm; }
 `;
 
 // NabiaEdge mark in white, redrawn from Logo_White.psd as a vector so it stays sharp at any size.
