@@ -16,11 +16,29 @@ import { onRequestPost as subscribe } from './subscribe.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_PER_IP_PER_HOUR = 10;
+const ERRORS = {
+  en: {
+    email: 'Enter a valid email address.',
+    resource: 'That resource is not available.',
+    unavailable: 'Sending is temporarily unavailable. Try again later.',
+    tooMany: 'Too many requests from this connection. Try again later.',
+    send: 'Could not send the email right now. Try again shortly.',
+  },
+  pt: {
+    email: 'Introduza um email v\u00e1lido.',
+    resource: 'Esse recurso n\u00e3o est\u00e1 dispon\u00edvel.',
+    unavailable: 'O envio est\u00e1 temporariamente indispon\u00edvel. Tente mais tarde.',
+    tooMany: 'Demasiados pedidos a partir desta liga\u00e7\u00e3o. Tente mais tarde.',
+    send: 'N\u00e3o foi poss\u00edvel enviar o email agora. Tente daqui a pouco.',
+  },
+};
 
 export async function onRequestPost(context) {
   const { request, env, waitUntil } = context;
   const body = await readJson(request);
-  if (!body) return jsonResponse({ error: 'Enter a valid email address.' }, 400);
+  if (!body) return jsonResponse({ error: ERRORS.en.email }, 400);
+  const lang = normalizeLang(body.lang);
+  const err = ERRORS[lang] || ERRORS.en;
 
   const email = String(body.email || '').trim().toLowerCase();
   const resource = RESOURCES[body.resource];
@@ -28,13 +46,13 @@ export async function onRequestPost(context) {
   const source = String(body.source || '').trim().slice(0, 160) || null;
 
   if (body.honeypot) return jsonResponse({ ok: true }, 200);
-  if (!resource) return jsonResponse({ error: 'That resource is not available.' }, 400);
+  if (!resource) return jsonResponse({ error: err.resource }, 400);
   if (!email || email.length > 254 || !EMAIL_RE.test(email)) {
-    return jsonResponse({ error: 'Enter a valid email address.' }, 400);
+    return jsonResponse({ error: err.email }, 400);
   }
   if (!env.RESEND_API_KEY || !env.RESEND_FROM) {
     console.error('Missing RESEND_API_KEY or RESEND_FROM.');
-    return jsonResponse({ error: 'Sending is temporarily unavailable. Try again later.' }, 500);
+    return jsonResponse({ error: err.unavailable }, 500);
   }
 
   const db = env.DB;
@@ -49,17 +67,19 @@ export async function onRequestPost(context) {
         .bind(ipHash, since)
         .first();
       if (recent.n >= MAX_PER_IP_PER_HOUR) {
-        return jsonResponse({ error: 'Too many requests from this connection. Try again later.' }, 429);
+        return jsonResponse({ error: err.tooMany }, 429);
       }
     }
   }
 
   const id = await sendEmail(env, {
     to: email,
-    ...renderResourceEmail(resource, { base: siteUrl(env, request), lang: normalizeLang(body.lang) }),
-    idempotencyKey: `resource:${body.resource}:${email}:${new Date().toISOString().slice(0, 13)}`,
+    ...renderResourceEmail(resource, { base: siteUrl(env, request), lang }),
+    // The language is part of the key: Resend rejects a reused key whose email differs,
+    // so an EN and a PT request for the same resource in the same hour would otherwise clash.
+    idempotencyKey: `resource:${body.resource}:${lang}:${email}:${new Date().toISOString().slice(0, 13)}`,
   });
-  if (!id) return jsonResponse({ error: 'Could not send the email right now. Try again shortly.' }, 502);
+  if (!id) return jsonResponse({ error: err.send }, 502);
 
   if (db) {
     await db
@@ -69,7 +89,7 @@ export async function onRequestPost(context) {
   }
 
   // Every request fires the follow-up event for its language (newsletter opt-in or not).
-  waitUntil(sendResourceEvent(env, { email, lang: normalizeLang(body.lang), resource: body.resource }));
+  waitUntil(sendResourceEvent(env, { email, lang, resource: body.resource }));
 
   if (newsletter) {
     // Reuse the subscribe endpoint so opt-ins get exactly the same treatment.
