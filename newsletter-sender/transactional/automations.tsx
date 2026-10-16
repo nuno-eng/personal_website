@@ -67,11 +67,11 @@ export const AUTOMATION_EMAILS: AutomationEmail[] = [
         <H>Como correu?</H>
         <P>Olá,</P>
         <P>Há três dias pediu uma das ferramentas gratuitas que uso com clientes. Chegou a experimentá-la?</P>
-        <P>Se sim, repare na resposta que mais o surpreendeu. Normalmente é aí que está o problema real.</P>
-        <P>Se ajudou, o próximo passo é a avaliação VOS gratuita. Pontua o seu negócio nas três partes do navio, para ver onde está o próximo problema antes que lhe custe dinheiro:</P>
+        <P>Se sim, repare na resposta que mais o/a surpreendeu. Normalmente é aí que está o problema real.</P>
+        <P>Se ajudou, o próximo passo é a avaliação VOS gratuita. Pontua o seu negócio nas três partes do &quot;navio&quot;, para ver onde está o próximo problema antes que lhe custe dinheiro:</P>
         <Pillars lang="pt" />
         <Cta href={vos('resource-followup-pt')}>Fazer a avaliação VOS gratuita</Cta>
-        <P>Se ainda não teve oportunidade, não há problema. Responda a este email e diga-me em que está a trabalhar neste momento, e indico-lhe a parte da ferramenta que mais o vai ajudar.</P>
+        <P>Se ainda não teve oportunidade, não há problema. Responda a este email e diga-me em que está a trabalhar neste momento e eu indicar-lhe-ei a parte do VOS que mais o/a vai ajudar.</P>
         <Signature lang="pt" />
       </Layout>
     ),
