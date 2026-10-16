@@ -53,7 +53,7 @@ export const AUTOMATION_EMAILS: AutomationEmail[] = [
         <P>If it helped, the next step is the free VOS assessment. It scores your business across the three parts of the vessel, so you can see where the next problem is before it costs you:</P>
         <Pillars lang="en" />
         <Cta href={vos('resource-followup-en')}>Take the free VOS assessment</Cta>
-        <P>If you didn&apos;t get round to it, that&apos;s fine. Just reply and tell me what got in the way, and I&apos;ll tell you whether it&apos;s worth another look.</P>
+        <P>If you haven&apos;t had the chance yet, no problem. Reply and tell me what you&apos;re working on right now, and I&apos;ll point you to the part of the tool that will help most.</P>
         <Signature lang="en" />
       </Layout>
     ),
@@ -67,11 +67,11 @@ export const AUTOMATION_EMAILS: AutomationEmail[] = [
         <H>Como correu?</H>
         <P>Olá,</P>
         <P>Há três dias pediu uma das ferramentas gratuitas que uso com clientes. Chegou a experimentá-la?</P>
-        <P>Se sim, repare na resposta que mais o surpreendeu. Normalmente é aí que está o problema real.</P>
-        <P>Se ajudou, o próximo passo é a avaliação VOS gratuita. Pontua o seu negócio nas três partes do navio, para ver onde está o próximo problema antes que lhe custe dinheiro:</P>
+        <P>Se sim, repare na resposta que mais o/a surpreendeu. Normalmente é aí que está o problema real.</P>
+        <P>Se ajudou, o próximo passo é a avaliação VOS gratuita. Pontua o seu negócio nas três partes do &quot;navio&quot;, para ver onde está o próximo problema antes que lhe custe dinheiro:</P>
         <Pillars lang="pt" />
         <Cta href={vos('resource-followup-pt')}>Fazer a avaliação VOS gratuita</Cta>
-        <P>Se ainda não teve tempo, não há problema. Responda a este email e diga-me o que se meteu no caminho, e digo-lhe se vale a pena voltar a olhar.</P>
+        <P>Se ainda não teve oportunidade, não há problema. Responda a este email e diga-me em que está a trabalhar neste momento e eu indicar-lhe-ei a parte do VOS que mais o/a vai ajudar.</P>
         <Signature lang="pt" />
       </Layout>
     ),
