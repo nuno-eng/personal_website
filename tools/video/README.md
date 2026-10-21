@@ -1,7 +1,7 @@
 # Site videos
 
 Videos are too big for Cloudflare Pages (25 MB per file), so the MP4s live in the R2 bucket
-**`nunofontoura-media`**, served from **https://media.nunofontoura.com/video/v1/**. Posters stay in
+**`nunofontoura-media`**, served from **https://media.nunofontoura.com/video/v2/**. Posters stay in
 `publish/assets/video/`. The player is `publish/video.js` + the `.pm-video` styles in `publish/premium.css`.
 
 | Video | Where it appears | Files |
@@ -25,3 +25,19 @@ done
 ```
 Files are cached for a year, so a **changed** video needs a new folder (`video/v2/…`) and the page
 links updated; a new video can use the current folder.
+
+## Current versions (v2, 21 Oct 2026)
+- **FAQ:** 8.5 s removed (3:12.1-3:20.6, the "around 60%" sentence; the correct figure is 30%) with
+  `edit.swift cut`, at the slide change so the jump is hidden.
+- **VSL:** "Psicodramatizar, run by my sister" burned into the clinic slide (2:56.8-3:05.1) with
+  `edit.swift text`. Wherever the clinic appears, the family relationship must be disclosed.
+- `v1/` in the bucket holds the unedited first upload; nothing links to it.
+
+## Captions
+```
+afconvert -f WAVE -d LEI16@16000 -c 1 <video> /tmp/a.wav
+whisper-cli -m ~/Library/Caches/whisper-models/ggml-small.en.bin -f /tmp/a.wav -l en -ojf -of /tmp/a
+python3 tools/video/captions.py /tmp/a.json publish/assets/video/<name>.vtt tools/video/<name>-corrections.json
+```
+`brew install whisper-cpp`; the model is `ggml-small.en.bin` from huggingface.co/ggerganov/whisper.cpp.
+The corrections files fix words Whisper mishears; check new captions against the script.
