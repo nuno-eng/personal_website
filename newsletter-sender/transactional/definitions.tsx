@@ -119,11 +119,13 @@ const B = {
     eyebrow: 'Discovery call', footer: <>You are receiving this because you booked a discovery call at nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reschedule or cancel</a></>,
     when: 'When', where: 'Where', length: 'Length', meet: 'Google Meet', mins: '30 minutes', join: 'Join Google Meet', change: 'Need to change it?', manage: 'Reschedule or cancel',
     prep: 'To make the most of the 30 minutes, take the free VOS assessment beforehand and pick the one problem you most want to fix.', vos: 'Take the free VOS assessment',
+    overview: 'If you haven’t seen it yet, here is a four-minute overview of how I work:', overviewLink: 'Watch the overview',
   },
   pt: {
     eyebrow: 'Chamada exploratória', footer: <>Recebe este email porque marcou uma chamada exploratória em nunofontoura.com. <a href="{{manageLink}}" style={{ color: '#77726f' }}>Reagendar ou cancelar</a></>,
     when: 'Quando', where: 'Onde', length: 'Duração', meet: 'Google Meet', mins: '30 minutos', join: 'Entrar no Google Meet', change: 'Precisa de alterar?', manage: 'Reagendar ou cancelar',
     prep: 'Para aproveitar bem os 30 minutos, faça antes a avaliação VOS gratuita e escolha o problema que mais quer resolver.', vos: 'Fazer a avaliação VOS gratuita',
+    overview: 'Se ainda não viu, aqui está uma apresentação de quatro minutos sobre como trabalho (em inglês):', overviewLink: 'Ver a apresentação',
   },
 };
 for (const lang of ['en', 'pt'] as const) {
@@ -153,6 +155,7 @@ for (const lang of ['en', 'pt'] as const) {
         {details}
         <Cta href="{{meetLink}}">{t.join}</Cta>
         {kind !== 'reminder1' && <P>{t.prep} <TextLink href={vos(`booking-${kind}-${lang}`)}>{t.vos}</TextLink></P>}
+        {kind === 'confirmed' && <P>{t.overview} <TextLink href={`${SITE}/overview/`}>{t.overviewLink}</TextLink></P>}
         {manage}
         <Signature lang={lang} />
       </Layout>);
