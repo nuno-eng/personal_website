@@ -2,7 +2,7 @@
 
     python3 tools/video/captions.py <whisper.json> <out.vtt> [corrections.json] [layout.txt] [side ranges]
 
-- Every cue starts at the same height (line:83%), so one- and two-line captions don't jump around.
+- Every cue starts at the same height (line:78%, clear of the player's control bar), so one- and two-line captions don't jump around.
 - corrections.json: [heard, said] phrase pairs for words Whisper got wrong (whole words, any case).
 - layout.txt: "seconds leftBrightness rightBrightness" rows from tools/video/layout.swift. While the
   left half is a bright slide, captions move to the right half (over Nuno) with shorter lines.
@@ -14,8 +14,8 @@ text. Edit the text freely; keep the timing line as it is.
 """
 import bisect, json, re, sys
 
-FACE = {'chars': 42, 'settings': 'line:83% position:50% size:86% align:center'}
-SIDE = {'chars': 26, 'settings': 'line:83% position:75% size:46% align:center'}
+FACE = {'chars': 42, 'settings': 'line:78% position:50% size:86% align:center'}
+SIDE = {'chars': 26, 'settings': 'line:78% position:75% size:46% align:center'}
 MAX_SECONDS = 7.0
 
 
@@ -118,7 +118,8 @@ def smooth(words, side, min_run=1.5):
         runs.append([i, j])
         i = j + 1
     for k, (i, j) in enumerate(runs):
-        if words[j][2] - words[i][1] < min_run and len(runs) > 1:
+        has_sentence_end = any(re.search(r'[.?!]$', words[n][0]) for n in range(i, j))
+        if words[j][2] - words[i][1] < min_run and len(runs) > 1 and not has_sentence_end:
             # Join the caption the words belong to: the next one unless the fragment ends a sentence.
             ends = re.search(r'[.?!]$', words[j][0])
             other = runs[k + 1] if (k + 1 < len(runs) and not ends) or k == 0 else runs[k - 1]
@@ -162,7 +163,8 @@ def merge_short(groups, min_seconds=1.0):
     i = 0
     while i < len(out):
         g, on_side = out[i]
-        if g[-1][2] - g[0][1] < min_seconds and len(out) > 1:
+        whole_sentence = re.match(r'[A-Z]', g[0][0]) and re.search(r'[.?!]$', g[-1][0])
+        if g[-1][2] - g[0][1] < min_seconds and len(out) > 1 and not whole_sentence:
             ends = re.search(r'[.?!]$', g[-1][0])
             for k in ([i + 1, i - 1] if not ends else [i - 1, i + 1]):
                 if 0 <= k < len(out):

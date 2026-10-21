@@ -45,7 +45,7 @@ The corrections files fix words Whisper mishears; check new captions against the
 ## Editing captions by hand
 `publish/assets/video/faq.vtt` and `overview.vtt` are plain text. Each caption looks like:
 ```
-00:02:38.140 --> 00:02:41.949 line:83% position:50% size:86% align:center
+00:02:38.140 --> 00:02:41.949 line:78% position:50% size:86% align:center
 Depending on where you are at, I might
 spend time on site early on, and I stay
 ```
@@ -53,5 +53,5 @@ spend time on site early on, and I stay
 - **Timing:** the start `-->` end on the first line.
 - **Placement:** `position:50% size:86%` means centred (just Nuno on screen). `position:75% size:46%`
   means the right half, used while a slide or the name label fills the left; keep those lines to about
-  26 characters. `line:83%` keeps every caption at the same height.
+  26 characters. `line:78%` keeps every caption at the same height.
 - Regenerating with `captions.py` overwrites hand edits, so put recurring fixes in the corrections file.
