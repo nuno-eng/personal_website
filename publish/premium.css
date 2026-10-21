@@ -285,3 +285,8 @@ a.pm-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px color-mix
 .pm-video-play:hover span, .pm-video-play:focus-visible span { background: var(--color-accent-2, #2952B8); }
 .pm-video.is-playing .pm-video-play { display: none; }
 .pm-video-note { margin: 12px 0 0; font-size: 14px; color: color-mix(in srgb, var(--color-text) 65%, transparent); }
+@media (max-width: 600px) {
+  .pm-video.is-ready .pm-video-play { padding: 12px; font-size: 13px; }
+  .pm-video-play span { gap: 8px; padding: 7px 12px 7px 7px; }
+  .pm-video-play span::before { width: 24px; height: 24px; background-size: 16px; }
+}
