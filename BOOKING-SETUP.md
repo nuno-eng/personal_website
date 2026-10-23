@@ -32,6 +32,15 @@ Reschedule/cancel links and "Suggest a time" work for both. The widget picks the
 - **Spacing:** 10 minutes free before each call and 15 minutes free after it, since calls tend to run over. The same gaps apply around your other calendar events.
 - **Booking window:** at least 16 hours' notice, up to 28 days ahead, at most 3 calls a day.
 
+## Which calendars block times
+Times are free only when **both** calendars are free:
+- the booking calendar, **nuno@nabiaedge.com** (`GOOGLE_CALENDAR_ID`, default `primary`);
+- every calendar listed in `GOOGLE_EXTRA_BUSY_CALENDARS` in `wrangler.toml`, currently Nuno's personal calendar **fo.nuno@gmail.com**.
+
+An extra calendar only counts while it stays shared with nuno@nabiaedge.com. If it can't be read, the
+error is logged and bookings carry on using the business calendar alone. Events marked **Free** in
+Google Calendar never block a time.
+
 ## How visitors see times
 - **Week view:** one week at a time, with arrows to move between weeks.
 - **Free days:** if a day has more than 8 open times, only the on-the-hour times show at first. **Show all times** reveals the rest.

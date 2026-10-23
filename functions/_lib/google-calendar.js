@@ -41,14 +41,26 @@ export function calendarConfigured(env) {
 
 const calendarId = (env) => encodeURIComponent(env.GOOGLE_CALENDAR_ID || 'primary');
 
+// Busy times come from the booking calendar plus any calendars listed in GOOGLE_EXTRA_BUSY_CALENDARS
+// (comma-separated ids, e.g. Nuno's personal calendar, shared with nuno@nabiaedge.com). The booking
+// calendar must answer; if an extra calendar can't be read, that is logged and the others still count.
 export async function busyIntervals(env, timeMin, timeMax) {
+  const main = env.GOOGLE_CALENDAR_ID || 'primary';
+  const extra = (env.GOOGLE_EXTRA_BUSY_CALENDARS || '').split(',').map((s) => s.trim()).filter(Boolean);
   const data = await call(env, '/freeBusy', {
     method: 'POST',
-    body: { timeMin: timeMin.toISOString(), timeMax: timeMax.toISOString(), items: [{ id: env.GOOGLE_CALENDAR_ID || 'primary' }] },
+    body: { timeMin: timeMin.toISOString(), timeMax: timeMax.toISOString(), items: [main, ...extra].map((id) => ({ id })) },
   });
-  const cal = Object.values(data.calendars || {})[0] || {};
-  if (cal.errors?.length) throw new Error(`freeBusy error: ${JSON.stringify(cal.errors)}`);
-  return (cal.busy || []).map((b) => ({ start: new Date(b.start), end: new Date(b.end) }));
+  const busy = [];
+  for (const [id, cal] of Object.entries(data.calendars || {})) {
+    if (cal.errors?.length) {
+      if (!extra.includes(id)) throw new Error(`freeBusy error: ${JSON.stringify(cal.errors)}`);
+      console.error(`freeBusy: can't read ${id}:`, JSON.stringify(cal.errors));
+      continue;
+    }
+    for (const b of cal.busy || []) busy.push({ start: new Date(b.start), end: new Date(b.end) });
+  }
+  return busy.sort((a, b) => a.start - b.start);
 }
 
 export async function createEvent(env, { start, end, summary, description, attendee, requestId, timeZone }) {
