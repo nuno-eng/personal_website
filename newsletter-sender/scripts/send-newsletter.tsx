@@ -19,6 +19,10 @@ import Newsletter, { PREVIEW_TEXT, READY, SUBJECT, WEEK_NUMBER } from '../emails
 
 const isTest = process.argv.includes('--test');
 const dateArg = process.argv.includes('--date') ? process.argv[process.argv.indexOf('--date') + 1] : null;
+// --skip-if-booked: exit quietly when this week is already booked (lets the
+// GitHub Action retry on later days). --dry-run: run every check, book nothing.
+const skipIfBooked = process.argv.includes('--skip-if-booked');
+const dryRun = process.argv.includes('--dry-run');
 
 // ─── Schedule: every other Tuesday, 11:00 UK time ─────────────────────────
 const FIRST_SEND = '2026-11-03'; // a Tuesday; every slot is a multiple of 14 days from here
@@ -96,7 +100,15 @@ if (isTest) {
   // Resend reports a booked broadcast as "scheduled" ("queued" kept in case
   // older broadcasts use it). Matching only "queued" let week 45 be booked twice.
   const clash = list?.data?.find((b) => ['scheduled', 'queued'].includes(String(b.status)) && b.scheduled_at && Math.abs(new Date(b.scheduled_at).getTime() - sendAt.getTime()) < 60_000);
+  if (clash && skipIfBooked && clash.name.startsWith(`Week ${WEEK_NUMBER}:`)) {
+    console.log(`"${clash.name}" is already booked for ${sendDate} 11:00. Nothing to do.`);
+    process.exit(0);
+  }
   if (clash) fail(`"${clash.name}" is already scheduled for ${sendDate} 11:00. Cancel it in Resend > Broadcasts first.`);
+  if (dryRun) {
+    console.log(`Dry run: Week ${WEEK_NUMBER} "${SUBJECT}" passes every check for ${sendDate} 11:00. Nothing booked.`);
+    process.exit(0);
+  }
 
   const { data, error } = await resend.broadcasts.create({
     segmentId: SEGMENT_ID!,

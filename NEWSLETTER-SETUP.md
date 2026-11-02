@@ -84,6 +84,10 @@ For each issue:
 
 You can also send without a terminal: add `RESEND_API_KEY`, `RESEND_SEGMENT_ID`, `RESEND_FROM`, `RESEND_REPLY_TO` and `TEST_EMAIL` as repo secrets (**Settings > Secrets and variables > Actions**), push your edited issue, then go to **Actions > Send Newsletter > Run workflow** and pick `test` or `broadcast`.
 
+### Issues written more than 30 days ahead
+
+Resend only accepts a send date up to 30 days ahead. Put an issue written further ahead in `newsletter-sender/issues/week-NN.txt` (the constants block, a line `=====`, then the issue object body) and add it to `newsletter-sender/issues/schedule.json` with its `send_date` and `book_from` (the first day inside the 30-day window). Every day from 16 Nov to 3 Dec at 09:00 UTC, the **Send Newsletter** workflow runs `book-due`. For each issue whose window opened in the last four days, it sends a test to `TEST_EMAIL` and books it. An issue that's already booked is skipped. To check without booking, run the workflow by hand with `book-due` and **dry run**. For a different season, change the two `cron` lines in `.github/workflows/send-newsletter.yml`. The workflow needs the repo secrets above. To set them from your `.env`, run `gh secret set -f newsletter-sender/.env --repo nuno-eng/personal_website`.
+
 Broadcasts use Resend's own unsubscribe link, and people who unsubscribe are skipped automatically.
 
 ## Seeing your leads

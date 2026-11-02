@@ -1,0 +1,70 @@
+export const READY = true;
+// ISO week of the send date (Tue 29 Dec 2026 is week 53).
+export const WEEK_NUMBER = 53;
+export const SUBJECT = "You're not owed money. You're owed a process.";
+export const PREVIEW_TEXT = 'A short one between the holidays, before the first invoice of the year.';
+=====
+  intro: [
+    "A short one, since it's the week between the holidays.",
+    "My sister runs a psychology clinic in Porto (I'll always say so when I use it as an example). The clinical work was excellent. The business side hadn't been given the same structure.",
+    'There was no clear view of what clients owed, so unpaid sessions built up quietly. Payment relied on chasing, and chasing took time away from clients. Paying late was simply the easiest thing for a client to do.',
+  ],
+  sections: [
+    {
+      heading: 'Why it happens',
+      paragraphs: [
+        "Late payment usually isn't a client problem. It's a process problem. Nobody sees the full list, so nobody acts on it. Chasing feels personal and awkward, so it gets put off. And paying is often harder than it needs to be.",
+        'Fix those three and most of the late payments go away without anyone having a difficult conversation.',
+      ],
+    },
+    {
+      heading: 'Try this: before your first invoice of 2027',
+      paragraphs: [
+        <>1. <b>One list:</b> every unpaid invoice, with the amount, due date and days late. One place, updated weekly. Add it to the Monday numbers slot.</>,
+        <>2. <b>One sequence, written once:</b> a reminder three days before the due date, a polite note on day one, a second note and a call on day seven, and work pausing on day fourteen. Decide the steps now, so nobody has to decide when it&apos;s awkward.</>,
+        <>3. <b>Make paying the easy option:</b> a payment link on every invoice, and deposits or payment at booking wherever you can.</>,
+        <>4. <b>One owner who isn&apos;t you.</b> They follow the sequence. You only step in at the last step.</>,
+      ],
+    },
+    {
+      heading: 'What changed at the clinic',
+      paragraphs: [
+        <>
+          We set up a receivables tracker with a weekly follow-up routine, and a simpler way for clients to pay, so paying on time became the default. The money owed to the clinic fell by 70%, late payments by 80%, and revenue grew 10%.{' '}
+          <A href="https://www.nunofontoura.com/case-studies/psicodramatizar/?utm_source=newsletter&utm_content=week-53">Read the full case study</A>.
+        </>,
+        "Getting paid is the first half of cash. The other half is where margin leaks between quoting a job and invoicing it, and that's harder to see from inside.",
+      ],
+    },
+  ],
+  cta: {
+    lead: "If you'd like a second pair of eyes on where your cash gets stuck, book a 30-minute call for January. You'll leave with the first fix, whether or not we work together.",
+    label: 'Book a 30-minute call',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-53',
+  },
+  closing: [
+    {
+      heading: 'One last thing for 2026',
+      paragraphs: [
+        'Thank you for reading Operating Notes in its first two months. If one idea from these issues made it into how your business runs, that\'s the whole point.',
+        'In 2027 the plan stays the same: one operational idea every two weeks, starting with where your margin goes, then who decides what. I hope you get a proper break, and that the business runs a little more without you while you take it.',
+      ],
+    },
+  ],
+  reply: (
+    <>
+      <b>Your turn:</b> on average, how many days pass between finishing a piece of work and getting paid for it? Hit reply. I read every answer.
+    </>
+  ),
+  signoff: (
+    <>
+      Happy new year,
+      <br />
+      Nuno
+    </>
+  ),
+  ps: (
+    <>
+      <b>P.S.</b> On 12 January: where the margin goes. Most of it leaks out in the extra rounds of work nobody invoices.
+    </>
+  ),
