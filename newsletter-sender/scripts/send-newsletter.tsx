@@ -8,7 +8,7 @@
 import 'dotenv/config';
 import { render } from '@react-email/components';
 import { Resend } from 'resend';
-import Newsletter, { ISSUE_NUMBER, PREVIEW_TEXT, READY, SUBJECT } from '../emails/newsletter.js';
+import Newsletter, { PREVIEW_TEXT, READY, SUBJECT, WEEK_NUMBER } from '../emails/newsletter.js';
 
 const isTest = process.argv.includes('--test');
 const { RESEND_API_KEY, RESEND_FROM, RESEND_REPLY_TO, TEST_EMAIL } = process.env;
@@ -46,7 +46,7 @@ if (isTest) {
 } else {
   const { data, error } = await resend.broadcasts.create({
     segmentId: SEGMENT_ID!,
-    name: `Issue #${ISSUE_NUMBER}: ${SUBJECT}`,
+    name: `Week ${WEEK_NUMBER}: ${SUBJECT}`,
     from: RESEND_FROM!,
     replyTo: RESEND_REPLY_TO || undefined,
     subject: SUBJECT,

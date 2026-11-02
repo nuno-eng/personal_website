@@ -74,7 +74,7 @@ npm run preview         # live preview at http://localhost:3001
 
 For each issue:
 
-1. Edit the block at the top of `emails/newsletter.tsx`: `ISSUE_NUMBER`, `SUBJECT`, `PREVIEW_TEXT` and the content. The file ships with an example issue.
+1. Edit the block at the top of `emails/newsletter.tsx`: `WEEK_NUMBER` (ISO week of the send date), `SUBJECT`, `PREVIEW_TEXT` and the content. The file ships with an example issue.
 2. Run `npm run send:test` to send it to `TEST_EMAIL` only, then read it on your phone.
 3. Set `READY = true` and run `npm run send` to broadcast to every subscriber. The script refuses to broadcast while `READY` is false. Set it back to `false` when you start the next issue.
 
