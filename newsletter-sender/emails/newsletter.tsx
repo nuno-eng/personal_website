@@ -33,6 +33,8 @@ const ISSUE: {
   sections: { heading: string; paragraphs: ReactNode[] }[];
   cta: { lead: ReactNode; label: string; href: string };
   reply: ReactNode;
+  // Defaults to "Nuno"; e.g. <>Happy new year,<br />Nuno</> for a seasonal issue.
+  signoff?: ReactNode;
   ps?: ReactNode;
 } = {
   intro: [
@@ -140,7 +142,7 @@ export default function Newsletter() {
           </Section>
 
           <Text style={paragraph}>{ISSUE.reply}</Text>
-          <Text style={paragraph}>Nuno</Text>
+          <Text style={paragraph}>{ISSUE.signoff ?? 'Nuno'}</Text>
           {ISSUE.ps && <Text style={paragraph}>{ISSUE.ps}</Text>}
 
           <Hr style={hr} />
