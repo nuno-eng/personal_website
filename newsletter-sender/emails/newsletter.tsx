@@ -22,72 +22,82 @@ import { BUTTON, SITE } from '../transactional/brand.js';
 // the example issue below can't go out by accident.
 
 export const READY = false;
-// ISO week of the send date (Tue 17 Nov 2026 is week 47).
-export const WEEK_NUMBER = 47;
-export const SUBJECT = "The best system in the world can't check you in";
-export const PREVIEW_TEXT = "Written down isn't the same as trained.";
+// ISO week of the send date (Tue 15 Dec 2026 is week 51).
+export const WEEK_NUMBER = 51;
+export const SUBJECT = 'Why most changes die in week six';
+export const PREVIEW_TEXT = 'The sprint took four weeks. The results took five months.';
 
 // Paragraphs can hold <b> and <A> (inline link) as well as plain text.
+type IssueSection = { heading: string; paragraphs: ReactNode[] };
 const ISSUE: {
   intro: ReactNode[];
-  sections: { heading: string; paragraphs: ReactNode[] }[];
+  sections: IssueSection[];
   cta: { lead: ReactNode; label: string; href: string };
+  // Optional sections after the call box, e.g. a seasonal note.
+  closing?: IssueSection[];
   reply: ReactNode;
   // Defaults to "Nuno"; e.g. <>Happy new year,<br />Nuno</> for a seasonal issue.
   signoff?: ReactNode;
   ps?: ReactNode;
 } = {
   intro: [
-    'Earlier this month I checked into a hotel run by one of the biggest hotel groups in the world. It took at least three times longer than any check-in I can remember.',
-    "The system wasn't the problem. A group that size runs some of the most tested booking software there is. The receptionist was new, and my booking had one thing she hadn't been trained for: my address is in a different country from my nationality.",
-    'Everything else about that check-in was standard. One exception stopped it.',
+    'With the 25-person brand activation agency from my first issue, the main build was a four-week sprint. We put in the basics: a client briefing, one owner per stage, quality checks before production, and the first set of written procedures.',
+    "The results didn't arrive in those four weeks. They built up over the next five months: 30% fewer decisions reached the director, he got about 10 hours a week back, and rework on what they manufacture fell by 20%.",
+    "The procedures didn't keep themselves going. What kept them going was the last thing the sprint set up: a weekly, monthly and quarterly review rhythm, with a small set of numbers, that the team ran.",
   ],
   sections: [
     {
       heading: 'Why it happens',
       paragraphs: [
-        "Two weeks ago: get the standard out of your head and onto a page. Here's the catch. A page nobody has been trained on is still in your head. Founders buy the system (a CRM, a project tool, an automation) and expect it to do the training. It doesn't. And training on the normal case isn't enough, because the job breaks on the exceptions.",
-        "None of this is new. In the 1940s, the US Training Within Industry programme had to make millions of new workers productive fast. It taught supervisors one rule: if the worker hasn't learned, the instructor hasn't taught. I ran an instruction department in the Marines, and later helped build an instructors' course in Angola. Same lesson.",
+        "Most changes in a small business don't fail. They fade. Week one, everyone uses the new process. By week six, a busy client has pulled attention elsewhere, nobody checks, and the old habits are back.",
+        'A rhythm is what makes a change survive after your attention moves on. Every week someone looks at the numbers. Every month someone asks if the process still works. Every quarter the priorities get reset. None of it depends on you remembering.',
       ],
     },
     {
-      heading: 'Try this: teach one standard in four steps',
+      heading: 'Try this: book 2027 before you log off',
       paragraphs: [
-        'Take the one-page standard from the last issue, or any task your team gets wrong.',
-        <>1. <b>Prepare:</b> say what the job is for and what &ldquo;done&rdquo; looks like. Show the good example.</>,
-        <>2. <b>Show:</b> do it once while they watch. Name each step, and the reason behind the tricky ones.</>,
-        <>3. <b>Try:</b> they do it while you watch, explaining each step back to you. Correct it on the spot.</>,
-        <>4. <b>Follow up:</b> name who they can ask, ideally not you. Check often at first, then less.</>,
-        "Then ask your team one question: what's the unusual version of this job, and who knows how to handle it? Write that case into the page and teach it too.",
-        'Keep a simple grid: people down the side, standards across the top. Mark each 0 (not trained), 1 (trained and checked) or 2 (can train others). Every standard needs at least two people at 2.',
-      ],
-    },
-    {
-      heading: 'What it looked like at scale',
-      paragraphs: [
-        'A European mobility platform launched a premium chauffeur service in 8 cities across 6 countries. There was no playbook for premium: no written standard for what it meant, and no training. A central team in London was directing daily operations in every market. I wrote the city-launch playbooks and SOPs, then trained the local teams to run their own markets. Rollout time came down by two weeks, and the Managing Director handed over day-to-day operations.',
-        "The playbook didn't do that on its own. The training did.",
-        'Writing a standard takes an afternoon. Getting a team to run it without you, awkward cases included, is the work I do with founders.',
+        'One hour, before 31 December:',
+        <>1. <b>Weekly:</b> book the 30-minute Monday numbers slot from the last issue as a recurring meeting for the whole year. Name who chairs it, ideally not you.</>,
+        <>2. <b>Monthly:</b> pick a fixed date, such as the first Tuesday, for the monthly review: cash, margin, how the five numbers are trending, and one thing to change.</>,
+        <>3. <b>Quarterly:</b> book four half-days now. Each one sets no more than three priorities, with one owner each.</>,
+        <>4. <b>This year:</b> write down three things that worked, three that didn&apos;t, and the one constraint that held the business back most. That last one is your first priority for Q1.</>,
+        "A rhythm that isn't in the calendar is a wish. Put it in before the holidays, while January is still empty.",
+        "Booking the meetings takes an hour. Keeping them going through a busy quarter, so they don't stop the first time a client crisis lands, is where most founders want help. That's the work I do.",
       ],
     },
   ],
   cta: {
-    lead: "If that's where you are, book a 30-minute call. You'll leave with the first fix, whether or not we work together.",
+    lead: "If that's where you are, book a 30-minute call for January. You'll leave with the first fix, whether or not we work together.",
     label: 'Book a 30-minute call',
-    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-47',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-51',
   },
   reply: (
     <>
-      <b>Your turn:</b> which tool did you pay for that your team still doesn&apos;t use the way you meant? Hit reply. I read every answer.
+      <b>Your turn:</b> what&apos;s the one constraint that held your business back most this year? Hit reply. I read every answer, holidays included.
     </>
   ),
   ps: (
     <>
-      <b>P.S.</b> In two weeks: why you&apos;re usually the first person to notice when something goes wrong, and the 30-minute Monday habit that fixes it.
+      <b>P.S.</b> The next issue lands between Christmas and New Year, and it&apos;s a short one: why the money you&apos;re owed is a process problem, not a client problem.
     </>
   ),
 };
 // ───────────────────────────────────────────────────────────────────────────
+
+function renderSection(section: IssueSection) {
+  return (
+    <Section key={section.heading} style={sectionStyle}>
+      <Heading as="h2" style={h2}>
+        {section.heading}
+      </Heading>
+      {section.paragraphs.map((p, i) => (
+        <Text key={i} style={paragraph}>
+          {p}
+        </Text>
+      ))}
+    </Section>
+  );
+}
 
 export default function Newsletter() {
   return (
@@ -118,18 +128,7 @@ export default function Newsletter() {
             </Text>
           ))}
 
-          {ISSUE.sections.map((section) => (
-            <Section key={section.heading} style={sectionStyle}>
-              <Heading as="h2" style={h2}>
-                {section.heading}
-              </Heading>
-              {section.paragraphs.map((p, i) => (
-                <Text key={i} style={paragraph}>
-                  {p}
-                </Text>
-              ))}
-            </Section>
-          ))}
+          {ISSUE.sections.map(renderSection)}
 
           <Section style={ctaSection}>
             <Text style={paragraph}>{ISSUE.cta.lead}</Text>
@@ -137,6 +136,8 @@ export default function Newsletter() {
               {ISSUE.cta.label}
             </Button>
           </Section>
+
+          {ISSUE.closing?.map(renderSection)}
 
           <Text style={paragraph}>{ISSUE.reply}</Text>
           <Text style={paragraph}>{ISSUE.signoff ?? 'Nuno'}</Text>
