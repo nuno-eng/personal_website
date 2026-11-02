@@ -22,72 +22,89 @@ import { BUTTON, SITE } from '../transactional/brand.js';
 // the example issue below can't go out by accident.
 
 export const READY = false;
-// ISO week of the send date (Tue 17 Nov 2026 is week 47).
-export const WEEK_NUMBER = 47;
-export const SUBJECT = "The best system in the world can't check you in";
-export const PREVIEW_TEXT = "Written down isn't the same as trained.";
+// ISO week of the send date (Tue 1 Dec 2026 is week 49).
+export const WEEK_NUMBER = 49;
+export const SUBJECT = "Why you're always the first to notice";
+export const PREVIEW_TEXT = 'If problems only surface when you look, you are the reporting system.';
 
 // Paragraphs can hold <b> and <A> (inline link) as well as plain text.
+type IssueSection = { heading: string; paragraphs: ReactNode[] };
 const ISSUE: {
   intro: ReactNode[];
-  sections: { heading: string; paragraphs: ReactNode[] }[];
+  sections: IssueSection[];
   cta: { lead: ReactNode; label: string; href: string };
+  // Optional sections after the call box, e.g. a seasonal note.
+  closing?: IssueSection[];
   reply: ReactNode;
   // Defaults to "Nuno"; e.g. <>Happy new year,<br />Nuno</> for a seasonal issue.
   signoff?: ReactNode;
   ps?: ReactNode;
 } = {
   intro: [
-    'Earlier this month I checked into a hotel run by one of the biggest hotel groups in the world. It took at least three times longer than any check-in I can remember.',
-    "The system wasn't the problem. A group that size runs some of the most tested booking software there is. The receptionist was new, and my booking had one thing she hadn't been trained for: my address is in a different country from my nationality.",
-    'Everything else about that check-in was standard. One exception stopped it.',
+    'When I managed Prime Now delivery stations at Amazon, one meeting never moved. Every week we went through the concessions: the refunds and credits we\'d given customers when something went wrong.',
+    'Not when a customer complained loudly. Not when the numbers looked bad. Every week, whether things looked fine or not.',
+    'That routine is how we found root causes instead of firefighting the same problems, and customer satisfaction went up.',
   ],
   sections: [
     {
       heading: 'Why it happens',
       paragraphs: [
-        "Two weeks ago: get the standard out of your head and onto a page. Here's the catch. A page nobody has been trained on is still in your head. Founders buy the system (a CRM, a project tool, an automation) and expect it to do the training. It doesn't. And training on the normal case isn't enough, because the job breaks on the exceptions.",
-        "None of this is new. In the 1940s, the US Training Within Industry programme had to make millions of new workers productive fast. It taught supervisors one rule: if the worker hasn't learned, the instructor hasn't taught. I ran an instruction department in the Marines, and later helped build an instructors' course in Angola. Same lesson.",
+        "In most founder-led businesses, the reporting system is the founder. You notice the late job, the unhappy client, the slow month, usually because you happened to look. By then it's a fire, and you're the one holding the hose.",
+        "A fixed slot with the same few numbers changes that. Problems show up because the routine finds them, not because you were lucky. And once the team runs the routine, it doesn't need you to be the one who looks.",
       ],
     },
     {
-      heading: 'Try this: teach one standard in four steps',
+      heading: 'Try this: the Monday numbers slot',
       paragraphs: [
-        'Take the one-page standard from the last issue, or any task your team gets wrong.',
-        <>1. <b>Prepare:</b> say what the job is for and what &ldquo;done&rdquo; looks like. Show the good example.</>,
-        <>2. <b>Show:</b> do it once while they watch. Name each step, and the reason behind the tricky ones.</>,
-        <>3. <b>Try:</b> they do it while you watch, explaining each step back to you. Correct it on the spot.</>,
-        <>4. <b>Follow up:</b> name who they can ask, ideally not you. Check often at first, then less.</>,
-        "Then ask your team one question: what's the unusual version of this job, and who knows how to handle it? Write that case into the page and teach it too.",
-        'Keep a simple grid: people down the side, standards across the top. Mark each 0 (not trained), 1 (trained and checked) or 2 (can train others). Every standard needs at least two people at 2.',
+        <>1. <b>Pick five numbers, no more.</b> A good starting set: money in (cash received), work in (new enquiries or confirmed jobs), work out (delivered on time), quality (rework or complaints) and capacity (hours booked against hours available).</>,
+        <>2. <b>Give each one a target and an owner.</b> The owner brings the number. You don&apos;t.</>,
+        <>3. <b>Same 30 minutes every week,</b> even when nothing looks wrong. That&apos;s the point.</>,
+        <>4. <b>Green or red only.</b> Green numbers get no discussion.</>,
+        <>5. <b>Every red leaves with one owner and one date,</b> checked at the next meeting.</>,
+        "After four weeks, miss one on purpose. If it runs without you, it's working.",
+        'Most founders get stuck on step 1. Pick imperfect numbers and improve them later. Five rough numbers looked at every week beat a perfect dashboard nobody opens.',
       ],
     },
     {
-      heading: 'What it looked like at scale',
+      heading: 'The bigger picture',
       paragraphs: [
-        'A European mobility platform launched a premium chauffeur service in 8 cities across 6 countries. There was no playbook for premium: no written standard for what it meant, and no training. A central team in London was directing daily operations in every market. I wrote the city-launch playbooks and SOPs, then trained the local teams to run their own markets. Rollout time came down by two weeks, and the Managing Director handed over day-to-day operations.',
-        "The playbook didn't do that on its own. The training did.",
-        'Writing a standard takes an afternoon. Getting a team to run it without you, awkward cases included, is the work I do with founders.',
+        "At Amazon the weekly review wasn't a reporting exercise. It was how a large operation stayed close to the customer without depending on any one manager's instinct. A 10-person agency needs the same thing for the same reason. You can't scale your attention, but you can scale a routine.",
+        'Setting up the slot takes 30 minutes. Choosing numbers that actually tell you where the business is going, and getting the team to run the meeting without you, is the work I do with founders.',
       ],
     },
   ],
   cta: {
     lead: "If that's where you are, book a 30-minute call. You'll leave with the first fix, whether or not we work together.",
     label: 'Book a 30-minute call',
-    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-47',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-49',
   },
   reply: (
     <>
-      <b>Your turn:</b> which tool did you pay for that your team still doesn&apos;t use the way you meant? Hit reply. I read every answer.
+      <b>Your turn:</b> if you could only see five numbers every Monday, which would they be? Hit reply. I read every answer.
     </>
   ),
   ps: (
     <>
-      <b>P.S.</b> In two weeks: why you&apos;re usually the first person to notice when something goes wrong, and the 30-minute Monday habit that fixes it.
+      <b>P.S.</b> In two weeks: why most changes in a small business fade by week six, and the one-hour job to do before you log off for Christmas.
     </>
   ),
 };
 // ───────────────────────────────────────────────────────────────────────────
+
+function renderSection(section: IssueSection) {
+  return (
+    <Section key={section.heading} style={sectionStyle}>
+      <Heading as="h2" style={h2}>
+        {section.heading}
+      </Heading>
+      {section.paragraphs.map((p, i) => (
+        <Text key={i} style={paragraph}>
+          {p}
+        </Text>
+      ))}
+    </Section>
+  );
+}
 
 export default function Newsletter() {
   return (
@@ -118,18 +135,7 @@ export default function Newsletter() {
             </Text>
           ))}
 
-          {ISSUE.sections.map((section) => (
-            <Section key={section.heading} style={sectionStyle}>
-              <Heading as="h2" style={h2}>
-                {section.heading}
-              </Heading>
-              {section.paragraphs.map((p, i) => (
-                <Text key={i} style={paragraph}>
-                  {p}
-                </Text>
-              ))}
-            </Section>
-          ))}
+          {ISSUE.sections.map(renderSection)}
 
           <Section style={ctaSection}>
             <Text style={paragraph}>{ISSUE.cta.lead}</Text>
@@ -137,6 +143,8 @@ export default function Newsletter() {
               {ISSUE.cta.label}
             </Button>
           </Section>
+
+          {ISSUE.closing?.map(renderSection)}
 
           <Text style={paragraph}>{ISSUE.reply}</Text>
           <Text style={paragraph}>{ISSUE.signoff ?? 'Nuno'}</Text>
