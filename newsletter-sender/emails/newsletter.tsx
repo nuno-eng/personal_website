@@ -21,7 +21,7 @@ import { BUTTON, SITE } from '../transactional/brand.js';
 // scripts/send-newsletter.tsx refuses to broadcast while READY is false, so
 // the example issue below can't go out by accident.
 
-export const READY = true;
+export const READY = false;
 // ISO week of the send date (Tue 3 Nov 2026 is week 45).
 export const WEEK_NUMBER = 45;
 export const SUBJECT = 'The standard only you can see';
