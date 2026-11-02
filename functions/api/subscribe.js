@@ -6,7 +6,7 @@
 // 2. Adds (or re-subscribes) the contact in the Resend newsletter segment.
 // 3. With the D1 binding DB: gives new subscribers a referral code, credits
 //    the referrer, records which page they signed up on, sends the welcome
-//    email and schedules day 3 / day 7, and (with NOTIFY_EMAIL) emails you
+//    email and schedules the second (day 7) and third (day 10) emails, and (with NOTIFY_EMAIL) emails you
 //    about the new lead.
 //
 // Environment: see NEWSLETTER-SETUP.md.

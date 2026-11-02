@@ -67,7 +67,7 @@ add('seq-day7-en', 'Worth 30 minutes?',
   <Layout lang="en" eyebrow={NAME.en} preview="A direct offer, no pitch deck." footer={seqFooter.en}>
     <H>Worth 30 minutes?</H>
     <P>{'{{greeting}}'}</P>
-    <P>A week in, so a direct question: is there one operational problem you would like off your plate this quarter?</P>
+    <P>A week or so in, so a direct question: is there one operational problem you would like off your plate this quarter?</P>
     <P>If so, book a 30-minute discovery call. We look at where time and money are leaking, and you leave with the first fix, whether or not we work together.</P>
     <Cta href={`${SITE}/book/`}>Book a discovery call</Cta>
     <P>Not the right time? No problem. The newsletter keeps coming, and your referral link still works: <TextLink href="{{referralLink}}">{'{{referralLink}}'}</TextLink></P>
@@ -77,7 +77,7 @@ add('seq-day7-pt', 'Vale 30 minutos?',
   <Layout lang="pt" eyebrow={NAME.pt} preview="Uma proposta direta, sem apresentações." footer={seqFooter.pt}>
     <H>Vale 30 minutos?</H>
     <P>{'{{greeting}}'}</P>
-    <P>Uma semana depois, uma pergunta direta: há algum problema operacional que gostaria de resolver este trimestre?</P>
+    <P>Passada mais de uma semana, uma pergunta direta: há algum problema operacional que gostaria de resolver este trimestre?</P>
     <P>Se sim, marque uma chamada exploratória de 30 minutos. Vemos onde se está a perder tempo e dinheiro, e sai com a primeira correção, quer trabalhemos juntos ou não.</P>
     <Cta href={`${SITE}/pt/book/`}>Marcar chamada exploratória</Cta>
     <P>Não é o momento certo? Sem problema. A newsletter continua a chegar, e o seu link de recomendação continua ativo: <TextLink href="{{referralLink}}">{'{{referralLink}}'}</TextLink></P>
