@@ -1,20 +1,36 @@
 name: Send Newsletter
 
-# Manual trigger only. Edit newsletter-sender/emails/newsletter.tsx, push,
-# then Actions > "Send Newsletter" > Run workflow:
+# Manual: edit newsletter-sender/emails/newsletter.tsx, push, then
+# Actions > "Send Newsletter" > Run workflow:
 #   test       sends the issue to TEST_EMAIL only
-#   broadcast  sends it to every subscriber (needs READY = true in the template)
+#   broadcast  books it for the next fortnightly slot (needs READY = true)
+#   book-due   books every issue in issues/schedule.json whose window is open
+#              today (add "dry run" to check without booking)
+#
+# Scheduled: every day 16 Nov to 3 Dec at 09:00 UTC, "book-due" runs on its
+# own. Resend only accepts send dates within 30 days, so issues written ahead
+# wait in newsletter-sender/issues/ until their window opens. Each booking
+# sends a test to TEST_EMAIL first. Days with nothing due, or an issue that is
+# already booked, exit quietly.
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'test sends to TEST_EMAIL only; broadcast sends to every subscriber'
+        description: 'test, broadcast, or book-due'
         type: choice
-        options: [test, broadcast]
+        options: [test, broadcast, book-due]
         default: test
+      dry_run:
+        description: 'book-due only: check everything, book nothing'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 9 16-30 11 *'
+    - cron: '0 9 1-3 12 *'
 
 jobs:
   send:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode != 'book-due'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,3 +53,53 @@ jobs:
           RESEND_FROM: ${{ secrets.RESEND_FROM }}
           RESEND_REPLY_TO: ${{ secrets.RESEND_REPLY_TO }}
           TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+
+  book-due:
+    if: github.event_name == 'schedule' || inputs.mode == 'book-due'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: newsletter-sender
+    env:
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
+      RESEND_FROM: ${{ secrets.RESEND_FROM }}
+      RESEND_REPLY_TO: ${{ secrets.RESEND_REPLY_TO }}
+      TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+      DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find issues due for booking
+        id: due
+        run: |
+          python3 scripts/due-issues.py > due.txt
+          cat due.txt
+          echo "count=$(grep -c . due.txt || true)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.due.outputs.count != '0'
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: newsletter-sender/package-lock.json
+
+      - if: steps.due.outputs.count != '0'
+        run: npm ci
+
+      - name: Test and book each due issue
+        if: steps.due.outputs.count != '0'
+        run: |
+          set -e
+          cp emails/newsletter.tsx /tmp/newsletter.base.tsx
+          while read -r file date; do
+            cp /tmp/newsletter.base.tsx emails/newsletter.tsx
+            python3 scripts/load-issue.py emails/newsletter.tsx "issues/$file"
+            npx tsc --noEmit
+            # Check first, so retry days don't send another test for an issue already booked.
+            check=$(npm run --silent send -- --date "$date" --skip-if-booked --dry-run)
+            echo "$check"
+            if echo "$check" | grep -q "already booked" || [ -n "$DRY_RUN" ]; then continue; fi
+            npm run send:test
+            npm run send -- --date "$date"
+          done < due.txt
