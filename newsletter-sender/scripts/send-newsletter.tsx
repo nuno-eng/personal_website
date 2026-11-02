@@ -93,7 +93,9 @@ if (isTest) {
     fail(`This issue says WEEK_NUMBER = ${WEEK_NUMBER}, but ${sendDate} is week ${isoWeek(sendDate)}. Fix WEEK_NUMBER (or pass --date) and run again.`);
   }
   const { data: list } = await resend.broadcasts.list();
-  const clash = list?.data?.find((b) => b.status === 'queued' && b.scheduled_at && Math.abs(new Date(b.scheduled_at).getTime() - sendAt.getTime()) < 60_000);
+  // Resend reports a booked broadcast as "scheduled" ("queued" kept in case
+  // older broadcasts use it). Matching only "queued" let week 45 be booked twice.
+  const clash = list?.data?.find((b) => ['scheduled', 'queued'].includes(String(b.status)) && b.scheduled_at && Math.abs(new Date(b.scheduled_at).getTime() - sendAt.getTime()) < 60_000);
   if (clash) fail(`"${clash.name}" is already scheduled for ${sendDate} 11:00. Cancel it in Resend > Broadcasts first.`);
 
   const { data, error } = await resend.broadcasts.create({

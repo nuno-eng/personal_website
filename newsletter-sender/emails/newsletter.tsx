@@ -22,10 +22,10 @@ import { BUTTON, SITE } from '../transactional/brand.js';
 // the example issue below can't go out by accident.
 
 export const READY = false;
-// ISO week of the send date (Tue 1 Dec 2026 is week 49).
-export const WEEK_NUMBER = 49;
-export const SUBJECT = "Why you're always the first to notice";
-export const PREVIEW_TEXT = 'If problems only surface when you look, you are the reporting system.';
+// ISO week of the send date (Tue 15 Dec 2026 is week 51).
+export const WEEK_NUMBER = 51;
+export const SUBJECT = 'Why most changes die in week six';
+export const PREVIEW_TEXT = 'The sprint took four weeks. The results took five months.';
 
 // Paragraphs can hold <b> and <A> (inline link) as well as plain text.
 type IssueSection = { heading: string; paragraphs: ReactNode[] };
@@ -41,51 +41,44 @@ const ISSUE: {
   ps?: ReactNode;
 } = {
   intro: [
-    'When I managed Prime Now delivery stations at Amazon, one meeting never moved. Every week we went through the concessions: the refunds and credits we\'d given customers when something went wrong.',
-    'Not when a customer complained loudly. Not when the numbers looked bad. Every week, whether things looked fine or not.',
-    'That routine is how we found root causes instead of firefighting the same problems, and customer satisfaction went up.',
+    'With the 25-person brand activation agency from my first issue, the main build was a four-week sprint. We put in the basics: a client briefing, one owner per stage, quality checks before production, and the first set of written procedures.',
+    "The results didn't arrive in those four weeks. They built up over the next five months: 30% fewer decisions reached the director, he got about 10 hours a week back, and rework on what they manufacture fell by 20%.",
+    "The procedures didn't keep themselves going. What kept them going was the last thing the sprint set up: a weekly, monthly and quarterly review rhythm, with a small set of numbers, that the team ran.",
   ],
   sections: [
     {
       heading: 'Why it happens',
       paragraphs: [
-        "In most founder-led businesses, the reporting system is the founder. You notice the late job, the unhappy client, the slow month, usually because you happened to look. By then it's a fire, and you're the one holding the hose.",
-        "A fixed slot with the same few numbers changes that. Problems show up because the routine finds them, not because you were lucky. And once the team runs the routine, it doesn't need you to be the one who looks.",
+        "Most changes in a small business don't fail. They fade. Week one, everyone uses the new process. By week six, a busy client has pulled attention elsewhere, nobody checks, and the old habits are back.",
+        'A rhythm is what makes a change survive after your attention moves on. Every week someone looks at the numbers. Every month someone asks if the process still works. Every quarter the priorities get reset. None of it depends on you remembering.',
       ],
     },
     {
-      heading: 'Try this: the Monday numbers slot',
+      heading: 'Try this: book 2027 before you log off',
       paragraphs: [
-        <>1. <b>Pick five numbers, no more.</b> A good starting set: money in (cash received), work in (new enquiries or confirmed jobs), work out (delivered on time), quality (rework or complaints) and capacity (hours booked against hours available).</>,
-        <>2. <b>Give each one a target and an owner.</b> The owner brings the number. You don&apos;t.</>,
-        <>3. <b>Same 30 minutes every week,</b> even when nothing looks wrong. That&apos;s the point.</>,
-        <>4. <b>Green or red only.</b> Green numbers get no discussion.</>,
-        <>5. <b>Every red leaves with one owner and one date,</b> checked at the next meeting.</>,
-        "After four weeks, miss one on purpose. If it runs without you, it's working.",
-        'Most founders get stuck on step 1. Pick imperfect numbers and improve them later. Five rough numbers looked at every week beat a perfect dashboard nobody opens.',
-      ],
-    },
-    {
-      heading: 'The bigger picture',
-      paragraphs: [
-        "At Amazon the weekly review wasn't a reporting exercise. It was how a large operation stayed close to the customer without depending on any one manager's instinct. A 10-person agency needs the same thing for the same reason. You can't scale your attention, but you can scale a routine.",
-        'Setting up the slot takes 30 minutes. Choosing numbers that actually tell you where the business is going, and getting the team to run the meeting without you, is the work I do with founders.',
+        'One hour, before 31 December:',
+        <>1. <b>Weekly:</b> book the 30-minute Monday numbers slot from the last issue as a recurring meeting for the whole year. Name who chairs it, ideally not you.</>,
+        <>2. <b>Monthly:</b> pick a fixed date, such as the first Tuesday, for the monthly review: cash, margin, how the five numbers are trending, and one thing to change.</>,
+        <>3. <b>Quarterly:</b> book four half-days now. Each one sets no more than three priorities, with one owner each.</>,
+        <>4. <b>This year:</b> write down three things that worked, three that didn&apos;t, and the one constraint that held the business back most. That last one is your first priority for Q1.</>,
+        "A rhythm that isn't in the calendar is a wish. Put it in before the holidays, while January is still empty.",
+        "Booking the meetings takes an hour. Keeping them going through a busy quarter, so they don't stop the first time a client crisis lands, is where most founders want help. That's the work I do.",
       ],
     },
   ],
   cta: {
-    lead: "If that's where you are, book a 30-minute call. You'll leave with the first fix, whether or not we work together.",
+    lead: "If that's where you are, book a 30-minute call for January. You'll leave with the first fix, whether or not we work together.",
     label: 'Book a 30-minute call',
-    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-49',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-51',
   },
   reply: (
     <>
-      <b>Your turn:</b> if you could only see five numbers every Monday, which would they be? Hit reply. I read every answer.
+      <b>Your turn:</b> what&apos;s the one constraint that held your business back most this year? Hit reply. I read every answer, holidays included.
     </>
   ),
   ps: (
     <>
-      <b>P.S.</b> In two weeks: why most changes in a small business fade by week six, and the one-hour job to do before you log off for Christmas.
+      <b>P.S.</b> The next issue lands between Christmas and New Year, and it&apos;s a short one: why the money you&apos;re owed is a process problem, not a client problem.
     </>
   ),
 };
