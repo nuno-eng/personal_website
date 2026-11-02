@@ -4,9 +4,13 @@ import { sendEmail } from './resend.js';
 
 const DAY = 24 * 60 * 60 * 1000;
 
-// Sends the welcome email now and schedules day 3 and day 7 through Resend's
-// scheduled_at (Resend holds them, so no cron is needed). Returns the ids of
-// the scheduled sends so an unsubscribe can cancel them.
+// Sends the welcome email now and schedules the second email for day 7 and
+// the third for day 10 through Resend's scheduled_at (Resend holds them, up to
+// 30 days, so no cron is needed). Returns the ids of the scheduled sends so an
+// unsubscribe can cancel them. The internal names "day3"/"day7" (templates and
+// D1 columns) predate the current timing and are kept as identifiers.
+const SECOND_EMAIL_DAYS = 7;
+const THIRD_EMAIL_DAYS = 10;
 export async function sendWelcomeSequence({ env, base, email, code, name, lang, referralLink }) {
   if (!env.RESEND_API_KEY || !env.RESEND_FROM) {
     console.error('Missing RESEND_API_KEY or RESEND_FROM - skipping welcome sequence.');
@@ -33,8 +37,8 @@ export async function sendWelcomeSequence({ env, base, email, code, name, lang, 
 
   const [, day3EmailId, day7EmailId] = await Promise.all([
     send('welcome'),
-    send('day3', new Date(Date.now() + 3 * DAY).toISOString()),
-    send('day7', new Date(Date.now() + 7 * DAY).toISOString()),
+    send('day3', new Date(Date.now() + SECOND_EMAIL_DAYS * DAY).toISOString()),
+    send('day7', new Date(Date.now() + THIRD_EMAIL_DAYS * DAY).toISOString()),
   ]);
 
   return { day3EmailId, day7EmailId };

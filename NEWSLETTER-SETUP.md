@@ -9,7 +9,7 @@
 | Form behaviour and styles, shared by every page | `publish/newsletter.js`, `publish/newsletter.css` |
 | Referral leaderboard (EN/PT) | `publish/leaderboard/`, `publish/pt/leaderboard/` |
 | API (Cloudflare Pages Functions) | `functions/api/` (subscribe, unsubscribe, leaderboard, my-referrals) |
-| Welcome sequence copy (welcome, day 3, day 7, EN + PT) | `functions/_lib/email-templates.js` |
+| Welcome sequence copy (welcome, second email on day 7, third on day 10, EN + PT; internally `day3`/`day7`) | `functions/_lib/email-templates.js` |
 | Newsletter issues (React Email) and the send script | `newsletter-sender/` |
 | Database schema | `d1-schema.sql` |
 
@@ -19,7 +19,7 @@ What happens when someone subscribes:
 
 1. They're added to your Resend segment. Anyone who had unsubscribed is re-subscribed.
 2. They get a referral code. If they came in through someone's `?ref=` link on any page, that person gets the credit.
-3. The welcome email goes out straight away. Day 3 and day 7 are scheduled in Resend, and unsubscribing cancels them.
+3. The welcome email goes out straight away. The second email (day 7) and the third (day 10) are scheduled in Resend, and unsubscribing cancels them.
 4. D1 records their language and the page they signed up on (plus `utm_source`), so you can see which pages bring in leads.
 5. If `NOTIFY_EMAIL` is set, you get an email about the new subscriber.
 
@@ -61,7 +61,7 @@ On the PR's preview URL (Cloudflare posts it on the PR):
 3. Repeat on `/pt/subscribe/` to check the Portuguese emails.
 4. Clean up test data: in Resend, delete the test contacts. In D1, run
    `npx wrangler d1 execute newsletter-db --remote --command "DELETE FROM subscribers WHERE email LIKE '%your-test-address%'"`.
-   Cancel the test subscribers' scheduled day 3/day 7 emails from their pages under Emails in Resend.
+   Cancel the test subscribers' scheduled day 7/day 10 emails from their pages under Emails in Resend.
 
 ## 5. Sending an issue
 
