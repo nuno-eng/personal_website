@@ -76,7 +76,11 @@ For each issue:
 
 1. Edit the block at the top of `emails/newsletter.tsx`: `WEEK_NUMBER` (ISO week of the send date), `SUBJECT`, `PREVIEW_TEXT` and the content. The file ships with an example issue.
 2. Run `npm run send:test` to send it to `TEST_EMAIL` only, then read it on your phone.
-3. Set `READY = true` and run `npm run send` to broadcast to every subscriber. The script refuses to broadcast while `READY` is false. Set it back to `false` when you start the next issue.
+3. Set `READY = true` and run `npm run send`. It **schedules** the issue in Resend for the next slot: **every other Tuesday at 11:00 UK time**, starting Tue 10 Nov 2026 (then 24 Nov, 8 Dec, …). It prints the date, and you can change or cancel it in **Resend > Broadcasts** until it goes out. Write and schedule each issue any time before its Tuesday.
+   - It refuses to schedule while `READY` is false, if `WEEK_NUMBER` doesn't match that Tuesday's ISO week, or if another issue is already booked for the same slot.
+   - A different Tuesday: `npm run send -- --date 2026-12-08`.
+   - The cadence lives in `scripts/send-newsletter.tsx` (`FIRST_SEND`, `SEND_TIME`).
+   - Set `READY` back to `false` when you start the next issue.
 
 You can also send without a terminal: add `RESEND_API_KEY`, `RESEND_SEGMENT_ID`, `RESEND_FROM`, `RESEND_REPLY_TO` and `TEST_EMAIL` as repo secrets (**Settings > Secrets and variables > Actions**), push your edited issue, then go to **Actions > Send Newsletter > Run workflow** and pick `test` or `broadcast`.
 
