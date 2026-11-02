@@ -22,10 +22,10 @@ import { BUTTON, SITE } from '../transactional/brand.js';
 // the example issue below can't go out by accident.
 
 export const READY = false;
-// ISO week of the send date (Tue 3 Nov 2026 is week 45).
-export const WEEK_NUMBER = 45;
-export const SUBJECT = 'The standard only you can see';
-export const PREVIEW_TEXT = "At four people, reviewing everything feels like care. At twelve, it's the queue.";
+// ISO week of the send date (Tue 17 Nov 2026 is week 47).
+export const WEEK_NUMBER = 47;
+export const SUBJECT = "The best system in the world can't check you in";
+export const PREVIEW_TEXT = "Written down isn't the same as trained.";
 
 // Paragraphs can hold <b> and <A> (inline link) as well as plain text.
 const ISSUE: {
@@ -38,55 +38,52 @@ const ISSUE: {
   ps?: ReactNode;
 } = {
   intro: [
-    "I once worked with a 25-person brand activation agency where almost every question ended on the director's desk.",
-    'Every project ran a little differently. Client requirements surfaced halfway through design, creating extra rounds of work. Production mistakes weren\'t recorded, so they came back. Nobody was careless. The standard for "good" lived in one place, the director\'s head, and the only way to check work against it was to send it to him.',
-    "If you run an agency, you probably know this one. At four people, reviewing everything feels like care. At twelve, it's the queue everything waits in.",
+    'Earlier this month I checked into a hotel run by one of the biggest hotel groups in the world. It took at least three times longer than any check-in I can remember.',
+    "The system wasn't the problem. A group that size runs some of the most tested booking software there is. The receptionist was new, and my booking had one thing she hadn't been trained for: my address is in a different country from my nationality.",
+    'Everything else about that check-in was standard. One exception stopped it.',
   ],
   sections: [
     {
-      heading: 'Why it stops working',
+      heading: 'Why it happens',
       paragraphs: [
-        'Founder review catches problems at the most expensive point: after the work is already done. It teaches the team to stop at "good enough for the founder to fix". And it keeps your standard unwritten, so nobody else can apply it. If quality depends on your review, your review is the system.',
-        "At Amazon I helped open the UK's second Prime Now hub, and inbound capacity went up about 58% in two weeks. That came from standards written for that building's layout and for what the system could really handle, not copied from another site. People could follow them from their first shift, because the standard didn't depend on someone senior being there to interpret it.",
+        "Two weeks ago: get the standard out of your head and onto a page. Here's the catch. A page nobody has been trained on is still in your head. Founders buy the system (a CRM, a project tool, an automation) and expect it to do the training. It doesn't. And training on the normal case isn't enough, because the job breaks on the exceptions.",
+        "None of this is new. In the 1940s, the US Training Within Industry programme had to make millions of new workers productive fast. It taught supervisors one rule: if the worker hasn't learned, the instructor hasn't taught. I ran an instruction department in the Marines, and later helped build an instructors' course in Angola. Same lesson.",
       ],
     },
     {
-      heading: 'Try this: the one-page standard',
+      heading: 'Try this: teach one standard in four steps',
       paragraphs: [
-        'Pick the one piece of work that comes back to you most often (a video, a proposal, a client report). Give it one page:',
-        <>1. <b>What it&apos;s for:</b> the job it does for the client, in one sentence.</>,
-        <>2. <b>Done means:</b> 3 to 5 checks anyone can confirm without asking you. Make them testable: &ldquo;price and deadline on page one&rdquo;, not &ldquo;clear proposal&rdquo;.</>,
-        <>3. <b>Where people go wrong:</b> only the steps that cause rework, and why each one matters.</>,
-        <>4. <b>One good example:</b> a link to a piece you&apos;d hold up.</>,
-        <>5. <b>Maker and checker:</b> who makes it, and who checks it against the page. Not you.</>,
-        "For two weeks, when work reaches you, don't fix it. Check it against the page. If it fails a check that's on the page, send it back. If it fails something that isn't, add the missing line.",
-        'By the end, the standard in your head is on paper.',
+        'Take the one-page standard from the last issue, or any task your team gets wrong.',
+        <>1. <b>Prepare:</b> say what the job is for and what &ldquo;done&rdquo; looks like. Show the good example.</>,
+        <>2. <b>Show:</b> do it once while they watch. Name each step, and the reason behind the tricky ones.</>,
+        <>3. <b>Try:</b> they do it while you watch, explaining each step back to you. Correct it on the spot.</>,
+        <>4. <b>Follow up:</b> name who they can ask, ideally not you. Check often at first, then less.</>,
+        "Then ask your team one question: what's the unusual version of this job, and who knows how to handle it? Write that case into the page and teach it too.",
+        'Keep a simple grid: people down the side, standards across the top. Mark each 0 (not trained), 1 (trained and checked) or 2 (can train others). Every standard needs at least two people at 2.',
       ],
     },
     {
-      heading: 'What changed at the agency',
+      heading: 'What it looked like at scale',
       paragraphs: [
-        <>
-          A four-week sprint put the basics in: a client briefing completed before design starts, the same stages and one owner for every job, and quality checks before anything goes to production. Then the team ran it. Within five months, 30% fewer decisions reached the director, he got about 10 hours a week back, and rework on what they manufacture fell by 20%.{' '}
-          <A href="https://www.nunofontoura.com/case-studies/yunik/?utm_source=newsletter&utm_content=week-45">Read the full case study</A>.
-        </>,
-        "One page fixes one workflow. Making standards stick across a whole business, so quality doesn't quietly depend on you again six months later, is harder. That's the work I do with founders: the few standards, owners and checks that let the team deliver without every decision coming back to you.",
+        'A European mobility platform launched a premium chauffeur service in 8 cities across 6 countries. There was no playbook for premium: no written standard for what it meant, and no training. A central team in London was directing daily operations in every market. I wrote the city-launch playbooks and SOPs, then trained the local teams to run their own markets. Rollout time came down by two weeks, and the Managing Director handed over day-to-day operations.',
+        "The playbook didn't do that on its own. The training did.",
+        'Writing a standard takes an afternoon. Getting a team to run it without you, awkward cases included, is the work I do with founders.',
       ],
     },
   ],
   cta: {
     lead: "If that's where you are, book a 30-minute call. You'll leave with the first fix, whether or not we work together.",
     label: 'Book a 30-minute call',
-    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-45',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-47',
   },
   reply: (
     <>
-      <b>Your turn:</b> what&apos;s the one piece of work that still has to pass through you before it reaches a client? Hit reply. I read every answer.
+      <b>Your turn:</b> which tool did you pay for that your team still doesn&apos;t use the way you meant? Hit reply. I read every answer.
     </>
   ),
   ps: (
     <>
-      <b>P.S.</b> Writing it down is only half of it. In two weeks: why a global hotel group took three times longer than usual to check me in.
+      <b>P.S.</b> In two weeks: why you&apos;re usually the first person to notice when something goes wrong, and the 30-minute Monday habit that fixes it.
     </>
   ),
 };
