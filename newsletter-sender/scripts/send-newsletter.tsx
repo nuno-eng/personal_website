@@ -2,10 +2,10 @@
 //
 //   npm run send:test   sends this issue to TEST_EMAIL only (do this first)
 //   npm run send        schedules it for the next send slot (see below)
-//   npm run send -- --date 2026-11-24   schedules it for a specific Tuesday instead
+//   npm run send -- --date 2026-11-17   schedules it for a specific Tuesday instead
 //
 // Operating Notes goes out every other Tuesday at 11:00 UK time, starting
-// Tuesday 10 Nov 2026. `npm run send` books the issue into Resend for the next
+// Tuesday 3 Nov 2026. `npm run send` books the issue into Resend for the next
 // slot; Resend sends it then, and it can be cancelled in Resend > Broadcasts
 // until it goes. WEEK_NUMBER must match the ISO week of that Tuesday, so an
 // issue can't go out on the wrong date by accident.
@@ -21,7 +21,7 @@ const isTest = process.argv.includes('--test');
 const dateArg = process.argv.includes('--date') ? process.argv[process.argv.indexOf('--date') + 1] : null;
 
 // ─── Schedule: every other Tuesday, 11:00 UK time ─────────────────────────
-const FIRST_SEND = '2026-11-10'; // a Tuesday; every slot is a multiple of 14 days from here
+const FIRST_SEND = '2026-11-03'; // a Tuesday; every slot is a multiple of 14 days from here
 const SEND_TIME = { hour: 11, minute: 0, timeZone: 'Europe/London' };
 const DAY_MS = 86_400_000;
 
@@ -82,7 +82,7 @@ if (isTest) {
   if (error) fail(`Test send failed: ${JSON.stringify(error)}`);
   console.log(`Test sent to ${TEST_EMAIL} (${data!.id}).`);
 } else {
-  if (dateArg && !/^\d{4}-\d{2}-\d{2}$/.test(dateArg)) fail('Use --date YYYY-MM-DD, e.g. --date 2026-11-24.');
+  if (dateArg && !/^\d{4}-\d{2}-\d{2}$/.test(dateArg)) fail('Use --date YYYY-MM-DD, e.g. --date 2026-11-17.');
   // At least 15 minutes ahead, so there's time to cancel a mistake in Resend.
   const sendDate = dateArg || nextSlot(new Date(Date.now() + 15 * 60_000));
   const sendAt = zonedInstant(sendDate, SEND_TIME.hour, SEND_TIME.minute, SEND_TIME.timeZone);

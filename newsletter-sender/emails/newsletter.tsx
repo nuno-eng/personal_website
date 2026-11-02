@@ -18,9 +18,9 @@ import { BUTTON } from '../transactional/brand.js';
 // scripts/send-newsletter.tsx refuses to broadcast while READY is false, so
 // the example issue below can't go out by accident.
 
-export const READY = false;
-// ISO week of the send date (Tue 10 Nov 2026 is week 46).
-export const WEEK_NUMBER = 46;
+export const READY = true;
+// ISO week of the send date (Tue 3 Nov 2026 is week 45).
+export const WEEK_NUMBER = 45;
 export const SUBJECT = 'The standard only you can see';
 export const PREVIEW_TEXT = "At four people, reviewing everything feels like care. At twelve, it's the queue.";
 
@@ -63,7 +63,7 @@ const ISSUE: {
       paragraphs: [
         <>
           A four-week sprint put the basics in: a client briefing completed before design starts, the same stages and one owner for every job, and quality checks before anything goes to production. Then the team ran it. Within five months, 30% fewer decisions reached the director, he got about 10 hours a week back, and rework on what they manufacture fell by 20%.{' '}
-          <A href="https://www.nunofontoura.com/case-studies/yunik/?utm_source=newsletter&utm_content=week-46">Read the full case study</A>.
+          <A href="https://www.nunofontoura.com/case-studies/yunik/?utm_source=newsletter&utm_content=week-45">Read the full case study</A>.
         </>,
         "One page fixes one workflow. Making standards stick across a whole business, so quality doesn't quietly depend on you again six months later, is harder. That's the work I do with founders: the few standards, owners and checks that let the team deliver without every decision coming back to you.",
       ],
@@ -72,7 +72,7 @@ const ISSUE: {
   cta: {
     lead: "If that's where you are, book a 30-minute call. You'll leave with the first fix, whether or not we work together.",
     label: 'Book a 30-minute call',
-    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-46',
+    href: 'https://www.nunofontoura.com/book/?utm_source=newsletter&utm_content=week-45',
   },
   reply: (
     <>
