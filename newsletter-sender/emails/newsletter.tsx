@@ -1,18 +1,21 @@
 import {
   Body,
   Button,
+  Column,
   Container,
   Head,
   Heading,
   Hr,
   Html,
+  Img,
   Link,
   Preview,
+  Row,
   Section,
   Text,
 } from '@react-email/components';
 import type { ReactNode } from 'react';
-import { BUTTON } from '../transactional/brand.js';
+import { BUTTON, SITE } from '../transactional/brand.js';
 
 // ─── Edit this block for each issue ────────────────────────────────────────
 // scripts/send-newsletter.tsx refuses to broadcast while READY is false, so
@@ -94,7 +97,16 @@ export default function Newsletter() {
       <Preview>{PREVIEW_TEXT}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Text style={kicker}>Operating Notes &middot; Week {WEEK_NUMBER}</Text>
+          <Row style={kickerRow}>
+            <Column style={{ width: '36px', verticalAlign: 'middle' }}>
+              <Link href={SITE}>
+                <Img src={`${SITE}/assets/email/mark.png`} width="28" height="28" alt="Nuno Fontoura" style={{ display: 'block' }} />
+              </Link>
+            </Column>
+            <Column style={{ verticalAlign: 'middle' }}>
+              <Text style={kicker}>Operating Notes &middot; Week {WEEK_NUMBER}</Text>
+            </Column>
+          </Row>
           <Heading as="h1" style={h1}>
             {SUBJECT}
           </Heading>
@@ -170,8 +182,9 @@ const kicker = {
   fontWeight: 800,
   letterSpacing: '0.08em',
   textTransform: 'uppercase' as const,
-  margin: '0 0 12px',
+  margin: 0,
 };
+const kickerRow = { margin: '0 0 14px' };
 const h1 = { color: color.text, fontSize: '30px', fontWeight: 800, lineHeight: '36px', letterSpacing: '-0.015em', margin: '0 0 24px' };
 const h2 = { color: color.text, fontSize: '19px', fontWeight: 800, lineHeight: '26px', margin: '0 0 8px' };
 const sectionStyle = { margin: '8px 0 12px' };

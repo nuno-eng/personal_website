@@ -75,7 +75,9 @@ if (isTest) {
     from: RESEND_FROM!,
     to: TEST_EMAIL!,
     replyTo: RESEND_REPLY_TO || undefined,
-    subject: `[TEST] ${SUBJECT}`,
+    // A time in the subject keeps each test in its own Gmail thread. Identical
+    // tests in one thread get collapsed behind "Show quoted text".
+    subject: `[TEST ${new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' })}] ${SUBJECT}`,
     html: fill(html),
     text: fill(text),
   });
